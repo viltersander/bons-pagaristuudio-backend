@@ -28,21 +28,61 @@ const ADMIN_CORS =
 // CORS to avoid issues when consuming Medusa from a client
 const STORE_CORS = process.env.STORE_CORS || "http://localhost:8000";
 
-const DATABASE_TYPE = process.env.DATABASE_TYPE || "sqlite";
-const DATABASE_URL = process.env.DATABASE_URL || "postgres://localhost/medusa-store";
+const DATABASE_TYPE = process.env.DATABASE_TYPE || "postgres";
+const DATABASE_URL = process.env.DATABASE_URL || "postgres://localhost/medusa";
 const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379";
 
 const plugins = [
   `medusa-fulfillment-manual`,
   `medusa-payment-manual`,
-  // To enable the admin plugin, uncomment the following lines and run `yarn add @medusajs/admin`
-  // {
-  //   resolve: "@medusajs/admin",
-  //   /** @type {import('@medusajs/admin').PluginOptions} */
-  //   options: {
-  //     autoRebuild: true,
-  //   },
-  // },
+  {
+    resolve: "@medusajs/admin",
+    /** @type {import('@medusajs/admin').PluginOptions} */
+    options: {
+      autoRebuild: true,
+    },
+  },
+  {
+    resolve: `medusa-plugin-meilisearch`,
+    options: {
+      config: {
+        host: process.env.MEILISEARCH_HOST,
+        apiKey: process.env.MEILISEARCH_API_KEY,
+      },
+      settings: {
+        products: {
+          indexSettings: {
+            searchableAttributes: [
+              "title", 
+              "description",
+            ],
+            displayedAttributes: [
+              "title", 
+              "description",
+              "thumbnail", 
+              "handle",
+            ],
+          },
+          primaryKey: "id",
+          transform: (product) => {
+            return {
+              id: product.id,
+              // other attributes...
+            };
+          },
+        },
+      },
+    },
+  },
+  {
+    resolve: `medusa-file-minio`,
+    options: {
+        endpoint: process.env.MINIO_ENDPOINT,
+        bucket: process.env.MINIO_BUCKET,
+        access_key_id: process.env.MINIO_ACCESS_KEY,
+        secret_access_key: process.env.MINIO_SECRET_KEY,
+    },
+  },
 ];
 
 const modules = {
@@ -83,4 +123,7 @@ module.exports = {
   projectConfig,
   plugins,
 	modules,
+  featureFlags: {
+      product_categories: true,
+  },
 };
