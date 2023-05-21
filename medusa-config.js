@@ -40,6 +40,7 @@ const plugins = [
     /** @type {import('@medusajs/admin').PluginOptions} */
     options: {
       autoRebuild: false,
+      url: "bons-pagaristuudio-backend-k7q4sp21p-viltersander.vercel.app",
     },
   },
   {
