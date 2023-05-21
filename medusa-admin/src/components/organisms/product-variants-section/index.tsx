@@ -61,17 +61,17 @@ const ProductVariantsSection = ({ product }: Props) => {
 
   const actions: ActionType[] = [
     {
-      label: "Add Variant",
+      label: "Lisa variant",
       onClick: toggleAddVariant,
       icon: <PlusIcon size="20" />,
     },
     {
-      label: "Edit Variants",
+      label: "Muuda variante",
       onClick: toggleEditVariants,
       icon: <EditIcon size="20" />,
     },
     {
-      label: "Edit Options",
+      label: "Redigeeri valikud",
       onClick: toggleOptions,
       icon: <GearIcon size="20" />,
     },
@@ -113,11 +113,11 @@ const ProductVariantsSection = ({ product }: Props) => {
 
   return (
     <OptionsProvider product={product}>
-      <Section title="Variants" actions={actions}>
+      <Section title="Variandid" actions={actions}>
         <ProductOptions />
         <div className="mt-xlarge">
           <h2 className="inter-large-semibold mb-base">
-            Product variants{" "}
+            Toote variandid{" "}
             <span className="inter-large-regular text-grey-50">
               ({product.variants.length})
             </span>

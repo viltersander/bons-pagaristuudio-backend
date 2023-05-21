@@ -24,7 +24,7 @@ const CurrencySettings = () => {
   })
 
   if (error) {
-    let message = "An unknown error occurred"
+    let message = "Ilmnes tundmatu viga"
 
     const errorStatus = getErrorStatus(error)
 
@@ -61,7 +61,7 @@ const CurrencySettings = () => {
   return (
     <div className="pb-xlarge">
       <BackButton
-        label="Back to Settings"
+        label="Tagasi seadetesse"
         path="/a/settings"
         className="mb-xsmall"
       />
@@ -69,7 +69,7 @@ const CurrencySettings = () => {
         <div className="gap-y-xsmall col-span-2 flex flex-col ">
           <Section title="Currencies">
             <p className="text-grey-50 inter-base-regular mt-2xsmall">
-              Manage the markets that you will operate within.
+              Hallake turge, kus tegutsete.
             </p>
           </Section>
 
@@ -80,14 +80,14 @@ const CurrencySettings = () => {
             <FeatureToggle featureFlag="tax_inclusive_pricing">
               <div className="cursor-default">
                 <div className="inter-small-semibold text-grey-50 mb-base flex items-center justify-between">
-                  <p>Currency</p>
+                  <p>Valuuta</p>
                   <Tooltip
                     side="top"
                     content={
-                      "Decide if you want to include or exclude taxes whenever you define a price in this currency"
+                      "Otsustage, kas soovite selles valuutas hinna määramisel lisada või välistada makse"
                     }
                   >
-                    <p>Tax Incl. Prices</p>
+                    <p>Sisaldab maksu. Hinnad</p>
                   </Tooltip>
                 </div>
                 <div className="gap-base grid grid-cols-1">

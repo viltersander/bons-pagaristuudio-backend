@@ -14,13 +14,13 @@ const StoreCurrencies = ({ store }: Props) => {
     <>
       <div className="flex items-start justify-between">
         <div>
-          <h3 className="inter-large-semibold mb-2xsmall">Store currencies</h3>
+          <h3 className="inter-large-semibold mb-2xsmall">Poe valuutad</h3>
           <p className="inter-base-regular text-grey-50">
-            All the currencies available in your store.
+            Kõik teie poes saadaolevad valuutad.
           </p>
         </div>
         <Button variant="secondary" size="small" onClick={toggle}>
-          Edit currencies
+          Muutke valuutasid
         </Button>
       </div>
       <EditCurrenciesModal store={store} open={state} onClose={close} />

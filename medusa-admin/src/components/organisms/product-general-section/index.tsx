@@ -39,12 +39,12 @@ const ProductGeneralSection = ({ product }: Props) => {
 
   const actions: ActionType[] = [
     {
-      label: "Edit General Information",
+      label: "Redigeeri üldteavet",
       onClick: toggleInfo,
       icon: <EditIcon size={20} />,
     },
     {
-      label: "Delete",
+      label: "Kustuta",
       onClick: onDelete,
       variant: "danger",
       icon: <TrashIcon size={20} />,
@@ -53,7 +53,7 @@ const ProductGeneralSection = ({ product }: Props) => {
 
   if (isFeatureEnabled("sales_channels")) {
     actions.splice(1, 0, {
-      label: "Edit Sales Channels",
+      label: "Redigeeri müügikanaleid",
       onClick: toggleChannels,
       icon: <ChannelsIcon size={20} />,
     })
@@ -68,8 +68,8 @@ const ProductGeneralSection = ({ product }: Props) => {
         status={
           <StatusSelector
             isDraft={product?.status === "draft"}
-            activeState="Published"
-            draftState="Draft"
+            activeState="Avaldatud"
+            draftState="Mustand"
             onChange={() => onStatusChange(product.status)}
           />
         }
@@ -126,23 +126,23 @@ const ProductDetails = ({ product }: Props) => {
 
   return (
     <div className="mt-8 flex flex-col gap-y-3">
-      <h2 className="inter-base-semibold">Details</h2>
-      <Detail title="Subtitle" value={product.subtitle} />
-      <Detail title="Handle" value={product.handle} />
-      <Detail title="Type" value={product.type?.value} />
-      <Detail title="Collection" value={product.collection?.title} />
+      <h2 className="inter-base-semibold">Üksikasjad</h2>
+      <Detail title="Alapealkiri" value={product.subtitle} />
+      <Detail title="Käepide" value={product.handle} />
+      <Detail title="Tüüp" value={product.type?.value} />
+      <Detail title="Kollektsioon" value={product.collection?.title} />
       {isFeatureEnabled(FeatureFlag.PRODUCT_CATEGORIES) && (
         <Detail
-          title="Category"
+          title="Kategooria"
           value={product.categories.map((c) => c.name)}
         />
       )}
       <Detail
-        title="Discountable"
-        value={product.discountable ? "True" : "False"}
+        title="Soodushinnaga"
+        value={product.discountable ? "Tõsi" : "Vale"}
       />
       <Detail
-        title="Metadata"
+        title="Metaandmed"
         value={
           Object.entries(product.metadata || {}).length > 0
             ? `${Object.entries(product.metadata || {}).length} ${
@@ -179,7 +179,7 @@ const ProductSalesChannels = ({ product }: Props) => {
   return (
     <FeatureToggle featureFlag="sales_channels">
       <div className="mt-xlarge">
-        <h2 className="inter-base-semibold mb-xsmall">Sales channels</h2>
+        <h2 className="inter-base-semibold mb-xsmall">Müügikanalid</h2>
         <SalesChannelsDisplay channels={product.sales_channels} />
       </div>
     </FeatureToggle>

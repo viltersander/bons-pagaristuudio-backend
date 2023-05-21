@@ -32,7 +32,7 @@ export const useShippingOptionFormData = (
 
       return acc.concat(
         filtered.map((option, o) => ({
-          label: `${option.name || option.id} via ${
+          label: `${option.name || option.id} kaudu ${
             fulfillmentProvidersMapper(current.provider_id).label
           }`,
           value: `${index}.${o}`,

@@ -72,11 +72,11 @@ const EditTaxRate = ({
 
     mutate(toSubmit, {
       onSuccess: () => {
-        notification("Success", "Successfully updated Tax Rate.", "success")
+        notification("Õnnestus", "Maksumäära värskendamine õnnestus.", "success")
         onDismiss()
       },
       onError: (error) => {
-        notification("Error", getErrorMessage(error), "error")
+        notification("Viga", getErrorMessage(error), "error")
       },
     })
   })
@@ -120,7 +120,7 @@ const EditTaxRate = ({
           <EditTaxRateDetails form={nestedForm(form, "details")} />
         </div>
         <div>
-          <p className="inter-base-semibold mb-base">Overrides</p>
+          <p className="inter-base-semibold mb-base">Ülekirjutus</p>
           {(product_types.length > 0 ||
             products.length > 0 ||
             shipping_options.length > 0) && (
@@ -144,7 +144,7 @@ const EditTaxRate = ({
                     )
                   }}
                   index={1}
-                  name="Product Rules"
+                  name="Tootereeglid"
                   description={`Applies to ${products.length} product${
                     products.length > 1 ? "s" : ""
                   }`}
@@ -228,7 +228,7 @@ const EditTaxRate = ({
               size="medium"
               variant="secondary"
             >
-              <PlusIcon /> Add Overrides
+              <PlusIcon /> Lisa ülekirjutused
             </Button>
           )}
         </div>
@@ -242,7 +242,7 @@ const EditTaxRate = ({
             size="small"
             className="w-eventButton justify-center"
           >
-            Cancel
+            Tühista 
           </Button>
           <Button
             type="submit"
@@ -252,7 +252,7 @@ const EditTaxRate = ({
             loading={isLoading}
             disabled={isLoading}
           >
-            Save
+            Salvesta
           </Button>
         </div>
       </Modal.Footer>
@@ -310,11 +310,11 @@ export const SimpleEditForm = ({ onDismiss, taxRate }: SimpleEditFormProps) => {
     }
     mutate(toSubmit, {
       onSuccess: () => {
-        notification("Success", "Successfully updated default rate.", "success")
+        notification("Õnnestus", "Vaikemäära värskendamine õnnestus.", "success")
         onDismiss()
       },
       onError: (error) => {
-        notification("Error", getErrorMessage(error), "error")
+        notification("Viga", getErrorMessage(error), "error")
       },
     })
   }
@@ -333,7 +333,7 @@ export const SimpleEditForm = ({ onDismiss, taxRate }: SimpleEditFormProps) => {
             size="small"
             className="w-eventButton justify-center"
           >
-            Cancel
+            Tühista
           </Button>
           <Button
             type="submit"
@@ -342,7 +342,7 @@ export const SimpleEditForm = ({ onDismiss, taxRate }: SimpleEditFormProps) => {
             className="w-eventButton justify-center"
             loading={isLoading}
           >
-            Save
+            Salvesta
           </Button>
         </div>
       </Modal.Footer>

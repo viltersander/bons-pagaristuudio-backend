@@ -21,7 +21,7 @@ const DraftOrderIndex = () => {
   const actions = useMemo(() => {
     return [
       {
-        label: "Create draft order",
+        label: "Loo tellimuse mustand",
         onClick: () => setShowNewOrder(true),
         icon: <PlusIcon size={20} />,
       },

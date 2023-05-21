@@ -52,7 +52,7 @@ const EditUserInformation = ({ user }: Props) => {
           disabled={!user}
           onClick={toggle}
         >
-          Edit information
+          Muuda teavet
         </Button>
       </div>
       {user && (

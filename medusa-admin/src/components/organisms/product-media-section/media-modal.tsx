@@ -49,17 +49,17 @@ const MediaModal = ({ product, open, onClose }: Props) => {
     try {
       preppedImages = await prepareImages(data.media.images)
     } catch (error) {
-      let errorMessage = "Something went wrong while trying to upload images."
+      let errorMessage = "Midagi läks piltide üleslaadimisel valesti."
       const response = (error as any).response as Response
 
       if (response.status === 500) {
         errorMessage =
           errorMessage +
           " " +
-          "You might not have a file service configured. Please contact your administrator"
+          "Teil ei pruugi olla failiteenust konfigureeritud. Võtke ühendust oma administraatoriga"
       }
 
-      notification("Error", errorMessage, "error")
+      notification("Viga", errorMessage, "error")
       return
     }
     const urls = preppedImages.map((image) => image.url)
@@ -76,14 +76,14 @@ const MediaModal = ({ product, open, onClose }: Props) => {
     <Modal open={open} handleClose={onReset} isLargeModal>
       <Modal.Body>
         <Modal.Header handleClose={onReset}>
-          <h1 className="inter-xlarge-semibold m-0">Edit Media</h1>
+          <h1 className="inter-xlarge-semibold m-0">Redigeeri meediat</h1>
         </Modal.Header>
         <form onSubmit={onSubmit}>
           <Modal.Content>
             <div>
-              <h2 className="inter-large-semibold mb-2xsmall">Media</h2>
+              <h2 className="inter-large-semibold mb-2xsmall">Meedia</h2>
               <p className="inter-base-regular text-grey-50 mb-large">
-                Add images to your product.
+                Lisage oma tootele pilte.
               </p>
               <div>
                 <MediaForm form={nestedForm(form, "media")} />
@@ -98,7 +98,7 @@ const MediaModal = ({ product, open, onClose }: Props) => {
                 type="button"
                 onClick={onReset}
               >
-                Cancel
+                Tühista
               </Button>
               <Button
                 size="small"
@@ -107,7 +107,7 @@ const MediaModal = ({ product, open, onClose }: Props) => {
                 disabled={!isDirty}
                 loading={updating}
               >
-                Save and close
+                Salvesta ja sulge
               </Button>
             </div>
           </Modal.Footer>

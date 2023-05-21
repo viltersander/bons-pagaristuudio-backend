@@ -224,7 +224,7 @@ const AddVariantsForm = ({
     if (exists) {
       newVariantForm.setError("options", {
         type: "deps",
-        message: "A variant with these options already exists.",
+        message: "Nende valikutega variant on juba olemas.",
       })
       return
     }
@@ -262,18 +262,18 @@ const AddVariantsForm = ({
     <>
       <div>
         <div className="gap-x-2xsmall flex items-center">
-          <h3 className="inter-base-semibold">Product options</h3>
+          <h3 className="inter-base-semibold">Toote valikud</h3>
           <IconTooltip
             type="info"
-            content="Options are used to define the color, size, etc. of the product."
+            content="Valikuid kasutatakse toote värvi, suuruse jms määratlemiseks."
           />
         </div>
         <div>
           {options.length > 0 && (
             <div className="mt-small">
               <div className="inter-small-semibold mb-small gap-x-xsmall text-grey-50 grid grid-cols-[230px_1fr_40px]">
-                <span>Option title</span>
-                <span>Variations (comma separated)</span>
+                <span>Valiku pealkiri</span>
+                <span>Variatsioonid (komadega eraldatud)</span>
               </div>
               <div className="gap-y-xsmall grid grid-cols-1">
                 {options.map((field, index) => {
@@ -283,7 +283,7 @@ const AddVariantsForm = ({
                       className="gap-x-xsmall grid grid-cols-[230px_1fr_40px]"
                     >
                       <InputField
-                        placeholder="Color..."
+                        placeholder="Värv..."
                         {...register(path(`options.${index}.title`))}
                       />
                       <Controller
@@ -299,11 +299,11 @@ const AddVariantsForm = ({
 
                                 return newVal
                               }}
-                              invalidMessage="already exists"
+                              invalidMessage="juba olemas"
                               showLabel={false}
                               values={value}
                               onChange={onChange}
-                              placeholder="Blue, Red, Black..."
+                              placeholder="Sinine, punane, must..."
                             />
                           )
                         }}
@@ -331,7 +331,7 @@ const AddVariantsForm = ({
             onClick={appendNewOption}
           >
             <PlusIcon size={20} />
-            <span>Add an option</span>
+            <span>Lisage valik</span>
           </Button>
           <div className="mt-xlarge">
             <div className="gap-x-2xsmall flex items-center">
@@ -340,7 +340,7 @@ const AddVariantsForm = ({
                   "opacity-50": !options.length,
                 })}
               >
-                Product variants{" "}
+                Toote variandid{" "}
                 <span className="inter-base-regular text-grey-50">
                   ({variants?.length || 0})
                 </span>
@@ -348,7 +348,7 @@ const AddVariantsForm = ({
               {!enableVariants && (
                 <IconTooltip
                   type="info"
-                  content="You must add at least one product option before you can begin adding product variants."
+                  content="Enne tootevariantide lisamist peate lisama vähemalt ühe tootevaliku."
                 />
               )}
             </div>
@@ -357,7 +357,7 @@ const AddVariantsForm = ({
                 <div className="inter-small-semibold pr-base text-grey-50 grid grid-cols-[1fr_90px_100px_48px]">
                   <p>Variant</p>
                   <div className="mr-xlarge flex justify-end">
-                    <p>Inventory</p>
+                    <p>Laoseis</p>
                   </div>
                 </div>
                 <div>
@@ -390,7 +390,7 @@ const AddVariantsForm = ({
               onClick={onToggleForm}
             >
               <PlusIcon size={20} />
-              <span>Add a variant</span>
+              <span>Lisa variant</span>
             </Button>
           </div>
         </div>
@@ -403,7 +403,7 @@ const AddVariantsForm = ({
       >
         <Modal.Body>
           <Modal.Header handleClose={onToggleForm}>
-            <h1 className="inter-xlarge-semibold">Create Variant</h1>
+            <h1 className="inter-xlarge-semibold">Loo variant</h1>
           </Modal.Header>
           <Modal.Content>
             <CreateFlowVariantForm
@@ -420,7 +420,7 @@ const AddVariantsForm = ({
                 type="button"
                 onClick={onToggleForm}
               >
-                Cancel
+                Tühista
               </Button>
               <Button
                 variant="primary"
@@ -428,7 +428,7 @@ const AddVariantsForm = ({
                 type="button"
                 onClick={onAppendVariant}
               >
-                Save and close
+                Salvesta ja sulge
               </Button>
             </div>
           </Modal.Footer>

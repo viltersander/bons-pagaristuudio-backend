@@ -37,13 +37,13 @@ const CurrencyTaxSetting = ({ currency, isDefault }: Props) => {
   const onSubmit = handleSubmit((data: CurrencyTaxSettingFormType) => {
     mutate(data, {
       onSuccess: () => {
-        notification("Success", "Successfully updated currency", "success")
+        notification("Õnnestus", "Valuuta värskendamine õnnestus", "success")
 
         // When we update a currency, we need to invalidate the store in order for this change to be reflected across admin
         queryClient.invalidateQueries(adminStoreKeys.all)
       },
       onError: (error) => {
-        notification("Error", getErrorMessage(error), "error")
+        notification("Viga", getErrorMessage(error), "error")
         reset({
           includes_tax: currency.includes_tax,
         })
@@ -66,7 +66,7 @@ const CurrencyTaxSetting = ({ currency, isDefault }: Props) => {
           </div>
           {isDefault && (
             <div className="bg-grey-10 rounded-rounded px-xsmall py-[2px]">
-              <p className="inter-small-semibold text-grey-50">Default</p>
+              <p className="inter-small-semibold text-grey-50">Vaikimisi</p>
             </div>
           )}
         </div>

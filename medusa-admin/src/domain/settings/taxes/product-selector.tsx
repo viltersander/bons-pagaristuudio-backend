@@ -33,7 +33,7 @@ export const ProductSelector = ({ items, onChange }) => {
   const columns = useMemo(() => {
     return [
       {
-        Header: "Name",
+        Header: "Nimi",
         accessor: "title",
         Cell: ({ row: { original } }) => {
           return (
@@ -60,8 +60,8 @@ export const ProductSelector = ({ items, onChange }) => {
 
   return (
     <SelectableTable
-      label="Select Products"
-      objectName="Product"
+      label="Vali tooted"
+      objectName="Toode"
       totalCount={count}
       pagination={pagination}
       onPaginationChange={setPagination}

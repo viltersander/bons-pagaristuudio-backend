@@ -36,7 +36,7 @@ const COLUMNS = [
     },
   },
   {
-    Header: "Title",
+    Header: "Pealkiri",
     accessor: "name",
     maxWidth: 160,
     width: 160,
@@ -52,7 +52,7 @@ const COLUMNS = [
     },
   },
   {
-    Header: "Description",
+    Header: "Kirjeldus",
     accessor: "description",
     Cell: ({ row }) => {
       return (
@@ -210,7 +210,7 @@ const SalesChannelTable = forwardRef(
           {!isLoading && !data?.length && (
             <div className="absolute flex h-full w-full items-center justify-center">
               <span className="text-sma text-grey-40">
-                No added sales channels
+                Lisatud müügikanaleid pole
               </span>
             </div>
           )}
@@ -220,7 +220,7 @@ const SalesChannelTable = forwardRef(
             pagingState={{
               count,
               offset,
-              title: "Sales Channels",
+              title: "Müügikanalid",
               pageSize: offset + table.rows.length,
               currentPage: table.state.pageIndex + 1,
               pageCount: table.pageCount,

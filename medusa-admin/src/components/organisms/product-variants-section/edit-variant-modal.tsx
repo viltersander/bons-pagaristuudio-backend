@@ -111,7 +111,7 @@ const EditVariantModal = ({
     <LayeredModal context={layeredModalContext} handleClose={handleClose}>
       <Modal.Header handleClose={handleClose}>
         <h1 className="inter-xlarge-semibold">
-          Edit Variant
+          Muuda varianti
           {variant.title && (
             <span className="inter-xlarge-regular text-grey-50">
               {" "}
@@ -132,7 +132,7 @@ const EditVariantModal = ({
               type="button"
               onClick={handleClose}
             >
-              Cancel
+              Tühista
             </Button>
             <Button
               variant="primary"
@@ -141,7 +141,7 @@ const EditVariantModal = ({
               disabled={!isDirty && !isDuplicate}
               loading={addingVariant || updatingVariant}
             >
-              Save and close
+              Salvesta ja sulge
             </Button>
           </div>
         </Modal.Footer>

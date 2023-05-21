@@ -9,15 +9,14 @@ function Placeholder({ showAddModal }) {
       </span>
 
       <h3 className="text-large text-gray-90 mt-6 font-semibold">
-        Start building your channels setup...
+      Alustage oma kanalite seadistamist...
       </h3>
       <p className="text-grey-50 mt-2 mb-8 w-[358px] text-center">
-        You haven’t added any products to this channels yet, but once you do
-        they will live here.
+      Te pole sellesse kanalisse veel ühtegi toodet lisanud, kuid kui olete lisanud, hakkavad need siin olema.
       </p>
 
       <Button onClick={showAddModal} variant="primary" size="small">
-        Add products
+        Lisa tooteid
       </Button>
     </div>
   )

@@ -37,26 +37,26 @@ const AccountDetails = () => {
     const validateInviteLinkTemplate = validateUrl(data.invite_link_template)
 
     if (!validateSwapLinkTemplate) {
-      notification("Error", "Malformed swap url", "error")
+      notification("Viga", "Viga vaheta URL", "error")
       return
     }
 
     if (!validatePaymentLinkTemplate) {
-      notification("Error", "Malformed payment url", "error")
+      notification("Viga", "Valesti vormindatud makse URL", "error")
       return
     }
 
     if (!validateInviteLinkTemplate) {
-      notification("Error", "Malformed invite url", "error")
+      notification("Viga", "Vigane kutse URL", "error")
       return
     }
 
     mutate(data, {
       onSuccess: () => {
-        notification("Success", "Successfully updated store", "success")
+        notification("Õnnestus", "Poe värskendamine õnnestus", "success")
       },
       onError: (error) => {
-        notification("Error", getErrorMessage(error), "error")
+        notification("Viga", getErrorMessage(error), "error")
       },
     })
   }
@@ -66,46 +66,46 @@ const AccountDetails = () => {
       <div className="max-w-[632px]">
         <BackButton
           path="/a/settings/"
-          label="Back to settings"
+          label="Tagasi seadete juurde"
           className="mb-xsmall"
         />
         <BodyCard
           events={[
             {
-              label: "Save",
+              label: "Salvesta",
               type: "button",
               onClick: handleSubmit(onSubmit),
             },
-            { label: "Cancel", type: "button", onClick: handleCancel },
+            { label: "Tühista", type: "button", onClick: handleCancel },
           ]}
-          title="Store Details"
-          subtitle="Manage your business details"
+          title="Poe üksikasjad"
+          subtitle="Hallake oma ettevõtte üksikasju"
         >
           <div className="gap-y-xlarge mb-large flex flex-col">
             <div>
-              <h2 className="inter-base-semibold mb-base">General</h2>
+              <h2 className="inter-base-semibold mb-base">Üldine</h2>
               <Input
-                label="Store name"
+                label="Poe nimi"
                 {...register("name")}
                 placeholder="Medusa Store"
               />
             </div>
             <div>
-              <h2 className="inter-base-semibold mb-base">Advanced settings</h2>
+              <h2 className="inter-base-semibold mb-base">Täpsemad seaded</h2>
               <Input
-                label="Swap link template"
+                label="Vahetage lingi mall"
                 {...register("swap_link_template")}
                 placeholder="https://acme.inc/swap={swap_id}"
               />
               <Input
                 className="mt-base"
-                label="Draft order link template"
+                label="Tellimuse mustandi lingi mall"
                 {...register("payment_link_template")}
                 placeholder="https://acme.inc/payment={payment_id}"
               />
               <Input
                 className="mt-base"
-                label="Invite link template"
+                label="Kutse lingi mall"
                 {...register("invite_link_template")}
                 placeholder="https://acme-admin.inc/invite?token={invite_token}"
               />

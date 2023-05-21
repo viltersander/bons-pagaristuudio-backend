@@ -84,7 +84,7 @@ const NewVariant = ({
     if (!saved) {
       localForm.setError("options", {
         type: "deps",
-        message: "A variant with these options already exists.",
+        message: "Nende valikutega variant on juba olemas.",
       })
       return
     }
@@ -96,8 +96,8 @@ const NewVariant = ({
 
   const onDelete = async () => {
     const confirmed = await warning({
-      text: "Are you sure you want to delete this variant?",
-      heading: "Delete Variant",
+      text: "Kas soovite kindlasti selle variandi kustutada?",
+      heading: "Kustuta variant",
     })
 
     if (confirmed) {
@@ -209,12 +209,12 @@ const NewVariant = ({
             forceDropdown
             actions={[
               {
-                label: "Edit",
+                label: "Muuda",
                 icon: <EditIcon size={20} />,
                 onClick: toggle,
               },
               {
-                label: "Delete",
+                label: "Kustuta",
                 icon: <TrashIcon size={20} />,
                 onClick: onDelete,
                 variant: "danger",
@@ -239,7 +239,7 @@ const NewVariant = ({
         <Modal.Body>
           <Modal.Header handleClose={closeAndReset}>
             <h1 className="inter-xlarge-semibold">
-              Edit Variant
+              Redigeeri varianti
               {source.general.title && (
                 <span className="inter-xlarge-regular ml-xsmall text-grey-50">
                   ({source.general.title})
@@ -262,7 +262,7 @@ const NewVariant = ({
                 type="button"
                 onClick={closeAndReset}
               >
-                Cancel
+                Tühista
               </Button>
               <Button
                 variant="primary"
@@ -270,7 +270,7 @@ const NewVariant = ({
                 type="button"
                 onClick={onUpdate}
               >
-                Save and close
+                Salvesta ja sulge
               </Button>
             </div>
           </Modal.Footer>
@@ -300,7 +300,7 @@ const VariantValidity = ({
         type="error"
         content={
           <div className="gap-y-2xsmall flex flex-col text-rose-50">
-            <p>This variant has no options.</p>
+            <p>Sellel variandil pole valikuid.</p>
           </div>
         }
       />
@@ -315,10 +315,10 @@ const VariantValidity = ({
         type="error"
         content={
           <div className="gap-y-2xsmall flex flex-col text-rose-50">
-            <p>You are missing options values for the following options:</p>
+            <p>Teil puuduvad järgmiste valikute suvandite väärtused.</p>
             <ul className="list-inside list-disc">
               {invalidOptions.map((io, index) => {
-                return <li key={index}>{io.title || `Option ${index + 1}`}</li>
+                return <li key={index}>{io.title || `Valik ${index + 1}`}</li>
               })}
             </ul>
           </div>
@@ -352,16 +352,15 @@ const VariantValidity = ({
         content={
           <div className="gap-y-2xsmall flex flex-col text-orange-50">
             <p>
-              Your variant is createable, but it's missing some important
-              fields:
+            Teie varianti saab luua, kuid sellel on mõned olulised väljad:
             </p>
             <ul className="list-inside list-disc">
-              {!validPrices && <li>Pricing</li>}
-              {!validDimensions && <li>Dimensions</li>}
-              {!validCustoms && <li>Customs</li>}
-              {!inventory_quantity && <li>Inventory quantity</li>}
+              {!validPrices && <li>Hinnakujundus</li>}
+              {!validDimensions && <li>Mõõdud</li>}
+              {!validCustoms && <li>Toll</li>}
+              {!inventory_quantity && <li>Varude kogus</li>}
               {!sku && <li>SKU</li>}
-              {!barcodeValidity && <li>Barcode</li>}
+              {!barcodeValidity && <li>Vöötkood</li>}
             </ul>
           </div>
         }
@@ -371,7 +370,7 @@ const VariantValidity = ({
 
   return (
     <Tooltip
-      content={title ? `${title} is valid` : "Variant is valid"}
+      content={title ? `${title} on kehtiv` : "Variant kehtib"}
       side="top"
     >
       <CheckCircleFillIcon size={20} className="text-emerald-40" />

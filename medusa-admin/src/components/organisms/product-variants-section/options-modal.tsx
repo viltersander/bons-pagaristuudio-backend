@@ -140,20 +140,20 @@ const OptionsModal = ({ product, open, onClose }: Props) => {
     })
 
     if (errors.length === toCreate.length + toUpdate.length + toDelete.length) {
-      notification("Error", "Failed to update product options", "error")
+      notification("Viga", "Tootevalikute värskendamine ebaõnnestus", "error")
       return
     }
 
     if (errors.length > 0) {
       notification(
-        "Warning",
-        "Failed to; " + errors.join(", ") + ".",
+        "Hoiatus",
+        "Ebaõnnestunud; " + errors.join(", ") + ".",
         "warning"
       )
     }
 
     refetch()
-    notification("Success", "Successfully updated product options", "success")
+    notification("Õnnestus", "Tootevalikute värskendamine õnnestus", "success")
     handleClose()
   })
 
@@ -161,13 +161,13 @@ const OptionsModal = ({ product, open, onClose }: Props) => {
     <Modal open={open} handleClose={handleClose}>
       <Modal.Body>
         <Modal.Header handleClose={handleClose}>
-          <h1 className="inter-xlarge-semibold">Edit Options</h1>
+          <h1 className="inter-xlarge-semibold">Redigeerimisvalikud</h1>
         </Modal.Header>
         <form onSubmit={onSubmit}>
           <Modal.Content>
-            <h2 className="inter-large-semibold mb-base">Product options</h2>
+            <h2 className="inter-large-semibold mb-base">Toote valikud</h2>
             <div className="gap-y-small flex flex-col">
-              <p className="inter-small-semibold text-grey-50">Option title</p>
+              <p className="inter-small-semibold text-grey-50">Valiku pealkiri</p>
               <div className="gap-y-xsmall flex flex-col">
                 {fields.map((field, index) => {
                   return (
@@ -205,7 +205,7 @@ const OptionsModal = ({ product, open, onClose }: Props) => {
               type="button"
               onClick={handleAddAnOption}
             >
-              <PlusIcon size="20" /> Add an option
+              <PlusIcon size="20" /> Lisage valik
             </Button>
           </Modal.Content>
           <Modal.Footer>
@@ -216,7 +216,7 @@ const OptionsModal = ({ product, open, onClose }: Props) => {
                 type="button"
                 onClick={handleClose}
               >
-                Cancel
+                Tühista
               </Button>
               <Button
                 variant="primary"
@@ -225,7 +225,7 @@ const OptionsModal = ({ product, open, onClose }: Props) => {
                 disabled={!isDirty}
                 loading={isSubmitting}
               >
-                Save and close
+                Salvesta ja sulge
               </Button>
             </div>
           </Modal.Footer>

@@ -41,11 +41,11 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
   const onSubmit = (data: EditUserModalFormData) => {
     mutate(data, {
       onSuccess: () => {
-        notification("Success", `User was updated`, "success")
+        notification("Õnnestus", `Kasutajat värskendati`, "success")
         onSuccess()
       },
       onError: (error) => {
-        notification("Error", getErrorMessage(error), "error")
+        notification("Viga", getErrorMessage(error), "error")
       },
       onSettled: () => {
         handleClose()
@@ -58,34 +58,34 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
       <form onSubmit={handleSubmit(onSubmit)}>
         <Modal.Body>
           <Modal.Header handleClose={handleClose}>
-            <span className="inter-xlarge-semibold">Edit User</span>
+            <span className="inter-xlarge-semibold">Redigeeri kasutajat</span>
           </Modal.Header>
           <Modal.Content>
             <div className="gap-large mb-base grid w-full grid-cols-2">
               <InputField
-                label="First Name"
-                placeholder="First name..."
+                label="Eesnimi"
+                placeholder="Eesnimi..."
                 required
                 {...register("first_name", {
-                  required: FormValidator.required("First name"),
-                  pattern: FormValidator.whiteSpaceRule("First name"),
-                  minLength: FormValidator.minOneCharRule("First name"),
+                  required: FormValidator.required("Eesnimi"),
+                  pattern: FormValidator.whiteSpaceRule("Eesnimi"),
+                  minLength: FormValidator.minOneCharRule("Eesnimi"),
                 })}
                 errors={errors}
               />
               <InputField
-                label="Last Name"
-                placeholder="Last name..."
+                label="Perekonnanimi"
+                placeholder="Perekonnanimi..."
                 required
                 {...register("last_name", {
-                  required: FormValidator.required("Last name"),
-                  pattern: FormValidator.whiteSpaceRule("Last name"),
-                  minLength: FormValidator.minOneCharRule("last name"),
+                  required: FormValidator.required("Perekonnanimi"),
+                  pattern: FormValidator.whiteSpaceRule("Perekonnanimi"),
+                  minLength: FormValidator.minOneCharRule("Perekonnanimi"),
                 })}
                 errors={errors}
               />
             </div>
-            <InputField label="Email" disabled value={user.email} />
+            <InputField label="Mail" disabled value={user.email} />
           </Modal.Content>
           <Modal.Footer>
             <div className="flex w-full justify-end">
@@ -95,7 +95,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
                 onClick={handleClose}
                 className="mr-2"
               >
-                Cancel
+                Tühista
               </Button>
               <Button
                 loading={isLoading}
@@ -103,7 +103,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
                 variant="primary"
                 size="small"
               >
-                Save
+                Salvesta
               </Button>
             </div>
           </Modal.Footer>

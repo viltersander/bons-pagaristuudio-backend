@@ -34,14 +34,14 @@ function EditSalesChannel(props: EditSalesChannelProps) {
       {
         onSuccess: () => {
           notification(
-            "Success",
-            "The sales channel is successfully updated",
+            "Õnnestus",
+            "Müügikanali uuendamine õnnestus",
             "success"
           )
           handleClose()
         },
         onError: () =>
-          notification("Error", "Failed to update the sales channel", "error"),
+          notification("Viga", "Müügikanali värskendamine ebaõnnestus", "error"),
       }
     )
   }
@@ -50,22 +50,22 @@ function EditSalesChannel(props: EditSalesChannelProps) {
     <Modal handleClose={handleClose}>
       <Modal.Body>
         <Modal.Header handleClose={handleClose}>
-          <span className="inter-xlarge-semibold">Sales channel details</span>
+          <span className="inter-xlarge-semibold">Müügikanali üksikasjad</span>
         </Modal.Header>
         <Modal.Content>
           <div className="inter-base-semibold text-grey-90 mb-4">
-            General info
+          Üldinfo
           </div>
 
           <div className="flex w-full flex-col gap-3">
             <InputField
-              label="Name"
+              label="Nimi"
               name="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
             <InputField
-              label="Description"
+              label="Kirjeldus"
               name="description"
               value={description!}
               onChange={(e) => setDescription(e.target.value)}
@@ -80,7 +80,7 @@ function EditSalesChannel(props: EditSalesChannelProps) {
               onClick={handleClose}
               className="mr-2"
             >
-              Close
+              Sulge
             </Button>
             <Button
               disabled={!name.length || isLoading}
@@ -90,7 +90,7 @@ function EditSalesChannel(props: EditSalesChannelProps) {
               onClick={handleSubmit}
               loading={isLoading}
             >
-              Save
+              Salvesta
             </Button>
           </div>
         </Modal.Footer>

@@ -36,13 +36,13 @@ const DefaultCurrencySelector = ({ store }: Props) => {
       {
         onSuccess: () => {
           notification(
-            "Success",
-            "Successfully updated default currency",
+            "Õnnestus",
+            "Vaikevaluuta värskendamine õnnestus",
             "success"
           )
         },
         onError: (error) => {
-          notification("Error", getErrorMessage(error), "error")
+          notification("Viga", getErrorMessage(error), "error")
         },
       }
     )
@@ -66,7 +66,7 @@ const DefaultCurrencySelector = ({ store }: Props) => {
         render={({ field: { value, onChange, onBlur } }) => {
           return (
             <NextSelect
-              placeholder="Choose default currency"
+              placeholder="Valige vaikevaluuta"
               options={currencyOptions}
               value={value}
               onChange={(e) => {

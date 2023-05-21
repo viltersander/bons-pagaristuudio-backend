@@ -19,9 +19,9 @@ const ChannelsModal = ({ product, open, onClose }: Props) => {
       await mutateAsync({
         sales_channels: channels.map((c) => ({ id: c.id })),
       })
-      notification("Success", "Successfully updated sales channels", "success")
+      notification("Õnnestus", "Müügikanalite uuendamine õnnestus", "success")
     } catch (e) {
-      notification("Error", "Failed to update sales channels", "error")
+      notification("Viga", "Müügikanalite värskendamine ebaõnnestus", "error")
     }
   }
 

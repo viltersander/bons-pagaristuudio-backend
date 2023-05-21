@@ -25,72 +25,72 @@ const SettingsIndex = () => {
   return (
     <SettingsOverview>
       <SettingsCard
-        heading={"Regions"}
-        description={"Manage the markets you will operate within"}
+        heading={"Piirkonnad"}
+        description={"Hallake turge, kus tegutsete"}
         icon={<MapPinIcon />}
         to={`/a/settings/regions`}
       />
       <SettingsCard
-        heading={"Currencies"}
-        description={"Manage the markets you will operate within"}
+        heading={"Valuutad"}
+        description={"Hallake turge, kus tegutsete"}
         icon={<CoinsIcon />}
         to={`/a/settings/currencies`}
       />
       <SettingsCard
-        heading={"Store Details"}
-        description={"Manage your business details"}
+        heading={"Kaupluse üksikasjad"}
+        description={"Hallake oma ettevõtte üksikasju"}
         icon={<CrosshairIcon />}
         to={`/a/settings/details`}
       />
       <SettingsCard
-        heading={"Shipping"}
+        heading={"Tarne"}
         description={"Manage shipping profiles"}
         icon={<TruckIcon />}
         to={`/a/settings/shipping-profiles`}
         disabled={true}
       />
       <SettingsCard
-        heading={"Return Reasons"}
-        description={"Manage Order settings"}
+        heading={"Tagastamise põhjused"}
+        description={"Tellimuse seadete haldamine"}
         icon={<DollarSignIcon />}
         to={`/a/settings/return-reasons`}
       />
       <SettingsCard
-        heading={"The Team"}
-        description={"Manage users of your Medusa Store"}
+        heading={"Meeskond"}
+        description={"Hallake oma Medusa poe kasutajaid"}
         icon={<UsersIcon />}
         to={`/a/settings/team`}
       />
       <SettingsCard
-        heading={"Personal Information"}
-        description={"Manage your Medusa profile"}
+        heading={"Isiklik informatsioon"}
+        description={"Hallake oma Medusa profiili"}
         icon={<HappyIcon />}
         to={`/a/settings/personal-information`}
       />
       <SettingsCard
         heading={"hello@medusajs.com"}
-        description={"Can’t find the answers you’re looking for?"}
+        description={"Kas te ei leia otsitavaid vastuseid?"}
         icon={<MailIcon />}
         externalLink={"mailto: hello@medusajs.com"}
       />
       <SettingsCard
-        heading={"Tax Settings"}
-        description={"Manage taxes across regions and products"}
+        heading={"Maksusätted"}
+        description={"Hallake piirkondade ja toodete makseid"}
         icon={<TaxesIcon />}
         to={`/a/settings/taxes`}
       />
       <FeatureToggle featureFlag="sales_channels">
         <SettingsCard
-          heading={"Sales channels"}
-          description={"Control which products are available in which channels"}
+          heading={"Müügikanalid"}
+          description={"Saate hallata, millised tooted millistes kanalites on saadaval"}
           icon={<ChannelsIcon />}
           to={`/a/sales-channels`}
         />
       </FeatureToggle>
       <FeatureToggle featureFlag="publishable_api_keys">
         <SettingsCard
-          heading={"API key management"}
-          description={"Create and manage API keys"}
+          heading={"API võtmehaldus"}
+          description={"Looge ja hallake API võtmeid"}
           icon={<KeyIcon />}
           to={`/a/publishable-api-keys`}
         />

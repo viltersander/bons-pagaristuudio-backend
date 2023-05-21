@@ -33,7 +33,7 @@ const SalesChannelsDisplay = ({ channels = [] }: Props) => {
             >
               <Badge variant="ghost" className="px-3 py-1.5">
                 <div className="inter-small-regular text-grey-50 flex h-full items-center">
-                  + {remainder} more
+                  + {remainder} veel
                 </div>
               </Badge>
             </Tooltip>
@@ -41,13 +41,13 @@ const SalesChannelsDisplay = ({ channels = [] }: Props) => {
         </div>
       )}
       <p className="inter-base-regular text-grey-50">
-        Available in{" "}
+        Saadaval on {" "}
         <span className="inter-base-semibold text-grey-90">
           {channels.length ? channels.length : 0}
         </span>{" "}
-        out of{" "}
+        müügikanal {" "}
         <span className="inter-base-semibold text-grey-90">{count || 0}</span>{" "}
-        Sales Channels
+        müügikanalitest
       </p>
     </div>
   )

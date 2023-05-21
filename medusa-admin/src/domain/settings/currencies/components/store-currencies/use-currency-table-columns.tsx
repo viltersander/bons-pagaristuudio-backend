@@ -30,7 +30,7 @@ export const useCurrencyColumns = (): Column<Currency>[] => {
       {
         Header: ({ column: { isSorted, isSortedDesc } }) => (
           <div className="gap-x-2xsmall flex items-center">
-            <span>Name</span>
+            <span>Nimi</span>
             <SortingIcon
               className="text-grey-40"
               ascendingColor={isSorted && !isSortedDesc ? "#111827" : undefined}

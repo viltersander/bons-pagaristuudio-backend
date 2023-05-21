@@ -39,7 +39,7 @@ function TotalsSection(props: TotalsSectionProps) {
     <>
       <div className="bg-grey-20 mb-6 h-px w-full" />
       <div className="mb-2 flex h-[40px] justify-between">
-        <span className="text-gray-500">Amount Paid</span>
+        <span className="text-gray-500">Makstud summa</span>
         <span className="text-gray-900">
           {formatAmountWithSymbol({
             amount: amountPaid,
@@ -50,7 +50,7 @@ function TotalsSection(props: TotalsSectionProps) {
       </div>
 
       <div className="mb-2 flex h-[40px] justify-between">
-        <span className="font-semibold text-gray-900">New Total</span>
+        <span className="font-semibold text-gray-900">Uus kokku</span>
         <span className="text-2xl font-semibold">
           {formatAmountWithSymbol({
             amount: newTotal,
@@ -60,7 +60,7 @@ function TotalsSection(props: TotalsSectionProps) {
       </div>
 
       <div className="flex justify-between">
-        <span className="text-gray-500">Difference Due</span>
+        <span className="text-gray-500">Erinevus</span>
         <span
           className={clsx("text-gray-900", {
             "text-rose-500": differenceDue < 0,
@@ -123,10 +123,10 @@ export function AddProductVariant(props: AddProductVariantProps) {
       <Modal.Footer>
         <div className="space-x-xsmall flex w-full justify-end">
           <Button variant="secondary" size="small" onClick={onBack}>
-            Back
+            Tagasi
           </Button>
           <Button variant="primary" size="small" onClick={onSubmit}>
-            Save and go back
+            Salvesta ja mine tagasi
           </Button>
         </div>
       </Modal.Footer>

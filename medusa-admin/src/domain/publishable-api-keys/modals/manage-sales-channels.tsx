@@ -65,12 +65,12 @@ function AddScreen(props: {
       })),
     })
       .then(() => {
-        notification("Success", "Sales channels added to the scope", "success")
+        notification("Õnnestus", "Müügikanalid lisati ulatusse", "success")
       })
       .catch(() => {
         notification(
-          "Error",
-          "Error occurred while adding sales channels to the scope of the key",
+          "Viga",
+          "Võtme ulatusse müügikanalite lisamisel ilmnes viga",
           "success"
         )
       })
@@ -90,7 +90,7 @@ function AddScreen(props: {
           >
             <UTurnIcon size={18} />
           </Button>
-          Add sales channels
+          Lisa müügikanaleid
         </h3>
         <Button
           variant="secondary"
@@ -138,7 +138,7 @@ function AddScreen(props: {
 
       <div className="flex justify-end gap-2">
         <Button size="small" variant="ghost" onClick={props.close}>
-          Cancel
+          Tühista
         </Button>
         <Button
           size="small"
@@ -146,7 +146,7 @@ function AddScreen(props: {
           onClick={onSave(props.goBack)}
           disabled={!Object.keys(selectedSalesChannels).length}
         >
-          Add and go back
+          Lisa ja mine tagasi
         </Button>
         <Button
           size="small"
@@ -154,7 +154,7 @@ function AddScreen(props: {
           onClick={onSave(props.close)}
           disabled={!Object.keys(selectedSalesChannels).length}
         >
-          Add and close
+          Lisa ja sulge
         </Button>
       </div>
     </div>
@@ -212,8 +212,8 @@ function EditScreen(props: {
     })
       .then(() => {
         notification(
-          "Success",
-          "Sales channels removed from the scope",
+          "Õnnestus",
+          "Müügikanalid eemaldati ulatusest",
           "success"
         )
         setSelectedChannels({})
@@ -221,8 +221,8 @@ function EditScreen(props: {
       })
       .catch(() => {
         notification(
-          "Error",
-          "Error occurred while removing sales channels from the scope of the key",
+          "Viga",
+          "Müügikanalite võtme ulatusest eemaldamisel ilmnes viga",
           "success"
         )
       })
@@ -249,7 +249,7 @@ function EditScreen(props: {
 
       <div className="flex items-center justify-between">
         <h3 className="inter-large-semibold flex items-center gap-2 text-xl text-gray-900">
-          Edit sales channels
+          Redigeeri müügikanaleid
         </h3>
         <Button
           variant="secondary"
@@ -277,7 +277,7 @@ function EditScreen(props: {
           {selectedCount ? (
             <div className="flex h-[32px] items-center justify-between gap-2">
               <span className="text-small text-grey-50 whitespace-nowrap px-2">
-                {selectedCount} selected
+                {selectedCount} valitud
               </span>
               <Button
                 size="small"
@@ -285,7 +285,7 @@ function EditScreen(props: {
                 variant="secondary"
                 onClick={onDeselect}
               >
-                Deselect
+                Tühista valik
               </Button>
               <Button
                 size="small"
@@ -293,7 +293,7 @@ function EditScreen(props: {
                 variant="secondary"
                 onClick={onRemove}
               >
-                Remove
+                Eemalda
               </Button>
             </div>
           ) : (
@@ -303,7 +303,7 @@ function EditScreen(props: {
               variant="secondary"
               onClick={props.goAdd}
             >
-              Add channels
+              Kanalite lisamine
             </Button>
           )}
         </div>
@@ -330,7 +330,7 @@ function EditScreen(props: {
 
       <div className="flex justify-end gap-2">
         <Button size="small" variant="secondary" onClick={close}>
-          Close
+          Sulge
         </Button>
       </div>
     </div>

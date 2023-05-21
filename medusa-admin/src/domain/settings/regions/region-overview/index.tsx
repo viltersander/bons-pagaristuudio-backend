@@ -61,7 +61,7 @@ const RegionOverview = ({ id }: Props) => {
   return (
     <>
       <Section
-        title="Regions"
+        title="Piirkonnad"
         customActions={
           <div>
             <Button
@@ -77,7 +77,7 @@ const RegionOverview = ({ id }: Props) => {
         className="h-full"
       >
         <p className="text-base-regular text-grey-50 mt-2xsmall">
-          Manage the markets that you will operate within.
+          Hallake turge, kus tegutsete.
         </p>
         <div className="mt-large">
           <RadioGroup.Root value={selectedRegion} onValueChange={handleChange}>

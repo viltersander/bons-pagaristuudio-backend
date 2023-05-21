@@ -44,7 +44,7 @@ const Edit = () => {
     <div className="pb-5xlarge">
       <BackButton
         path="/a/products"
-        label="Back to Products"
+        label="Tagasi toodete juurde"
         className="mb-xsmall"
       />
       <div className="gap-x-base grid grid-cols-12">

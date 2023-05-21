@@ -43,11 +43,11 @@ const AddCurrenciesScreen = () => {
       },
       {
         onSuccess: () => {
-          notification("Success", "Successfully updated currencies", "success")
+          notification("Õnnestus", "Valuutade värskendamine õnnestus", "success")
           next()
         },
         onError: (err) => {
-          notification("Error", getErrorMessage(err), "error")
+          notification("Viga", getErrorMessage(err), "error")
         },
       }
     )
@@ -97,7 +97,7 @@ const AddCurrenciesScreen = () => {
       <Modal.Footer>
         <div className="gap-x-xsmall flex w-full items-center justify-end">
           <Button variant="secondary" size="small" onClick={pop}>
-            Cancel
+            Tühista
           </Button>
           <Button
             variant="primary"
@@ -108,7 +108,7 @@ const AddCurrenciesScreen = () => {
               })
             }
           >
-            Save and go back
+            Salvesta ja mine tagasi
           </Button>
           <Button
             variant="primary"
@@ -122,7 +122,7 @@ const AddCurrenciesScreen = () => {
               })
             }
           >
-            Save and close
+            Salvesta ja sulge
           </Button>
         </div>
       </Modal.Footer>
@@ -135,7 +135,7 @@ export const useAddCurrenciesModalScreen = () => {
 
   return {
     screen: {
-      title: "Add Store Currencies",
+      title: "Lisage poe valuutad",
       onBack: pop,
       view: <AddCurrenciesScreen />,
     },

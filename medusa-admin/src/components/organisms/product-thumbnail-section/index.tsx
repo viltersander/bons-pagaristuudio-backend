@@ -27,10 +27,10 @@ const ProductThumbnailSection = ({ product }: Props) => {
       },
       {
         onSuccess: () => {
-          notification("Success", "Successfully deleted thumbnail", "success")
+          notification("Õnnestus", "Pisipildi kustutamine õnnestus", "success")
         },
         onError: (err) => {
-          notification("Error", getErrorMessage(err), "error")
+          notification("Viga", getErrorMessage(err), "error")
         },
       }
     )
@@ -39,7 +39,7 @@ const ProductThumbnailSection = ({ product }: Props) => {
   return (
     <>
       <Section
-        title="Thumbnail"
+        title="Pisipilt"
         customActions={
           <div className="gap-x-xsmall flex items-center">
             <Button
@@ -48,7 +48,7 @@ const ProductThumbnailSection = ({ product }: Props) => {
               type="button"
               onClick={toggle}
             >
-              {product.thumbnail ? "Edit" : "Upload"}
+              {product.thumbnail ? "Muuda" : "Laadi üles"}
             </Button>
             {product.thumbnail && (
               <TwoStepDelete onDelete={handleDelete} deleting={updating} />
@@ -65,7 +65,7 @@ const ProductThumbnailSection = ({ product }: Props) => {
             <div className="flex aspect-square items-center justify-center">
               <img
                 src={product.thumbnail}
-                alt={`Thumbnail for ${product.title}`}
+                alt={`Pisipilt: ${product.title}`}
                 className="rounded-rounded max-h-full max-w-full object-contain"
               />
             </div>

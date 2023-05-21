@@ -30,10 +30,10 @@ const CurrentCurrenciesScreen = () => {
       },
       {
         onSuccess: () => {
-          notification("Success", "Successfully updated currencies", "success")
+          notification("Õnnestus", "Valuutade värskendamine õnnestus", "success")
         },
         onError: (err) => {
-          notification("Error", getErrorMessage(err), "error")
+          notification("Viga", getErrorMessage(err), "error")
         },
       }
     )
@@ -80,7 +80,7 @@ const CurrentCurrenciesScreen = () => {
   return (
     <>
       <Modal.Header handleClose={onClose}>
-        <h1 className="inter-xlarge-semibold">Current Store Currencies</h1>
+        <h1 className="inter-xlarge-semibold">Poe praegused valuutad</h1>
       </Modal.Header>
       <Modal.Content>
         <CurrenciesTable
@@ -103,7 +103,7 @@ const CurrentCurrenciesScreen = () => {
       <Modal.Footer>
         <div className="flex w-full items-center justify-end">
           <Button variant="primary" size="small" onClick={onClose}>
-            Close
+            Tühista
           </Button>
         </div>
       </Modal.Footer>
@@ -136,7 +136,7 @@ const TableActions = ({
       <div className={clsx("transition-all duration-200", classes)}>
         <div className="mb-2 flex h-[34px] items-center divide-x">
           <span className="inter-small-regular text-grey-50 mr-3">
-            {numberOfSelectedRows} selected
+            {numberOfSelectedRows} valitud
           </span>
           <div className="space-x-xsmall flex pl-3">
             <Button
@@ -145,7 +145,7 @@ const TableActions = ({
               variant="ghost"
               className="border-grey-20 border"
             >
-              Deselect
+              Tühista valik
             </Button>
             <Button
               onClick={onRemove}
@@ -153,7 +153,7 @@ const TableActions = ({
               variant="ghost"
               className="border-grey-20 border text-rose-50"
             >
-              Remove
+              Eemalda
             </Button>
           </div>
         </div>
@@ -164,7 +164,7 @@ const TableActions = ({
             className="border-grey-20 border"
             onClick={() => push(screen)}
           >
-            <PlusIcon size={20} /> Add Currencies
+            <PlusIcon size={20} /> Lisa valuutad
           </Button>
         </div>
       </div>

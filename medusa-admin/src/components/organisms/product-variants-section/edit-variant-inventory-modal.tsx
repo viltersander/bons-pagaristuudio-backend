@@ -186,7 +186,7 @@ const EditVariantInventoryModal = ({ onClose, product, variant }: Props) => {
   return (
     <LayeredModal context={layeredModalContext} handleClose={handleClose}>
       <Modal.Header handleClose={handleClose}>
-        <h1 className="inter-xlarge-semibold">Edit stock & inventory</h1>
+        <h1 className="inter-xlarge-semibold">Varude ja laoseisu muutmine</h1>
       </Modal.Header>
       {!isLoadingInventory && (
         <StockForm
@@ -254,7 +254,7 @@ const StockForm = ({
               handleClose()
             }}
           >
-            Cancel
+            Tühista
           </Button>
           <Button
             variant="primary"
@@ -263,7 +263,7 @@ const StockForm = ({
             disabled={!isDirty}
             loading={updatingVariant}
           >
-            Save and close
+            Salvesta ja sulge
           </Button>
         </div>
       </Modal.Footer>

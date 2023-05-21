@@ -54,13 +54,13 @@ const ReturnReasonDetail = ({ reason }: ReturnReasonDetailsProps) => {
       {
         onSuccess: () => {
           notification(
-            "Success",
-            "Successfully updated return reason",
+            "Õnnestus",
+            "Tagastamise põhjuse värskendamine õnnestus",
             "success"
           )
         },
         onError: (error) => {
-          notification("Error", getErrorMessage(error), "error")
+          notification("Viga", getErrorMessage(error), "error")
         },
       }
     )
@@ -87,12 +87,12 @@ const ReturnReasonDetail = ({ reason }: ReturnReasonDetailsProps) => {
       <BodyCard
         actionables={[
           {
-            label: "Duplicate reason",
+            label: "Dubleeritud põhjus",
             icon: <DuplicateIcon size={20} />,
             onClick: () => handleOpenDuplicateModal(),
           },
           {
-            label: "Delete reason",
+            label: "Kustuta põhjus",
             variant: "danger",
             icon: <TrashIcon size={20} />,
             onClick: () => handleOpenPrompt(),
@@ -100,24 +100,24 @@ const ReturnReasonDetail = ({ reason }: ReturnReasonDetailsProps) => {
         ]}
         events={[
           {
-            label: "Save",
+            label: "Salvesta",
             onClick: handleSubmit(onSave),
           },
           {
-            label: "Cancel",
+            label: "Tühista",
             onClick: handleCancel,
           },
         ]}
-        title="Details"
+        title="Üksikasjad"
         subtitle={reason?.value}
       >
         <form onSubmit={handleSubmit(onSave)}>
           <Input {...register("label")} label="Label" />
           <Input
             {...register("description")}
-            label="Description"
+            label="Kirjeldus"
             className="mt-base"
-            placeholder="Customer received the wrong size"
+            placeholder="Klient sai vale suuruse"
           />
         </form>
       </BodyCard>
@@ -129,8 +129,8 @@ const ReturnReasonDetail = ({ reason }: ReturnReasonDetailsProps) => {
       )}
       {showDanger && (
         <DeletePrompt
-          heading="Delete Return Reason"
-          text="Are you sure you want to delete this return reason?"
+          heading="Kustuta tagastamise põhjus"
+          text="Kas olete kindel, et soovite selle tagastamise põhjuse kustutada?"
           handleClose={handleClosePrompt}
           onDelete={handleDeletion}
         />

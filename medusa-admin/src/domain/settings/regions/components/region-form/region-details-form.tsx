@@ -35,13 +35,13 @@ const RegionDetailsForm = ({ form, isCreate = false }: Props) => {
     <div>
       <div className="gap-large grid grid-cols-2">
         <InputField
-          label="Title"
-          placeholder="Europe"
+          label="Pealkiri"
+          placeholder="Euroopa"
           required
           {...register(path("name"), {
-            required: "Title is required",
-            minLength: FormValidator.minOneCharRule("Title"),
-            pattern: FormValidator.whiteSpaceRule("Title"),
+            required: "Pealkiri on nõutud",
+            minLength: FormValidator.minOneCharRule("Pealkiri"),
+            pattern: FormValidator.whiteSpaceRule("Pealkiri"),
           })}
           errors={errors}
         />
@@ -49,13 +49,13 @@ const RegionDetailsForm = ({ form, isCreate = false }: Props) => {
           control={control}
           name={path("currency_code")}
           rules={{
-            required: "Currency code is required",
+            required: "Valuutakood on nõutav",
           }}
           render={({ field }) => {
             return (
               <NextSelect
-                label="Currency"
-                placeholder="Choose currency"
+                label="Valuuta"
+                placeholder="Vali valuuta"
                 required
                 {...field}
                 options={currencyOptions}
@@ -68,25 +68,25 @@ const RegionDetailsForm = ({ form, isCreate = false }: Props) => {
         {isCreate && (
           <>
             <InputField
-              label="Default Tax Rate"
+              label="Vaikimisi maksumäär"
               required
-              placeholder="25"
+              placeholder="20"
               prefix="%"
               step={1}
               type={"number"}
               {...register(path("tax_rate"), {
-                required: isCreate ? "Tax rate is required" : undefined,
+                required: isCreate ? "Maksumäär on nõutav" : undefined,
                 max: {
                   value: 100,
-                  message: "Tax rate must be equal to or less than 100",
+                  message: "Maksumäär peab olema 100 või väiksem",
                 },
-                min: FormValidator.nonNegativeNumberRule("Tax rate"),
+                min: FormValidator.nonNegativeNumberRule("Maksumäär"),
                 valueAsNumber: true,
               })}
               errors={errors}
             />
             <InputField
-              label="Default Tax Code"
+              label="Vaikimisi maksukood"
               placeholder="1000"
               {...register(path("tax_code"))}
               errors={errors}
@@ -99,8 +99,8 @@ const RegionDetailsForm = ({ form, isCreate = false }: Props) => {
           render={({ field }) => {
             return (
               <NextSelect
-                label="Countries"
-                placeholder="Choose countries"
+                label="Riigid"
+                placeholder="Vali riigid"
                 isMulti
                 selectAll
                 {...field}
@@ -115,9 +115,9 @@ const RegionDetailsForm = ({ form, isCreate = false }: Props) => {
       <FeatureToggle featureFlag="tax_inclusive_pricing">
         <div className="mt-xlarge flex items-start justify-between">
           <div className="gap-y-2xsmall flex flex-col">
-            <h3 className="inter-base-semibold">Tax inclusive prices</h3>
+            <h3 className="inter-base-semibold">Hinnad koos käibemaksuga</h3>
             <p className="inter-base-regular text-grey-50">
-              When enabled region prices will be tax inclusive.
+              Kui see on lubatud, on piirkonnahinnad koos maksudega
             </p>
           </div>
           <Controller

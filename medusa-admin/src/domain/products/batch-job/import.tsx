@@ -71,12 +71,12 @@ function ImportProducts(props: ImportProductsProps) {
     : undefined
 
   const status = hasError
-    ? "Error occurred while processing"
+    ? "Töötlemisel ilmnes viga"
     : isPreprocessed
     ? undefined
     : isUploaded
-    ? "Preprocessing..."
-    : "Uploading..."
+    ? "Eeltöötlus..."
+    : "Üleslaadimine..."
 
   /**
    * Confirm job on submit.
@@ -84,8 +84,8 @@ function ImportProducts(props: ImportProductsProps) {
   const onSubmit = async () => {
     await confirmBatchJob()
     notification(
-      "Success",
-      "Import confirmed for processing. Progress info is available in the activity drawer.",
+      "Õnnestus",
+      "Import kinnitati töötlemiseks. Edenemisteave on saadaval tegevuste sahtlis.",
       "success"
     )
     props.handleClose()
@@ -110,7 +110,7 @@ function ImportProducts(props: ImportProductsProps) {
 
       setBatchJobId(batchJob.batch_job.id)
     } catch (e) {
-      notification("Error", "Import failed.", "error")
+      notification("Viga", "Import ebaõnnestus.", "error")
       if (fileKey) {
         await deleteFile({ file_key: fileKey })
       }
@@ -145,14 +145,14 @@ function ImportProducts(props: ImportProductsProps) {
       try {
         deleteFile({ file_key: fileKey })
       } catch (e) {
-        notification("Error", "Failed to delete the CSV file", "error")
+        notification("Viga", "CSV-faili kustutamine ebaõnnestus", "error")
       }
     }
 
     try {
       cancelBathJob()
     } catch (e) {
-      notification("Error", "Failed to cancel the batch job", "error")
+      notification("Viga", "Pakktöö tühistamine ebaõnnestus", "error")
     }
 
     setBatchJobId(undefined)
@@ -189,12 +189,12 @@ function ImportProducts(props: ImportProductsProps) {
       summary={getSummary()}
       onFileRemove={onFileRemove}
       processUpload={processUpload}
-      fileTitle={"products list"}
+      fileTitle={"toodete nimekiri"}
       templateLink="/temp/product-import-template.csv"
       errorMessage={batchJob?.result?.errors?.join(" \n")}
-      description2Title="Unsure about how to arrange your list?"
-      description2Text="Download the template below to ensure you are following the correct format."
-      description1Text="Through imports you can add or update products. To update existing products/variants you must set an existing id in the Product/Variant id columns. If the value is unset a new record will be created. You will be asked for confirmation before we import products."
+      description2Title="Kas pole kindel, kuidas oma loendit korraldada?"
+      description2Text="Laadige alla allolev mall, et veenduda, et järgite õiget vormingut."
+      description1Text="Impordi kaudu saate tooteid lisada või värskendada. Olemasolevate toodete/variantide värskendamiseks peate veergudes Toote/variandi ID määrama olemasoleva ID. Kui väärtus on määramata, luuakse uus kirje. Enne toodete importimist küsitakse teilt kinnitust."
     />
   )
 }

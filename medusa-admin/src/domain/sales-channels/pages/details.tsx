@@ -67,7 +67,7 @@ function DisabledLabel() {
       h-[28px] w-[54px] items-center
       justify-center rounded-xl font-semibold"
     >
-      Draft
+      Mustand
     </div>
   )
 }
@@ -146,7 +146,7 @@ function SalesChannelsHeader(props: SalesChannelsHeaderProps) {
         <div className="h-[55px]">
           <div className="mb-1 flex items-center justify-between">
             <h2 className="text-xlarge text-grey-90 font-semibold">
-              Sales channels
+              Müügikanalid
             </h2>
             <div className="flex items-center justify-between gap-4">
               <SearchIcon
@@ -162,7 +162,7 @@ function SalesChannelsHeader(props: SalesChannelsHeaderProps) {
             </div>
           </div>
           <div className="text-grey-50 text-small mb-6 block max-w-[100%] overflow-hidden truncate">
-            Control which products are available in which channels
+            Saate juhtida, millised tooted millistes kanalites on saadaval
           </div>
         </div>
 
@@ -172,7 +172,7 @@ function SalesChannelsHeader(props: SalesChannelsHeaderProps) {
             ref={inputRef}
             value={filterText}
             onChange={(e) => setFilterText(e.target.value)}
-            placeholder="Search by title or description"
+            placeholder="Otsige pealkirja või kirjelduse järgi"
             className="remove-number-spinner leading-base text-grey-90 caret-violet-60 placeholder-grey-40 w-full bg-inherit font-normal outline-none outline-0"
             onBlur={() => setShowFilter(!!filterText)}
             autoComplete="off"
@@ -259,8 +259,8 @@ function SalesChannelDetailsHeader(props: SalesChannelDetailsHeaderProps) {
 
   const onDelete = async () => {
     const confirmed = await confirmation({
-      text: "Are you sure you want to delete this sales channel? The setup you made will be gone forever.",
-      heading: "Delete Channel",
+      text: "Kas olete kindel, et soovite selle müügikanali kustutada? Teie tehtud seadistus kaob igaveseks.",
+      heading: "Kustuta kanal",
       extraConfirmation: true,
       entityName: salesChannel.name,
     })
@@ -274,12 +274,12 @@ function SalesChannelDetailsHeader(props: SalesChannelDetailsHeaderProps) {
   const actions = useMemo(() => {
     const _actions: ActionType[] = [
       {
-        label: "Edit general info",
+        label: "Muuda üldist teavet",
         icon: <EditIcon size="20" />,
         onClick: openUpdateModal,
       },
       {
-        label: "Add products",
+        label: "Lisa tooteid",
         icon: <PlusIcon />,
         onClick: () => showProductsAdd(),
       },
@@ -287,7 +287,7 @@ function SalesChannelDetailsHeader(props: SalesChannelDetailsHeaderProps) {
 
     if (!isDefault) {
       _actions.push({
-        label: "Delete channel",
+        label: "Kustuta kanal",
         icon: <TrashIcon size={20} />,
         variant: "danger",
         onClick: onDelete,
@@ -308,8 +308,8 @@ function SalesChannelDetailsHeader(props: SalesChannelDetailsHeaderProps) {
             updateSalesChannel({ is_disabled: !salesChannel.is_disabled })
           }
           isDraft={salesChannel.is_disabled}
-          draftState="Disabled"
-          activeState="Enabled"
+          draftState="Keelatud"
+          activeState="Lubatud"
         />
         <Actionables forceDropdown={true} actions={actions} />
       </div>
@@ -448,7 +448,7 @@ function Details() {
     <div>
       <BackButton
         path="/a/settings"
-        label="Back to settings"
+        label="Tagasi seadete juurde"
         className="mb-xsmall"
       />
 

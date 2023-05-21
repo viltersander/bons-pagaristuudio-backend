@@ -50,7 +50,7 @@ const TaxDetails = ({ id }) => {
     if (!taxRatesLoading && !regionIsLoading && region && tax_rates) {
       const regionDefaultRate = {
         id: region.id,
-        name: "Default",
+        name: "Vaikimisi",
         code: region.tax_code ?? null,
         rate: region.tax_rate ?? null,
         type: TaxRateType.REGION,
@@ -88,10 +88,10 @@ const TaxDetails = ({ id }) => {
   return (
     <>
       <BodyCard
-        title="Details"
+        title="Üksikasjad"
         actionables={[
           {
-            label: "New Tax Rate",
+            label: "Uus maksumäär",
             onClick: () => setShowNew(true),
             icon: <PlusIcon />,
           },
@@ -134,7 +134,7 @@ const TaxDetails = ({ id }) => {
           )}
         </Table>
         <h3 className="inter-large-semibold mt-2xlarge mb-base">
-          Tax Calculation Settings
+          Maksu arvutamise seaded
         </h3>
         <div className="flex flex-1">
           {!regionIsLoading && region && <RegionTaxForm region={region} />}

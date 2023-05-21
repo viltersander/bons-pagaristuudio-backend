@@ -158,7 +158,7 @@ const ShippingDetails = () => {
     <div className="flex min-h-[705px] flex-col gap-y-8">
       <div>
         <span className="inter-base-semibold">
-          Customer and shipping details
+          Kliendi- ja saatmisandmed
         </span>
         <Controller
           control={form.control}
@@ -167,7 +167,7 @@ const ShippingDetails = () => {
             return (
               <Select
                 className="mt-4"
-                label="Find existing customer"
+                label="Leidke olemasolev klient"
                 options={[]}
                 enableSearch
                 value={value || null}
@@ -184,10 +184,10 @@ const ShippingDetails = () => {
       </div>
 
       <div className="flex flex-col gap-y-4">
-        <span className="inter-base-semibold">Email</span>
+        <span className="inter-base-semibold">Mail</span>
         <InputField
           {...form.register("email")}
-          label="Email"
+          label="Mail"
           placeholder="lebron@james.com"
           disabled={!!customerId}
           required
@@ -203,7 +203,7 @@ const ShippingDetails = () => {
 
       {validAddresses.length && !addNew ? (
         <div>
-          <span className="inter-base-semibold">Choose existing addresses</span>
+          <span className="inter-base-semibold">Valige olemasolevad aadressid</span>
           <Controller
             control={form.control}
             name="shipping_address_id"
@@ -239,7 +239,7 @@ const ShippingDetails = () => {
               className="border-grey-20 w-[112px] border"
               onClick={onCreateNew}
             >
-              Create new
+              Loo uus
             </Button>
           </div>
         </div>

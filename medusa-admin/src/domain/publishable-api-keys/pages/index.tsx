@@ -43,10 +43,10 @@ function AddSalesChannelsSection(props: AddSalesChannelsSectionProps) {
       <div className="flex items-center justify-between">
         <div>
           <h5 className="inter-base-semibold text-grey-90 pb-1">
-            Sales channels
+            Müügikanalid
           </h5>
           <p className="text-grey-50">
-            Connect as many sales channels to your API key as you need.
+            Ühendage oma API võtmega nii palju müügikanaleid, kui vaja.
           </p>
         </div>
         {!hasSelectedChannels && (
@@ -56,7 +56,7 @@ function AddSalesChannelsSection(props: AddSalesChannelsSectionProps) {
             className="h-[40px]"
             onClick={showModal}
           >
-            Add sales channels
+            Lisa müügikanaleid
           </Button>
         )}
       </div>
@@ -79,7 +79,7 @@ function AddSalesChannelsSection(props: AddSalesChannelsSectionProps) {
             className="h-[40px]"
             onClick={showModal}
           >
-            Edit sales channels
+            Redigeeri müügikanaleid
           </Button>
         </div>
       )}
@@ -119,9 +119,9 @@ function CreatePublishableKey(props: CreatePublishableKeyProps) {
     try {
       const res = await createPublishableApiKey({ title: name })
       setKeyId(res.publishable_api_key.id)
-      notification("Success", "Created a new API key", "success")
+      notification("Õnnestus", "Loodi uus API võti", "success")
     } catch (e) {
-      notification("Error", "Failed to create a new API key", "error")
+      notification("Viga", "Uue API-võtme loomine ebaõnnestus", "error")
     }
   }
 
@@ -132,15 +132,15 @@ function CreatePublishableKey(props: CreatePublishableKeyProps) {
       })
         .then(() => {
           notification(
-            "Success",
-            "Sales channels added to the scope",
+            "Õnnestus",
+            "Müügikanalid lisati ulatusse",
             "success"
           )
         })
         .catch(() => {
           notification(
-            "Error",
-            "Error occurred while adding sales channels to the scope of the key",
+            "Viga",
+            "Võtme ulatusse müügikanalite lisamisel ilmnes viga",
             "success"
           )
         })
@@ -163,7 +163,7 @@ function CreatePublishableKey(props: CreatePublishableKeyProps) {
               disabled={!name}
               className="rounded-rounded"
             >
-              Publish API key
+              Avalda API võti
             </Button>
           </div>
         </div>
@@ -172,22 +172,21 @@ function CreatePublishableKey(props: CreatePublishableKeyProps) {
       <FocusModal.Main className="no-scrollbar flex w-full justify-center">
         <div className="medium:w-7/12 large:w-6/12 small:w-4/5 my-16 max-w-[700px]">
           <h1 className="inter-xlarge-semibold text-grey-90 pb-8">
-            Create API Key
+            Looge API võti
           </h1>
           <h5 className="inter-base-semibold text-grey-90 pb-1">
-            General Information
+            Üldine informatsioon
           </h5>
           <p className="text-grey-50 pb-8">
-            Create and manage API keys. Right now this is only related to sales
-            channels.
+            Looge ja hallake API võtmeid. Praegu on see seotud ainult müügikanalitega.
           </p>
           <InputField
-            label="Title"
+            label="Pealkiri"
             type="string"
             name="name"
             value={name}
             className="w-[338px]"
-            placeholder="Name your key"
+            placeholder="Nimetage oma võti"
             onChange={(ev) => setName(ev.target.value)}
           />
 
@@ -215,7 +214,7 @@ function Index() {
 
   const actions = [
     {
-      label: "Create API key",
+      label: "Looge API võti",
       onClick: openCreateModal,
     },
   ]
@@ -231,13 +230,13 @@ function Index() {
   return (
     <div>
       <BackButton
-        label="Back to settings"
+        label="Tagasi seadete juurde"
         path="/a/settings"
         className="mb-xsmall"
       />
       <BodyCard
-        title="Publishable API keys"
-        subtitle="These publishable keys will allow you to authenticate API requests."
+        title="Avaldatavad API võtmed"
+        subtitle="Need avaldatavad võtmed võimaldavad teil API taotlusi autentida."
         actionables={actions}
       >
         <PublishableApiKeysTable

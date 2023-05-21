@@ -55,7 +55,7 @@ const ShippingOptionForm = ({ form, region, isEdit = false }: Props) => {
       <div>
         <div className="gap-y-2xsmall flex flex-col">
           <div className="flex items-center justify-between">
-            <h3 className="inter-base-semibold mb-2xsmall">Visible in store</h3>
+            <h3 className="inter-base-semibold mb-2xsmall">Nähtav poes</h3>
             <Controller
               control={control}
               name={"store_option"}
@@ -65,21 +65,21 @@ const ShippingOptionForm = ({ form, region, isEdit = false }: Props) => {
             />
           </div>
           <p className="inter-base-regular text-grey-50">
-            Enable or disable the shipping option visiblity in store.
+          Lubage või keelake tarnevaliku nähtavus poes.
           </p>
         </div>
       </div>
       <div className="bg-grey-20 my-xlarge h-px w-full" />
       <div>
-        <h3 className="inter-base-semibold mb-base">Details</h3>
+        <h3 className="inter-base-semibold mb-base">Üksikasjad</h3>
         <div className="gap-large grid grid-cols-2">
           <InputField
             label="Title"
             required
             {...register("name", {
-              required: "Title is required",
-              pattern: FormValidator.whiteSpaceRule("Title"),
-              minLength: FormValidator.minOneCharRule("Title"),
+              required: "Pealkiri on nõutud",
+              pattern: FormValidator.whiteSpaceRule("Pealkiri"),
+              minLength: FormValidator.minOneCharRule("Pealkiri"),
             })}
             errors={errors}
           />
@@ -90,22 +90,22 @@ const ShippingOptionForm = ({ form, region, isEdit = false }: Props) => {
               render={({ field: { onChange, value, onBlur } }) => {
                 return (
                   <NextSelect
-                    label="Price Type"
+                    label="Hinna tüüp"
                     required
                     value={value}
                     onChange={onChange}
                     onBlur={onBlur}
                     options={[
                       {
-                        label: "Flat Rate",
+                        label: "Kindel määr",
                         value: "flat_rate",
                       },
                       {
-                        label: "Calculated",
+                        label: "Arvutatud",
                         value: "calculated",
                       },
                     ]}
-                    placeholder="Choose a price type"
+                    placeholder="Valige hinnatüüp"
                     errors={errors}
                   />
                 )
@@ -116,14 +116,14 @@ const ShippingOptionForm = ({ form, region, isEdit = false }: Props) => {
                 control={control}
                 name="amount"
                 rules={{
-                  min: FormValidator.nonNegativeNumberRule("Price"),
-                  max: FormValidator.maxInteger("Price", region.currency_code),
+                  min: FormValidator.nonNegativeNumberRule("Hind"),
+                  max: FormValidator.maxInteger("Hind", region.currency_code),
                 }}
                 render={({ field: { value, onChange } }) => {
                   return (
                     <div>
                       <InputHeader
-                        label="Price"
+                        label="Hind"
                         className="mb-2xsmall"
                         tooltip={
                           <IncludesTaxTooltip
@@ -153,10 +153,10 @@ const ShippingOptionForm = ({ form, region, isEdit = false }: Props) => {
                 render={({ field }) => {
                   return (
                     <NextSelect
-                      label="Shipping Profile"
+                      label="Saatmisprofiil"
                       required
                       options={shippingProfileOptions}
-                      placeholder="Choose a shipping profile"
+                      placeholder="Valige saatmisprofiil"
                       {...field}
                       errors={errors}
                     />
@@ -169,9 +169,9 @@ const ShippingOptionForm = ({ form, region, isEdit = false }: Props) => {
                 render={({ field }) => {
                   return (
                     <NextSelect
-                      label="Fulfillment Method"
+                      label="Täitmise meetod"
                       required
-                      placeholder="Choose a fulfillment method"
+                      placeholder="Valige täitmise meetod"
                       options={fulfillmentOptions}
                       {...field}
                       errors={errors}
@@ -185,15 +185,15 @@ const ShippingOptionForm = ({ form, region, isEdit = false }: Props) => {
       </div>
       <div className="bg-grey-20 my-xlarge h-px w-full" />
       <div>
-        <h3 className="inter-base-semibold mb-base">Requirements</h3>
+        <h3 className="inter-base-semibold mb-base">Nõuded</h3>
         <div className="gap-large grid grid-cols-2">
           <Controller
             control={control}
             name="requirements.min_subtotal.amount"
             rules={{
-              min: FormValidator.nonNegativeNumberRule("Min. subtotal"),
+              min: FormValidator.nonNegativeNumberRule("Min. vahesumma"),
               max: FormValidator.maxInteger(
-                "Min. subtotal",
+                "Min. vahesumma",
                 region.currency_code
               ),
               validate: (value) => {
@@ -205,7 +205,7 @@ const ShippingOptionForm = ({ form, region, isEdit = false }: Props) => {
                   "requirements.max_subtotal.amount"
                 )
                 if (maxSubtotal && value > maxSubtotal) {
-                  return "Min. subtotal must be less than max. subtotal"
+                  return "Min. vahesumma peab olema väiksem kui max. vahesumma"
                 }
                 return true
               },
@@ -214,7 +214,7 @@ const ShippingOptionForm = ({ form, region, isEdit = false }: Props) => {
               return (
                 <div>
                   <InputHeader
-                    label="Min. subtotal"
+                    label="Min. vahesumma"
                     className="mb-xsmall"
                     tooltip={
                       <IncludesTaxTooltip includesTax={region.includes_tax} />
@@ -235,9 +235,9 @@ const ShippingOptionForm = ({ form, region, isEdit = false }: Props) => {
             control={control}
             name="requirements.max_subtotal.amount"
             rules={{
-              min: FormValidator.nonNegativeNumberRule("Max. subtotal"),
+              min: FormValidator.nonNegativeNumberRule("Max. vahesumma"),
               max: FormValidator.maxInteger(
-                "Max. subtotal",
+                "Max. vahesumma",
                 region.currency_code
               ),
               validate: (value) => {
@@ -249,7 +249,7 @@ const ShippingOptionForm = ({ form, region, isEdit = false }: Props) => {
                   "requirements.min_subtotal.amount"
                 )
                 if (minSubtotal && value < minSubtotal) {
-                  return "Max. subtotal must be greater than min. subtotal"
+                  return "Max. vahesumma peab olema suurem kui min. vahesumma"
                 }
                 return true
               },
@@ -258,7 +258,7 @@ const ShippingOptionForm = ({ form, region, isEdit = false }: Props) => {
               return (
                 <div ref={ref}>
                   <InputHeader
-                    label="Max. subtotal"
+                    label="Max. vahesumma"
                     className="mb-xsmall"
                     tooltip={
                       <IncludesTaxTooltip includesTax={region.includes_tax} />
@@ -279,7 +279,7 @@ const ShippingOptionForm = ({ form, region, isEdit = false }: Props) => {
       </div>
       <div className="bg-grey-20 my-xlarge h-px w-full" />
       <div>
-        <h3 className="inter-base-semibold mb-base">Metadata</h3>
+        <h3 className="inter-base-semibold mb-base">Metaandmed</h3>
         <MetadataForm form={nestedForm(form, "metadata")} />
       </div>
     </div>

@@ -71,12 +71,12 @@ const NewRegion = ({ onClose }: Props) => {
 
       mutate(payload, {
         onSuccess: ({ region }) => {
-          notification("Success", "Region created", "success")
+          notification("Õnnestus", "Piirkond loodud", "success")
           navigate(`/a/settings/regions/${region.id}`)
           closeAndReset()
         },
         onError: (error) => {
-          notification("Error", getErrorMessage(error), "error")
+          notification("Viga", getErrorMessage(error), "error")
         },
       })
     },
@@ -108,7 +108,7 @@ const NewRegion = ({ onClose }: Props) => {
                 disabled={!isDirty || isLoading}
                 type="submit"
               >
-                Create region
+                Loo piirkond
               </Button>
             </div>
           </div>
@@ -121,13 +121,13 @@ const NewRegion = ({ onClose }: Props) => {
               type="multiple"
             >
               <Accordion.Item
-                title="Details"
+                title="Üksikasjad"
                 value="details"
                 forceMountContent
                 required
               >
                 <p className="inter-base-regular mb-xlarge text-grey-50">
-                  Add the region details.
+                  Lisage piirkonna üksikasjad.
                 </p>
                 <RegionDetailsForm
                   form={nestedForm(form, "details")}
@@ -141,8 +141,7 @@ const NewRegion = ({ onClose }: Props) => {
                 required
               >
                 <p className="inter-base-regular mb-xlarge text-grey-50">
-                  Add which fulfillment and payment providers shoulb be
-                  available in this region.
+                  Lisage, millised täitmise ja maksete pakkujad peaksid selles piirkonnas saadaval olema.
                 </p>
                 <RegionProvidersForm form={nestedForm(form, "providers")} />
               </Accordion.Item>

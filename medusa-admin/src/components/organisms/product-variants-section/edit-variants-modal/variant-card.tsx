@@ -49,7 +49,7 @@ export const VariantCard = ({
   const actions: ActionType[] = useMemo(() => {
     return [
       {
-        label: "Edit Variant",
+        label: "Redigeeri",
         icon: <EditIcon size={20} className="text-grey-50" />,
         onClick: () => push(editVariantScreen),
       },
@@ -140,7 +140,7 @@ export const VariantCard = ({
       <div className="flex items-center justify-end text-right">
         <InputField
           {...register(`variants.${index}.inventory_quantity`, {
-            min: FormValidator.nonNegativeNumberRule("Inventory"),
+            min: FormValidator.nonNegativeNumberRule("Laoseis"),
             valueAsNumber: true,
           })}
           type="number"

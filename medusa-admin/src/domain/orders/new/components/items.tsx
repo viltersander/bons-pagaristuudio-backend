@@ -116,17 +116,17 @@ const Items = () => {
 
   return (
     <div className="flex min-h-[705px] flex-col pt-4">
-      <span className="inter-base-semibold mb-4">Items for the order</span>
+      <span className="inter-base-semibold mb-4">Kaubad tellimiseks</span>
       {fields.length > 0 && region && (
         <Table>
           <Table.Head>
             <Table.HeadRow className="text-grey-50 inter-small-semibold border-t">
-              <Table.HeadCell>Details</Table.HeadCell>
+              <Table.HeadCell>Üksikasjad</Table.HeadCell>
               <Table.HeadCell className="pr-8 text-right">
-                Quantity
+                Kogus
               </Table.HeadCell>
               <Table.HeadCell className="text-right">
-                Price (excl. Taxes)
+                Hind (ilma maksudeta)
               </Table.HeadCell>
               <Table.HeadCell></Table.HeadCell>
             </Table.HeadRow>
@@ -280,7 +280,7 @@ const Items = () => {
           }}
         >
           <PlusIcon size={20} />
-          Add Custom
+          Lisa kohandatud
         </Button>
         <Button
           variant="ghost"
@@ -297,7 +297,7 @@ const Items = () => {
           }}
         >
           <PlusIcon size={20} />
-          Add Existing
+          Lisa olemasolev
         </Button>
       </div>
     </div>
@@ -306,7 +306,7 @@ const Items = () => {
 
 const SelectProductsScreen = (pop, itemsToAdd, setSelectedItems) => {
   return {
-    title: "Add Products",
+    title: "Lisa tooteid",
     onBack: () => pop(),
     view: (
       <RMASelectProductSubModal
@@ -319,7 +319,7 @@ const SelectProductsScreen = (pop, itemsToAdd, setSelectedItems) => {
 
 const CreateCustomProductScreen = (pop, onSubmit, region) => {
   return {
-    title: "Add Custom Item",
+    title: "Lisa kohandatud tooteid",
     onBack: () => pop(),
     view: <CustomItemSubModal onSubmit={onSubmit} region={region} />,
   }

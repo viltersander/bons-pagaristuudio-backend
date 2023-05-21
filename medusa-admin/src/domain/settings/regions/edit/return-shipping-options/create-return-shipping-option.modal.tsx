@@ -56,11 +56,11 @@ const CreateReturnShippingOptionModal = ({ open, onClose, region }: Props) => {
       },
       {
         onSuccess: () => {
-          notifcation("Success", "Shipping option created", "success")
+          notifcation("Õnnestus", "Saatmisvõimalus on loodud", "success")
           closeAndReset()
         },
         onError: (error) => {
-          notifcation("Error", getErrorMessage(error), "error")
+          notifcation("Viga", getErrorMessage(error), "error")
         },
       }
     )
@@ -70,7 +70,7 @@ const CreateReturnShippingOptionModal = ({ open, onClose, region }: Props) => {
     <Modal open={open} handleClose={closeAndReset}>
       <Modal.Body>
         <Modal.Header handleClose={closeAndReset}>
-          <h1 className="inter-xlarge-semibold">Add Return Shipping Option</h1>
+          <h1 className="inter-xlarge-semibold">Lisage tagastusvõimalus</h1>
         </Modal.Header>
         <form onSubmit={onSubmit}>
           <Modal.Content>
@@ -84,7 +84,7 @@ const CreateReturnShippingOptionModal = ({ open, onClose, region }: Props) => {
                 type="button"
                 onClick={closeAndReset}
               >
-                Cancel
+                Tühista
               </Button>
               <Button
                 variant="primary"
@@ -93,7 +93,7 @@ const CreateReturnShippingOptionModal = ({ open, onClose, region }: Props) => {
                 loading={isLoading}
                 disabled={isLoading || !isDirty}
               >
-                Save and close
+                Salvesta ja sulge
               </Button>
             </div>
           </Modal.Footer>

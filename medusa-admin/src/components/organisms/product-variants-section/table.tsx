@@ -29,7 +29,7 @@ export const useVariantsTableColumns = (inventoryIsEnabled = false) => {
         Header: () => {
           return (
             <div className="text-right">
-              <span>Inventory</span>
+              <span>Laoseis</span>
             </div>
           )
         },
@@ -47,7 +47,7 @@ export const useVariantsTableColumns = (inventoryIsEnabled = false) => {
     }
     return [
       {
-        Header: "Title",
+        Header: "Pealkiri",
         id: "title",
         accessor: "title",
       },
@@ -110,30 +110,30 @@ const VariantsTable = ({ variants, actions }: Props) => {
     const inventoryManagementActions = []
     if (hasInventoryService) {
       inventoryManagementActions.push({
-        label: "Manage inventory",
+        label: "Halda laoseisu",
         icon: <BuildingsIcon size="20" />,
         onClick: () => updateVariantInventory(variant),
       })
     }
     return [
       {
-        label: "Edit Variant",
+        label: "Redigeeri varianti",
         icon: <EditIcon size="20" />,
         onClick: () => updateVariant(variant),
       },
       ...inventoryManagementActions,
       {
-        label: "Duplicate Variant",
+        label: "Duplikaatvariant",
         onClick: () =>
           // @ts-ignore
           duplicateVariant({
             ...variant,
-            title: variant.title + " Copy",
+            title: variant.title + " koopia",
           }),
         icon: <DuplicateIcon size="20" />,
       },
       {
-        label: "Delete Variant",
+        label: "Kustuta variant",
         onClick: () => setShowDelete(true),
         icon: <TrashIcon size="20" />,
         variant: "danger",
@@ -183,11 +183,11 @@ const VariantsTable = ({ variants, actions }: Props) => {
                     <DeletePrompt
                       onDelete={async () => deleteVariant(row.original.id)}
                       handleClose={() => setShowDelete(false)}
-                      confirmText="Yes, delete"
-                      heading="Delete variant"
-                      text={`Are you sure you want to delete this variant? ${
+                      confirmText="Jes, delete"
+                      heading="Kustuta variant"
+                      text={`Kas soovite kindlasti selle variandi kustutada? ${
                         isFeatureEnabled("inventoryService")
-                          ? " Note: Deleting the variant will also remove inventory items and levels"
+                          ? " Märkus: variandi kustutamisel eemaldatakse ka laoüksused ja tasemed"
                           : ""
                       }`}
                       successText={false}

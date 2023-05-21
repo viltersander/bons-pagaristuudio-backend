@@ -56,11 +56,11 @@ const NewTaxRate = ({ regionId, onDismiss }: NewTaxRateProps) => {
       },
       {
         onSuccess: () => {
-          notification("Success", "Successfully created tax rate.", "success")
+          notification("Õnnestus", "Maksumäär on edukalt loodud.", "success")
           onDismiss()
         },
         onError: (error) => {
-          notification("Error", getErrorMessage(error), "error")
+          notification("Viga", getErrorMessage(error), "error")
         },
       }
     )
@@ -98,13 +98,13 @@ const NewTaxRate = ({ regionId, onDismiss }: NewTaxRateProps) => {
         <Modal.Body>
           <Modal.Header handleClose={onDismiss}>
             <div>
-              <h1 className="inter-xlarge-semibold">Add Tax Rate</h1>
+              <h1 className="inter-xlarge-semibold">Lisage maksumäär</h1>
             </div>
           </Modal.Header>
           <Modal.Content>
             <EditTaxRateDetails form={nestedForm(form, "details")} />
             <div>
-              <p className="inter-base-semibold mb-base">Overrides</p>
+              <p className="inter-base-semibold mb-base">Ülekirjutused</p>
               {(product_types.length > 0 ||
                 products.length > 0 ||
                 shipping_options.length > 0) && (
@@ -128,8 +128,8 @@ const NewTaxRate = ({ regionId, onDismiss }: NewTaxRateProps) => {
                         )
                       }}
                       index={1}
-                      name="Product Rules"
-                      description={`Applies to ${products.length} product${
+                      name="Tootereeglid"
+                      description={`Kehtib ${products.length} toode${
                         products.length > 1 ? "s" : ""
                       }`}
                     />
@@ -156,10 +156,10 @@ const NewTaxRate = ({ regionId, onDismiss }: NewTaxRateProps) => {
                         )
                       }}
                       index={2}
-                      name="Product Type Rules"
-                      description={`Applies to ${
+                      name="Tootetüübi reeglid"
+                      description={`Kehtib ${
                         product_types.length
-                      } product type${product_types.length > 1 ? "s" : ""}`}
+                      } toote tüüp${product_types.length > 1 ? "s" : ""}`}
                     />
                   )}
                   {shipping_options.length > 0 && (
@@ -184,7 +184,7 @@ const NewTaxRate = ({ regionId, onDismiss }: NewTaxRateProps) => {
                         )
                       }}
                       index={3}
-                      name="Shipping Option Rules"
+                      name="Saatmisvõimaluste reeglid"
                       description={`Applies to ${
                         shipping_options.length
                       } shipping option${
@@ -214,7 +214,7 @@ const NewTaxRate = ({ regionId, onDismiss }: NewTaxRateProps) => {
                   size="medium"
                   variant="secondary"
                 >
-                  <PlusIcon /> Add Overrides
+                  <PlusIcon /> Lisa ülekirjutus
                 </Button>
               )}
             </div>
@@ -228,7 +228,7 @@ const NewTaxRate = ({ regionId, onDismiss }: NewTaxRateProps) => {
                 size="small"
                 className="w-eventButton justify-center"
               >
-                Cancel
+                Tühista
               </Button>
               <Button
                 type="submit"
@@ -238,7 +238,7 @@ const NewTaxRate = ({ regionId, onDismiss }: NewTaxRateProps) => {
                 loading={isLoading}
                 disabled={isLoading}
               >
-                Create
+                Loo
               </Button>
             </div>
           </Modal.Footer>
@@ -255,7 +255,7 @@ const SelectOverridesScreen = (
   options = {}
 ) => {
   return {
-    title: "Add override",
+    title: "Lisa ülekirjutused",
     onBack: () => pop(),
     view: (
       <TaxRuleSelector

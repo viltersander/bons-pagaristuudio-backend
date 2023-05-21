@@ -53,7 +53,7 @@ const SelectShippingMethod = () => {
   return (
     <div className="min-h-[705px]">
       <span className="inter-base-semibold">
-        Shipping method{" "}
+        Saatmisviis{" "}
         <span className="inter-base-regular text-grey-50">
           (To {region!.name})
         </span>
@@ -66,10 +66,8 @@ const SelectShippingMethod = () => {
               <AlertIcon size={20} />
             </div>
             <div className="flex flex-col">
-              <span className="inter-small-semibold">Attention!</span>
-              You don't have any options for orders without shipping. Please add
-              one (e.g. "In-store fulfillment") with "Show on website" unchecked
-              in region settings and continue.
+              <span className="inter-small-semibold">Tähelepanu!</span>
+              Teil ei ole ilma saatmiseta tellimuste jaoks ühtegi valikut. Lisage piirkonna seadetes üks (nt „Poesisene täitmine”), kus „Näita veebisaidil” pole märgitud, ja jätkake.
             </div>
           </div>
         ) : (
@@ -80,7 +78,7 @@ const SelectShippingMethod = () => {
               render={({ field: { value, onChange } }) => {
                 return (
                   <Select
-                    label="Choose a shipping method"
+                    label="Valige saatmisviis"
                     onChange={onChange}
                     value={value}
                     options={
@@ -106,7 +104,7 @@ const SelectShippingMethod = () => {
                     disabled={!selectedShippingOption}
                     onClick={() => setShowCustomPrice(true)}
                   >
-                    Set custom price
+                    Määra kohandatud hind
                   </Button>
                 </div>
               )}
@@ -124,7 +122,7 @@ const SelectShippingMethod = () => {
                             currentCurrency={region.currency_code}
                           >
                             <CurrencyInput.Amount
-                              label="Custom Price"
+                              label="Kohandatud hind"
                               amount={value}
                               onChange={onChange}
                             />

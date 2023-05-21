@@ -42,7 +42,7 @@ const ResetTokenCard: React.FC<ResetTokenCardProps> = ({ goBack }) => {
           setSentMail(true)
         },
         onError: (error) => {
-          notification("Error", getErrorMessage(error), "error")
+          notification("Viga", getErrorMessage(error), "error")
         },
       }
     )
@@ -52,25 +52,25 @@ const ResetTokenCard: React.FC<ResetTokenCardProps> = ({ goBack }) => {
     <form onSubmit={onSubmit}>
       <div className="flex flex-col items-center">
         <h1 className="inter-xlarge-semibold text-grey-90 mb-xsmall text-[20px]">
-          Reset your password
+          Taasta oma salasõna
         </h1>
         <span className="inter-base-regular text-grey-50 mb-large text-center">
-          Enter your email address below, and we&apos;ll
+         Sisestage allpool oma e-posti aadress ja me
           <br />
-          send you instructions on how to reset
+          saadame teile lähtestamise juhised
           <br />
-          your password.
+          parooli lähtestamiseks.
         </span>
         {!mailSent ? (
           <>
             <div className="w-[280px]">
               <SigninInput
-                placeholder="Email"
+                placeholder="Mail"
                 {...register("email", {
-                  required: FormValidator.required("Email"),
+                  required: FormValidator.required("Mail"),
                   pattern: {
                     value: emailRegex,
-                    message: "This is not a valid email",
+                    message: "See ei ole kehtiv mail",
                   },
                 })}
               />
@@ -83,7 +83,7 @@ const ResetTokenCard: React.FC<ResetTokenCardProps> = ({ goBack }) => {
               type="submit"
               loading={isLoading}
             >
-              Send reset instructions
+              Saatke lähtestamisjuhised
             </Button>
           </>
         ) : (
@@ -93,7 +93,7 @@ const ResetTokenCard: React.FC<ResetTokenCardProps> = ({ goBack }) => {
             </div>
             <div className="gap-y-2xsmall flex flex-col">
               <span className="inter-base-regular">
-                Succesfully sent you an email
+                Meili saatmine õnnestus
               </span>
             </div>
           </div>
@@ -102,7 +102,7 @@ const ResetTokenCard: React.FC<ResetTokenCardProps> = ({ goBack }) => {
           className="inter-small-regular text-grey-50 mt-8 cursor-pointer"
           onClick={goBack}
         >
-          Go back to sign in
+          Sisselogimiseks minge tagasi
         </span>
       </div>
     </form>

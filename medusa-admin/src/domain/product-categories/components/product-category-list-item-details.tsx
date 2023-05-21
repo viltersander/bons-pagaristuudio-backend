@@ -40,19 +40,19 @@ function ProductCategoryListItemDetails(
 
   const actions = [
     {
-      label: "Edit",
+      label: "Muuda",
       onClick: () => productCategoriesPageContext.editCategory(item),
       icon: <EditIcon size={20} />,
     },
     {
-      label: "Delete",
+      label: "Kustuta",
       variant: "danger",
       onClick: async () => {
         try {
           await deleteCategory()
-          notification("Success", "Category deleted", "success")
+          notification("Õnnestus", "Kategooria kustutatud", "success")
         } catch (e) {
-          notification("Error", "Category deletion failed", "error")
+          notification("Viga", "Kategooria kustutamine ebaõnnestus", "error")
         }
       },
       icon: <TrashIcon size={20} />,
@@ -92,7 +92,7 @@ function ProductCategoryListItemDetails(
             <div className="flex w-[64px] items-center justify-center">
               {!item.is_active && (
                 <TooltipIcon
-                  content="Category status is inactive"
+                  content="Kategooria olek on passiivne"
                   icon={
                     <TagDotIcon
                       size="32"
@@ -104,7 +104,7 @@ function ProductCategoryListItemDetails(
               )}
               {item.is_internal && (
                 <TooltipIcon
-                  content="Category visibility is private"
+                  content="Kategooria nähtavus on privaatne"
                   icon={
                     <EyeOffIcon
                       color="#889096"
@@ -122,7 +122,7 @@ function ProductCategoryListItemDetails(
               style={{ zIndex: 1 }}
               content={
                 <>
-                  Add category item to{" "}
+                  Lisa kategooria toode{" "}
                   <span className="text-grey-80 font-semibold">
                     {`"${item.name}"`}
                   </span>

@@ -38,7 +38,7 @@ const SearchBar: React.FC = () => {
           <OSShortcut macModifiers="⌘" winModifiers="Ctrl" keys="K" />
         </div>
         <span className="ml-xsmall text-grey-40 inter-base-regular">
-          Search anything...
+          Otsi admin paneelist...
         </span>
       </button>
       {showSearchModal && <SearchModal handleClose={closeModal} />}

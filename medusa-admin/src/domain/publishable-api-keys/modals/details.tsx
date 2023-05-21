@@ -37,9 +37,9 @@ function DetailsModal(props: DetailsModalProps) {
     try {
       await updateKey({ title: name })
       close()
-      notification("Success", "Updated the API key", "success")
+      notification("Õnnestus", "Uuendati API võtit", "success")
     } catch (e) {
-      notification("Error", "Failed to update the API key", "error")
+      notification("Viga", "API-võtme värskendamine ebaõnnestus", "error")
     }
   }
 
@@ -50,7 +50,7 @@ function DetailsModal(props: DetailsModalProps) {
 
         <div className="flex items-center justify-between">
           <h3 className="inter-large-semibold text-xl text-gray-900">
-            Edit API key details
+            Muutke API võtme üksikasju
           </h3>
           <Button variant="ghost" onClick={close}>
             <CrossIcon size={20} className="text-grey-40" />
@@ -66,11 +66,11 @@ function DetailsModal(props: DetailsModalProps) {
 
         <div className="flex-grow">
           <InputField
-            label="Title"
+            label="Pealkiri"
             type="string"
             name="name"
             value={name}
-            placeholder="Name your key"
+            placeholder="Nimetage oma võti"
             onChange={({ target: { value } }) => setName(value)}
           />
         </div>
@@ -84,7 +84,7 @@ function DetailsModal(props: DetailsModalProps) {
 
         <div className="flex justify-end gap-2">
           <Button size="small" variant="ghost" onClick={close}>
-            Cancel
+            Tühista
           </Button>
           <Button
             size="small"
@@ -92,7 +92,7 @@ function DetailsModal(props: DetailsModalProps) {
             onClick={onSave}
             disabled={name === props.selectedKey?.title}
           >
-            Save and close
+            Salvesta ja sulge
           </Button>
         </div>
       </div>

@@ -73,7 +73,7 @@ const TaxRuleSelector: React.FC<TaxRuleSelectorProps> = ({
         <div className="min-h-[680px]">
           {!isLocked && (
             <>
-              <div className="inter-base-semibold mb-large">Type</div>
+              <div className="inter-base-semibold mb-large">Tüüp</div>
               <RadioGroup.Root
                 className="gap-base flex"
                 value={selectedType}
@@ -81,20 +81,20 @@ const TaxRuleSelector: React.FC<TaxRuleSelectorProps> = ({
               >
                 <RadioGroup.Item
                   className="flex-1"
-                  label={"Products"}
-                  description={"Select individual products"}
+                  label={"Tooted"}
+                  description={"Valige üksikud tooted"}
                   value={TaxRuleType.PRODUCTS}
                 />
                 <RadioGroup.Item
                   className="flex-1"
-                  label={"Product Types"}
-                  description={"Select product types"}
+                  label={"Tootetüübid"}
+                  description={"Valige tootetüübid"}
                   value={TaxRuleType.PRODUCT_TYPES}
                 />
                 <RadioGroup.Item
                   className="flex-1"
-                  label={"Shipping Options"}
-                  description={"Select shipping options"}
+                  label={"Saatmisvalikud"}
+                  description={"Valige saatmisvalikud"}
                   value={TaxRuleType.SHIPPING_OPTIONS}
                 />
               </RadioGroup.Root>
@@ -129,7 +129,7 @@ const TaxRuleSelector: React.FC<TaxRuleSelectorProps> = ({
             className="w-[112px]"
             onClick={() => pop()}
           >
-            Back
+            Tagasi
           </Button>
           <Button
             variant="primary"
@@ -137,7 +137,7 @@ const TaxRuleSelector: React.FC<TaxRuleSelectorProps> = ({
             size="small"
             onClick={handleSubmit}
           >
-            Add
+            Lisa
           </Button>
         </div>
       </Modal.Footer>

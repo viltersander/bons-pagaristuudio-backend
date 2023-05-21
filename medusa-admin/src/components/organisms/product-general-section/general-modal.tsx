@@ -95,7 +95,7 @@ const GeneralModal = ({ product, open, onClose }: Props) => {
       <Modal.Body>
         <Modal.Header handleClose={onReset}>
           <h1 className="inter-xlarge-semibold m-0">
-            Edit General Information
+            Redigeeri üldteavet
           </h1>
         </Modal.Header>
         <form onSubmit={onSubmit}>
@@ -106,7 +106,7 @@ const GeneralModal = ({ product, open, onClose }: Props) => {
             />
             <div className="my-xlarge">
               <h2 className="inter-base-semibold mb-base">
-                Organize {product.is_giftcard ? "Gift Card" : "Product"}
+                Organiseeri {product.is_giftcard ? "Kinkekaart" : "Toode"}
               </h2>
               <OrganizeForm form={nestedForm(form, "organize")} />
             </div>
@@ -115,7 +115,7 @@ const GeneralModal = ({ product, open, onClose }: Props) => {
               isGiftCard={product.is_giftcard}
             />
             <div className="mt-xlarge">
-              <h2 className="inter-base-semibold mb-base">Metadata</h2>
+              <h2 className="inter-base-semibold mb-base">Metaandmed</h2>
               <MetadataForm form={nestedForm(form, "metadata")} />
             </div>
           </Modal.Content>
@@ -127,7 +127,7 @@ const GeneralModal = ({ product, open, onClose }: Props) => {
                 type="button"
                 onClick={onReset}
               >
-                Cancel
+                Tühista
               </Button>
               <Button
                 size="small"
@@ -136,7 +136,7 @@ const GeneralModal = ({ product, open, onClose }: Props) => {
                 disabled={!isDirty}
                 loading={updating}
               >
-                Save
+                Salvesta
               </Button>
             </div>
           </Modal.Footer>

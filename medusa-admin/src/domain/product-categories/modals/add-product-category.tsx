@@ -19,15 +19,15 @@ import TreeCrumbs from "../components/tree-crumbs"
 
 const visibilityOptions = [
   {
-    label: "Public",
+    label: "Avalik",
     value: "public",
   },
-  { label: "Private", value: "private" },
+  { label: "Privaatne", value: "private" },
 ]
 
 const statusOptions = [
-  { label: "Active", value: "active" },
-  { label: "Inactive", value: "inactive" },
+  { label: "Aktiivne", value: "active" },
+  { label: "Mitteaktiivne", value: "inactive" },
 ]
 
 type CreateProductCategoryProps = {
@@ -64,11 +64,11 @@ function CreateProductCategory(props: CreateProductCategoryProps) {
       // TODO: temporary here, investigate why `useAdminCreateProductCategory` doesn't invalidate this
       await queryClient.invalidateQueries(adminProductCategoryKeys.lists())
       closeModal()
-      notification("Success", "Successfully created a category", "success")
+      notification("Õnnestus", "Kategooria loomine õnnestus", "success")
     } catch (e) {
       const errorMessage =
-        getErrorMessage(e) || "Failed to create a new category"
-      notification("Error", errorMessage, "error")
+        getErrorMessage(e) || "Uue kategooria loomine ebaõnnestus"
+      notification("Viga", errorMessage, "error")
     }
   }
 
@@ -87,7 +87,7 @@ function CreateProductCategory(props: CreateProductCategoryProps) {
               disabled={!name}
               className="rounded-rounded"
             >
-              Save category
+              Salvesta kategooria
             </Button>
           </div>
         </div>
@@ -96,7 +96,7 @@ function CreateProductCategory(props: CreateProductCategoryProps) {
       <FocusModal.Main className="no-scrollbar flex w-full justify-center">
         <div className="small:w-4/5 medium:w-7/12 large:w-6/12 my-16 max-w-[700px]">
           <h1 className="inter-xlarge-semibold text-grey-90 pb-6">
-            Add category {parentCategory && `to ${parentCategory.name}`}
+            Lisa kategooria {parentCategory && `to ${parentCategory.name}`}
           </h1>
 
           {parentCategory && (
@@ -105,42 +105,42 @@ function CreateProductCategory(props: CreateProductCategoryProps) {
                 nodes={categories}
                 currentNode={parentCategory}
                 showPlaceholder={true}
-                placeholderText={name || "New"}
+                placeholderText={name || "Uus"}
               />
             </div>
           )}
 
-          <h4 className="inter-large-semibold text-grey-90 pb-1">Details</h4>
+          <h4 className="inter-large-semibold text-grey-90 pb-1">Üksikasjad</h4>
 
           <div className="mb-8 flex justify-between gap-6">
             <InputField
               required
-              label="Name"
+              label="Nimi"
               type="string"
               name="name"
               value={name}
               className="w-[338px]"
-              placeholder="Give this category a name"
+              placeholder="Andke sellele kategooriale nimi"
               onChange={(ev) => setName(ev.target.value)}
             />
 
             <InputField
-              label="Handle"
+              label="Käepide"
               type="string"
               name="handle"
               value={handle}
               className="w-[338px]"
-              placeholder="Custom handle"
+              placeholder="Kohandatud käepide"
               onChange={(ev) => setHandle(ev.target.value)}
             />
           </div>
 
           <div className="mb-8">
             <TextArea
-              label="Description"
+              label="Kirjeldus"
               name="description"
               value={description}
-              placeholder="Give this category a description"
+              placeholder="Kirjeldage seda kategooriat"
               onChange={(ev) => setDescription(ev.target.value)}
             />
           </div>
@@ -148,7 +148,7 @@ function CreateProductCategory(props: CreateProductCategoryProps) {
           <div className="mb-8 flex justify-between gap-6">
             <div className="flex-1">
               <NextSelect
-                label="Status"
+                label="Olek"
                 options={statusOptions}
                 value={statusOptions[isActive ? 0 : 1]}
                 onChange={(o) => setIsActive(o.value === "active")}
@@ -157,7 +157,7 @@ function CreateProductCategory(props: CreateProductCategoryProps) {
 
             <div className="flex-1">
               <NextSelect
-                label="Visibility"
+                label="Nähtavus"
                 options={visibilityOptions}
                 value={visibilityOptions[isPublic ? 0 : 1]}
                 onChange={(o) => setIsPublic(o.value === "public")}

@@ -30,7 +30,7 @@ const ExportModal: React.FC<ExportModalProps> = ({
             overview.
           </div> */}
           <div className="inter-small-regular text-grey-50 mb-4 flex">
-            Initialize an export of your data
+            Käivitage oma andmete eksport
           </div>
         </Modal.Content>
         <Modal.Footer>
@@ -41,7 +41,7 @@ const ExportModal: React.FC<ExportModalProps> = ({
               onClick={handleClose}
               className="mr-2"
             >
-              Cancel
+              Tühista
             </Button>
             <Button
               loading={loading}
@@ -50,7 +50,7 @@ const ExportModal: React.FC<ExportModalProps> = ({
               size="small"
               onClick={onSubmit}
             >
-              Export
+              Ekspordi
             </Button>
           </div>
         </Modal.Footer>

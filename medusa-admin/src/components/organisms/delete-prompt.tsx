@@ -16,11 +16,11 @@ type DeletePromptProps = {
 }
 
 const DeletePrompt: React.FC<DeletePromptProps> = ({
-  heading = "Are you sure you want to delete?",
+  heading = "Kas soovite kindlasti kustutada?",
   text = "",
-  successText = "Delete successful",
-  cancelText = "No, cancel",
-  confirmText = "Yes, remove",
+  successText = "Kustutamine õnnestus",
+  cancelText = "Ei, tühista",
+  confirmText = "Jah, eemalda",
   handleClose,
   onDelete,
 }) => {
@@ -34,10 +34,10 @@ const DeletePrompt: React.FC<DeletePromptProps> = ({
     onDelete()
       .then(() => {
         if (successText) {
-          notification("Success", successText, "success")
+          notification("Õnnestus", successText, "success")
         }
       })
-      .catch((err) => notification("Error", getErrorMessage(err), "error"))
+      .catch((err) => notification("Viga", getErrorMessage(err), "error"))
       .finally(() => {
         setIsLoading(false)
         handleClose()

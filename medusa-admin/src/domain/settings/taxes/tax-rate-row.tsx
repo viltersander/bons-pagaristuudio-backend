@@ -27,8 +27,8 @@ export const TaxRateRow = ({ row, onEdit }) => {
     }
 
     const shouldDelete = await dialog({
-      heading: "Delete tax rate",
-      text: "Are you sure you want to delete this tax rate?",
+      heading: "Kustuta maksumäär",
+      text: "Kas olete kindel, et soovite selle maksumäära kustutada?",
     })
 
     if (!shouldDelete) {
@@ -38,16 +38,16 @@ export const TaxRateRow = ({ row, onEdit }) => {
     return deleteTaxRate
       .mutateAsync()
       .then(() => {
-        notification("Success", "Tax rate was deleted.", "success")
+        notification("Õnnestus", "Maksumäär kustutati.", "success")
       })
       .catch((err) => {
-        notification("Error", getErrorMessage(err), "error")
+        notification("Viga", getErrorMessage(err), "error")
       })
   }
 
   const actions: ActionType[] = [
     {
-      label: "Edit",
+      label: "Muuda",
       onClick: () => onEdit(row.original),
       icon: <EditIcon size={20} />,
     },
@@ -55,7 +55,7 @@ export const TaxRateRow = ({ row, onEdit }) => {
 
   if (row.original.type === TaxRateType.RATE) {
     actions.push({
-      label: "Delete Tax Rate",
+      label: "Kustuta maksumäär",
       variant: "danger",
       onClick: () => handleDelete(row.original),
       icon: <TrashIcon size={20} />,

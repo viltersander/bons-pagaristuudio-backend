@@ -27,7 +27,7 @@ const PAGE_SIZE = 12
 const COLUMNS: Column<PublishableApiKey>[] = [
   {
     accessor: "title",
-    Header: <div className="text-small font-semibold text-gray-500">Name</div>,
+    Header: <div className="text-small font-semibold text-gray-500">Nimi</div>,
     Cell: ({ row: { original } }) => {
       return <span className="text-gray-900">{original.title}</span>
     },
@@ -50,11 +50,11 @@ const COLUMNS: Column<PublishableApiKey>[] = [
           content={
             copied ? (
               <span className="flex flex-row items-center justify-between gap-1">
-                <CheckIcon size={16} className="text-green-700" /> done
+                <CheckIcon size={16} className="text-green-700" /> tehtud
               </span>
             ) : (
               <span onClick={onClick} className="cursor-pointer">
-                Copy to clipboard
+                Kopeerida lõikelauale
               </span>
             )
           }
@@ -67,7 +67,7 @@ const COLUMNS: Column<PublishableApiKey>[] = [
   {
     accessor: "created_at",
     Header: (
-      <div className="text-small font-semibold text-gray-500">Created</div>
+      <div className="text-small font-semibold text-gray-500">Loodud</div>
     ),
     Cell: ({ row: { original } }) => {
       return (
@@ -80,15 +80,15 @@ const COLUMNS: Column<PublishableApiKey>[] = [
   {
     accessor: "revoked_at",
     Header: (
-      <div className="text-small font-semibold text-gray-500">Status</div>
+      <div className="text-small font-semibold text-gray-500">Olek</div>
     ),
     Cell: ({ row: { original } }) => {
       return (
         <span className="min-w-[50px] text-gray-900">
           {original.revoked_at ? (
-            <StatusIndicator title="Revoked" variant="danger" />
+            <StatusIndicator title="Tühistatud" variant="danger" />
           ) : (
-            <StatusIndicator title="Live" variant="success" />
+            <StatusIndicator title="Otse" variant="success" />
           )}
         </span>
       )
@@ -121,28 +121,28 @@ function PublishableKeyTableRow(props: PublishableKeyTableRowProps) {
 
   const actions: ActionType[] = [
     {
-      label: "Edit API key details",
+      label: "Muutke API võtme üksikasju",
       onClick: showDetails,
       icon: <EditIcon size={16} />,
     },
     {
-      label: "Edit sales channels",
+      label: "Redigeeri müügikanaleid",
       onClick: showChannelsModal,
       icon: <EditIcon size={16} />,
     },
     {
-      label: "Copy token",
+      label: "Kopeeri token",
       onClick: () => navigator.clipboard.writeText(pubKeyId),
       icon: <ClipboardCopyIcon size={16} />,
     },
     {
-      label: "Revoke token",
+      label: "Tühista token",
       onClick: () => setShowRevoke(true),
       icon: <StopIcon size={16} />,
       disabled: isRevoked,
     },
     {
-      label: "Delete API key",
+      label: "Kustuta API võti",
       onClick: () => setShowDelete(true),
       icon: <TrashIcon size={16} />,
       variant: "danger",
@@ -163,10 +163,10 @@ function PublishableKeyTableRow(props: PublishableKeyTableRowProps) {
         <DeletePrompt
           handleClose={() => setShowDelete(false)}
           onDelete={async () => deletePublicKey()}
-          confirmText="Yes, delete"
-          successText="API key deleted"
-          text={`Are you sure you want to delete this public key?`}
-          heading="Delete key"
+          confirmText="Jah, kustuta"
+          successText="API võti kustutatud"
+          text={`Kas olete kindel, et soovite selle avaliku võtme kustutada?`}
+          heading="Kustuta võti"
         />
       )}
 
@@ -174,10 +174,10 @@ function PublishableKeyTableRow(props: PublishableKeyTableRowProps) {
         <DeletePrompt
           handleClose={() => setShowRevoke(false)}
           onDelete={async () => revokePublicKey()}
-          confirmText="Yes, revoke"
-          successText="API key revoked"
-          text={`Are you sure you want to revoke this public key?`}
-          heading="Revoke key"
+          confirmText="Jah, tühista"
+          successText="API võti tühistatud"
+          text={`Kas olete kindel, et soovite selle avaliku võtme tühistada?`}
+          heading="Tühista võti"
         />
       )}
     </>
@@ -251,7 +251,7 @@ function PublishableApiKeysTable(props: PublishableApiKeysTableProps) {
       pagingState={{
         count,
         offset,
-        title: "API Keys",
+        title: "API võtmed",
         pageCount: table.pageCount,
         pageSize: offset + table.rows.length,
         currentPage: table.state.pageIndex + 1,
@@ -294,8 +294,7 @@ function PublishableApiKeysTable(props: PublishableApiKeysTableProps) {
       {!keys?.length && !isLoading && (
         <div className="flex h-[480px] w-[100%] items-center justify-center">
           <span className="text-gray-400">
-            No keys yet, use the above button to create your first publishable
-            key
+          Võtmeid pole veel, kasutage ülalolevat nuppu oma esimese avaldatava võtme loomiseks
           </span>
         </div>
       )}

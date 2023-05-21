@@ -77,11 +77,11 @@ const EditRegionModal = ({ region, onClose, open }: Props) => {
 
     mutate(payload, {
       onSuccess: () => {
-        notifcation("Success", "Region was successfully updated", "success")
+        notifcation("Õnnestus", "Piirkonna värskendamine õnnestus", "success")
         closeAndReset()
       },
       onError: (err) => {
-        notifcation("Error", getErrorMessage(err), "error")
+        notifcation("Viga", getErrorMessage(err), "error")
       },
     })
   })
@@ -90,22 +90,22 @@ const EditRegionModal = ({ region, onClose, open }: Props) => {
     <Modal handleClose={closeAndReset} open={open}>
       <Modal.Body>
         <Modal.Header handleClose={closeAndReset}>
-          <h1 className="inter-xlarge-semibold">Edit Region Details</h1>
+          <h1 className="inter-xlarge-semibold">Redigeeri piirkonna üksikasju</h1>
         </Modal.Header>
         <form onSubmit={onSubmit}>
           <Modal.Content>
             <div>
-              <h3 className="inter-base-semibold mb-base">Details</h3>
+              <h3 className="inter-base-semibold mb-base">Üksikasjad</h3>
               <RegionDetailsForm form={nestedForm(form, "details")} />
             </div>
             <div className="bg-grey-20 my-xlarge h-px w-full" />
             <div>
-              <h3 className="inter-base-semibold mb-base">Providers</h3>
+              <h3 className="inter-base-semibold mb-base">Pakkujad</h3>
               <RegionProvidersForm form={nestedForm(form, "providers")} />
             </div>
             <div className="bg-grey-20 my-xlarge h-px w-full" />
             <div>
-              <h3 className="inter-base-semibold mb-base">Metadata</h3>
+              <h3 className="inter-base-semibold mb-base">Metaandmed</h3>
               <MetadataForm form={nestedForm(form, "metadata")} />
             </div>
           </Modal.Content>
@@ -117,7 +117,7 @@ const EditRegionModal = ({ region, onClose, open }: Props) => {
                 type="button"
                 onClick={closeAndReset}
               >
-                Cancel
+                Tühista
               </Button>
               <Button
                 variant="primary"
@@ -126,7 +126,7 @@ const EditRegionModal = ({ region, onClose, open }: Props) => {
                 loading={isLoading}
                 disabled={isLoading || !isDirty}
               >
-                Save and close
+                Salvesta ja sulge
               </Button>
             </div>
           </Modal.Footer>

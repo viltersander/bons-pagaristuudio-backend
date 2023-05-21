@@ -74,7 +74,7 @@ class ErrorBoundary extends React.Component<Props, State> {
                   variant="primary"
                   onClick={this.dismissError}
                 >
-                  Back to dashboard
+                  Tagasi administraatoripaneelile
                 </Button>
               </div>
             </div>

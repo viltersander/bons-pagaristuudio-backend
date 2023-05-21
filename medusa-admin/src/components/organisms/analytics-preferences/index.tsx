@@ -59,8 +59,8 @@ const AnalyticsPreferencesModal = () => {
     mutate(config, {
       onSuccess: () => {
         notification(
-          "Success",
-          "Your preferences were successfully updated",
+          "Õnnestus",
+          "Teie eelistuste värskendamine õnnestus",
           "success"
         )
 
@@ -71,7 +71,7 @@ const AnalyticsPreferencesModal = () => {
         setSubmittingConfig(false)
       },
       onError: (err) => {
-        notification("Error", getErrorMessage(err), "error")
+        notification("Viga", getErrorMessage(err), "error")
         setSubmittingConfig(false)
       },
     })
@@ -83,27 +83,23 @@ const AnalyticsPreferencesModal = () => {
         <div className="flex flex-col items-center">
           <div className="mt-5xlarge flex w-full max-w-[664px] flex-col">
             <h1 className="inter-xlarge-semibold mb-large">
-              Help us get better
+              Aidake meil paremaks saada
             </h1>
             <p className="text-grey-50">
-              To create the most compelling e-commerce experience we would like
-              to gain insights in how you use Medusa. User insights allow us to
-              build a better, more engaging, and more usable products. We only
-              collect data for product improvements. Read what data we gather in
-              our{" "}
+            Kõige köitvama e-kaubanduse kogemuse loomiseks soovime saada teavet selle kohta, kuidas te Medusat kasutate. Kasutajate ülevaated võimaldavad meil luua paremaid, kaasahaaravamaid ja paremini kasutatavaid tooteid. Kogume andmeid ainult toote täiustamiseks. Lugege, milliseid andmeid me kogume{" "}
               <a
                 href="https://docs.medusajs.com/usage"
                 rel="noreferrer noopener"
                 target="_blank"
                 className="text-violet-60"
               >
-                documentation
+                dokumentatsioon
               </a>
               .
             </p>
             <div className="mt-xlarge gap-y-xlarge flex flex-col">
               <InputField
-                label="Email"
+                label="Mail"
                 placeholder="you@company.com"
                 disabled={watchOptOut || watchAnonymize}
                 className={clsx("transition-opacity", {
@@ -111,7 +107,7 @@ const AnalyticsPreferencesModal = () => {
                 })}
                 {...register("email", {
                   pattern: {
-                    message: "Please enter a valid email",
+                    message: "Palun sisesta kehtiv email",
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                   },
                 })}
@@ -126,7 +122,7 @@ const AnalyticsPreferencesModal = () => {
                 loading={isLoading}
                 onClick={onSubmit}
               >
-                Continue
+                Jätka
               </Button>
             </div>
           </div>

@@ -27,16 +27,16 @@ const RegionProvidersForm = ({ form }: Props) => {
         control={control}
         name={path("payment_providers")}
         rules={{
-          required: "Payment providers are required",
+          required: "Vaja on makseteenuse pakkujaid",
           minLength: {
             value: 1,
-            message: "Payment providers are required",
+            message: "Vaja on makseteenuse pakkujaid",
           },
         }}
         render={({ field: { value, onBlur, onChange } }) => {
           return (
             <NextSelect
-              label="Payment Providers"
+              label="Makseteenuse pakkujad"
               placeholder="Choose payment providers..."
               options={paymentProviderOptions}
               isMulti
@@ -56,17 +56,17 @@ const RegionProvidersForm = ({ form }: Props) => {
         control={control}
         name={path("fulfillment_providers")}
         rules={{
-          required: "Fulfillment providers are required",
+          required: "Täitmise pakkujad on vajalikud",
           minLength: {
             value: 1,
-            message: "Fulfillment providers are required",
+            message: "Täitmise pakkujad on vajalikud",
           },
         }}
         render={({ field: { onBlur, onChange, value } }) => {
           return (
             <NextSelect
-              label="Fulfillment Providers"
-              placeholder="Choose fulfillment providers..."
+              label="Täitmise pakkujad"
+              placeholder="Vali täitmise pakkujad..."
               options={fulfillmentProviderOptions}
               required
               isMulti

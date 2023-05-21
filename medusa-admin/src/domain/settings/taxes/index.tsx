@@ -34,12 +34,12 @@ const Taxes = () => {
         <TwoSplitPane threeCols>
           <BodyCard
             forceDropdown
-            title="Regions"
-            subtitle="Select the region you wish to manage taxes for"
+            title="Piirkonnad"
+            subtitle="Valige piirkond, mille makse soovite hallata"
             actionables={[
               {
                 icon: <GearIcon />,
-                label: "Go to Region settings",
+                label: "Avage piirkonna seaded",
                 onClick: () => navigate("/a/settings/regions"),
               },
             ]}

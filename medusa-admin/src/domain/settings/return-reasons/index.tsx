@@ -32,15 +32,15 @@ const ReturnReasons = () => {
     <div>
       <BackButton
         path="/a/settings"
-        label="Back to settings"
+        label="Tagasi seadete juurde"
         className="mb-xsmall"
       />
       <TwoSplitPane>
         <BodyCard
-          title="Return Reasons"
+          title="Tagastamise põhjused"
           actionables={[
             {
-              label: "Add reason",
+              label: "Lisa põhjus",
               icon: (
                 <span className="text-grey-90">
                   <PlusIcon size={20} />
@@ -49,7 +49,7 @@ const ReturnReasons = () => {
               onClick: open,
             },
           ]}
-          subtitle="Manage reasons for returned items"
+          subtitle="Tagastatud kaupade põhjuste haldamine"
         >
           <div className="mt-large">
             {isLoading ? (

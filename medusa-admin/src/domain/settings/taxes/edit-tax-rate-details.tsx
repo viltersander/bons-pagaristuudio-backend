@@ -26,16 +26,16 @@ export const EditTaxRateDetails = ({
 
   return (
     <div>
-      <p className="inter-base-semibold mb-base">Details</p>
+      <p className="inter-base-semibold mb-base">Üksikasjad</p>
       <Input
         disabled={lockName}
-        label="Name"
+        label="Nimi"
         prefix={
           lockName ? <LockIcon size={16} className="text-grey-40" /> : undefined
         }
-        placeholder={lockName ? "Default" : "Rate name"}
+        placeholder={lockName ? "Vaikimisi" : "Hinda nime"}
         {...register(path("name"), {
-          required: !lockName ? FormValidator.required("Name") : undefined,
+          required: !lockName ? FormValidator.required("Nimi") : undefined,
         })}
         required={!lockName}
         className="mb-base w-full min-w-[335px]"
@@ -47,13 +47,13 @@ export const EditTaxRateDetails = ({
         max={100}
         step={0.01}
         formNoValidate
-        label="Tax Rate"
+        label="Maksumäär"
         prefix="%"
         placeholder="12"
         {...register(path("rate"), {
-          min: FormValidator.min("Tax Rate", 0),
-          max: FormValidator.max("Tax Rate", 100),
-          required: FormValidator.required("Tax Rate"),
+          min: FormValidator.min("Maksumäär", 0),
+          max: FormValidator.max("Maksumäär", 100),
+          required: FormValidator.required("Maksumäär"),
           valueAsNumber: true,
         })}
         required
@@ -62,9 +62,9 @@ export const EditTaxRateDetails = ({
       />
       <Input
         placeholder="1000"
-        label="Tax Code"
+        label="Maksukood"
         {...register(path("code"), {
-          required: FormValidator.required("Tax Code"),
+          required: FormValidator.required("Maksukood"),
         })}
         required
         className="mb-base w-full min-w-[335px]"

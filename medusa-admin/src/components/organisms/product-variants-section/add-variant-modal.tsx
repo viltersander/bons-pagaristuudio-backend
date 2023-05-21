@@ -93,7 +93,7 @@ const AddVariantModal = ({ open, onClose, product }: Props) => {
     <LayeredModal context={context} open={open} handleClose={resetAndClose}>
       <Modal.Body>
         <Modal.Header handleClose={resetAndClose}>
-          <h1 className="inter-xlarge-semibold">Add Variant</h1>
+          <h1 className="inter-xlarge-semibold">Lisa variant</h1>
         </Modal.Header>
         <form onSubmit={onSubmit}>
           <Modal.Content>
@@ -107,7 +107,7 @@ const AddVariantModal = ({ open, onClose, product }: Props) => {
                 type="button"
                 onClick={resetAndClose}
               >
-                Cancel
+                Tühista
               </Button>
               <Button
                 variant="primary"
@@ -115,7 +115,7 @@ const AddVariantModal = ({ open, onClose, product }: Props) => {
                 type="submit"
                 loading={addingVariant}
               >
-                Save and close
+                Salvesta ja sulge
               </Button>
             </div>
           </Modal.Footer>

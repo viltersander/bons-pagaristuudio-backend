@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet"
 const site = {
   siteMetadata: {
     title: `Admin`,
-    description: `The best ecommerce software.`,
+    description: `Parim e-kaubanduse tarkvara.`,
     author: `@medusajs`,
   },
 }

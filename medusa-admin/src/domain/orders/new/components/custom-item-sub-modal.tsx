@@ -32,7 +32,7 @@ const CustomItemSubModal: React.FC<CustomItemSubModalProps> = ({
         <div className="gap-y-xsmall min-h-[705px]">
           <InputField
             placeholder="E.g. Gift wrapping"
-            label="Title"
+            label="Pealkiri"
             {...register("title", { required: true })}
             className="my-4"
             required
@@ -44,14 +44,14 @@ const CustomItemSubModal: React.FC<CustomItemSubModalProps> = ({
           >
             <CurrencyInput.Amount
               required
-              label="Price"
+              label="Hind"
               amount={amount}
               onChange={(value) => setAmount(value || 0)}
             />
           </CurrencyInput.Root>
           <InputField
             className="my-4"
-            label="Quantity"
+            label="Kogus"
             {...register("quantity", { required: true })}
             type="number"
             required
@@ -66,7 +66,7 @@ const CustomItemSubModal: React.FC<CustomItemSubModalProps> = ({
             className="w-[112px]"
             onClick={() => pop()}
           >
-            Back
+            Tagasi
           </Button>
           <Button
             variant="primary"
@@ -74,7 +74,7 @@ const CustomItemSubModal: React.FC<CustomItemSubModalProps> = ({
             size="small"
             onClick={handleSubmit(onSubmitItem)}
           >
-            Add
+            Lisa
           </Button>
         </div>
       </Modal.Footer>

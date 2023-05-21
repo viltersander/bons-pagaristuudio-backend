@@ -44,8 +44,8 @@ const EditUserInformationModal = ({ user, open, onClose }: Props) => {
       {
         onSuccess: () => {
           notification(
-            "Success",
-            "Your information was successfully updated",
+            "Õnnestus",
+            "Teie teabe värskendamine õnnestus",
             "success"
           )
           refetch()
@@ -59,7 +59,7 @@ const EditUserInformationModal = ({ user, open, onClose }: Props) => {
   return (
     <Modal handleClose={onClose} open={open} isLargeModal={false}>
       <Modal.Header handleClose={onClose}>
-        <h1 className="inter-xlarge-semibold">Edit information</h1>
+        <h1 className="inter-xlarge-semibold">Muuda teavet</h1>
       </Modal.Header>
       <Modal.Body>
         <Modal.Content>
@@ -68,12 +68,12 @@ const EditUserInformationModal = ({ user, open, onClose }: Props) => {
               <InputField
                 {...register("first_name")}
                 errors={errors}
-                label="First name"
+                label="Eesnimi"
               />
               <InputField
                 {...register("last_name")}
                 errors={errors}
-                label="Last name"
+                label="Perekonnanimi"
               />
             </div>
           </div>
@@ -81,7 +81,7 @@ const EditUserInformationModal = ({ user, open, onClose }: Props) => {
         <Modal.Footer className="border-grey-20 pt-base border-t">
           <div className="gap-x-xsmall flex w-full items-center justify-end">
             <Button variant="secondary" size="small" onClick={onClose}>
-              Cancel
+              Tühista
             </Button>
             <Button
               variant="primary"
@@ -90,7 +90,7 @@ const EditUserInformationModal = ({ user, open, onClose }: Props) => {
               disabled={isSubmitting}
               onClick={onSubmit}
             >
-              Submit and close
+              Esita ja sulge
             </Button>
           </div>
         </Modal.Footer>

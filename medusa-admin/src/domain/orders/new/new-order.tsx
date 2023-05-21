@@ -99,14 +99,14 @@ const NewOrder = ({ onDismiss }: NewOrderProps) => {
       },
       {
         onSuccess: ({ draft_order }) => {
-          notification("Success", "Order created", "success")
+          notification("Õnnestus", "Toode loodud", "success")
           reset()
           onDismiss()
           steppedContext.reset()
           navigate(`/a/draft-orders/${draft_order.id}`)
         },
         onError: (error) => {
-          notification("Error", error.message, "error")
+          notification("Viga", error.message, "error")
         },
       }
     )
@@ -126,7 +126,7 @@ const NewOrder = ({ onDismiss }: NewOrderProps) => {
         <Summary />,
       ]}
       lastScreenIsSummary={true}
-      title={"Create Draft Order"}
+      title={"Loo tellimuse mustand"}
       handleClose={onDismiss}
     />
   )

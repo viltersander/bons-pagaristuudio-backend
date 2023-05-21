@@ -67,7 +67,7 @@ const EditVariantScreen = ({ variant, product }: Props) => {
         <Modal.Footer>
           <div className="gap-x-xsmall flex w-full items-center justify-end">
             <Button variant="secondary" size="small" type="button">
-              Cancel
+              Tühista
             </Button>
             <Button
               variant="primary"
@@ -77,7 +77,7 @@ const EditVariantScreen = ({ variant, product }: Props) => {
               loading={updatingVariant}
               onClick={onSubmitAndBack}
             >
-              Save and go back
+              Salvesta ja mine tagasi
             </Button>
             <Button
               variant="primary"
@@ -87,7 +87,7 @@ const EditVariantScreen = ({ variant, product }: Props) => {
               loading={updatingVariant}
               onClick={onSubmitAndClose}
             >
-              Save and close
+              Salvesta ja sulge
             </Button>
           </div>
         </Modal.Footer>
@@ -137,7 +137,7 @@ export const useEditVariantScreen = (props: Props) => {
 
   const screen = useMemo(() => {
     return {
-      title: "Edit Variant",
+      title: "Redigeeri varianti",
       subtitle: props.variant.title,
       onBack: pop,
       view: <EditVariantScreen {...props} />,

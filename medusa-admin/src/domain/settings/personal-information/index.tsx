@@ -11,15 +11,15 @@ const PersonalInformation = () => {
   return (
     <div>
       <BackButton
-        label="Back to Settings"
+        label="Tagasi seadetesse"
         path="/a/settings"
         className="mb-xsmall"
       />
       <div className="rounded-rounded border-grey-20 pt-large pb-xlarge px-xlarge gap-y-xlarge large:max-w-[50%] flex flex-col border bg-white">
         <div className="gap-y-2xsmall flex flex-col">
-          <h1 className="inter-xlarge-semibold">Personal information</h1>
+          <h1 className="inter-xlarge-semibold">Isiklik informatsioon</h1>
           <p className="inter-base-regular text-grey-50">
-            Manage your Medusa profile
+          Hallake oma Medusa profiili
           </p>
         </div>
         <div className="flex flex-col">

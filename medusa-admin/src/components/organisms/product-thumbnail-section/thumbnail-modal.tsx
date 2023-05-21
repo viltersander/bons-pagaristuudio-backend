@@ -52,17 +52,17 @@ const ThumbnailModal = ({ product, open, onClose }: Props) => {
       preppedImages = await prepareImages(data.thumbnail.images)
     } catch (error) {
       let errorMessage =
-        "Something went wrong while trying to upload the thumbnail."
+        "Midagi läks pisipildi üleslaadimisel valesti."
       const response = (error as any).response as Response
 
       if (response.status === 500) {
         errorMessage =
           errorMessage +
           " " +
-          "You might not have a file service configured. Please contact your administrator"
+          "Teil ei pruugi olla failiteenust konfigureeritud. Võtke ühendust oma administraatoriga"
       }
 
-      notification("Error", errorMessage, "error")
+      notification("Viga", errorMessage, "error")
       return
     }
     const url = preppedImages?.[0]?.url
@@ -80,14 +80,13 @@ const ThumbnailModal = ({ product, open, onClose }: Props) => {
     <Modal open={open} handleClose={onReset} isLargeModal>
       <Modal.Body>
         <Modal.Header handleClose={onReset}>
-          <h1 className="inter-xlarge-semibold m-0">Upload Thumbnail</h1>
+          <h1 className="inter-xlarge-semibold m-0">Laadi üles pisipilt</h1>
         </Modal.Header>
         <form onSubmit={onSubmit}>
           <Modal.Content>
-            <h2 className="inter-large-semibold mb-2xsmall">Thumbnail</h2>
+            <h2 className="inter-large-semibold mb-2xsmall">Pisipilt</h2>
             <p className="inter-base-regular text-grey-50 mb-large">
-              Used to represent your product during checkout, social sharing and
-              more.
+              Kasutatakse teie toote esindamiseks kassas, suhtluses jagamise ja muu ajal.
             </p>
             <ThumbnailForm form={nestedForm(form, "thumbnail")} />
           </Modal.Content>
@@ -99,7 +98,7 @@ const ThumbnailModal = ({ product, open, onClose }: Props) => {
                 type="button"
                 onClick={onReset}
               >
-                Cancel
+                Tühista
               </Button>
               <Button
                 size="small"
@@ -108,7 +107,7 @@ const ThumbnailModal = ({ product, open, onClose }: Props) => {
                 disabled={!isDirty}
                 loading={updating}
               >
-                Save and close
+                Salvesta ja sulge
               </Button>
             </div>
           </Modal.Footer>

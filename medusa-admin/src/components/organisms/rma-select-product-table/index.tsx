@@ -112,9 +112,9 @@ const RMASelectProductTable: React.FC<RMASelectProductTableProps> = ({
     <Table>
       <Table.Head className="border-none">
         <Table.HeadRow className="text-grey-50 inter-small-semibold">
-          <Table.HeadCell colSpan={2}>Product Details</Table.HeadCell>
-          <Table.HeadCell className="pr-8 text-right">Quantity</Table.HeadCell>
-          <Table.HeadCell className="text-right">Refundable</Table.HeadCell>
+          <Table.HeadCell colSpan={2}>Toote üksikasjad</Table.HeadCell>
+          <Table.HeadCell className="pr-8 text-right">Kogus</Table.HeadCell>
+          <Table.HeadCell className="text-right">Tagastatav</Table.HeadCell>
           <Table.HeadCell></Table.HeadCell>
         </Table.HeadRow>
       </Table.Head>
@@ -263,7 +263,7 @@ const RMASelectProductTable: React.FC<RMASelectProductTableProps> = ({
                         size="small"
                         className="border-grey-20 border"
                       >
-                        Select Reason
+                        Valige põhjus
                       </Button>
                     </div>
                   </Table.Cell>

@@ -33,7 +33,7 @@ const Users: React.FC = () => {
 
   const actionables = [
     {
-      label: "Invite Users",
+      label: "Kutsuge kasutajaid",
       onClick: () => setShowInviteModal(true),
       icon: (
         <span className="text-grey-90">
@@ -48,12 +48,12 @@ const Users: React.FC = () => {
       <div className="flex w-full grow flex-col">
         <BackButton
           path="/a/settings"
-          label="Back to settings"
+          label="Tagasi seadete juurde"
           className="mb-xsmall"
         />
         <BodyCard
-          title="The Team"
-          subtitle="Manage users of your Medusa Store"
+          title="Meeskond"
+          subtitle="Hallake oma Medusa poe kasutajaid"
           actionables={actionables}
         >
           <div className="flex grow flex-col justify-between">
@@ -63,7 +63,7 @@ const Users: React.FC = () => {
               triggerRefetch={triggerRefetch}
             />
             <p className="inter-small-regular text-grey-50">
-              {users.length} member
+              {users.length} liige
               {users.length === 1 ? "" : "s"}
             </p>
           </div>

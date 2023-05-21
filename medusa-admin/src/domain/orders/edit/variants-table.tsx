@@ -144,7 +144,7 @@ const VariantsTable: React.FC<Props> = (props) => {
       {
         Header: (
           <div className="text-small text-right font-semibold text-gray-500">
-            In Stock
+            Laos
           </div>
         ),
         accessor: "inventory_quantity",
@@ -153,7 +153,7 @@ const VariantsTable: React.FC<Props> = (props) => {
       {
         Header: (
           <div className="text-small text-right font-semibold text-gray-500">
-            Price
+            Hind
           </div>
         ),
         accessor: "amount",
@@ -295,7 +295,7 @@ const VariantsTable: React.FC<Props> = (props) => {
         count: count!,
         offset: offset,
         pageSize: offset + table.rows.length,
-        title: "Products",
+        title: "Tooted",
         currentPage: table.state.pageIndex + 1,
         pageCount: table.pageCount,
         nextPage: handleNext,
@@ -307,7 +307,7 @@ const VariantsTable: React.FC<Props> = (props) => {
       <Table
         immediateSearchFocus
         enableSearch
-        searchPlaceholder="Search Product Variants..."
+        searchPlaceholder="Otsige tootevariante..."
         searchValue={query}
         handleSearch={handleSearch}
         {...table.getTableProps()}

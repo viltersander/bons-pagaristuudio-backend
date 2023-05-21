@@ -24,10 +24,9 @@ const EditRegion = ({ id }: Props) => {
   if (isError) {
     return (
       <div className="bg-grey-0 rounded-rounded border-grey-20 gap-y-xsmall flex h-full w-full flex-col items-center justify-center border text-center ">
-        <h1 className="inter-large-semibold">Something went wrong...</h1>
+        <h1 className="inter-large-semibold">Midagi läks valesti...</h1>
         <p className="inter-base-regular text-grey-50">
-          We can't find a region with that ID, use the menu to the left to
-          select a region.
+          Me ei leia selle ID-ga piirkonda, kasutage piirkonna valimiseks vasakpoolset menüüd.
         </p>
       </div>
     )

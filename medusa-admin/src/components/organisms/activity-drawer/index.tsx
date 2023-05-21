@@ -21,7 +21,7 @@ const ActivityDrawer = ({ onDismiss }) => {
       ref={ref}
       className="bg-grey-0 shadow-dropdown rounded-rounded fixed top-[64px] bottom-2 right-3 flex w-[400px] flex-col overflow-x-hidden rounded"
     >
-      <div className="inter-large-semibold pt-7 pl-8 pb-1">Activity</div>
+      <div className="inter-large-semibold pt-7 pl-8 pb-1">Tegevus</div>
 
       {!hasPollingError ? (
         batchJobs ? (
@@ -41,11 +41,10 @@ const EmptyActivityDrawer = () => {
     <div className="flex h-full w-full flex-col items-center justify-center p-4">
       <SidedMouthFaceIcon size={36} />
       <span className={"inter-large-semibold text-grey-90 mt-4"}>
-        It's quite in here...
+      Siin on vaikne...
       </span>
       <span className={"text-grey-60 inter-base-regular mt-4 text-center"}>
-        You don't have any notifications at the moment, but once you do they
-        will live here.
+      Teil pole praegu ühtegi märguannet, kuid kui saate, hakkavad nad siin olema..
       </span>
     </div>
   )
@@ -57,13 +56,12 @@ const ErrorActivityDrawer = () => {
       <SadFaceIcon size={36} />
       <span className={"inter-large-semibold text-grey-90 mt-4"}>Oh no...</span>
       <span className={"text-grey-60 inter-base-regular mt-2 text-center"}>
-        Something went wrong while trying to fetch your notifications - We will
-        keep trying!
+      Teie märguannete toomisel läks midagi valesti – proovime edasi!
       </span>
 
       <div className="mt-4 flex items-center">
         <Spinner size={"small"} variant={"secondary"} />
-        <span className="ml-2.5">Processing...</span>
+        <span className="ml-2.5">Töötlemine...</span>
       </div>
     </div>
   )

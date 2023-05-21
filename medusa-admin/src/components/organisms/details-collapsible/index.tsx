@@ -20,7 +20,7 @@ const DetailsCollapsible = ({
   const [open, setOpen] = useState(false)
 
   const Icon = open ? ArrowUpIcon : ArrowDownIcon
-  const label = open ? "Hide additional details" : "Show additional details"
+  const label = open ? "Peida täiendavad üksikasjad" : "Näita täiendavaid üksikasju"
 
   return (
     <RadixCollapsible.Root

@@ -106,7 +106,7 @@ const BatchJobActivityCard = (props: { batchJob: BatchJob }) => {
   useEffect(() => {
     if (cancelBatchJobError) {
       notification(
-        "Error canceling the batch job",
+        "Viga paketttöö tühistamisel",
         getErrorMessage(cancelBatchJobError),
         "error"
       )
@@ -131,8 +131,8 @@ const BatchJobActivityCard = (props: { batchJob: BatchJob }) => {
       activityCardRef.current?.removeChild(link)
     } catch (e) {
       notification(
-        "Error",
-        `Something went wrong while downloading the ${operation.toLowerCase()} file`,
+        "viga",
+        `Midagi läks faili allalaadimisel valesti ${operation.toLowerCase()}`,
         "error"
       )
     }
@@ -145,11 +145,11 @@ const BatchJobActivityCard = (props: { batchJob: BatchJob }) => {
 
     try {
       await deleteFile({ file_key: batchJob.result?.file_key })
-      notification("Success", `${operation} file has been removed`, "success")
+      notification("Õnnestus", `${operation} fail on eemaldatud`, "success")
     } catch (e) {
       notification(
-        "Error",
-        `Something went wrong while deleting the ${operation.toLowerCase()} file`,
+        "Viga",
+        `Midagi läks kustutamisel valesti ${operation.toLowerCase()} file`,
         "error"
       )
     }
@@ -184,6 +184,8 @@ const BatchJobActivityCard = (props: { batchJob: BatchJob }) => {
           completed: `Successful ${operation.toLowerCase()}`,
           failed: `Job failed`,
           canceled: `Canceled batch ${operation.toLowerCase()} job`,
+          created: "Created", // Updated value
+          pre_processed: "Pre-processed", // Updated value
         }[batchJob.status]
 
     return (
@@ -233,7 +235,7 @@ const BatchJobActivityCard = (props: { batchJob: BatchJob }) => {
 
   return (
     <ActivityCard
-      title={store?.name ?? "Medusa Team"}
+      title={store?.name ?? "Medusa tiim"}
       icon={<MedusaIcon className="mr-3" size={20} />}
       relativeTimeElapsed={relativeTimeElapsed.rtf}
       date={batchJob.created_at}

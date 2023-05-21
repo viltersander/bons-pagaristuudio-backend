@@ -14,7 +14,7 @@ const ProductAttributesSection = ({ product }: Props) => {
 
   const actions: ActionType[] = [
     {
-      label: "Edit Attributes",
+      label: "Muuda atribuute",
       onClick: toggle,
       icon: <EditIcon size={20} />,
     },
@@ -22,23 +22,23 @@ const ProductAttributesSection = ({ product }: Props) => {
 
   return (
     <>
-      <Section title="Attributes" actions={actions} forceDropdown>
+      <Section title="Atribuudid" actions={actions} forceDropdown>
         <div className="gap-y-xsmall mb-large mt-base flex flex-col">
-          <h2 className="inter-base-semibold">Dimensions</h2>
+          <h2 className="inter-base-semibold">Mõõtmed</h2>
           <div className="gap-y-xsmall flex flex-col">
-            <Attribute attribute="Height" value={product.height} />
-            <Attribute attribute="Width" value={product.width} />
-            <Attribute attribute="Length" value={product.length} />
-            <Attribute attribute="Weight" value={product.weight} />
+            <Attribute attribute="Kõrgus" value={product.height} />
+            <Attribute attribute="Laius" value={product.width} />
+            <Attribute attribute="Pikkus" value={product.length} />
+            <Attribute attribute="Kaal" value={product.weight} />
           </div>
         </div>
         <div className="gap-y-xsmall flex flex-col">
-          <h2 className="inter-base-semibold">Customs</h2>
+          <h2 className="inter-base-semibold">Toll</h2>
           <div className="gap-y-xsmall flex flex-col">
-            <Attribute attribute="MID Code" value={product.mid_code} />
-            <Attribute attribute="HS Code" value={product.hs_code} />
+            <Attribute attribute="Toote MID kood" value={product.mid_code} />
+            <Attribute attribute="Toote HS kood" value={product.hs_code} />
             <Attribute
-              attribute="Country of origin"
+              attribute="Päritoluriik"
               value={product.origin_country}
             />
           </div>

@@ -28,8 +28,8 @@ const GeneralSection = ({ region }: Props) => {
 
   const handleDelete = async () => {
     const shouldDelete = await dialog({
-      heading: "Delete Region",
-      text: "Are you sure you want to delete this region?",
+      heading: "Kustuta piirkond",
+      text: "Kas olete kindel, et soovite selle piirkonna kustutada?",
       extraConfirmation: true,
       entityName: region.name,
     })
@@ -40,11 +40,11 @@ const GeneralSection = ({ region }: Props) => {
           navigate("/a/settings/regions", {
             replace: true,
           })
-          notification("Success", "Region has been deleted", "success")
+          notification("Õnnestus", "Piirkond on kustutatud", "success")
           navigate(`/a/settings/regions`, { replace: true })
         },
         onError: (error) => {
-          notification("Error", getErrorMessage(error), "error")
+          notification("Viga", getErrorMessage(error), "error")
         },
       })
     }
@@ -56,12 +56,12 @@ const GeneralSection = ({ region }: Props) => {
         title={region.name}
         actions={[
           {
-            label: "Edit Region Details",
+            label: "Redigeeri piirkonna üksikasju",
             onClick: toggle,
             icon: <EditIcon size={20} className="text-grey-50" />,
           },
           {
-            label: "Delete Region",
+            label: "Kustuta piirkond",
             onClick: handleDelete,
             icon: <TrashIcon size={20} />,
             variant: "danger",
@@ -69,9 +69,9 @@ const GeneralSection = ({ region }: Props) => {
         ]}
       >
         <div className="gap-y-xsmall mt-large flex flex-col">
-          <h2 className="inter-large-semibold">Details</h2>
+          <h2 className="inter-large-semibold">Üksikasjad</h2>
           <div className="gap-y-xsmall flex flex-col">
-            <RegionDetail title={"Currency"}>
+            <RegionDetail title={"Valuuta"}>
               <div className="gap-x-xsmall flex items-center">
                 <span className="inter-base-semibold text-grey-90">
                   {region.currency_code.toUpperCase()}
@@ -81,7 +81,7 @@ const GeneralSection = ({ region }: Props) => {
                 </span>
               </div>
             </RegionDetail>
-            <RegionDetail title={"Countries"}>
+            <RegionDetail title={"Riigid"}>
               <div>
                 {region.countries && region.countries.length ? (
                   <div className="gap-x-xsmall flex items-center">
@@ -103,17 +103,17 @@ const GeneralSection = ({ region }: Props) => {
                         }
                       >
                         <span className="cursor-default">
-                          + {region.countries.length - 4} more
+                          + {region.countries.length - 4} veel
                         </span>
                       </Tooltip>
                     )}
                   </div>
                 ) : (
-                  <p>No countries configured</p>
+                  <p>Ühtegi riiki pole konfigureeritud</p>
                 )}
               </div>
             </RegionDetail>
-            <RegionDetail title={"Payment providers"}>
+            <RegionDetail title={"Makseteenuse pakkujad"}>
               <div>
                 {region.payment_providers && region.payment_providers.length ? (
                   <div className="gap-x-xsmall flex items-center">
@@ -139,17 +139,17 @@ const GeneralSection = ({ region }: Props) => {
                         }
                       >
                         <span className="cursor-default">
-                          + {region.payment_providers.length - 4} more
+                          + {region.payment_providers.length - 4} veel
                         </span>
                       </Tooltip>
                     )}
                   </div>
                 ) : (
-                  <p>No payment providers configured</p>
+                  <p>Makseteenuse pakkujaid pole konfigureeritud</p>
                 )}
               </div>
             </RegionDetail>
-            <RegionDetail title={"Fulfillment providers"}>
+            <RegionDetail title={"Täitmise pakkujad"}>
               <div>
                 {region.payment_providers && region.payment_providers.length ? (
                   <div className="gap-x-xsmall flex items-center">
@@ -175,13 +175,13 @@ const GeneralSection = ({ region }: Props) => {
                         }
                       >
                         <span className="cursor-default">
-                          + {region.fulfillment_providers.length - 4} more
+                          + {region.fulfillment_providers.length - 4} veel
                         </span>
                       </Tooltip>
                     )}
                   </div>
                 ) : (
-                  <p>No fulfillment providers configured</p>
+                  <p>Ühtegi täitmise pakkujat pole konfigureeritud</p>
                 )}
               </div>
             </RegionDetail>

@@ -16,15 +16,15 @@ import TreeCrumbs from "../components/tree-crumbs"
 
 const visibilityOptions: Option[] = [
   {
-    label: "Public",
+    label: "Avalik",
     value: "public",
   },
-  { label: "Private", value: "private" },
+  { label: "Privaatne", value: "private" },
 ]
 
 const statusOptions: Option[] = [
-  { label: "Active", value: "active" },
-  { label: "Inactive", value: "inactive" },
+  { label: "Aktiivne", value: "active" },
+  { label: "Mitteaktiivne", value: "inactive" },
 ]
 
 type EditProductCategoriesSideModalProps = {
@@ -73,11 +73,11 @@ function EditProductCategoriesSideModal(
         is_internal: !isPublic,
       })
 
-      notification("Success", "Successfully updated the category", "success")
+      notification("Õnnestus", "Kategooria värskendamine õnnestus", "success")
       close()
     } catch (e) {
-      const errorMessage = getErrorMessage(e) || "Failed to update the category"
-      notification("Error", errorMessage, "error")
+      const errorMessage = getErrorMessage(e) || "Kategooria värskendamine ebaõnnestus"
+      notification("Viga", errorMessage, "error")
     }
   }
 
@@ -91,7 +91,7 @@ function EditProductCategoriesSideModal(
         {/* === HEADER === */}
         <div className="flex items-center justify-between p-6">
           <h3 className="inter-large-semibold flex items-center gap-2 text-xl text-gray-900">
-            Edit product category
+            Redigeeri tootekategooriat
           </h3>
           <Button
             variant="secondary"
@@ -114,7 +114,7 @@ function EditProductCategoriesSideModal(
         <div className="flex-grow px-6">
           <InputField
             required
-            label="Name"
+            label="Nimi"
             type="string"
             name="name"
             value={name}
@@ -125,26 +125,26 @@ function EditProductCategoriesSideModal(
 
           <InputField
             required
-            label="Handle"
+            label="Käepide"
             type="string"
             name="handle"
             value={handle}
             className="my-6"
-            placeholder="Custom handle"
+            placeholder="Kohandatud käepide"
             onChange={(ev) => setHandle(ev.target.value)}
           />
 
           <TextArea
-            label="Description"
+            label="Kirjeldus"
             name="description"
             value={description}
             className="my-6"
-            placeholder="Give this category a description"
+            placeholder="Kirjeldage seda kategooriat"
             onChange={(ev) => setDescription(ev.target.value)}
           />
 
           <NextSelect
-            label="Status"
+            label="Olek"
             options={statusOptions}
             value={statusOptions[isActive ? 0 : 1]}
             onChange={(o) => setIsActive(o.value === "active")}
@@ -152,7 +152,7 @@ function EditProductCategoriesSideModal(
 
           <NextSelect
             className="my-6"
-            label="Visibility"
+            label="Nähtavus"
             options={visibilityOptions}
             value={visibilityOptions[isPublic ? 0 : 1]}
             onChange={(o) => setIsPublic(o.value === "public")}
@@ -165,10 +165,10 @@ function EditProductCategoriesSideModal(
         {/* === FOOTER === */}
         <div className="flex justify-end gap-2 p-3">
           <Button size="small" variant="ghost" onClick={onClose}>
-            Cancel
+            Tühista
           </Button>
           <Button size="small" variant="primary" onClick={onSave}>
-            Save and close
+            Salvesta ja sulge
           </Button>
         </div>
       </div>

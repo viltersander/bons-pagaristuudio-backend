@@ -33,20 +33,20 @@ const InviteModal: React.FC<InviteModalProps> = ({ handleClose }) => {
       },
       {
         onSuccess: () => {
-          notification("Success", `Invitation sent to ${data.user}`, "success")
+          notification("Õnnestus", `Kutse saadetud aadressile ${data.user}`, "success")
           handleClose()
         },
         onError: (error) => {
-          notification("Error", getErrorMessage(error), "error")
+          notification("Viga", getErrorMessage(error), "error")
         },
       }
     )
   }
 
   const roleOptions: Role[] = [
-    { value: "member", label: "Member" },
+    { value: "member", label: "Liige" },
     { value: "admin", label: "Admin" },
-    { value: "developer", label: "Developer" },
+    { value: "developer", label: "Arendaja" },
   ]
 
   return (
@@ -54,12 +54,12 @@ const InviteModal: React.FC<InviteModalProps> = ({ handleClose }) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <Modal.Body>
           <Modal.Header handleClose={handleClose}>
-            <span className="inter-xlarge-semibold">Invite Users</span>
+            <span className="inter-xlarge-semibold">Kutsuge kasutajaid</span>
           </Modal.Header>
           <Modal.Content>
             <div className="gap-y-base flex flex-col">
               <InputField
-                label="Email"
+                label="Mail"
                 placeholder="lebron@james.com"
                 required
                 {...register("user", { required: true })}
@@ -67,12 +67,12 @@ const InviteModal: React.FC<InviteModalProps> = ({ handleClose }) => {
               <Controller
                 name="role"
                 control={control}
-                defaultValue={{ label: "Member", value: "member" }}
+                defaultValue={{ label: "Liige", value: "member" }}
                 render={({ field: { value, onChange, onBlur, ref } }) => {
                   return (
                     <NextSelect
-                      label="Role"
-                      placeholder="Select role"
+                      label="Roll"
+                      placeholder="Valige roll"
                       onBlur={onBlur}
                       ref={ref}
                       onChange={onChange}
@@ -93,7 +93,7 @@ const InviteModal: React.FC<InviteModalProps> = ({ handleClose }) => {
                 type="button"
                 onClick={handleClose}
               >
-                Cancel
+                Tühista
               </Button>
               <Button
                 loading={isLoading}
@@ -102,7 +102,7 @@ const InviteModal: React.FC<InviteModalProps> = ({ handleClose }) => {
                 className="text-small w-32 justify-center"
                 variant="primary"
               >
-                Invite
+                Kutsu
               </Button>
             </div>
           </Modal.Footer>

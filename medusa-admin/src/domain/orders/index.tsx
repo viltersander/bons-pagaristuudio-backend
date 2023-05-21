@@ -61,10 +61,10 @@ const OrderIndex = () => {
     createBatchJob.mutate(reqObj, {
       onSuccess: () => {
         resetInterval()
-        notification("Success", "Successfully initiated export", "success")
+        notification("Õnnestus", "Ekspordi käivitamine õnnestus", "success")
       },
       onError: (err) => {
-        notification("Error", getErrorMessage(err), "error")
+        notification("Viga", getErrorMessage(err), "error")
       },
     })
 
@@ -97,7 +97,7 @@ const OrderIndex = () => {
       </div>
       {exportModalOpen && (
         <ExportModal
-          title="Export Orders"
+          title="Ekspordi tellimusi"
           handleClose={() => closeExportModal()}
           onSubmit={handleCreateExport}
           loading={createBatchJob.isLoading}

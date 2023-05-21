@@ -10,10 +10,10 @@ const DefaultStoreCurrency = ({ store }: Props) => {
     <div className="gap-y-large flex flex-col">
       <div>
         <h3 className="inter-large-semibold mb-2xsmall">
-          Default store currency
+          Poe vaikevaluuta
         </h3>
         <p className="inter-base-regular text-grey-50">
-          This is the currency your prices are shown in.
+          See on valuuta, milles teie hindu näidatakse.
         </p>
       </div>
 

@@ -29,10 +29,10 @@ const ShippingOptionCard = ({ option }: Props) => {
   const handleDeleteOption = () => {
     mutate(undefined, {
       onSuccess: () => {
-        notification("Success", "Shipping option has been deleted", "success")
+        notification("Õnnestus", "Saatmisvõimalus on kustutatud", "success")
       },
       onError: (error) => {
-        notification("Error", getErrorMessage(error), "error")
+        notification("Viga", getErrorMessage(error), "error")
       },
     })
   }
@@ -49,21 +49,21 @@ const ShippingOptionCard = ({ option }: Props) => {
             <div>
               <p className="inter-small-regular text-grey-50">
                 {option.price_type === ShippingOptionPriceType.FLAT_RATE
-                  ? "Flat Rate"
-                  : "Calcualted"}
+                  ? "Kindel määr"
+                  : "Arvutatud"}
                 :{" "}
                 {stringDisplayPrice({
                   amount: option.amount,
                   currencyCode: option.region.currency_code,
                 })}{" "}
-                - Min. subtotal:{" "}
+                - Min. vahesumma:{" "}
                 {stringDisplayPrice({
                   amount: option.requirements?.find(
                     (r) => r.type === "min_subtotal"
                   )?.amount,
                   currencyCode: option.region.currency_code,
                 })}{" "}
-                - Max. subtotal:{" "}
+                - Max. vahesumma:{" "}
                 {stringDisplayPrice({
                   amount: option.requirements?.find(
                     (r) => r.type === "max_subtotal"
@@ -82,19 +82,19 @@ const ShippingOptionCard = ({ option }: Props) => {
             })}
           >
             <span className="inter-small-semibold">
-              {option.admin_only ? "Admin" : "Store"}
+              {option.admin_only ? "Admin" : "Pood"}
             </span>
           </div>
           <div>
             <Actionables
               actions={[
                 {
-                  label: "Edit",
+                  label: "Muuda",
                   onClick: toggle,
                   icon: <EditIcon size={20} />,
                 },
                 {
-                  label: "Delete",
+                  label: "Kustuta",
                   onClick: handleDeleteOption,
                   icon: <TrashIcon size={20} />,
                   variant: "danger",

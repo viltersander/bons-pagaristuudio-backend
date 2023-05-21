@@ -27,20 +27,20 @@ function General(props: GeneralProps) {
     <div className="gap-y-base my-base flex flex-col">
       <div className="flex-1">
         <InputField
-          label="Title"
+          label="Pealkiri"
           type="string"
           name="name"
-          placeholder="Website, app, Amazon, physical store POS, facebook product feed..."
+          placeholder="Veebisait, rakendus, Amazon, füüsilise poe POS, Facebooki tootevoog..."
           value={name}
           onChange={(ev) => setName(ev.target.value)}
         />
       </div>
       <div className="flex-1">
         <InputField
-          label="Description"
+          label="Kirjeldus"
           type="string"
           name="description"
-          placeholder="Available products at our website, app..."
+          placeholder="Saadaolevad tooted meie veebisaidil, rakenduses..."
           value={description}
           onChange={(ev) => setDescription(ev.target.value)}
         />
@@ -54,10 +54,9 @@ function AddProducts() {
 
   return (
     <div>
-      <sapn className="text-gray-500">
-        Select products that will be available via this channel. You can assign
-        products to multiple channels.
-      </sapn>
+      <span className="text-gray-500">
+        Valige tooted, mis on saadaval selle kanali kaudu. Saate määrata tooteid mitmele kanalile.
+      </span>
       <Button
         size="small"
         type="button"
@@ -66,7 +65,7 @@ function AddProducts() {
         onClick={() => setShowModal(true)}
       >
         <PlusIcon size={20} />
-        Add Products
+        Lisa tooteid
       </Button>
       {/* {showModal && (*/}
       {/*  <SalesChannelAvaliableProductsModal*/}
@@ -98,14 +97,14 @@ const AddSalesChannelModal = ({ onClose }: AddSalesChannelModalProps) => {
       {
         onSuccess: ({ sales_channel }) => {
           notification(
-            "Success",
-            "The sales channel is successfully created",
+            "Õnnestus",
+            "Müügikanal on edukalt loodud",
             "success"
           )
           onClose(sales_channel.id)
         },
         onError: () =>
-          notification("Error", "Failed to create the sales channel", "error"),
+          notification("Viga", "Müügikanali loomine ebaõnnestus", "error"),
       }
     )
   }
@@ -120,14 +119,14 @@ const AddSalesChannelModal = ({ onClose }: AddSalesChannelModalProps) => {
       {
         onSuccess: ({ sales_channel }) => {
           notification(
-            "Success",
-            "The sales channel is successfully created",
+            "Õnnestus",
+            "Müügikanal on edukalt loodud",
             "success"
           )
           onClose(sales_channel.id)
         },
         onError: () =>
-          notification("Error", "Failed to create the sales channel", "error"),
+          notification("Viga", "Müügikanali loomine ebaõnnestus", "error"),
       }
     )
   }
@@ -152,7 +151,7 @@ const AddSalesChannelModal = ({ onClose }: AddSalesChannelModalProps) => {
               disabled={!name}
               className="rounded-rounded"
             >
-              Save as draft
+              Salvesta mustandina
             </Button>
 
             <Button
@@ -162,7 +161,7 @@ const AddSalesChannelModal = ({ onClose }: AddSalesChannelModalProps) => {
               disabled={!name}
               className="rounded-rounded"
             >
-              Publish channel
+              Avalda kanal
             </Button>
           </div>
         </div>
@@ -170,7 +169,7 @@ const AddSalesChannelModal = ({ onClose }: AddSalesChannelModalProps) => {
       <FocusModal.Main>
         <div className="mb-[25%] flex justify-center">
           <div className="medium:w-7/12 large:w-6/12 small:w-4/5 w-full pt-16">
-            <h1 className="inter-xlarge-semibold">Create new sales channel</h1>
+            <h1 className="inter-xlarge-semibold">Loo uus müügikanal</h1>
             <Accordion
               className="text-grey-90 pt-7"
               defaultValue={["general"]}

@@ -23,7 +23,7 @@ const TwoSplitPane: React.FC<TwoSplitPaneProps> = ({
     : undefined
 
   if (childrenCount > 2) {
-    throw new Error("TwoSplitPane can only have two or less children")
+    throw new Error("TwoSplitPane'il võib olla ainult kaks või vähem last")
   }
 
   return (

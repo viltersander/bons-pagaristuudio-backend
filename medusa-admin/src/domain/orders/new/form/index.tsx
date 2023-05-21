@@ -196,7 +196,7 @@ export const useNewOrderForm = () => {
   const form = useFormContext<NewOrderForm>()
 
   if (!context) {
-    throw new Error("useNewOrderForm must be used within NewOrderFormProvider")
+    throw new Error("UseNewOrderForm tuleb kasutada rakenduses NewOrderFormProvider")
   }
 
   return { context, form }

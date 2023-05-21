@@ -13,14 +13,14 @@ const ProductMediaSection = ({ product }: Props) => {
 
   const actions: ActionType[] = [
     {
-      label: "Edit Media",
+      label: "Redigeeri meediat",
       onClick: toggle,
     },
   ]
 
   return (
     <>
-      <Section title="Media" actions={actions}>
+      <Section title="Meedia" actions={actions}>
         {product.images && product.images.length > 0 && (
           <div className="gap-xsmall mt-base grid grid-cols-3">
             {product.images.map((image, index) => {
@@ -31,7 +31,7 @@ const ProductMediaSection = ({ product }: Props) => {
                 >
                   <img
                     src={image.url}
-                    alt={`Image ${index + 1}`}
+                    alt={`Pilt ${index + 1}`}
                     className="rounded-rounded max-h-full max-w-full object-contain"
                   />
                 </div>

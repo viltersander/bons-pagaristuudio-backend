@@ -120,17 +120,17 @@ const NewProduct = ({ onClose }: Props) => {
           preppedImages = await prepareImages(data.media.images)
         } catch (error) {
           let errorMessage =
-            "Something went wrong while trying to upload images."
+            "Midagi läks piltide üleslaadimisel valesti."
           const response = (error as any).response as Response
 
           if (response.status === 500) {
             errorMessage =
               errorMessage +
               " " +
-              "You might not have a file service configured. Please contact your administrator"
+              "Teil ei pruugi olla failiteenust konfigureeritud. Võtke ühendust oma administraatoriga"
           }
 
-          notification("Error", errorMessage, "error")
+          notification("Viga", errorMessage, "error")
           return
         }
         const urls = preppedImages.map((image) => image.url)
@@ -145,17 +145,17 @@ const NewProduct = ({ onClose }: Props) => {
           preppedImages = await prepareImages(data.thumbnail.images)
         } catch (error) {
           let errorMessage =
-            "Something went wrong while trying to upload the thumbnail."
+            "Midagi läks pisipildi üleslaadimisel valesti."
           const response = (error as any).response as Response
 
           if (response.status === 500) {
             errorMessage =
               errorMessage +
               " " +
-              "You might not have a file service configured. Please contact your administrator"
+              "Teil ei pruugi olla failiteenust konfigureeritud. Võtke ühendust oma administraatoriga"
           }
 
-          notification("Error", errorMessage, "error")
+          notification("Viga", errorMessage, "error")
           return
         }
         const urls = preppedImages.map((image) => image.url)
@@ -174,7 +174,7 @@ const NewProduct = ({ onClose }: Props) => {
           })
         },
         onError: (err) => {
-          notification("Error", getErrorMessage(err), "error")
+          notification("Viga", getErrorMessage(err), "error")
         },
       })
     })
@@ -243,7 +243,7 @@ const NewProduct = ({ onClose }: Props) => {
                 disabled={!isDirty}
                 onClick={onSubmit(false)}
               >
-                Save as draft
+                Salvesta mustandina
               </Button>
               <Button
                 size="small"
@@ -252,7 +252,7 @@ const NewProduct = ({ onClose }: Props) => {
                 disabled={!isDirty}
                 onClick={onSubmit(true)}
               >
-                Publish product
+                Avalda toode
               </Button>
             </div>
           </div>
@@ -262,11 +262,11 @@ const NewProduct = ({ onClose }: Props) => {
             <Accordion defaultValue={["general"]} type="multiple">
               <Accordion.Item
                 value={"general"}
-                title="General information"
+                title="Üldine informatsioon"
                 required
               >
                 <p className="inter-base-regular text-grey-50">
-                  To start selling, all you need is a name and a price.
+                  Müügi alustamiseks on vaja ainult nime ja hinda.
                 </p>
                 <div className="mt-xlarge gap-y-xlarge flex flex-col">
                   <GeneralForm
@@ -276,14 +276,14 @@ const NewProduct = ({ onClose }: Props) => {
                   <DiscountableForm form={nestedForm(form, "discounted")} />
                 </div>
               </Accordion.Item>
-              <Accordion.Item title="Organize" value="organize">
+              <Accordion.Item title="Organiseeri" value="organize">
                 <p className="inter-base-regular text-grey-50">
-                  To start selling, all you need is a name and a price.
+                  Müügi alustamiseks on vaja ainult nime ja hinda.
                 </p>
                 <div className="mt-xlarge gap-y-xlarge pb-xsmall flex flex-col">
                   <div>
                     <h3 className="inter-base-semibold mb-base">
-                      Organize Product
+                      Organiseeri toode
                     </h3>
                     <OrganizeForm form={nestedForm(form, "organize")} />
                     <FeatureToggle featureFlag="sales_channels">
@@ -296,12 +296,11 @@ const NewProduct = ({ onClose }: Props) => {
                   </div>
                 </div>
               </Accordion.Item>
-              <Accordion.Item title="Variants" value="variants">
+              <Accordion.Item title="Variandid" value="variants">
                 <p className="inter-base-regular text-grey-50">
-                  Add variations of this product.
+                  Lisage selle toote variatsioonid.
                   <br />
-                  Offer your customers different options for color, format,
-                  size, shape, etc.
+                  Pakkuge oma klientidele erinevaid värvi, vormingu, suuruse, kuju jne valikuid.
                 </p>
                 <div className="mt-large">
                   <AddVariantsForm
@@ -311,29 +310,28 @@ const NewProduct = ({ onClose }: Props) => {
                   />
                 </div>
               </Accordion.Item>
-              <Accordion.Item title="Attributes" value="attributes">
+              <Accordion.Item title="Atribuudid" value="attributes">
                 <p className="inter-base-regular text-grey-50">
-                  Used for shipping and customs purposes.
+                  Kasutatakse saatmisel ja tolli otstarbel.
                 </p>
                 <div className="my-xlarge">
-                  <h3 className="inter-base-semibold mb-base">Dimensions</h3>
+                  <h3 className="inter-base-semibold mb-base">Mõõtmed</h3>
                   <DimensionsForm form={nestedForm(form, "dimensions")} />
                 </div>
                 <div>
-                  <h3 className="inter-base-semibold mb-base">Customs</h3>
+                  <h3 className="inter-base-semibold mb-base">Toll</h3>
                   <CustomsForm form={nestedForm(form, "customs")} />
                 </div>
               </Accordion.Item>
-              <Accordion.Item title="Thumbnail" value="thumbnail">
+              <Accordion.Item title="Pisipilt" value="thumbnail">
                 <p className="inter-base-regular mb-large text-grey-50">
-                  Used to represent your product during checkout, social sharing
-                  and more.
+                Kasutatakse teie toote esindamiseks kassas, suhtluses jagamiseks ja veel.
                 </p>
                 <ThumbnailForm form={nestedForm(form, "thumbnail")} />
               </Accordion.Item>
-              <Accordion.Item title="Media" value="media">
+              <Accordion.Item title="Meedia" value="media">
                 <p className="inter-base-regular mb-large text-grey-50">
-                  Add images to your product.
+                  Lisage oma tootele pilte.
                 </p>
                 <MediaForm form={nestedForm(form, "media")} />
               </Accordion.Item>

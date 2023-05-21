@@ -18,8 +18,7 @@ function ProductCategoriesEmptyState() {
   return (
     <div className="flex min-h-[600px] items-center justify-center">
       <p className="text-grey-40">
-        No product categories yet, use the above button to create your first
-        category.
+        Tootekategooriaid pole veel, kasutage oma esimese kategooria loomiseks ülalolevat nuppu.
       </p>
     </div>
   )
@@ -56,7 +55,7 @@ function ProductCategoryPage() {
 
   const actions = [
     {
-      label: "Add category",
+      label: "Lisa kategooria",
       onClick: showCreateModal,
     },
   ]
@@ -88,8 +87,8 @@ function ProductCategoryPage() {
         <div className="flex w-full grow flex-col">
           <BodyCard
             className="h-full"
-            title="Product Categories"
-            subtitle="Helps you to keep your products organized."
+            title="Tootekategooriad"
+            subtitle="Aitab teil tooteid organiseeritult hoida."
             actionables={actions}
             footerMinHeight={40}
             setBorders

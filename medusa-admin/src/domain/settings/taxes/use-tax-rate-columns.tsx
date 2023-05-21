@@ -8,7 +8,7 @@ const useTaxRateColumns = () => {
   const columns: Column<TaxRateTableEntries>[] = useMemo(
     () => [
       {
-        Header: <div className="pl-2">Name</div>,
+        Header: <div className="pl-2">Nimi</div>,
         accessor: "name",
         Cell: ({ row, cell: { value } }) => {
           return (
@@ -25,7 +25,7 @@ const useTaxRateColumns = () => {
         },
       },
       {
-        Header: "Code",
+        Header: "Kood",
         accessor: "code",
         Cell: ({ cell: { value } }) => (
           <div>
@@ -34,7 +34,7 @@ const useTaxRateColumns = () => {
         ),
       },
       {
-        Header: "Tax Rate",
+        Header: "Maksumäär",
         accessor: "rate",
         Cell: ({ cell: { value } }) => <div>{value} %</div>,
       },

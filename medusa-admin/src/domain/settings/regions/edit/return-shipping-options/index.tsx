@@ -20,17 +20,17 @@ const ReturnShippingOptions = ({ region }: Props) => {
   return (
     <>
       <Section
-        title="Return Shipping Options"
+        title="Tagastamisvõimalused"
         actions={[
           {
-            label: "Add Option",
+            label: "Lisa valik",
             onClick: toggle,
           },
         ]}
       >
         <div className="gap-y-large flex flex-col">
           <p className="inter-base-regular text-grey-50">
-            Enter specifics about available regional return shipment methods.
+            Sisestage saadaolevate piirkondlike tagastamisviiside üksikasjad.
           </p>
           <div className="gap-y-small flex flex-col">
             {returnShippingOptions?.map((option) => {

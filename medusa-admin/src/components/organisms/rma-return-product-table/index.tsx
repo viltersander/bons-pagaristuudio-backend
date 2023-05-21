@@ -42,8 +42,8 @@ const RMAReturnProductsTable: React.FC<RMAReturnProductsTableProps> = ({
   return (
     <Table>
       <Table.HeadRow className="text-grey-50 inter-small-semibold">
-        <Table.HeadCell>Product Details</Table.HeadCell>
-        <Table.HeadCell className="pr-8 text-right">Quantity</Table.HeadCell>
+        <Table.HeadCell>Toote üksikasjad</Table.HeadCell>
+        <Table.HeadCell className="pr-8 text-right">Kogus</Table.HeadCell>
         <Table.HeadCell className="text-right">
           {isAdditionalItems ? "Unit Price" : "Refundable"}
         </Table.HeadCell>

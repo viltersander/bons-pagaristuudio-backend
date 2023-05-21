@@ -43,14 +43,14 @@ const UsageInsightsModal = ({ config, open, onClose }: Props) => {
     mutate(data, {
       onSuccess: () => {
         notification(
-          "Success",
-          "Your information was successfully updated",
+          "Õnnestus",
+          "Teie teabe värskendamine õnnestus",
           "success"
         )
         onClose()
       },
       onError: (err) => {
-        notification("Error", getErrorMessage(err), "error")
+        notification("Viga", getErrorMessage(err), "error")
       },
     })
   })
@@ -58,7 +58,7 @@ const UsageInsightsModal = ({ config, open, onClose }: Props) => {
   return (
     <Modal handleClose={onClose} open={open} isLargeModal={true}>
       <Modal.Header handleClose={onClose}>
-        <h1 className="inter-xlarge-semibold">Edit preferences</h1>
+        <h1 className="inter-xlarge-semibold">Muuda eelistusi</h1>
       </Modal.Header>
       <Modal.Body>
         <Modal.Content>
@@ -67,7 +67,7 @@ const UsageInsightsModal = ({ config, open, onClose }: Props) => {
         <Modal.Footer className="border-grey-20 pt-base border-t">
           <div className="gap-x-xsmall flex w-full items-center justify-end">
             <Button variant="secondary" size="small" onClick={onClose}>
-              Cancel
+              Tühista
             </Button>
             <Button
               variant="primary"
@@ -76,7 +76,7 @@ const UsageInsightsModal = ({ config, open, onClose }: Props) => {
               disabled={isSubmitting}
               onClick={onSubmit}
             >
-              Submit and close
+              Esita ja sulge
             </Button>
           </div>
         </Modal.Footer>

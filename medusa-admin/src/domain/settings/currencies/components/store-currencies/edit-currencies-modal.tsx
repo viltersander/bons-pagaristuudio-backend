@@ -36,7 +36,7 @@ export const useEditCurrenciesModal = () => {
 
   if (!context) {
     throw new Error(
-      "useEditCurrenciesModal must be used within EditCurrenciesModal"
+      "UseEditCurrenciesModal tuleb kasutada jaotises EditCurrenciesModal"
     )
   }
 

@@ -58,11 +58,11 @@ const EditModal = ({ open, onClose, option }: Props) => {
       },
       {
         onSuccess: () => {
-          notification("Success", "Shipping option updated", "success")
+          notification("Õnnestus", "Tarnevalikut värskendati", "success")
           closeAndReset()
         },
         onError: (error) => {
-          notification("Error", getErrorMessage(error), "error")
+          notification("Viga", getErrorMessage(error), "error")
         },
       }
     )
@@ -72,12 +72,12 @@ const EditModal = ({ open, onClose, option }: Props) => {
     <Modal open={open} handleClose={closeAndReset}>
       <Modal.Body>
         <Modal.Header handleClose={closeAndReset}>
-          <h1 className="inter-xlarge-semibold">Edit Shipping Option</h1>
+          <h1 className="inter-xlarge-semibold">Redigeeri saatmisvalikut</h1>
         </Modal.Header>
         <form onSubmit={onSubmit}>
           <Modal.Content>
             <div>
-              <p className="inter-base-semibold">Fulfillment Method</p>
+              <p className="inter-base-semibold">Täitmise meetod</p>
               <p className="inter-base-regular text-grey-50">
                 {option.data.id as string} via {option.provider_id}
               </p>
@@ -101,7 +101,7 @@ const EditModal = ({ open, onClose, option }: Props) => {
                 loading={isLoading}
                 disabled={isLoading || !isDirty}
               >
-                Save and close
+                Salvesta ja sulge
               </Button>
             </div>
           </Modal.Footer>
@@ -120,7 +120,7 @@ const getDefaultValues = (option: ShippingOption): ShippingOptionFormType => {
     name: option.name,
     price_type: {
       label:
-        option.price_type === "flat_rate" ? "Flat rate" : "Calculated Price",
+        option.price_type === "flat_rate" ? "Kindel määr" : "Arvestushind",
       value: option.price_type,
     },
     fulfillment_provider: null,

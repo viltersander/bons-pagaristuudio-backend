@@ -36,7 +36,7 @@ export const RegionTaxForm = ({ region }: RegionTaxFormProps) => {
       tax_provider_id: {
         label:
           region.tax_provider_id === null
-            ? "System Tax Provider"
+            ? "Süsteemimaksu pakkuja"
             : region.tax_provider_id,
         value: region.tax_provider_id,
       },
@@ -51,7 +51,7 @@ export const RegionTaxForm = ({ region }: RegionTaxFormProps) => {
       tax_provider_id: {
         label:
           region.tax_provider_id === null
-            ? "System Tax Provider"
+            ? "Süsteemimaksu pakkuja"
             : region.tax_provider_id,
         value: region.tax_provider_id,
       },
@@ -67,7 +67,7 @@ export const RegionTaxForm = ({ region }: RegionTaxFormProps) => {
     if (tax_providers) {
       return [
         {
-          label: "System Tax Provider",
+          label: "Süsteemimaksu pakkuja",
           value: null,
         },
         ...tax_providers.map((tp) => ({
@@ -79,7 +79,7 @@ export const RegionTaxForm = ({ region }: RegionTaxFormProps) => {
 
     return [
       {
-        label: "System Tax Provider",
+        label: "Süsteemimaksu pakkuja",
         value: null,
       },
     ]
@@ -94,13 +94,13 @@ export const RegionTaxForm = ({ region }: RegionTaxFormProps) => {
     updateRegion.mutate(toSubmit, {
       onSuccess: () => {
         notification(
-          "Success",
-          "Region tax settings were successfully updated.",
+          "Õnnestus",
+          "Piirkonna maksusätete värskendamine õnnestus.",
           "success"
         )
       },
       onError: (error) => {
-        notification("Error", getErrorMessage(error), "error")
+        notification("Viga", getErrorMessage(error), "error")
       },
     })
   }
@@ -115,7 +115,7 @@ export const RegionTaxForm = ({ region }: RegionTaxFormProps) => {
           render={({ field: { value, onChange } }) => (
             <Select
               disabled={isProvidersLoading}
-              label="Tax Provider"
+              label="Maksupakkuja"
               options={providerOptions}
               value={value}
               onChange={onChange}
@@ -127,11 +127,11 @@ export const RegionTaxForm = ({ region }: RegionTaxFormProps) => {
           <Checkbox
             className="inter-base-regular"
             {...register("automatic_taxes")}
-            label="Calculate taxes automatically?"
+            label="Kas arvutada maksud automaatselt?"
           />
           <IconTooltip
             content={
-              "When checked Medusa will automatically apply tax calculations to Carts in this Region. When unchecked you will have to manually compute taxes at checkout. Manual taxes are recommended if using a 3rd party tax provider to avoid performing too many requests"
+              "Kui see on märgitud, rakendab Medusa automaatselt maksuarvestusi selles piirkonnas asuvatele kärudele. Kui see on märkimata, peate kassas maksud käsitsi arvutama. Kui kasutate kolmandast osapoolest maksupakkujat, on soovitatav kasutada käsitsi makse, et vältida liiga paljude päringute esitamist"
             }
           />
         </div>
@@ -139,11 +139,11 @@ export const RegionTaxForm = ({ region }: RegionTaxFormProps) => {
           <Checkbox
             className="inter-base-regular"
             {...register("gift_cards_taxable")}
-            label="Apply tax to gift cards?"
+            label="Kas rakendada kinkekaartidele makse?"
           />
           <IconTooltip
             content={
-              "When checked taxes will be applied to gift cards on checkout. In some contries tax regulations require that taxes are applied to gift cards on purchase."
+              "Kontrollimisel rakenduvad kassas kinkekaartidele maksud. Mõnes riigis nõuavad maksueeskirjad kinkekaartide ostmisel maksude kohaldamist."
             }
           />
         </div>
@@ -156,7 +156,7 @@ export const RegionTaxForm = ({ region }: RegionTaxFormProps) => {
             size="medium"
             type="submit"
           >
-            Save
+            Salvesta
           </Button>
         )}
       </div>

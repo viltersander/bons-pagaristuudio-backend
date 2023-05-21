@@ -67,21 +67,21 @@ const AttributeModal = ({ product, open, onClose }: Props) => {
     <Modal open={open} handleClose={onReset} isLargeModal>
       <Modal.Body>
         <Modal.Header handleClose={onReset}>
-          <h1 className="inter-xlarge-semibold m-0">Edit Attributes</h1>
+          <h1 className="inter-xlarge-semibold m-0">Muuda atribuute</h1>
         </Modal.Header>
         <form onSubmit={onSubmit}>
           <Modal.Content>
             <div className="mb-xlarge">
-              <h2 className="inter-large-semibold mb-2xsmall">Dimensions</h2>
+              <h2 className="inter-large-semibold mb-2xsmall">Mõõtmed</h2>
               <p className="inter-base-regular text-grey-50 mb-large">
-                Configure to calculate the most accurate shipping rates
+                Seadistage kõige täpsemate saatmishindade arvutamiseks
               </p>
               <DimensionsForm form={nestedForm(form, "dimensions")} />
             </div>
             <div>
-              <h2 className="inter-large-semibold mb-2xsmall">Customs</h2>
+              <h2 className="inter-large-semibold mb-2xsmall">Toll</h2>
               <p className="inter-base-regular text-grey-50 mb-large">
-                Configure to calculate the most accurate shipping rates
+                Seadistage kõige täpsemate saatmishindade arvutamiseks
               </p>
               <CustomsForm form={nestedForm(form, "customs")} />
             </div>
@@ -94,7 +94,7 @@ const AttributeModal = ({ product, open, onClose }: Props) => {
                 type="button"
                 onClick={onReset}
               >
-                Cancel
+                Tühista
               </Button>
               <Button
                 size="small"
@@ -103,7 +103,7 @@ const AttributeModal = ({ product, open, onClose }: Props) => {
                 disabled={!isDirty}
                 loading={updating}
               >
-                Save
+                Salvesta
               </Button>
             </div>
           </Modal.Footer>

@@ -68,7 +68,7 @@ const SSelect = React.forwardRef(
       clearSelected = false,
       isCreatable,
       filterOptions,
-      placeholder = "Search...",
+      placeholder = "Otsi...",
       options,
       onCreateOption,
       menuPortalStyles = {},
