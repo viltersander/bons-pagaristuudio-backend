@@ -40,50 +40,81 @@ const plugins = [
     /** @type {import('@medusajs/admin').PluginOptions} */
     options: {
       autoRebuild: false,
-      url: "bons-pagaristuudio-backend-th5h-9lin180o3-viltersander.vercel.app",
     },
   },
   {
-    resolve: `medusa-plugin-meilisearch`,
+    resolve: `medusa-plugin-algolia`,
     options: {
-      config: {
-        host: process.env.MEILISEARCH_HOST,
-        apiKey: process.env.MEILISEARCH_API_KEY,
-      },
+      applicationId: process.env.ALGOLIA_APP_ID,
+      adminApiKey: process.env.ALGOLIA_ADMIN_API_KEY,
+      // other options...
       settings: {
         products: {
           indexSettings: {
-            searchableAttributes: [
-              "title", 
+            searchableAttributes: ["title", "description"],
+            attributesToRetrieve: [
+              "id",
+              "title",
               "description",
-            ],
-            displayedAttributes: [
-              "title", 
-              "description",
-              "thumbnail", 
               "handle",
+              "thumbnail",
+              "variants",
+              "variant_sku",
+              "options",
+              "collection_title",
+              "collection_handle",
+              "images",
             ],
           },
-          primaryKey: "id",
-          transform: (product) => {
-            return {
-              id: product.id,
-              // other attributes...
-            };
-          },
+          transform: (product) => ({ 
+            id: product.id, 
+            // other attributes...
+          }),
         },
       },
     },
   },
-  {
-    resolve: `medusa-file-minio`,
-    options: {
-        endpoint: process.env.MINIO_ENDPOINT,
-        bucket: process.env.MINIO_BUCKET,
-        access_key_id: process.env.MINIO_ACCESS_KEY,
-        secret_access_key: process.env.MINIO_SECRET_KEY,
-    },
-  },
+  // {
+  //   resolve: `medusa-plugin-meilisearch`,
+  //   options: {
+  //     config: {
+  //       host: process.env.MEILISEARCH_HOST,
+  //       apiKey: process.env.MEILISEARCH_API_KEY,
+  //     },
+  //     settings: {
+  //       products: {
+  //         indexSettings: {
+  //           searchableAttributes: [
+  //             "title", 
+  //             "description",
+  //           ],
+  //           displayedAttributes: [
+  //             "title", 
+  //             "description",
+  //             "thumbnail", 
+  //             "handle",
+  //           ],
+  //         },
+  //         primaryKey: "id",
+  //         transform: (product) => {
+  //           return {
+  //             id: product.id,
+  //             // other attributes...
+  //           };
+  //         },
+  //       },
+  //     },
+  //   },
+  // },
+  // {
+  //   resolve: `medusa-file-minio`,
+  //   options: {
+  //       endpoint: process.env.MINIO_ENDPOINT,
+  //       bucket: process.env.MINIO_BUCKET,
+  //       access_key_id: process.env.MINIO_ACCESS_KEY,
+  //       secret_access_key: process.env.MINIO_SECRET_KEY,
+  //   },
+  // },
 ];
 
 const modules = {

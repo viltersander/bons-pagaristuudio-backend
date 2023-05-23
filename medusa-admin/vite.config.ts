@@ -11,6 +11,6 @@ import react from "@vitejs/plugin-react"
       plugins: [react()],
       define: {
           __BASE__: JSON.stringify("/"),
-          __MEDUSA_BACKEND_URL__: JSON.stringify("http://localhost:9000"),
+          __MEDUSA_BACKEND_URL__: JSON.stringify("https://bons-pagaristuudio-backend-production.up.railway.app/"),
       },
   })
