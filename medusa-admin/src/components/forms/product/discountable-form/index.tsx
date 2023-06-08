@@ -16,7 +16,7 @@ const DiscountableForm = ({ form, isGiftCard }: Props) => {
   return (
     <div>
       <div className="mb-2xsmall flex items-center justify-between">
-        <h2 className="inter-base-semibold">Discountable</h2>
+        <h2 className="inter-base-semibold">Allahindlusega</h2>
         <Controller
           control={control}
           name={path("value")}
@@ -26,7 +26,7 @@ const DiscountableForm = ({ form, isGiftCard }: Props) => {
         />
       </div>
       <p className="inter-base-regular text-grey-50">
-        When unchecked discounts will not be applied to this{" "}
+        Kui märkimata allahindlusi sellele ei rakendata{" "}
         {isGiftCard ? "gift card" : "product"}.
       </p>
     </div>

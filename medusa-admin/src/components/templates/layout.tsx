@@ -15,9 +15,9 @@ const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
         }}
       />
       <Sidebar />
-      <div className="flex flex-1 flex-col">
+      <div className="flex flex-1 flex-col ">
         <Topbar />
-        <div className="large:px-xlarge py-xlarge bg-grey-5 min-h-content overflow-y-auto">
+        <div className="large:px-xlarge py-xlarge bg-grey-5 min-h-content overflow-y-auto ">
           <main className="xsmall:mx-base small:mx-xlarge medium:mx-4xlarge large:mx-auto large:max-w-7xl large:w-full h-full">
             {children}
           </main>

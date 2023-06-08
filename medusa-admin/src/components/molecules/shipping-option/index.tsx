@@ -38,7 +38,7 @@ const ShippingOption: React.FC<ShippingOptionProps> = ({
           <p className="inter-small-semibold mr-xsmall truncate">
             {option.name} {option.data.name && `(${option.data.name})`}{" "}
           </p>
-          {option.admin_only && <Badge variant="primary">Not on website</Badge>}
+          {option.admin_only && <Badge variant="primary">Mitte veebisaidil</Badge>}
         </div>
         <p className="inter-small-regular text-grey-50 truncate">
           {option.price_type === "flat_rate" ? "Flat Rate" : "Calculated"}:{" "}
@@ -47,7 +47,7 @@ const ShippingOption: React.FC<ShippingOptionProps> = ({
           {option.requirements.length
             ? option.requirements.map((r) => {
                 const type =
-                  r.type === "max_subtotal" ? "Max. subtotal" : "Min. subtotal"
+                  r.type === "max_subtotal" ? "Maksimaalne vahesumma" : "Minimaalne vahesumma"
                 return ` - ${type}: ${
                   r.amount / 100
                 } ${currency_code.toUpperCase()}`
@@ -60,7 +60,7 @@ const ShippingOption: React.FC<ShippingOptionProps> = ({
           onClick={onEdit}
           className="inter-small-semibold text-violet-60"
         >
-          Edit
+          Muuda
         </button>
       </div>
     </div>

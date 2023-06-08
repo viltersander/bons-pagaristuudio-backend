@@ -286,7 +286,7 @@ const ReturnReasonScreen = (
   setReturnReason
 ) => {
   return {
-    title: "Return Reasons",
+    title: "Tagastamise põhjused",
     onBack: () => pop(),
     view: (
       <RMAReturnReasonSubModal

@@ -6,6 +6,28 @@ import FilterDropdownItem from "../../../components/molecules/filter-dropdown/it
 import SaveFilterItem from "../../../components/molecules/filter-dropdown/save-field"
 import TabFilter from "../../../components/molecules/filter-tab"
 
+const translateStatusFilter = (filter) => {
+  switch (filter) {
+    case "active":
+      return "aktiivne";
+    case "draft":
+      return "mustand";
+    default:
+      return filter;
+  }
+};
+
+const translateTypeFilter = (filter) => {
+  switch (filter) {
+    case "sale":
+      return "müük";
+    case "override":
+      return "ülekirjutus";
+    default:
+      return filter;
+  }
+};
+
 const statusFilters = ["active", "draft"]
 const typeFilters = ["sale", "override"]
 
@@ -82,7 +104,7 @@ const PriceListsFilter = ({
             )}
           >
             <div className="rounded-rounded bg-grey-5 border-grey-20 inter-small-semibold flex h-6 items-center border px-2">
-              Filters
+              Filtrid
               <div className="text-grey-40 ml-1 flex items-center rounded">
                 <span className="text-violet-60 inter-small-semibold">
                   {numberOfFilters ? numberOfFilters : "0"}
@@ -97,14 +119,20 @@ const PriceListsFilter = ({
       >
         <FilterDropdownItem
           filterTitle="Olek"
-          options={statusFilters}
+          options={statusFilters.map((filter) => ({
+            value: filter,
+            label: translateStatusFilter(filter),
+          }))}
           filters={tempState.status.filter}
           open={tempState.status.open}
           setFilter={(v) => setSingleFilter("status", v)}
         />
         <FilterDropdownItem
           filterTitle="Tüüp"
-          options={typeFilters}
+          options={typeFilters.map((filter) => ({
+            value: filter,
+            label: translateTypeFilter(filter),
+          }))}
           filters={tempState.type.filter}
           open={tempState.type.open}
           setFilter={(v) => setSingleFilter("type", v)}

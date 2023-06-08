@@ -26,7 +26,7 @@ describe("ClaimTypeForm", () => {
     renderWithProviders(<ClaimTypeForm form={nestedForm(form, "claim_type")} />)
   })
 
-  it("should render correctly with the initial value of refund", async () => {
+  it("peaks esitama õigesti koos tagasimakse algväärtusega", async () => {
     const {
       claim_type: { type },
     } = form.getValues()
@@ -37,7 +37,7 @@ describe("ClaimTypeForm", () => {
     expect(type).toEqual("refund")
   })
 
-  it("should update the value of the form when a new type is selected", async () => {
+  it("peaks uue tüübi valimisel vormi väärtust värskendama", async () => {
     const {
       claim_type: { type: initialType },
     } = form.getValues()

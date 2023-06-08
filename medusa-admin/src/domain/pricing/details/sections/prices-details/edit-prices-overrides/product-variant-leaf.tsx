@@ -25,12 +25,12 @@ const ProductVariantLeaf = ({
       <div className="text-grey-50 flex flex-1 items-center justify-end">
         <div className="text-grey-50 mr-xsmall">
           {hasPrices ? (
-            <span>{`${prices.length} price${
-              prices.length > 1 ? "s" : ""
+            <span>{`${prices.length} hind${
+              prices.length > 1 ? "hinnad" : ""
             }`}</span>
           ) : (
             <span className="inter-small-semibold text-orange-40">
-              Add prices
+              Lisa hinnad
             </span>
           )}
         </div>

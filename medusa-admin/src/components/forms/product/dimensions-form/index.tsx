@@ -28,41 +28,41 @@ const DimensionsForm = ({ form }: DimensionsFormProps) => {
   return (
     <div className="gap-x-large grid grid-cols-4">
       <InputField
-        label="Width"
+        label="Laius"
         placeholder="100..."
         type="number"
         {...register(path("width"), {
-          min: FormValidator.nonNegativeNumberRule("Width"),
+          min: FormValidator.nonNegativeNumberRule("Laius"),
           valueAsNumber: true,
         })}
         errors={errors}
       />
       <InputField
-        label="Length"
+        label="Pikkus"
         placeholder="100..."
         type="number"
         {...register(path("length"), {
-          min: FormValidator.nonNegativeNumberRule("Length"),
+          min: FormValidator.nonNegativeNumberRule("Pikkus"),
           valueAsNumber: true,
         })}
         errors={errors}
       />
       <InputField
-        label="Height"
+        label="Kõrgus"
         placeholder="100..."
         type="number"
         {...register(path("height"), {
-          min: FormValidator.nonNegativeNumberRule("Height"),
+          min: FormValidator.nonNegativeNumberRule("Kõrgus"),
           valueAsNumber: true,
         })}
         errors={errors}
       />
       <InputField
-        label="Weight"
+        label="Kaal"
         placeholder="100..."
         type="number"
         {...register(path("weight"), {
-          min: FormValidator.nonNegativeNumberRule("Weight"),
+          min: FormValidator.nonNegativeNumberRule("Kaal"),
           valueAsNumber: true,
         })}
         errors={errors}

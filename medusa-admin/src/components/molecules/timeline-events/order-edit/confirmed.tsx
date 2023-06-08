@@ -14,8 +14,8 @@ type ConfirmedProps = {
 const EditConfirmed: React.FC<ConfirmedProps> = ({ event }) => {
   const confirmedByAdmin = isConfirmedByUser(event.edit)
 
-  const title = `Order Edit ${
-    !confirmedByAdmin ? "confirmation accepted" : "force confirmed"
+  const title = `Tellimuse muutmine ${
+    !confirmedByAdmin ? "kinnitus vastu võetud" : "jõuga kinnitatud"
   }`
 
   const { user } = useAdminUser(event.edit.confirmed_by as string, {

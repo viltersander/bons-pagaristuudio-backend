@@ -58,7 +58,7 @@ const InvitePage = () => {
         "repeat_password",
         {
           type: "manual",
-          message: "Passwords do not match",
+          message: "Paroolid ei ühti",
         },
         {
           shouldFocus: true,
@@ -82,7 +82,7 @@ const InvitePage = () => {
           navigate("/login")
         },
         onError: (err) => {
-          notification("Error", getErrorMessage(err), "error")
+          notification("Viga", getErrorMessage(err), "error")
         },
       }
     )
@@ -91,17 +91,16 @@ const InvitePage = () => {
   if (!token) {
     return (
       <PublicLayout>
-        <SEO title="Create Account" />
+        <SEO title="Loo konto" />
         <div className="gap-y-xsmall flex flex-col items-center">
           <h1 className="inter-xlarge-semibold mb- text-[20px]">
-            Invalid invite
+           Kehtetu kutse
           </h1>
           <p className="inter-base-regular text-grey-50 w-[280px] text-center">
-            The invite link you have used is invalid. Please contact your
-            administrator.
+            Teie kasutatud kutselink on kehtetu. Võtke ühendust oma administraatoriga.
           </p>
           <p className="inter-small-regular text-grey-40 mt-xlarge">
-            Already have an account? <a href="/login">Log in</a>
+            On juba konto? <a href="/login">Logi sisse</a>
           </p>
         </div>
       </PublicLayout>
@@ -110,19 +109,19 @@ const InvitePage = () => {
 
   return (
     <PublicLayout>
-      <SEO title="Create Account" />
+      <SEO title="Loo konto" />
       {signUp ? (
         <form onSubmit={handleAcceptInvite}>
           <div className="flex flex-col items-center">
             <h1 className="inter-xlarge-semibold mb-large text-[20px]">
-              Create your Medusa account
+              Looge oma Medusa konto
             </h1>
             <div className="gap-y-small flex flex-col">
               <div>
                 <SigninInput
-                  placeholder="First name"
+                  placeholder="Eesnimi"
                   {...register("first_name", {
-                    required: FormValidator.required("First name"),
+                    required: FormValidator.required("Eesnimi"),
                   })}
                   autoComplete="given-name"
                 />
@@ -130,9 +129,9 @@ const InvitePage = () => {
               </div>
               <div>
                 <SigninInput
-                  placeholder="Last name"
+                  placeholder="Perekonnanimi"
                   {...register("last_name", {
-                    required: FormValidator.required("Last name"),
+                    required: FormValidator.required("Perekonnanimi"),
                   })}
                   autoComplete="family-name"
                 />
@@ -140,20 +139,20 @@ const InvitePage = () => {
               </div>
               <div>
                 <SigninInput
-                  placeholder="Password"
+                  placeholder="Parool"
                   type={"password"}
                   {...register("password", {
-                    required: FormValidator.required("Password"),
+                    required: FormValidator.required("Parool"),
                   })}
                   autoComplete="new-password"
                 />
               </div>
               <div>
                 <SigninInput
-                  placeholder="Confirm password"
+                  placeholder="Kinnita parool"
                   type={"password"}
                   {...register("repeat_password", {
-                    required: "You must confirm your password",
+                    required: "Pead oma parooli kinnitama",
                   })}
                   autoComplete="new-password"
                 />
@@ -166,22 +165,22 @@ const InvitePage = () => {
               className="mt-large w-[280px]"
               loading={isLoading}
             >
-              Create account
+              Loo konto
             </Button>
             <p className="inter-small-regular text-grey-50 mt-xlarge">
-              Already signed up? <a href="/login">Log in</a>
+              Kas olete juba registreerunud? <a href="/login">Logi sisse</a>
             </p>
           </div>
         </form>
       ) : (
         <div className="flex flex-col items-center text-center">
           <h1 className="inter-xlarge-semibold text-[20px]">
-            You have been invited to join the team
+            Teid on kutsutud meeskonnaga liituma
           </h1>
           <p className="inter-base-regular text-grey-50 mt-xsmall">
-            You can now join the team. Sign up below and get started
+            Nüüd saate meeskonnaga liituda. Registreeruge allpool ja alustage
             <br />
-            with your Medusa account right away.
+            kohe oma Medusa kontoga.
           </p>
           <Button
             variant="secondary"
@@ -189,7 +188,7 @@ const InvitePage = () => {
             className="mt-xlarge w-[280px]"
             onClick={() => setSignUp(true)}
           >
-            Sign up
+            Registreeri
           </Button>
         </div>
       )}

@@ -45,7 +45,7 @@ export const TablePagination = <T,>({
       )}
     >
       <div>
-        <p>{`${from} – ${to} of ${count} results`}</p>
+        <p>{`${from} – ${to} ${count} tulemusest`}</p>
       </div>
       <div className="gap-x-small flex items-center">
         <p>{`${getState().pagination.pageIndex + 1} of ${getPageCount()}`}</p>

@@ -1,34 +1,35 @@
-import { useAdminCustomer } from "medusa-react"
-import moment from "moment"
-import { useState } from "react"
-import { useParams } from "react-router-dom"
-import Avatar from "../../../components/atoms/avatar"
-import BackButton from "../../../components/atoms/back-button"
-import Spinner from "../../../components/atoms/spinner"
-import EditIcon from "../../../components/fundamentals/icons/edit-icon"
-import StatusDot from "../../../components/fundamentals/status-indicator"
+import { useAdminCustomer } from "medusa-react";
+import { format } from "date-fns";
+import et from "date-fns/locale/et";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+import Avatar from "../../../components/atoms/avatar";
+import BackButton from "../../../components/atoms/back-button";
+import Spinner from "../../../components/atoms/spinner";
+import EditIcon from "../../../components/fundamentals/icons/edit-icon";
+import StatusDot from "../../../components/fundamentals/status-indicator";
 import Actionables, {
   ActionType,
-} from "../../../components/molecules/actionables"
-import BodyCard from "../../../components/organisms/body-card"
-import RawJSON from "../../../components/organisms/raw-json"
-import Section from "../../../components/organisms/section"
-import CustomerOrdersTable from "../../../components/templates/customer-orders-table"
-import EditCustomerModal from "./edit"
+} from "../../../components/molecules/actionables";
+import BodyCard from "../../../components/organisms/body-card";
+import RawJSON from "../../../components/organisms/raw-json";
+import Section from "../../../components/organisms/section";
+import CustomerOrdersTable from "../../../components/templates/customer-orders-table";
+import EditCustomerModal from "./edit";
 
 const CustomerDetail = () => {
-  const { id } = useParams()
+  const { id } = useParams();
 
-  const { customer, isLoading } = useAdminCustomer(id!)
-  const [showEdit, setShowEdit] = useState(false)
+  const { customer, isLoading } = useAdminCustomer(id!);
+  const [showEdit, setShowEdit] = useState(false);
 
   const customerName = () => {
     if (customer?.first_name && customer?.last_name) {
-      return `${customer.first_name} ${customer.last_name}`
+      return `${customer.first_name} ${customer.last_name}`;
     } else {
-      return customer?.email
+      return customer?.email;
     }
-  }
+  };
 
   const actions: ActionType[] = [
     {
@@ -36,7 +37,15 @@ const CustomerDetail = () => {
       onClick: () => setShowEdit(true),
       icon: <EditIcon size={20} />,
     },
-  ]
+  ];
+
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) {
+      return "N/A";
+    }
+    return format(date, "d MMMM yyyy", { locale: et });
+  };
 
   return (
     <div>
@@ -72,7 +81,7 @@ const CustomerDetail = () => {
               <div className="inter-smaller-regular text-grey-50 mb-1">
                 Esimest korda nähtud
               </div>
-              <div>{moment(customer?.created_at).format("DD MMM YYYY")}</div>
+              <div>{formatDate(customer?.created_at)}</div>
             </div>
             <div className="flex flex-col pl-6">
               <div className="inter-smaller-regular text-grey-50 mb-1">
@@ -95,7 +104,7 @@ const CustomerDetail = () => {
               <div className="h-50 flex items-center justify-center">
                 <StatusDot
                   variant={customer?.has_account ? "success" : "danger"}
-                  title={customer?.has_account ? "Registered" : "Guest"}
+                  title={customer?.has_account ? "Registeeritud" : "Külaline"}
                 />
               </div>
             </div>
@@ -126,7 +135,7 @@ const CustomerDetail = () => {
         />
       )}
     </div>
-  )
-}
+  );
+};
 
-export default CustomerDetail
+export default CustomerDetail;

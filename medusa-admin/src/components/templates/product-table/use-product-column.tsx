@@ -80,8 +80,8 @@ const useProductTableColumn = ({ setTileView, setListView, showList }) => {
         Cell: ({ cell: { value } }) => (
           <div>
             {value.reduce((acc, next) => acc + next.inventory_quantity, 0)}
-            {" in stock for "}
-            {value.length} variant(s)
+            {" laos "}
+            {value.length} varjandi jaoks
           </div>
         ),
       },

@@ -209,7 +209,7 @@ export const ReceiveReturnMenu = ({ order, returnRequest, onClose }: Props) => {
     if (data.receive_items.items.filter((it) => it.receive).length === 0) {
       setError("receive_items.items", {
         type: "manual",
-        message: "Please select at least one item to receive",
+        message: "Valige vastuvõtmiseks vähemalt üks üksus",
       })
 
       return
@@ -248,8 +248,8 @@ export const ReceiveReturnMenu = ({ order, returnRequest, onClose }: Props) => {
     mutate(toCreate, {
       onSuccess: () => {
         notification(
-          "Successfully received return",
-          `Received return for order #${order.display_id}`,
+          "Tagastus edukalt kätte saadud",
+          `Saabus tellimuse eest tagasi #${order.display_id}`,
           "success"
         )
 
@@ -260,7 +260,7 @@ export const ReceiveReturnMenu = ({ order, returnRequest, onClose }: Props) => {
       },
       onError: (error) => {
         notification(
-          "Failed to receive return",
+          "Tagastuse kättesaamine ebaõnnestus",
           getErrorMessage(error),
           "error"
         )
@@ -272,7 +272,7 @@ export const ReceiveReturnMenu = ({ order, returnRequest, onClose }: Props) => {
     <Modal handleClose={onClose} open={true}>
       <Modal.Body>
         <Modal.Header handleClose={onClose}>
-          <h1 className="inter-xlarge-semibold">Receive Return</h1>
+          <h1 className="inter-xlarge-semibold">Kinnita tagastus</h1>
         </Modal.Header>
         <form onSubmit={onSubmit}>
           <Modal.Content>
@@ -284,16 +284,16 @@ export const ReceiveReturnMenu = ({ order, returnRequest, onClose }: Props) => {
 
               {isLocationFulfillmentEnabled && (
                 <div className="mb-8">
-                  <h3 className="inter-base-semibold ">Location</h3>
+                  <h3 className="inter-base-semibold ">Asukoht</h3>
                   <p className="inter-base-regular text-grey-50">
-                    Choose which location you want to return the items to.
+                     Valige asukoht, kuhu soovite kaubad tagastada.
                   </p>
                   {isLoadingLocations ? (
                     <Spinner />
                   ) : (
                     <Select
                       className="mt-2"
-                      placeholder="Select Location to Return to"
+                      placeholder="Valige asukoht, kuhu naasta"
                       value={selectedLocation}
                       isMulti={false}
                       name={"location_id"}
@@ -303,7 +303,7 @@ export const ReceiveReturnMenu = ({ order, returnRequest, onClose }: Props) => {
                           : {
                               location_id: {
                                 message:
-                                  "No inventory levels exist for the items at the selected location",
+                                  "Valitud asukohas olevate kaupade jaoks puuduvad laoseisud",
                               },
                             }
                       }
@@ -331,7 +331,7 @@ export const ReceiveReturnMenu = ({ order, returnRequest, onClose }: Props) => {
           <Modal.Footer>
             <div className="gap-x-xsmall flex w-full items-center justify-end">
               <Button size="small" variant="secondary">
-                Cancel
+                Tühista
               </Button>
               <Button
                 size="small"
@@ -339,7 +339,7 @@ export const ReceiveReturnMenu = ({ order, returnRequest, onClose }: Props) => {
                 disabled={!isDirty || isLoading || !locationsHasInventoryLevels}
                 loading={isLoading}
               >
-                Save and close
+                Salvesta ja sulge
               </Button>
             </div>
           </Modal.Footer>

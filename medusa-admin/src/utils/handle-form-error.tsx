@@ -57,8 +57,8 @@ function getFormErrors(errors: DeepMap<FieldValues, FieldError>) {
 
   const title =
     messages.length > 1
-      ? `There were ${messages.length} errors with your submission`
-      : "There was an error with your submission"
+      ? `Teie esildises oli ${messages.length} viga`
+      : "Teie esitamisel ilmnes viga"
 
   return { title, list, refs }
 }

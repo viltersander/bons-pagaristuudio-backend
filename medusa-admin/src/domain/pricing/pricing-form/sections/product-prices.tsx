@@ -60,14 +60,14 @@ const ProductPrices = ({
   const getVariantActions = (variant) => {
     return [
       {
-        label: "Edit prices",
+        label: "Muuda hindu",
         icon: <EditIcon />,
         onClick: () => {
           setSelectedVariant(variant)
         },
       },
       {
-        label: "Remove from list",
+        label: "Eemalda nimekirjast",
         icon: <TrashIcon size={20} />,
         onClick: () => {
           // missing core support
@@ -101,7 +101,7 @@ const ProductPrices = ({
         {onSearch && (
           <div className="mb-2">
             <InputField
-              placeholder="Search by name or SKU..."
+              placeholder="Otsige nime või SKU järgi..."
               prefix={<SearchIcon />}
               onChange={onChange}
             />
@@ -129,7 +129,7 @@ const ProductPrices = ({
           onClick={() => setShowAdd(true)}
         >
           <PlusIcon />
-          Add Products Manually
+          Lisage tooteid käsitsi
         </Button>
       </div>
 
@@ -139,11 +139,11 @@ const ProductPrices = ({
             className="py-8"
             onFileChosen={onFileChosen}
             filetypes={[".csx", ".xlsx", ".xls"]}
-            placeholder="Only .csv files up to 5MB are supported"
+            placeholder="Ainult .csv toetatakse kuni 5 MB faile"
             text={
               <span>
-                Drop your price list file here, or{" "}
-                <span className="text-violet-60">click to browse</span>
+                Viska oma hinnakirja fail siia või{" "}
+                <span className="text-violet-60">klõpsake sirvimiseks</span>
               </span>
             }
           />
@@ -161,7 +161,7 @@ const ProductPrices = ({
         <Modal open handleClose={unselect}>
           <Modal.Body>
             <Modal.Header handleClose={unselect}>
-              <h2 className="inter-xlarge-semibold">Edit Prices</h2>
+              <h2 className="inter-xlarge-semibold">Muuda hindu</h2>
             </Modal.Header>
 
             <PriceOverrides

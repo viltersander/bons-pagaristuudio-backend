@@ -176,7 +176,7 @@ const AddSalesChannelModal = ({ onClose }: AddSalesChannelModalProps) => {
               type="multiple"
             >
               <Accordion.Item
-                title="General info"
+                title="Üldinfo"
                 value="general"
                 forceMountContent
               >

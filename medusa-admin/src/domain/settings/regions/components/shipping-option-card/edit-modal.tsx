@@ -92,7 +92,7 @@ const EditModal = ({ open, onClose, option }: Props) => {
           <Modal.Footer>
             <div className="gap-x-xsmall flex w-full items-center justify-end">
               <Button variant="secondary" size="small" onClick={closeAndReset}>
-                Cancel
+                Tühista
               </Button>
               <Button
                 variant="primary"

@@ -1,4 +1,5 @@
-import moment from "moment"
+import { format } from 'date-fns'
+import { et } from 'date-fns/locale'
 import { useMemo } from "react"
 import ReactCountryFlag from "react-country-flag"
 import { getColor } from "../../../utils/color"
@@ -6,10 +7,11 @@ import { isoAlpha2Countries } from "../../../utils/countries"
 import { formatAmountWithSymbol } from "../../../utils/prices"
 import Tooltip from "../../atoms/tooltip"
 import StatusDot from "../../fundamentals/status-indicator"
+import StatusIndicator from "../../fundamentals/status-indicator";
 import CustomerAvatarItem from "../../molecules/customer-avatar-item"
 
 const useOrderTableColums = () => {
-  const decideStatus = (status) => {
+  const decidePaymentStatus = (status) => {
     switch (status) {
       case "captured":
         return <StatusDot variant="success" title={"Makstud"} />
@@ -23,6 +25,27 @@ const useOrderTableColums = () => {
         return <StatusDot variant="primary" title={"N/A"} />
     }
   }
+
+  const decideFulfillmentStatus = (status) => {
+    switch (status) {
+      case "fulfilled":
+        return <StatusIndicator variant="success" title={"Täidetud"} />;
+      case "shipped":
+        return <StatusIndicator variant="success" title={"Saadetud"} />;
+      case "not_fulfilled":
+        return <StatusIndicator variant="default" title={"Täitmata"} />;
+      case "partially_fulfilled":
+        return <StatusIndicator variant="warning" title={"Osaliselt täidetud"} />;
+      case "partially_shipped":
+        return <StatusIndicator variant="warning" title={"Osaliselt saadetud"} />;
+      case "requires":
+        return <StatusIndicator variant="danger" title={"Nõuab tegutsemist"} />;
+      case "canceled":
+          return <StatusIndicator variant="warning" title={"Tühistatud"} />
+      default:
+        return <StatusIndicator variant="primary" title={"N/A"} />;
+    }
+  };
 
   const columns = useMemo(
     () => [
@@ -38,8 +61,8 @@ const useOrderTableColums = () => {
         accessor: "created_at",
         Cell: ({ cell: { value } }) => (
           <div>
-            <Tooltip content={moment(value).format("DD MMM YYYY hh:mm a")}>
-              {moment(value).format("DD MMM YYYY")}
+            <Tooltip content={format(new Date(value), 'dd MMMM yyyy hh:mm a', { locale: et })}>
+              {format(new Date(value), 'dd MMMM yyyy', { locale: et })}
             </Tooltip>
           </div>
         ),
@@ -66,12 +89,12 @@ const useOrderTableColums = () => {
       {
         Header: "Täitmine",
         accessor: "fulfillment_status",
-        Cell: ({ cell: { value } }) => value,
+        Cell: ({ cell: { value } }) => decideFulfillmentStatus(value),
       },
       {
         Header: "Makse olek",
         accessor: "payment_status",
-        Cell: ({ cell: { value } }) => decideStatus(value),
+        Cell: ({ cell: { value } }) => decidePaymentStatus(value),
       },
       {
         Header: "Müügikanal",

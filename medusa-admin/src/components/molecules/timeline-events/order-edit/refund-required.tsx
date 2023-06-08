@@ -39,7 +39,7 @@ const RefundRequired: React.FC<RequestedProps> = ({ event }) => {
   return (
     <>
       <EventContainer
-        title={"Refund required"}
+        title={"Vajalik tagasimakse"}
         icon={<AlertIcon size={20} />}
         iconColor={EventIconColor.RED}
         time={event.time}
@@ -51,7 +51,7 @@ const RefundRequired: React.FC<RequestedProps> = ({ event }) => {
           size="small"
           className="border-grey-20 mb-xsmall w-full border text-rose-50"
         >
-          Refund
+          Tagasimakse
           {formatAmountWithSymbol({
             amount: refundableAmount,
             currency: event.currency_code,

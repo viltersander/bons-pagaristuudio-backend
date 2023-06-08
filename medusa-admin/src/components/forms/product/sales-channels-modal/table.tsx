@@ -51,11 +51,11 @@ export const useSalesChannelsTableColumns = () => {
         },
       },
       {
-        Header: "Title",
+        Header: "Pealkiri",
         accessor: "name",
       },
       {
-        Header: "Description",
+        Header: "Kirjeldus",
         accessor: "description",
       },
     ],
@@ -118,7 +118,7 @@ const SalesChannelTable = ({
         count: count,
         offset: offset,
         pageSize: offset + rows.length,
-        title: "Sales Channels",
+        title: "Müügikanalid",
         currentPage: pageIndex + 1,
         pageCount: pageCount,
         nextPage: handleNext,

@@ -9,6 +9,22 @@ import SaveFilterItem from "../../components/molecules/filter-dropdown/save-fiel
 import TagInput from "../../components/molecules/tag-input"
 import TabFilter from "../../components/molecules/filter-tab"
 
+
+const translateFilter = (filter) => {
+  switch (filter) {
+    case "proposed":
+      return "pakutud";
+    case "drafts":
+      return "mustand";
+    case "published":
+      return "avaldatud";
+    case "rejected":
+      return "tagasi lükatud";
+    default:
+      return filter;
+  }
+};
+
 const statusFilters = ["proposed", "drafts", "published", "rejected"]
 
 const COLLECTION_PAGE_SIZE = 10
@@ -128,7 +144,10 @@ const ProductsFilter = ({
       >
         <FilterDropdownItem
           filterTitle="Olek"
-          options={statusFilters}
+          options={statusFilters.map((filter) => ({
+            value: filter,
+            label: translateFilter(filter),
+          }))}
           filters={tempState.status.filter}
           open={tempState.status.open}
           setFilter={(v) => setSingleFilter("status", v)}

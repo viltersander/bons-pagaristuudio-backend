@@ -263,7 +263,7 @@ export const useProductFilters = (
   const availableTabs = useMemo(() => {
     return [
       {
-        label: "Unpublished",
+        label: "Avaldamata",
         value: "drafts",
       },
       ...tabs,

@@ -141,14 +141,14 @@ const DraftSummaryCard: React.FC<DraftSummaryCardProps> = ({ order }) => {
   return (
     <BodyCard
       className={"mb-4 h-auto min-h-0 w-full"}
-      title="Summary"
+      title="Kokkuvõte"
       status={
         isFeatureEnabled("inventoryService") &&
         Array.isArray(reservations) && (
           <StatusIndicator
             onClick={allItemsReserved ? undefined : showAllocationModal}
             variant={allItemsReserved ? "success" : "danger"}
-            title={allItemsReserved ? "Allocated" : "Awaits allocation"}
+            title={allItemsReserved ? "Eraldatud" : "Ootab eraldamist"}
             className="rounded-rounded border px-3 py-1.5"
           />
         )
@@ -220,12 +220,12 @@ const DraftSummaryCard: React.FC<DraftSummaryCardProps> = ({ order }) => {
         <DisplayTotal
           currency={region?.currency_code}
           totalAmount={order?.cart?.subtotal}
-          totalTitle={"Subtotal"}
+          totalTitle={"Vahesumma"}
         />
         {cart?.discounts?.map((discount, index) => (
           <div key={index} className="mt-4 flex items-center justify-between">
             <div className="inter-small-regular text-grey-90 flex items-center">
-              Discount:{" "}
+              Allahindlus:{" "}
               <Badge className="ml-3" variant="default">
                 {discount.code}
               </Badge>
@@ -244,18 +244,18 @@ const DraftSummaryCard: React.FC<DraftSummaryCardProps> = ({ order }) => {
         <DisplayTotal
           currency={region?.currency_code}
           totalAmount={cart?.shipping_total}
-          totalTitle={"Shipping"}
+          totalTitle={"Saatmine"}
         />
         <DisplayTotal
           currency={region?.currency_code}
           totalAmount={cart?.tax_total}
-          totalTitle={`Tax`}
+          totalTitle={`Maksud`}
         />
         <DisplayTotal
           currency={region?.currency_code}
           variant="large"
           totalAmount={cart?.total}
-          totalTitle={`Total`}
+          totalTitle={`Kokku`}
         />
       </div>
       {allocationModalIsOpen && (

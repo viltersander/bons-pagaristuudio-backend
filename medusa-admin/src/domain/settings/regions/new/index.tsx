@@ -135,7 +135,7 @@ const NewRegion = ({ onClose }: Props) => {
                 />
               </Accordion.Item>
               <Accordion.Item
-                title="Providers"
+                title="Pakkujad"
                 value="providers"
                 forceMountContent
                 required

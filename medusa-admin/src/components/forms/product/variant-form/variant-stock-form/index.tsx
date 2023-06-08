@@ -97,18 +97,18 @@ const VariantStockForm = ({ form }: Props) => {
   return (
     <div>
       <p className="inter-base-regular text-grey-50">
-        Configure the inventory and stock for this variant.
+        Seadistage selle variandi jaoks laoseisud ja laoseisud.
       </p>
       <div className="gap-y-xlarge pt-large flex flex-col">
         <div className="gap-large grid grid-cols-2">
           <InputField
-            label="Stock keeping unit (SKU)"
+            label="Laoseisu üksus (SKU)"
             placeholder="SUN-G, JK1234..."
             {...register(path("sku"))}
           />
           {!stockLocationEnabled && (
             <InputField
-              label="Quantity in stock"
+              label="Kogus laos"
               type="number"
               placeholder="100..."
               errors={errors}
@@ -118,24 +118,24 @@ const VariantStockForm = ({ form }: Props) => {
             />
           )}
           <InputField
-            label="EAN (Barcode)"
+            label="EAN (Vöötkood)"
             placeholder="123456789102..."
             {...register(path("ean"))}
           />
           <InputField
-            label="UPC (Barcode)"
+            label="UPC (Vöötkood)"
             placeholder="023456789104..."
             {...register(path("upc"))}
           />
           <InputField
-            label="Barcode"
+            label="Vöötkood"
             placeholder="123456789104..."
             {...register(path("barcode"))}
           />
         </div>
         <div className="gap-y-2xsmall flex flex-col">
           <div className="flex items-center justify-between">
-            <h3 className="inter-base-semibold mb-2xsmall">Manage inventory</h3>
+            <h3 className="inter-base-semibold mb-2xsmall">Halda laoseisu</h3>
             <Controller
               control={control}
               name={path("manage_inventory")}
@@ -145,13 +145,13 @@ const VariantStockForm = ({ form }: Props) => {
             />
           </div>
           <p className="inter-base-regular text-grey-50">
-            When checked Medusa will regulate the inventory when orders and
-            returns are made.
+            Märkimisel reguleerib Medusa laoseisu, kui tellimusi ja
+            tagastatakse.
           </p>
         </div>
         <div className="gap-y-2xsmall flex flex-col">
           <div className="flex items-center justify-between">
-            <h3 className="inter-base-semibold mb-2xsmall">Allow backorders</h3>
+            <h3 className="inter-base-semibold mb-2xsmall">Luba järeltellimused</h3>
             <Controller
               control={control}
               name={path("allow_backorder")}
@@ -161,8 +161,8 @@ const VariantStockForm = ({ form }: Props) => {
             />
           </div>
           <p className="inter-base-regular text-grey-50">
-            When checked the product will be available for purchase despite the
-            product being sold out
+            Kui see on märgitud, on toode ostmiseks saadaval hoolimata
+            toode on välja müüdud
           </p>
         </div>
         <FeatureToggle featureFlag="inventoryService">
@@ -174,10 +174,10 @@ const VariantStockForm = ({ form }: Props) => {
           >
             <div className="flex flex-col">
               <div className="gap-y-2xsmall mb-4 flex flex-col">
-                <h3 className="inter-base-semibold mb-2xsmall">Quantity</h3>
+                <h3 className="inter-base-semibold mb-2xsmall">Kogus</h3>
                 <div className="flex items-center justify-between">
-                  <p className="inter-base-regular text-grey-50">Location</p>
-                  <p className="inter-base-regular text-grey-50">In Stock</p>
+                  <p className="inter-base-regular text-grey-50">Asukoht</p>
+                  <p className="inter-base-regular text-grey-50">Laos</p>
                 </div>
               </div>
               <div className="gap-y-base flex flex-col pb-6">
@@ -207,8 +207,8 @@ const VariantStockForm = ({ form }: Props) => {
 
               {!!selectedLocations.length && (
                 <div className="text-grey-50 mb-6 flex items-center justify-between border-t border-dashed pt-6">
-                  <p>Total inventory at all locations</p>
-                  <p>{`${totalStockedQuantity} available`}</p>
+                  <p>Kogu laoseisu kõigis asukohtades</p>
+                  <p>{`${totalStockedQuantity} saadaval`}</p>
                 </div>
               )}
               <Button
@@ -228,7 +228,7 @@ const VariantStockForm = ({ form }: Props) => {
                   )
                 }}
               >
-                Manage locations
+                Halda asukohti
               </Button>
             </div>
           </div>

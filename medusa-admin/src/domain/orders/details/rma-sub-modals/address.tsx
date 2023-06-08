@@ -76,71 +76,71 @@ const RMAEditAddressSubModal: React.FC<RMAEditAddressSubModalProps> = ({
       <form onSubmit={handleSubmit(submit)}>
         <Modal.Content>
           <div className="h-full">
-            <h2 className="inter-base-semibold mb-4">Search for additional </h2>
+            <h2 className="inter-base-semibold mb-4">Otsige lisa </h2>
           </div>
           <div>
             <div>
               <div>
-                <span className="inter-base-semibold">General</span>
+                <span className="inter-base-semibold">Üldiselt</span>
 
                 <div className="gap-x-base gap-y-base grid grid-cols-2">
                   <Input
                     {...register("first_name", {
                       required: true,
                     })}
-                    placeholder="First Name"
-                    label="First Name"
+                    placeholder="Eesnimi"
+                    label="Eesnimi"
                     required
                   />
                   <Input
                     {...register("last_name", {
                       required: true,
                     })}
-                    placeholder="Last Name"
-                    label="Last Name"
+                    placeholder="Perekonnanimi"
+                    label="Perekonnanimi"
                     required
                   />
                   <Input
                     {...register("phone")}
-                    placeholder="Phone"
-                    label="Phone"
+                    placeholder="Telefon"
+                    label="Telefon"
                   />
                 </div>
               </div>
               <div className="mt-8">
-                <span className="inter-base-semibold">Shipping Address</span>
+                <span className="inter-base-semibold">Kohaletoimetamise aadress</span>
                 <div className="gap-y-base my-4 grid">
                   <Input
                     {...register("address_1", {
                       required: true,
                     })}
-                    placeholder="Address 1"
-                    label="Address 1"
+                    placeholder="Aadress 1"
+                    label="Aadress 1"
                     required
                   />
                   <Input
                     {...register("address_2")}
-                    placeholder="Address 2"
-                    label="Address 2"
+                    placeholder="Aadress 2"
+                    label="Aadress 2"
                   />
                 </div>
                 <div className="gap-x-base gap-y-base grid grid-cols-2">
                   <Input
                     {...register("province")}
-                    placeholder="Province"
-                    label="Province"
+                    placeholder="Provints"
+                    label="Provints"
                   />
                   <Input
                     {...register("postal_code", {
                       required: true,
                     })}
-                    placeholder="Postal code"
-                    label="Postal code"
+                    placeholder="Postiindeks"
+                    label="Postiindeks"
                     required
                   />
                   <Input
-                    placeholder="City"
-                    label="City"
+                    placeholder="Linn"
+                    label="Linn"
                     {...register("city", {
                       required: true,
                     })}
@@ -156,7 +156,7 @@ const RMAEditAddressSubModal: React.FC<RMAEditAddressSubModalProps> = ({
                       return (
                         <Select
                           {...field}
-                          label="Country"
+                          label="Riik"
                           options={countryOptions}
                           required
                         />
@@ -177,7 +177,7 @@ const RMAEditAddressSubModal: React.FC<RMAEditAddressSubModalProps> = ({
               onClick={() => pop()}
               type="button"
             >
-              Back
+              Tagasi
             </Button>
             <Button
               variant="primary"
@@ -185,7 +185,7 @@ const RMAEditAddressSubModal: React.FC<RMAEditAddressSubModalProps> = ({
               size="small"
               type="submit"
             >
-              Add
+              Lisa
             </Button>
           </div>
         </Modal.Footer>

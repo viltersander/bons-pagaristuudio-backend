@@ -1,5 +1,6 @@
 import { useAdminDeletePriceList } from "medusa-react"
-import moment from "moment"
+import { format } from "date-fns";
+import { et } from "date-fns/locale";
 import * as React from "react"
 import { useNavigate } from "react-router-dom"
 import Fade from "../../../../components/atoms/fade-wrapper"
@@ -24,7 +25,7 @@ const Header = ({ priceList }) => {
         {priceList.customer_groups.length ? (
           <div className="border-grey-20 border-l pl-6">
             <span className="inter-base-regular text-grey-50">
-              Customer groups
+             Kliendirühmad
             </span>
             <p className="inter-base-regular text-grey-90">
               <PriceListCustomerGroupsFormatter
@@ -34,14 +35,16 @@ const Header = ({ priceList }) => {
           </div>
         ) : null}
         <div className="border-grey-20 border-l pl-6">
-          <span className="inter-base-regular text-grey-50">Last edited</span>
+          <span className="inter-base-regular text-grey-50">Viimati muudetud</span>
           <p className="inter-base-regular text-grey-90">
-            {moment(priceList.updated_at).format("ddd, D MMM YYYY")}
+            {format(new Date(priceList.updated_at), "d MMM yyyy", {
+              locale: et, // Set the Estonian locale
+            })}
           </p>
         </div>
         <div className="border-grey-20 border-l pl-6">
           <span className="inter-base-regular text-grey-50">
-            Price overrides
+            Hinna soodustused
           </span>
           <p className="inter-base-regular text-grey-90">
             {priceList.prices?.length}
@@ -66,7 +69,7 @@ const PriceListCustomerGroupsFormatter = ({ groups }) => {
   return (
     <>
       {group}
-      {other && <span className="text-grey-40"> + {other} more</span>}
+      {other && <span className="text-grey-40"> + {other} veel</span>}
     </>
   )
 }
@@ -79,17 +82,17 @@ const HeadingBodyCard = ({ priceList, setIsOpen, ...props }) => {
 
   const onDelete = async () => {
     const shouldDelete = await dialog({
-      heading: "Delete Price list",
-      text: "Are you sure you want to delete this price list?",
+      heading: "Kustuta hinnakiri",
+      text: "Kas soovite kindlasti selle hinnakirja kustutada?",
     })
     if (shouldDelete) {
       deletePriceList.mutate(undefined, {
         onSuccess: () => {
-          notification("Success", "Price list deleted successfully", "success")
+          notification("Õnnestus", "Hinnakirja kustutamine õnnestus", "success")
           navigate("/a/pricing/")
         },
         onError: (err) => {
-          notification("Ooops", getErrorMessage(err), "error")
+          notification("Viga", getErrorMessage(err), "error")
         },
       })
     }
@@ -97,12 +100,12 @@ const HeadingBodyCard = ({ priceList, setIsOpen, ...props }) => {
 
   const actionables = [
     {
-      label: "Edit price list details",
+      label: "Muutke hinnakirja üksikasju",
       onClick: () => setIsOpen(true),
       icon: <EditIcon size={20} />,
     },
     {
-      label: "Delete price list",
+      label: "Kustuta hinnakiri",
       onClick: onDelete,
       variant: "danger" as const,
       icon: <TrashIcon size={20} />,

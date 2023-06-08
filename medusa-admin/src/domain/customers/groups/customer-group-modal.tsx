@@ -64,10 +64,10 @@ function CustomerGroupModal({
     const { general, metadata } = data
 
     const onSuccess = () => {
-      const title = customerGroup ? "Group Updated" : "Group Created"
+      const title = customerGroup ? "Rühm uuendatud" : "Rühm loodud"
       const msg = customerGroup
-        ? "The customer group has been updated"
-        : "The customer group has been created"
+        ? "Kliendirühm on uuendatud"
+        : "Kliendirühm on loodud"
 
       notification(title, msg, "success")
 
@@ -75,7 +75,7 @@ function CustomerGroupModal({
     }
 
     const onError = (err: Error) => {
-      notification("Error", getErrorMessage(err), "error")
+      notification("Viga", getErrorMessage(err), "error")
     }
 
     if (customerGroup) {
@@ -110,7 +110,7 @@ function CustomerGroupModal({
       <Modal.Body>
         <Modal.Header handleClose={onClose}>
           <span className="inter-xlarge-semibold">
-            {customerGroup ? "Edit" : "Create a New"} Customer Group
+            {customerGroup ? "Muuda" : "Looge uus"} kliendirühm
           </span>
         </Modal.Header>
 
@@ -118,11 +118,11 @@ function CustomerGroupModal({
           <Modal.Content>
             <div className="gap-y-xlarge flex flex-col">
               <div>
-                <h2 className="inter-base-semibold mb-base">Details</h2>
+                <h2 className="inter-base-semibold mb-base">Üksikasjad</h2>
                 <CustomerGroupGeneralForm form={nestedForm(form, "general")} />
               </div>
               <div>
-                <h2 className="inter-base-semibold mb-base">Metadata</h2>
+                <h2 className="inter-base-semibold mb-base">Metaandmed</h2>
                 <MetadataForm form={nestedForm(form, "metadata")} />
               </div>
             </div>
@@ -137,10 +137,10 @@ function CustomerGroupModal({
                 type="button"
                 onClick={onClose}
               >
-                Cancel
+                Tühista
               </Button>
               <Button size="small" variant="primary" type="submit">
-                <span>{customerGroup ? "Edit" : "Publish"} Group</span>
+                <span>{customerGroup ? "Muuda" : "Avalda"} rühm</span>
               </Button>
             </div>
           </Modal.Footer>

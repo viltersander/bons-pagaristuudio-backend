@@ -26,7 +26,7 @@ const BannerCard: React.FC<BannerCardProps> & {
           <div className="rounded-base h-[72px] min-h-[72px] w-[72px] min-w-[72px] overflow-hidden">
             <img
               src={thumbnail}
-              alt="Thumbnail"
+              alt="Pisipilt"
               className="h-full w-full object-cover"
             />
           </div>

@@ -11,13 +11,13 @@ type ItemsShippedProps = {
 const ItemsShipped: React.FC<ItemsShippedProps> = ({ event }) => {
   const title =
     event.sourceType === "claim"
-      ? "Replacement Items Shipped"
+      ? "Asenduskaubad tarnitud"
       : event.sourceType === "exchange"
-      ? "Exchange Items Shipped"
-      : "Items Shipped"
+      ? "Vahetuskaubad saadetud"
+      : "Kaubad saadetud"
 
   const detail = event.locationName
-    ? `Shipped from ${event.locationName}`
+    ? `Saadetud asukohast ${event.locationName}`
     : undefined
 
   const args = {

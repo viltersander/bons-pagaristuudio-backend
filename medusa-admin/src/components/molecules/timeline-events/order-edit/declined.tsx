@@ -28,7 +28,7 @@ const EditDeclined: React.FC<EditDeclinedProps> = ({ event }) => {
 
   return (
     <EventContainer
-      title={"Order Edit declined"}
+      title={"Tellimuse muutmine lükati tagasi"}
       icon={<XCircleIcon size={20} />}
       time={event.time}
       isFirst={event.first}

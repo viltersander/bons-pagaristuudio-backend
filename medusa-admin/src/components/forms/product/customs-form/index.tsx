@@ -37,18 +37,18 @@ const CustomsForm = ({ form }: CustomsFormProps) => {
   return (
     <div className="gap-large pb-2xsmall grid grid-cols-2">
       <InputField
-        label="MID Code"
+        label="MID kood"
         placeholder="XDSKLAD9999..."
         {...register(path("mid_code"), {
-          pattern: FormValidator.whiteSpaceRule("MID Code"),
+          pattern: FormValidator.whiteSpaceRule("MID kood"),
         })}
         errors={errors}
       />
       <InputField
-        label="HS Code"
+        label="HS kood"
         placeholder="BDJSK39277W..."
         {...register(path("hs_code"), {
-          pattern: FormValidator.whiteSpaceRule("HS Code"),
+          pattern: FormValidator.whiteSpaceRule("HS kood"),
         })}
         errors={errors}
       />
@@ -58,8 +58,8 @@ const CustomsForm = ({ form }: CustomsFormProps) => {
         render={({ field }) => {
           return (
             <NextSelect
-              label="Country of origin"
-              placeholder="Choose a country"
+              label="Päritoluriik"
+              placeholder="Vali riik"
               options={countryOptions}
               isSearchable
               isClearable

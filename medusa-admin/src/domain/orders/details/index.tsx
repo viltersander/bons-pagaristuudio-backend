@@ -27,6 +27,7 @@ import {
 
 import { capitalize } from "lodash"
 import moment from "moment"
+import 'moment/locale/et';
 import { useEffect, useMemo, useState } from "react"
 import { useHotkeys } from "react-hotkeys-hook"
 import Avatar from "../../../components/atoms/avatar"
@@ -65,6 +66,9 @@ import SummaryCard from "./detail-cards/summary"
 import EmailModal from "./email-modal"
 import MarkShippedModal from "./mark-shipped"
 import CreateRefundModal from "./refund"
+import { format } from 'date-fns';
+import et from 'date-fns/locale/et'; 
+
 
 type OrderDetailFulfillment = {
   title: string
@@ -83,7 +87,7 @@ const gatherAllFulfillments = (order) => {
 
   order.fulfillments.forEach((f, index) => {
     all.push({
-      title: `Fulfillment #${index + 1}`,
+      title: `Täitmine #${index + 1}`,
       type: "default",
       fulfillment: f,
     })
@@ -94,7 +98,7 @@ const gatherAllFulfillments = (order) => {
       if (claim.fulfillment_status !== "not_fulfilled") {
         claim.fulfillments.forEach((fulfillment, index) => {
           all.push({
-            title: `Claim fulfillment #${index + 1}`,
+            title: `Kinnita täitmine #${index + 1}`,
             type: "claim",
             fulfillment,
             claim,
@@ -109,7 +113,7 @@ const gatherAllFulfillments = (order) => {
       if (swap.fulfillment_status !== "not_fulfilled") {
         swap.fulfillments.forEach((fulfillment, index) => {
           all.push({
-            title: `Swap fulfillment #${index + 1}`,
+            title: `Vahetuse täitmine #${index + 1}`,
             type: "swap",
             fulfillment,
             swap,
@@ -184,12 +188,12 @@ const OrderDetails = () => {
 
   const [, handleCopy] = useClipboard(`${order?.display_id!}`, {
     successDuration: 5500,
-    onCopied: () => notification("Success", "Order ID copied", "success"),
+    onCopied: () => notification("Õnnestus", "Toote ID kopeeritud", "success"),
   })
 
   const [, handleCopyEmail] = useClipboard(order?.email!, {
     successDuration: 5500,
-    onCopied: () => notification("Success", "Email copied", "success"),
+    onCopied: () => notification("Õnnestus", "Mail kopeeritud", "success"),
   })
 
   // @ts-ignore
@@ -198,10 +202,10 @@ const OrderDetails = () => {
 
   const handleDeleteOrder = async () => {
     const shouldDelete = await dialog({
-      heading: "Cancel order",
-      text: "Are you sure you want to cancel the order?",
+      heading: "Tühista tellimus",
+      text: "Kas olete kindel, et soovite tellimuse tühistada?",
       extraConfirmation: true,
-      entityName: `order #${order?.display_id}`,
+      entityName: `tellimus #${order?.display_id}`,
     })
 
     if (!shouldDelete) {
@@ -210,8 +214,8 @@ const OrderDetails = () => {
 
     return cancelOrder.mutate(undefined, {
       onSuccess: () =>
-        notification("Success", "Successfully canceled order", "success"),
-      onError: (err) => notification("Error", getErrorMessage(err), "error"),
+        notification("Õnnestus", "Tellimuse tühistamine õnnestus", "success"),
+      onError: (err) => notification("Viga", getErrorMessage(err), "error"),
     })
   }
 
@@ -219,19 +223,19 @@ const OrderDetails = () => {
 
   const customerActionables: ActionType[] = [
     {
-      label: "Go to Customer",
+      label: "Minge kliendi juurde",
       icon: <DetailsIcon size={"20"} />,
       onClick: () => navigate(`/a/customers/${order?.customer.id}`),
     },
     {
-      label: "Transfer ownership",
+      label: "Omandiõigus üle anda",
       icon: <RefreshIcon size={"20"} />,
       onClick: () => toggleTransferOrderModal(),
     },
   ]
 
   customerActionables.push({
-    label: "Edit Shipping Address",
+    label: "Redigeeri tarneaadressi",
     icon: <TruckIcon size={"20"} />,
     onClick: () => {
       setAddressModal({
@@ -243,7 +247,7 @@ const OrderDetails = () => {
   })
 
   customerActionables.push({
-    label: "Edit Billing Address",
+    label: "Muuda arveldusaadressi",
     icon: <DollarSignIcon size={"20"} />,
     onClick: () => {
       setAddressModal({
@@ -256,7 +260,7 @@ const OrderDetails = () => {
 
   if (order?.email) {
     customerActionables.push({
-      label: "Edit Email Address",
+      label: "Muuda meiliaadressi",
       icon: <MailIcon size={"20"} />,
       onClick: () => {
         setEmailModal({
@@ -287,7 +291,7 @@ const OrderDetails = () => {
       <OrderEditProvider orderId={id!}>
         <BackButton
           path="/a/orders"
-          label="Back to Orders"
+          label="Tagasi tellimuste juurde"
           className="mb-xsmall"
         />
         {isLoading || !order ? (
@@ -301,7 +305,7 @@ const OrderDetails = () => {
                 <BodyCard
                   className={"mb-4 min-h-[200px] w-full"}
                   customHeader={
-                    <Tooltip side="top" content={"Copy ID"}>
+                    <Tooltip side="top" content={"Kopeeri ID"}>
                       <button
                         className="inter-xlarge-semibold text-grey-90 active:text-violet-90 flex cursor-pointer items-center gap-x-2"
                         onClick={handleCopy}
@@ -310,14 +314,12 @@ const OrderDetails = () => {
                       </button>
                     </Tooltip>
                   }
-                  subtitle={moment(order.created_at).format(
-                    "D MMMM YYYY hh:mm a"
-                  )}
+                  subtitle={format(new Date(order.created_at), "d MMMM yyyy hh:mm a", { locale: et })}
                   status={<OrderStatusComponent status={order.status} />}
                   forceDropdown={true}
                   actionables={[
                     {
-                      label: "Cancel Order",
+                      label: "Tühista tellimus",
                       icon: <CancelIcon size={"20"} />,
                       variant: "danger",
                       onClick: () => handleDeleteOrder(),
@@ -327,7 +329,7 @@ const OrderDetails = () => {
                   <div className="mt-6 flex space-x-6 divide-x">
                     <div className="flex flex-col">
                       <div className="inter-smaller-regular text-grey-50 mb-1">
-                        Email
+                        Mail
                       </div>
                       <button
                         className="text-grey-90 active:text-violet-90 flex cursor-pointer items-center gap-x-1"
@@ -339,13 +341,13 @@ const OrderDetails = () => {
                     </div>
                     <div className="flex flex-col pl-6">
                       <div className="inter-smaller-regular text-grey-50 mb-1">
-                        Phone
+                        Telefon
                       </div>
                       <div>{order.shipping_address?.phone || "N/A"}</div>
                     </div>
                     <div className="flex flex-col pl-6">
                       <div className="inter-smaller-regular text-grey-50 mb-1">
-                        Payment
+                        Makse
                       </div>
                       <div>
                         {order.payments
@@ -360,7 +362,7 @@ const OrderDetails = () => {
 
                 <BodyCard
                   className={"mb-4 h-auto min-h-0 w-full"}
-                  title="Payment"
+                  title="Makse"
                   status={
                     <PaymentStatusComponent status={order.payment_status} />
                   }
@@ -379,9 +381,8 @@ const OrderDetails = () => {
                           currency={order.currency_code}
                           totalAmount={payment.amount}
                           totalTitle={payment.id}
-                          subtitle={`${moment(payment.created_at).format(
-                            "DD MMM YYYY hh:mm"
-                          )}`}
+                          subtitle={format(new Date(order.created_at), "d MMMM yyyy hh:mm a", { locale: et })}
+                          
                         />
                         {!!payment.amount_refunded && (
                           <div className="mt-4 flex justify-between">
@@ -390,7 +391,7 @@ const OrderDetails = () => {
                                 <CornerDownRightIcon />
                               </div>
                               <div className="inter-small-regular text-grey-90">
-                                Refunded
+                                Tagastatud makse
                               </div>
                             </div>
                             <div className="flex">
@@ -411,7 +412,7 @@ const OrderDetails = () => {
                     ))}
                     <div className="mt-4 flex justify-between">
                       <div className="inter-small-semibold text-grey-90">
-                        Total Paid
+                        Kokku makstud
                       </div>
                       <div className="flex">
                         <div className="inter-small-semibold text-grey-90 mr-3">
@@ -429,7 +430,7 @@ const OrderDetails = () => {
                 </BodyCard>
                 <BodyCard
                   className={"mb-4 h-auto min-h-0 w-full"}
-                  title="Fulfillment"
+                  title="Täitmine"
                   status={
                     <FulfillmentStatusComponent
                       status={order.fulfillment_status}
@@ -443,7 +444,7 @@ const OrderDetails = () => {
                         size="small"
                         onClick={() => setShowFulfillment(true)}
                       >
-                        Create Fulfillment
+                        Loo täitmine
                       </Button>
                     )
                   }
@@ -452,7 +453,7 @@ const OrderDetails = () => {
                     {order.shipping_methods.map((method) => (
                       <div className="flex flex-col" key={method.id}>
                         <span className="inter-small-regular text-grey-50">
-                          Shipping Method
+                          Saatmisviis 
                         </span>
                         <span className="inter-small-regular text-grey-90 mt-2">
                           {method?.shipping_option?.name || ""}
@@ -476,7 +477,7 @@ const OrderDetails = () => {
                 </BodyCard>
                 <BodyCard
                   className={"mb-4 h-auto min-h-0 w-full"}
-                  title="Customer"
+                  title="Klient"
                   actionables={customerActionables}
                 >
                   <div className="mt-6">
@@ -507,7 +508,7 @@ const OrderDetails = () => {
                     <div className="mt-6 flex space-x-6 divide-x">
                       <div className="flex flex-col">
                         <div className="inter-small-regular text-grey-50 mb-1">
-                          Contact
+                          Kontakt
                         </div>
                         <div className="inter-small-regular flex flex-col">
                           <span>{order.email}</span>
@@ -515,18 +516,18 @@ const OrderDetails = () => {
                         </div>
                       </div>
                       <FormattedAddress
-                        title={"Shipping"}
+                        title={"Transport"}
                         addr={order.shipping_address}
                       />
                       <FormattedAddress
-                        title={"Billing"}
+                        title={"Arveldamine"}
                         addr={order.billing_address}
                       />
                     </div>
                   </div>
                 </BodyCard>
                 <div className="mt-large">
-                  <RawJSON data={order} title="Raw order" />
+                  <RawJSON data={order} title="Töötlemata tellimus" />
                 </div>
               </div>
               <Timeline orderId={order.id} />

@@ -31,13 +31,13 @@ describe("RefundAmountForm refund claim", () => {
     )
   })
 
-  it("should render correctly", async () => {
+  it("peaks õigesti renderdama", async () => {
     // Initial value should be 0
     expect(screen.getByText("€0.00")).toBeInTheDocument()
   })
 
-  it("should update value when input is changed", async () => {
-    const button = screen.getByLabelText("Edit refund amount")
+  it("peaks sisendi muutmisel väärtust värskendama", async () => {
+    const button = screen.getByLabelText("Muuda tagasimakse summat")
 
     const user = userEvent.setup()
 

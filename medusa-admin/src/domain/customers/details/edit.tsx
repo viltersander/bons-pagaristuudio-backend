@@ -122,7 +122,7 @@ const EditCustomerModal = ({
               </div>
             </div>
             <div>
-              <h2 className="inter-base-semibold mb-base">Metadata</h2>
+              <h2 className="inter-base-semibold mb-base">Metaandmed</h2>
               <MetadataForm form={nestedForm(form, "metadata")} />
             </div>
           </div>

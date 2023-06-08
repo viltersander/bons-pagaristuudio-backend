@@ -80,7 +80,7 @@ const MediaForm = ({ form }: Props) => {
         <div>
           <FileUploadField
             onFileChosen={handleFilesChosen}
-            placeholder="1200 x 1600 (3:4) recommended, up to 10MB each"
+            placeholder="1200 x 1600 (3:4) soovitatav, igaüks kuni 10 MB"
             multiple
             filetypes={["image/gif", "image/jpeg", "image/png", "image/webp"]}
             className="py-large"
@@ -90,7 +90,7 @@ const MediaForm = ({ form }: Props) => {
       {fields.length > 0 && (
         <div className="mt-large">
           <div className="mb-small flex items-center justify-between">
-            <h2 className="inter-large-semibold">Uploads</h2>
+            <h2 className="inter-large-semibold">Üleslaadimised</h2>
             <ModalActions
               number={selected.length}
               onDeselect={handleDeselect}
@@ -128,7 +128,7 @@ const Image = ({ image, index, form, remove }: ImageProps) => {
 
   const actions: ActionType[] = [
     {
-      label: "Delete",
+      label: "Kustuta",
       onClick: () => remove(index),
       icon: <TrashIcon size={20} />,
       variant: "danger",
@@ -156,7 +156,7 @@ const Image = ({ image, index, form, remove }: ImageProps) => {
                 <div className="flex h-16 w-16 items-center justify-center">
                   <img
                     src={image.url}
-                    alt={image.name || "Uploaded image"}
+                    alt={image.name || "Üles laaditud pilt"}
                     className="rounded-rounded max-h-[64px] max-w-[64px]"
                   />
                 </div>
@@ -205,7 +205,7 @@ const ModalActions = ({ number, onRemove, onDeselect }: ModalActionsProps) => {
           }
         )}
       >
-        <span>{number} selected</span>
+        <span>{number} valitud</span>
         <div className="bg-grey-20 h-5 w-px" />
         <div className="gap-x-xsmall flex items-center">
           <Button
@@ -214,7 +214,7 @@ const ModalActions = ({ number, onRemove, onDeselect }: ModalActionsProps) => {
             type="button"
             onClick={onDeselect}
           >
-            Deselect
+            Tühista valik
           </Button>
           <Button
             variant="danger"
@@ -222,7 +222,7 @@ const ModalActions = ({ number, onRemove, onDeselect }: ModalActionsProps) => {
             type="button"
             onClick={onRemove}
           >
-            Delete
+            Kustuta
           </Button>
         </div>
       </div>

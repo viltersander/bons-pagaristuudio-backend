@@ -22,17 +22,17 @@ const GiftCardReceiverForm = ({ form }: GiftCardReceiverFormProps) => {
   return (
     <div className="gap-y-large flex flex-col">
       <InputField
-        label="Email"
+        label="Mail"
         {...register(path("email"), {
-          required: FormValidator.required("Email"),
-          pattern: FormValidator.email("Email"),
+          required: FormValidator.required("Mail"),
+          pattern: FormValidator.email("Mail"),
         })}
         required
         errors={errors}
       />
       <TextArea
-        label="Personal Message"
-        placeholder="Write a personal message here"
+        label="Isiklik sõnum"
+        placeholder="Kirjuta siia isiklik sõnum"
         rows={7}
         {...register(path("message"))}
       />

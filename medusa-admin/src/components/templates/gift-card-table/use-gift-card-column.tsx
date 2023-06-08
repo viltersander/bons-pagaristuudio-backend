@@ -1,4 +1,5 @@
-import moment from "moment"
+import { format } from 'date-fns'
+import { et } from 'date-fns/locale'
 import { useMemo } from "react"
 import { formatAmountWithSymbol } from "../../../utils/prices"
 import StatusIndicator from "../../fundamentals/status-indicator"
@@ -88,7 +89,7 @@ const useGiftCardTableColums = () => {
         Cell: ({ cell: { value }, index }) => (
           <Table.Cell className="pr-2" key={index}>
             <div className="rounded-rounded flex w-full justify-end">
-              {moment(value).format("MMM Do YYYY")}
+            {format(new Date(value), 'do MMM yyyy', { locale: et })}
             </div>
           </Table.Cell>
         ),

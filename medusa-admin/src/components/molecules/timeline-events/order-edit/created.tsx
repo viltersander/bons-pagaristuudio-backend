@@ -54,7 +54,7 @@ const EditCreated: React.FC<EditCreatedProps> = ({ event }) => {
 
   const notification = useNotification()
 
-  const name = `Order Edit ${type}`
+  const name = `Tellimuse muutmine ${type}`
 
   const { user } = useAdminUser(user_id)
 
@@ -67,10 +67,10 @@ const EditCreated: React.FC<EditCreatedProps> = ({ event }) => {
   const onDeleteOrderEditClicked = () => {
     deleteOrderEdit.mutate(undefined, {
       onSuccess: () => {
-        notification("Success", `Successfully deleted Order Edit`, "success")
+        notification("Õnnestus", `Tellimuse redigeerimise kustutamine õnnestus`, "success")
       },
       onError: (err) => {
-        notification("Error", getErrorMessage(err), "error")
+        notification("Viga", getErrorMessage(err), "error")
       },
     })
   }
@@ -78,33 +78,33 @@ const EditCreated: React.FC<EditCreatedProps> = ({ event }) => {
   const onCancelOrderEditClicked = () => {
     cancelOrderEdit.mutate(undefined, {
       onSuccess: () => {
-        notification("Success", `Successfully canceled Order Edit`, "success")
+        notification("Õnnestus", `Tellimuse muutmise tühistamine õnnestus`, "success")
       },
       onError: (err) => {
-        notification("Error", getErrorMessage(err), "error")
+        notification("Viga", getErrorMessage(err), "error")
       },
     })
   }
 
   const onConfirmEditClicked = async () => {
     const shouldDelete = await forceConfirmDialog({
-      heading: "Delete Confirm",
-      text: "By force confirming you allow the order edit to be fulfilled. You will still have to reconcile payments manually after confirming.",
-      confirmText: "Yes, Force Confirm",
-      cancelText: "No, Cancel",
+      heading: "Kinnitage kustutamine",
+      text: "Sundkinnitusega lubate tellimuse muudatuse täita. Pärast kinnitamist peate siiski maksed käsitsi kooskõlastama.",
+      confirmText: "Jah, kinnita jõuga",
+      cancelText: "Ei, tühista",
     })
 
     if (shouldDelete) {
       confirmOrderEdit.mutate(undefined, {
         onSuccess: () => {
           notification(
-            "Success",
-            `Successfully confirmed Order Edit`,
+            "Õnnestus",
+            `Tellimuse muutmine on edukalt kinnitatud`,
             "success"
           )
         },
         onError: (err) => {
-          notification("Error", getErrorMessage(err), "error")
+          notification("Viga", getErrorMessage(err), "error")
         },
       })
     }
@@ -152,13 +152,13 @@ const EditCreated: React.FC<EditCreatedProps> = ({ event }) => {
                   variant="ghost"
                   onClick={onContinueEdit}
                 >
-                  Continue order edit
+                  Jätka tellimuse muutmist
                 </Button>
                 <TwoStepDelete
                   onDelete={onDeleteOrderEditClicked}
                   className="border-grey-20 w-full border"
                 >
-                  Delete the order edit
+                  Kustuta tellimuse muudatus
                 </TwoStepDelete>
               </>
             ) : (
@@ -169,7 +169,7 @@ const EditCreated: React.FC<EditCreatedProps> = ({ event }) => {
                   variant="ghost"
                   onClick={onCopyConfirmationLinkClicked}
                 >
-                  Copy Confirmation-Request Link
+                  Kopeeri kinnitus-taotluse link
                 </Button>
                 <Button
                   className="border-grey-20 w-full border"
@@ -177,14 +177,14 @@ const EditCreated: React.FC<EditCreatedProps> = ({ event }) => {
                   variant="ghost"
                   onClick={onConfirmEditClicked}
                 >
-                  Force Confirm
+                  Kinnitage jõuga
                 </Button>
 
                 <TwoStepDelete
                   onDelete={onCancelOrderEditClicked}
                   className="border-grey-20 w-full border"
                 >
-                  Cancel Order Edit
+                  Tühista tellimuse muutmine
                 </TwoStepDelete>
               </>
             )}
@@ -221,7 +221,7 @@ const OrderEditChanges = ({ orderEdit }) => {
     <div className="gap-y-base flex flex-col">
       {added.length > 0 && (
         <div>
-          <span className="inter-small-regular text-grey-50">Added</span>
+          <span className="inter-small-regular text-grey-50">Lisatud</span>
           {added.map((change) => (
             <OrderEditChangeItem change={change} key={change.id} />
           ))}
@@ -229,7 +229,7 @@ const OrderEditChanges = ({ orderEdit }) => {
       )}
       {removed.length > 0 && (
         <div>
-          <span className="inter-small-regular text-grey-50">Removed</span>
+          <span className="inter-small-regular text-grey-50">Eemaldatud</span>
           {removed.map((change) => (
             <OrderEditChangeItem change={change} key={change.id} />
           ))}

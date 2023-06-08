@@ -38,7 +38,7 @@ const useProductActions = (product: Product) => {
       icon: <EditIcon size={20} />,
     },
     {
-      label: product.status === "published" ? "Unpublish" : "Publish",
+      label: product.status === "published" ? "Tühista avaldamine" : "Avaldatud",
       onClick: () => {
         const newStatus = product.status === "published" ? "draft" : "published"
         updateProduct.mutate(

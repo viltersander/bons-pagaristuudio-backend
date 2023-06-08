@@ -1,10 +1,9 @@
-import clsx from "clsx"
-import moment from "moment"
-import React, { ReactNode, useState } from "react"
-import Tooltip from "../../atoms/tooltip"
-import BellOffIcon from "../../fundamentals/icons/bell-off-icon"
-import ChevronDownIcon from "../../fundamentals/icons/chevron-down"
-import ChevronUpIcon from "../../fundamentals/icons/chevron-up"
+import clsx from "clsx";
+import React, { ReactNode, useState } from "react";
+import Tooltip from "../../atoms/tooltip";
+import BellOffIcon from "../../fundamentals/icons/bell-off-icon";
+import ChevronDownIcon from "../../fundamentals/icons/chevron-down";
+import ChevronUpIcon from "../../fundamentals/icons/chevron-up";
 
 export enum EventIconColor {
   GREEN = "text-emerald-40",
@@ -15,18 +14,55 @@ export enum EventIconColor {
 }
 
 export type EventContainerProps = {
-  icon: React.ReactNode
-  iconColor?: EventIconColor
-  title: string
-  time: Date
-  noNotification?: boolean
-  topNode?: React.ReactNode
-  midNode?: React.ReactNode
-  isFirst?: boolean
-  expandable?: boolean
-  children: ReactNode
-  detail?: string | React.ReactNode
-}
+  icon: React.ReactNode;
+  iconColor?: EventIconColor;
+  title: string;
+  time: string; // Updated to string type
+  noNotification?: boolean;
+  topNode?: React.ReactNode;
+  midNode?: React.ReactNode;
+  isFirst?: boolean;
+  expandable?: boolean;
+  children: ReactNode;
+  detail?: string | React.ReactNode;
+};
+
+const formatTimeAgo = (time: Date): string => {
+  const now = new Date();
+  const diff = now.getTime() - time.getTime();
+  const day = 24 * 60 * 60 * 1000;
+  const daysAgo = Math.floor(diff / day);
+  if (daysAgo === 1) {
+    return "1 päev tagasi";
+  } else if (daysAgo > 1) {
+    return `${daysAgo} päeva tagasi`;
+  }
+  return "täna";
+};
+
+const formatDate = (time: string): string => {
+  const dateObj = new Date(time); // Convert to Date object
+  const days = ["Pühapäev", "Esmaspäev", "Teisipäev", "Kolmapäev", "Neljapäev", "Reede", "Laupäev"];
+  const months = [
+    "jaanuar",
+    "veebruar",
+    "märts",
+    "aprill",
+    "mai",
+    "juuni",
+    "juuli",
+    "august",
+    "september",
+    "oktoober",
+    "november",
+    "detsember",
+  ];
+  const day = dateObj.getDate();
+  const month = months[dateObj.getMonth()];
+  const year = dateObj.getFullYear();
+  const dayOfWeek = days[dateObj.getDay()];
+  return `${dayOfWeek}, ${day} ${month} ${year}`;
+};
 
 const EventContainer: React.FC<EventContainerProps> = ({
   icon,
@@ -41,11 +77,13 @@ const EventContainer: React.FC<EventContainerProps> = ({
   children,
   detail,
 }) => {
-  const [isExpanded, setIsExpanded] = useState<boolean>(!expandable)
+  const [isExpanded, setIsExpanded] = useState<boolean>(!expandable);
 
   const toggleExpand = () => {
-    setIsExpanded((prev) => !prev)
-  }
+    setIsExpanded((prev) => !prev);
+  };
+
+  const formattedTime = formatDate(time);
 
   return (
     <div className="mb-base">
@@ -64,11 +102,7 @@ const EventContainer: React.FC<EventContainerProps> = ({
           {topNode}
           {expandable && (
             <button onClick={toggleExpand}>
-              {isExpanded ? (
-                <ChevronUpIcon size={16} />
-              ) : (
-                <ChevronDownIcon size={16} />
-              )}
+              {isExpanded ? <ChevronUpIcon size={16} /> : <ChevronDownIcon size={16} />}
             </button>
           )}
         </div>
@@ -79,10 +113,8 @@ const EventContainer: React.FC<EventContainerProps> = ({
         </div>
         <div className="inter-small-regular mt-2xsmall w-full">
           <div className="flex items-center">
-            <Tooltip content={new Date(time).toUTCString()}>
-              <div className="inter-small-regular text-grey-50">
-                {moment(time).fromNow()}
-              </div>
+            <Tooltip content={formattedTime}>
+              <div className="inter-small-regular text-grey-50">{formatTimeAgo(new Date(time))}</div>
             </Tooltip>
             {midNode && (
               <span className="mx-2xsmall ">
@@ -91,18 +123,16 @@ const EventContainer: React.FC<EventContainerProps> = ({
             )}
             {midNode}
           </div>
-          {children && isExpanded && (
-            <div className="mt-small pb-base w-full">{children}</div>
-          )}
+          {children && isExpanded && <div className="mt-small pb-base w-full">{children}</div>}
           <div className="text-grey-50">{detail}</div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 const Dot = ({ size = "2px", bg = "bg-grey-50" }) => {
-  return <div className={`aspect-square h-[2px] w-[2px] ${bg} rounded-full`} />
-}
+  return <div className={`aspect-square h-[2px] w-[2px] ${bg} rounded-full`} />;
+};
 
-export default EventContainer
+export default EventContainer;

@@ -7,6 +7,8 @@ import { stringDisplayPrice } from "../../../utils/prices"
 import Tooltip from "../../atoms/tooltip"
 import ImagePlaceholder from "../../fundamentals/image-placeholder"
 import StatusIndicator from "../../fundamentals/status-indicator"
+import { format } from "date-fns";
+import et from "date-fns/locale/et";
 
 const decidePaymentStatus = (status: string) => {
   switch (status) {
@@ -106,7 +108,7 @@ export const useCustomerOrdersColumns = (): Column<Order>[] => {
         Header: "Kuupäev",
         accessor: "created_at",
         Cell: ({ value }) => {
-          return moment(value).format("DD MMM YYYY hh:mm")
+          return format(new Date(value), "dd MMM yyyy HH:mm", { locale: et });
         },
       },
       {

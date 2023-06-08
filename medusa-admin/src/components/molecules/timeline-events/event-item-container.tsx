@@ -27,7 +27,7 @@ const EventItemContainer: React.FC<EventItemContainerProps> = ({
           <div className="rounded-base h-10 w-[30px] overflow-hidden">
             <img
               src={item.thumbnail}
-              alt={`Thumbnail for ${item.title}`}
+              alt={`Pisipilt: ${item.title}`}
               className="h-full w-full object-cover"
             />
           </div>

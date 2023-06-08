@@ -1,4 +1,5 @@
-import moment from "moment"
+import { format } from 'date-fns'
+import { et } from 'date-fns/locale'
 import { useMemo } from "react"
 import { getColor } from "../../../utils/color"
 import StatusDot from "../../fundamentals/status-indicator"
@@ -43,7 +44,7 @@ const useDraftOrderTableColumns = () => {
         accessor: "created_at",
         Cell: ({ cell: { value, getCellProps } }) => (
           <Table.Cell {...getCellProps()}>
-            {moment(value).format("DD MMM YYYY")}
+            {format(new Date(value), 'dd MMMM yyyy', { locale: et })}
           </Table.Cell>
         ),
       },

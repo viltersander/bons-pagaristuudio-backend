@@ -80,7 +80,7 @@ const MarkShippedModal: React.FC<MarkShippedModalProps> = ({
       | typeof markClaimShipped
 
     let action: actionType = markOrderShipped
-    let successText = "Successfully marked order as shipped"
+    let successText = "Tellimus märgiti saadetuks"
     let requestObj
 
     switch (type) {
@@ -92,7 +92,7 @@ const MarkShippedModal: React.FC<MarkShippedModalProps> = ({
           tracking_numbers,
           no_notification: noNotis,
         }
-        successText = "Successfully marked swap as shipped"
+        successText = "Vahetusleping märgiti saadetuks"
         break
 
       case "claim":
@@ -102,7 +102,7 @@ const MarkShippedModal: React.FC<MarkShippedModalProps> = ({
           claim_id: resourceId,
           tracking_numbers,
         }
-        successText = "Successfully marked claim as shipped"
+        successText = "Nõue märgiti edukalt saadetuks"
         break
 
       default:
@@ -116,10 +116,10 @@ const MarkShippedModal: React.FC<MarkShippedModalProps> = ({
 
     action.mutate(requestObj, {
       onSuccess: () => {
-        notification("Success", successText, "success")
+        notification("Õnnestus", successText, "success")
         handleCancel()
       },
-      onError: (err) => notification("Error", getErrorMessage(err), "error"),
+      onError: (err) => notification("Viga", getErrorMessage(err), "error"),
     })
   }
 
@@ -133,12 +133,12 @@ const MarkShippedModal: React.FC<MarkShippedModalProps> = ({
         <Modal.Body>
           <Modal.Header handleClose={handleCancel}>
             <span className="inter-xlarge-semibold">
-              Mark Fulfillment Shipped
+              Märgi täitmine saadetuks
             </span>
           </Modal.Header>
           <Modal.Content>
             <div className="flex flex-col">
-              <span className="inter-base-semibold mb-2">Tracking</span>
+              <span className="inter-base-semibold mb-2">Jälgimine</span>
               <div className="flex flex-col space-y-2">
                 {trackingNumbers.map((tn, index) => (
                   <Controller
@@ -152,9 +152,9 @@ const MarkShippedModal: React.FC<MarkShippedModalProps> = ({
                       return (
                         <Input
                           deletable={index !== 0}
-                          label={index === 0 ? "Tracking number" : ""}
+                          label={index === 0 ? "Jälgimisnumber" : ""}
                           type="text"
-                          placeholder={"Tracking number..."}
+                          placeholder={"Jälgimisnumber..."}
                           {...field}
                           onDelete={() => removeTracking(index)}
                         />
@@ -171,7 +171,7 @@ const MarkShippedModal: React.FC<MarkShippedModalProps> = ({
                 variant="secondary"
                 disabled={trackingNumbers.some((tn) => !tn.value)}
               >
-                + Add Additional Tracking Number
+                + Lisage täiendav jälgimisnumber
               </Button>
             </div>
           </Modal.Content>
@@ -198,7 +198,7 @@ const MarkShippedModal: React.FC<MarkShippedModalProps> = ({
                   type="checkbox"
                 />
                 <span className="text-grey-90 gap-x-xsmall ml-3 flex items-center">
-                  Send notifications
+                  Saatke teateid
                   <IconTooltip content="" />
                 </span>
               </div>
@@ -210,7 +210,7 @@ const MarkShippedModal: React.FC<MarkShippedModalProps> = ({
                   onClick={handleCancel}
                   type="button"
                 >
-                  Cancel
+                  Tühista
                 </Button>
                 <Button
                   size="large"
@@ -220,7 +220,7 @@ const MarkShippedModal: React.FC<MarkShippedModalProps> = ({
                   loading={isSubmitting}
                   disabled={isSubmitting}
                 >
-                  Complete
+                  Täidetud
                 </Button>
               </div>
             </div>

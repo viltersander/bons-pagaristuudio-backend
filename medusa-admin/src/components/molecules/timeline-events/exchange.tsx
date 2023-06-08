@@ -43,17 +43,17 @@ const ExchangeStatus: React.FC<ExchangeStatusProps> = ({ event }) => {
   return (
     <div className="inter-small-regular gap-x-base flex items-center">
       <div className="gap-y-2xsmall flex flex-col">
-        <span className="text-grey-50">Payment:</span>
+        <span className="text-grey-50">Makse:</span>
         <PaymentStatus paymentStatus={event.paymentStatus} />
       </div>
       {divider}
       <div className="gap-y-2xsmall flex flex-col">
-        <span className="text-grey-50">Return:</span>
+        <span className="text-grey-50">Tagastamine:</span>
         <ReturnStatus returnStatus={event.returnStatus} />
       </div>
       {divider}
       <div className="gap-y-2xsmall flex flex-col">
-        <span className="text-grey-50">Fulfillment:</span>
+        <span className="text-grey-50">Täitmine:</span>
         <FulfillmentStatus fulfillmentStatus={event.fulfillmentStatus} />
       </div>
     </div>
@@ -94,13 +94,13 @@ const Exchange: React.FC<ExchangeProps> = ({ event, refetch }) => {
 
     if (store.swap_link_template?.indexOf("{cart_id}") === -1) {
       setPaymentFormatWarning(
-        "Store payment link does not have the default format, as it does not contain '{cart_id}'. Either update the payment link to include '{cart_id}' or update this method to reflect the format of your payment link."
+        "Poe makselingil ei ole vaikevormingut, kuna see ei sisalda '{cart_id}'. Värskendage makselinki, et lisada see '{cart_id}', või värskendage seda meetodit, et kajastada oma makselingi vormingut."
       )
     }
 
     if (!store.swap_link_template) {
       setPaymentFormatWarning(
-        "No payment link has been set for this store. Please update store settings."
+        "Selle poe jaoks pole makselinki määratud. Värskendage poe seadeid."
       )
     }
 
@@ -137,11 +137,11 @@ const Exchange: React.FC<ExchangeProps> = ({ event, refetch }) => {
     Medusa.orders
       .processSwapPayment(event.orderId, event.id)
       .then((_res) => {
-        notification("Success", "Payment processed successfully", "success")
+        notification("Õnnestus", "Makse töötlemine õnnestus", "success")
         refetch()
       })
       .catch((err) => {
-        notification("Error", getErrorMessage(err), "error")
+        notification("Viga", getErrorMessage(err), "error")
       })
   }
 
@@ -152,7 +152,7 @@ const Exchange: React.FC<ExchangeProps> = ({ event, refetch }) => {
 
   if (event.paymentStatus === "awaiting") {
     actions.push({
-      label: "Capture payment",
+      label: "Kinnita makse",
       icon: <DollarSignIcon size={20} />,
       onClick: handleProcessSwapPayment,
     })
@@ -160,7 +160,7 @@ const Exchange: React.FC<ExchangeProps> = ({ event, refetch }) => {
 
   if (event.returnStatus === "requested") {
     actions.push({
-      label: "Cancel return",
+      label: "Tühista tagastus",
       icon: <TruckIcon size={20} />,
       onClick: () => setShowCancelReturn(!showCancelReturn),
     })
@@ -173,7 +173,7 @@ const Exchange: React.FC<ExchangeProps> = ({ event, refetch }) => {
     event.fulfillmentStatus !== "shipped"
   ) {
     actions.push({
-      label: "Cancel exchange",
+      label: "Tühista vahetus",
       icon: <CancelIcon size={20} />,
       onClick: () => setShowCancel(!showCancel),
       variant: "danger",
@@ -181,7 +181,7 @@ const Exchange: React.FC<ExchangeProps> = ({ event, refetch }) => {
   }
 
   const args = {
-    title: event.canceledAt ? "Exchange Cancelled" : "Exchange Requested",
+    title: event.canceledAt ? "Vahetus tühistatud" : "Taotletud vahetust",
     icon: event.canceledAt ? (
       <CancelIcon size={20} />
     ) : (
@@ -198,7 +198,7 @@ const Exchange: React.FC<ExchangeProps> = ({ event, refetch }) => {
       <div className="gap-y-base flex flex-col" key={event.id}>
         {event.canceledAt && (
           <div>
-            <span className="inter-small-semibold mr-2">Requested on:</span>
+            <span className="inter-small-semibold mr-2">Taotletud:</span>
             <span className="text-grey-50">
               {new Date(event.time).toUTCString()}
             </span>
@@ -215,7 +215,7 @@ const Exchange: React.FC<ExchangeProps> = ({ event, refetch }) => {
               size="small"
               onClick={() => setShowReceiveReturn(true)}
             >
-              Receive Return
+              Kinnita tagastus
             </Button>
           )}
           {event.fulfillmentStatus === "not_fulfilled" && (
@@ -224,7 +224,7 @@ const Exchange: React.FC<ExchangeProps> = ({ event, refetch }) => {
               size="small"
               onClick={() => setShowCreateFulfillment(true)}
             >
-              Fulfill Exchange
+              Täitke vahetus
             </Button>
           )}
         </div>
@@ -238,20 +238,20 @@ const Exchange: React.FC<ExchangeProps> = ({ event, refetch }) => {
         <DeletePrompt
           handleClose={() => setShowCancel(!showCancel)}
           onDelete={handleCancelExchange}
-          confirmText="Yes, cancel"
-          heading="Cancel exchange"
-          text="Are you sure you want to cancel this exchange?"
-          successText="Exchange cancelled"
+          confirmText="Jah, tühista"
+          heading="Tühista vahetus"
+          text="Kas olete kindel, et soovite selle vahetuse tühistada?"
+          successText="Vahetus tühistatud"
         />
       )}
       {showCancelReturn && (
         <DeletePrompt
           handleClose={() => setShowCancelReturn(!showCancelReturn)}
           onDelete={handleCancelReturn}
-          confirmText="Yes, cancel"
-          heading="Cancel return"
-          text="Are you sure you want to cancel this return?"
-          successText="Return cancelled"
+          confirmText="Jah, tühista"
+          heading="Tühista tagastus"
+          text="Kas olete kindel, et soovite selle tagastuse tühistada?"
+          successText="Tagastus tühistatud"
         />
       )}
       {showReceiveReturn && order && (
@@ -275,7 +275,7 @@ const Exchange: React.FC<ExchangeProps> = ({ event, refetch }) => {
 function getNewItems(event: ExchangeEvent) {
   return (
     <div className="gap-y-small flex flex-col">
-      <span className="inter-small-regular text-grey-50">New Items</span>
+      <span className="inter-small-regular text-grey-50">Uued kaubad</span>
       <div>
         {event.newItems.map((i, index) => (
           <EventItemContainer key={index} item={i} />
@@ -295,7 +295,7 @@ function getPaymentLink(
     <div className="inter-small-regular gap-y-xsmall text-grey-50 flex flex-col">
       <div className="gap-x-xsmall flex items-center">
         {paymentFormatWarning && <IconTooltip content={paymentFormatWarning} />}
-        <span>Payment link:</span>
+        <span>Makse link:</span>
       </div>
       {differenceCardId && (
         <CopyToClipboard
@@ -310,7 +310,7 @@ function getPaymentLink(
 function getReturnItems(event: ExchangeEvent) {
   return (
     <div className="gap-y-small flex flex-col">
-      <span className="inter-small-regular text-grey-50">Return Items</span>
+      <span className="inter-small-regular text-grey-50">Kaupade tagastamine</span>
       <div>
         {event.returnItems
           .filter((i) => !!i)

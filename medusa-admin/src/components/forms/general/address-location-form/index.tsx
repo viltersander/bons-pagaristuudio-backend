@@ -41,61 +41,61 @@ const AddressLocationForm = ({
       <InputField
         {...register(path("address_1"), {
           required: requireFields?.address_1
-            ? FormValidator.required("Address 1")
+            ? FormValidator.required("Aadress 1")
             : false,
-          pattern: FormValidator.whiteSpaceRule("Address 1"),
+          pattern: FormValidator.whiteSpaceRule("Aadress 1"),
         })}
-        placeholder="Address 1"
-        label="Address 1"
+        placeholder="Aadress 1"
+        label="Aadress 1"
         required={requireFields?.address_1}
         errors={errors}
       />
       <InputField
         {...register(path("address_2"), {
-          pattern: FormValidator.whiteSpaceRule("Address 2"),
+          pattern: FormValidator.whiteSpaceRule("Aadress 2"),
           required: requireFields?.address_2
-            ? FormValidator.required("Address 2")
+            ? FormValidator.required("Aadress 2")
             : false,
         })}
-        placeholder="Address 2"
+        placeholder="Aadress 2"
         required={requireFields?.address_2}
-        label="Address 2"
+        label="Aadress 2"
         errors={errors}
       />
       <InputField
         {...register(path("postal_code"), {
           required: requireFields?.postal_code
-            ? FormValidator.required("Postal code")
+            ? FormValidator.required("Postiindeks")
             : false,
-          pattern: FormValidator.whiteSpaceRule("Postal code"),
+          pattern: FormValidator.whiteSpaceRule("Postiindeks"),
         })}
-        placeholder="Postal code"
-        label="Postal code"
+        placeholder="Postiindeks"
+        label="Postiindeks"
         required={requireFields?.postal_code}
         autoComplete="off"
         errors={errors}
       />
       <InputField
-        placeholder="City"
-        label="City"
+        placeholder="Linn"
+        label="Linn"
         {...register(path("city"), {
           required: requireFields?.city
-            ? FormValidator.required("City")
+            ? FormValidator.required("Linn")
             : false,
-          pattern: FormValidator.whiteSpaceRule("City"),
+          pattern: FormValidator.whiteSpaceRule("Linn"),
         })}
         required={requireFields?.city}
         errors={errors}
       />
       <InputField
         {...register(path("province"), {
-          pattern: FormValidator.whiteSpaceRule("Province"),
+          pattern: FormValidator.whiteSpaceRule("Provints"),
           required: requireFields?.province
-            ? FormValidator.required("Province")
+            ? FormValidator.required("Provints")
             : false,
         })}
-        placeholder="Province"
-        label="Province"
+        placeholder="Provints"
+        label="Provints"
         required={requireFields?.province}
         errors={errors}
       />
@@ -104,13 +104,13 @@ const AddressLocationForm = ({
         name={path("country_code")}
         rules={{
           required: requireFields?.country_code
-            ? FormValidator.required("Country")
+            ? FormValidator.required("Riik")
             : false,
         }}
         render={({ field: { value, onChange } }) => {
           return (
             <NextSelect
-              label="Country"
+              label="Riik"
               required={requireFields?.country_code}
               value={value}
               options={countryOptions}

@@ -64,7 +64,7 @@ const DiscountGeneralForm = ({
   const selectedRegionCurrency = useWatch({
     control,
     name: path("region_ids.0.currency_code"),
-    defaultValue: "usd",
+    defaultValue: "eur",
   })
 
   return (
@@ -73,7 +73,7 @@ const DiscountGeneralForm = ({
         name={path("region_ids")}
         control={control}
         rules={{
-          required: FormValidator.required("Regions"),
+          required: FormValidator.required("Piirkonnad"),
         }}
         render={({ field: { value, onChange, name, ref } }) => {
           return (
@@ -84,7 +84,7 @@ const DiscountGeneralForm = ({
               onChange={(value) => {
                 onChange(type === DiscountRuleType.FIXED ? [value] : value)
               }}
-              label="Choose valid regions"
+              label="Valige kehtivad piirkonnad"
               isMulti={type !== DiscountRuleType.FIXED}
               selectAll={type !== DiscountRuleType.FIXED}
               isSearchable
@@ -105,24 +105,24 @@ const DiscountGeneralForm = ({
           })}
         >
           <InputField
-            label="Code"
+            label="Kood"
             required
             errors={errors}
             {...register(path("code"), {
-              required: FormValidator.required("Code"),
+              required: FormValidator.required("Kood"),
             })}
           />
           {type === DiscountRuleType.FIXED ? (
             <Controller
               name={path("value")}
               rules={{
-                required: FormValidator.required("Amount"),
+                required: FormValidator.required("Summa"),
                 shouldUnregister: true,
               }}
               render={({ field: { value, onChange } }) => {
                 return (
                   <PriceFormInput
-                    label="Amount"
+                    label="Summa"
                     amount={value}
                     onChange={onChange}
                     currencyCode={selectedRegionCurrency}
@@ -133,31 +133,31 @@ const DiscountGeneralForm = ({
             />
           ) : type === DiscountRuleType.PERCENTAGE ? (
             <InputField
-              label="Percentage"
-              placeholder="Percentage"
+              label="Protsent"
+              placeholder="Protsent"
               errors={errors}
               prefix="%"
               required
               {...register(path("value"), {
                 valueAsNumber: true,
-                required: FormValidator.required("Percentage"),
+                required: FormValidator.required("Protsent"),
                 shouldUnregister: true,
               })}
             />
           ) : null}
         </div>
         <p className="inter-small-regular text-grey-50 mt-small max-w-[60%]">
-          The code your customers will enter during checkout. This will appear
-          on your customer&apos;s invoice. Uppercase letters and numbers only.
+          Kood, mille teie kliendid kassas tasumisel sisestavad. See ilmub
+          oma klientide arvel. Ainult suurtähed ja numbrid.
         </p>
       </div>
       <div>
         <TextArea
-          label="Description"
+          label="Kirjeldus"
           errors={errors}
           required
           {...register(path("description"), {
-            required: FormValidator.required("Description"),
+            required: FormValidator.required("Kirjeldus"),
           })}
         />
       </div>
@@ -175,8 +175,8 @@ const DiscountGeneralForm = ({
                       onChange={onChange}
                       ref={ref}
                     />
-                    <p className="ml-small mr-xsmall">Template discount</p>
-                    <IconTooltip content="Template discounts allow you to define a set of rules that can be used across a group of discounts. This is useful in campaigns that should generate unique codes for each user, but where the rules for all unique codes should be the same." />
+                    <p className="ml-small mr-xsmall">Allahindluse mall</p>
+                    <IconTooltip content="Allahindluste mallid võimaldavad teil määratleda reeglite komplekti, mida saab kasutada allahindluste rühmas. See on kasulik kampaaniates, mis peaksid looma iga kasutaja jaoks kordumatud koodid, kuid kus kõigi unikaalsete koodide reeglid peaksid olema samad." />
                   </div>
                   <InputError errors={errors} name={path("is_dynamic")} />
                 </div>

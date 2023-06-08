@@ -31,7 +31,7 @@ const EmojiPicker: React.FC<indexProps> = ({ onEmojiClick }) => {
           defaultSkinTone={SkinTones.NEUTRAL}
           emojiStyle={EmojiStyle.NATIVE}
           skinTonesDisabled
-          searchPlaceHolder={"Search Emoji..."}
+          searchPlaceHolder={"Otsi emoji..."}
         />
       </DropdownMenu.Content>
     </DropdownMenu.Root>

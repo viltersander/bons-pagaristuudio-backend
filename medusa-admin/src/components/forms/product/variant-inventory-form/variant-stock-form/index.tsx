@@ -95,22 +95,22 @@ const VariantStockForm = ({ form, locationLevels }: Props) => {
           <div className="flex flex-col gap-y-4">
             <div className="gap-large grid grid-cols-2">
               <InputField
-                label="Stock keeping unit (SKU)"
+                label="Laoseisuüksus (SKU)"
                 placeholder="SUN-G, JK1234..."
                 {...register("sku")}
               />
               <InputField
-                label="EAN (Barcode)"
+                label="EAN (Vöötkood)"
                 placeholder="123456789102..."
                 {...register("ean")}
               />
               <InputField
-                label="UPC (Barcode)"
+                label="UPC (Vöötkood)"
                 placeholder="023456789104..."
                 {...register("upc")}
               />
               <InputField
-                label="Barcode"
+                label="Vöötkoode"
                 placeholder="123456789104..."
                 {...register("barcode")}
               />
@@ -118,12 +118,12 @@ const VariantStockForm = ({ form, locationLevels }: Props) => {
           </div>
         </div>
       </Accordion.Item>
-      <Accordion.Item title="Inventory" value="inventory">
+      <Accordion.Item title="Laoseis" value="inventory">
         <div className="gap-y-small mt-large flex flex-col">
           <div className="gap-y-2xsmall flex flex-col">
             <div className="flex items-center justify-between">
               <h3 className="inter-base-semibold mb-2xsmall">
-                Manage inventory
+                Halda laoseisu
               </h3>
               <Controller
                 control={control}
@@ -134,8 +134,8 @@ const VariantStockForm = ({ form, locationLevels }: Props) => {
               />
             </div>
             <p className="inter-base-regular text-grey-50">
-              When checked Medusa will regulate the inventory when orders and
-              returns are made.
+              Märkimisel reguleerib Medusa laoseisu, kui tellimusi ja
+              tagastatakse.
             </p>
           </div>
           {manageInventory && (
@@ -143,7 +143,7 @@ const VariantStockForm = ({ form, locationLevels }: Props) => {
               <div className="gap-y-2xsmall flex flex-col">
                 <div className="flex items-center justify-between">
                   <h3 className="inter-base-semibold mb-2xsmall">
-                    Allow backorders
+                    Luba järeltellimused
                   </h3>
                   <Controller
                     control={control}
@@ -156,17 +156,16 @@ const VariantStockForm = ({ form, locationLevels }: Props) => {
                   />
                 </div>
                 <p className="inter-base-regular text-grey-50">
-                  When checked the product will be available for purchase
-                  despite the product being sold out
+                  Kui see on märgitud, on toode saadaval ostmiseks hoolimata sellest, et toode on välja müüdud
                 </p>
               </div>
               <div className="flex w-full flex-col text-base">
-                <h3 className="inter-base-semibold mb-2xsmall">Quantity</h3>
+                <h3 className="inter-base-semibold mb-2xsmall">Kogus</h3>
                 {!isLoading && locations && (
                   <div className="flex w-full flex-col">
                     <div className="inter-base-regular text-grey-50 flex justify-between py-3">
-                      <div className="">Location</div>
-                      <div className="">In Stock</div>
+                      <div className="">Asukoht</div>
+                      <div className="">Laos</div>
                     </div>
                     {selectedLocations.map((level, i) => {
                       const locationDetails = locationsMap.get(
@@ -226,29 +225,29 @@ const VariantStockForm = ({ form, locationLevels }: Props) => {
                     )
                   }}
                 >
-                  Manage locations
+                  Halda asukohti
                 </Button>
               </div>
             </>
           )}
         </div>
       </Accordion.Item>
-      <Accordion.Item title="Shipping" value="shipping">
+      <Accordion.Item title="Tarne" value="shipping">
         <p className="inter-base-regular text-grey-50">
-          Shipping information can be required depending on your shipping
-          provider, and whether or not you are shipping internationally.
+          Sõltuvalt teie saatmisest võidakse nõuda tarneteavet
+          teenusepakkuja ja kas tarnite rahvusvaheliselt või mitte.
         </p>
         <div className="mt-large">
-          <h3 className="inter-base-semibold mb-2xsmall">Dimensions</h3>
+          <h3 className="inter-base-semibold mb-2xsmall">Mõõtmed</h3>
           <p className="inter-base-regular text-grey-50 mb-large">
-            Configure to calculate the most accurate shipping rates.
+            Seadistage kõige täpsemate saatmishindade arvutamiseks.
           </p>
           <DimensionsForm form={nestedForm(form, "dimensions")} />
         </div>
         <div className="mt-xlarge">
-          <h3 className="inter-base-semibold mb-2xsmall">Customs</h3>
+          <h3 className="inter-base-semibold mb-2xsmall">Toll</h3>
           <p className="inter-base-regular text-grey-50 mb-large">
-            Configure if you are shipping internationally.
+            Seadistage, kui tarnite rahvusvaheliselt.
           </p>
           <CustomsForm form={nestedForm(form, "customs")} />
         </div>
@@ -264,7 +263,7 @@ export const ManageLocationsScreen = (
   onSubmit: (value: any) => Promise<void>
 ) => {
   return {
-    title: "Manage locations",
+    title: "Halda asukohti",
     onBack: () => pop(),
     view: (
       <ManageLocationsForm
@@ -358,8 +357,8 @@ const ManageLocationsForm = ({
               <div>
                 <p>
                   {locationsAvailable
-                    ? "Select locations that stock the selected variant"
-                    : "You don't have any locations"}
+                    ? "Valige asukohad, kus valitud varianti müüakse"
+                    : "Teil pole asukohti"}
                 </p>
                 {locationsAvailable && (
                   <p>{`(${selectedLocations.length} of ${locationOptions.length} selected)`}</p>
@@ -372,7 +371,7 @@ const ManageLocationsForm = ({
                   className="border"
                   onClick={handleSelectAll}
                 >
-                  Select all
+                  Vali kõik
                 </Button>
               )}
             </div>
@@ -408,7 +407,7 @@ const ManageLocationsForm = ({
               onClick={() => pop()}
               type="button"
             >
-              Back
+              Tagasi
             </Button>
             <Button
               variant="primary"
@@ -417,7 +416,7 @@ const ManageLocationsForm = ({
               type="submit"
               disabled={!isDirty}
             >
-              Save and go back
+              Salvesta ja mine tagasi
             </Button>
           </div>
         </Modal.Footer>

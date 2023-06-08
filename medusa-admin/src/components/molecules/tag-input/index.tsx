@@ -36,7 +36,7 @@ const TagInput: React.FC<TagInputProps> = ({
   withTooltip = false,
   tooltipContent,
   tooltip,
-  invalidMessage = "is not a valid tag",
+  invalidMessage = "ei ole kehtiv silt",
   ...props
 }) => {
   const [invalid, setInvalid] = useState(false)
@@ -158,7 +158,7 @@ const TagInput: React.FC<TagInputProps> = ({
     <div className={className}>
       {showLabel && (
         <InputHeader
-          label={label || "Tags (comma separated)"}
+          label={label || "Sildid (komadega eraldatud)"}
           {...{ required, tooltipContent, tooltip }}
           className="mb-2"
         />

@@ -35,7 +35,7 @@ const SalesChannelsList = ({ salesChannels, showMax = 3 }: Props) => {
           side="top"
         >
           <span className="text-grey-50 ml-1">
-            + {salesChannels.length - showMax} more
+            + {salesChannels.length - showMax} veel
           </span>
         </Tooltip>
       )}

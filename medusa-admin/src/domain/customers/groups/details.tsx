@@ -86,7 +86,7 @@ function CustomerGroupCustomersList(props: CustomerGroupCustomersListProps) {
 
   const actions = [
     {
-      label: "Edit customers",
+      label: "Muuda kliente",
       onClick: () => setShowCustomersModal(true),
       icon: (
         <span className="text-grey-90">
@@ -125,7 +125,7 @@ function CustomerGroupCustomersList(props: CustomerGroupCustomersListProps) {
 
   return (
     <BodyCard
-      title="Customers"
+      title="Kliendid"
       actionables={actions}
       className="my-4 min-h-[756px] w-full"
     >
@@ -176,12 +176,12 @@ function CustomerGroupDetailsHeader(props: CustomerGroupDetailsHeaderProps) {
 
   const actions: ActionType[] = [
     {
-      label: "Edit",
+      label: "Muuda",
       onClick: open,
       icon: <EditIcon size={20} />,
     },
     {
-      label: "Delete",
+      label: "Kustuta",
       onClick: () => {
         setShowDeleteConfirmation(true)
       },
@@ -209,10 +209,10 @@ function CustomerGroupDetailsHeader(props: CustomerGroupDetailsHeaderProps) {
         <DeletePrompt
           onDelete={onDeleteConfirmed}
           handleClose={handleConfirmDialogClose}
-          confirmText="Yes, delete"
-          heading="Delete the group"
-          successText="Group deleted"
-          text="Are you sure you want to delete this customer group?"
+          confirmText="Jah, kustuta"
+          heading="Kustuta rühm"
+          successText="Rühm kustutatud"
+          text="Kas olete kindel, et soovite selle kliendirühma kustutada?"
         />
       )}
       <CustomerGroupModal
@@ -240,7 +240,7 @@ function CustomerGroupDetails() {
     <div className="-mt-4 pb-4">
       <BackButton
         path="/a/customers/groups"
-        label="Back to customer groups"
+        label="Tagasi kliendirühmade juurde"
         className="mb-4"
       />
       <CustomerGroupDetailsHeader customerGroup={customer_group} />

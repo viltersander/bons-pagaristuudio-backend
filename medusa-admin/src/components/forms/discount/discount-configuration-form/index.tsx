@@ -41,17 +41,17 @@ const DiscountConfigurationForm = ({
                     onChange(new Date())
                   }
                 }}
-                title="Discount has a start date?"
-                description="Schedule the discount to activate in the future."
+                title="Kas allahindlusel on alguskuupäev?"
+                description="Planeerige allahindlus tulevikus aktiveerimiseks."
               >
                 <div className="gap-x-xsmall flex items-center">
                   <DatePicker
                     date={value!}
-                    label="Start date"
+                    label="Algus kuupäev"
                     onSubmitDate={onChange}
                   />
                   <TimePicker
-                    label="Start time"
+                    label="Algusaeg"
                     date={value!}
                     onSubmitDate={onChange}
                   />
@@ -76,17 +76,17 @@ const DiscountConfigurationForm = ({
                     )
                   }
                 }}
-                title="Discount has an expiry date?"
-                description="Schedule the discount to deactivate in the future."
+                title="Kas allahindlusel on aegumiskuupäev?"
+                description="Planeerige allahindlus edaspidiseks deaktiveerimiseks."
               >
                 <div className="gap-x-xsmall flex items-center">
                   <DatePicker
                     date={value!}
-                    label="Expiry date"
+                    label="Aegumiskuupäev"
                     onSubmitDate={onChange}
                   />
                   <TimePicker
-                    label="Expiry time"
+                    label="Aegumisaeg"
                     date={value!}
                     onSubmitDate={onChange}
                   />
@@ -109,11 +109,11 @@ const DiscountConfigurationForm = ({
                     onChange(10)
                   }
                 }}
-                title="Limit the number of redemtions?"
-                description="Limit applies across all customers, not per customer."
+                title="Kas piirata lunastamiste arvu?"
+                description="Limiit kehtib kõikide klientide, mitte kliendi kohta."
               >
                 <InputField
-                  label="Number of redemptions"
+                  label="Lunastamiste arv"
                   type="number"
                   placeholder="5"
                   min={1}
@@ -139,8 +139,8 @@ const DiscountConfigurationForm = ({
                       onChange("P0Y0M0DT00H00M")
                     }
                   }}
-                  title="Availability duration?"
-                  description="Set the duration of the discount."
+                  title="Kättesaadavuse kestus?"
+                  description="Määra allahindluse kestus."
                 >
                   <AvailabilityDuration
                     value={value ?? undefined}

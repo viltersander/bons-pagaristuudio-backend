@@ -53,7 +53,7 @@ const Users: React.FC = () => {
         />
         <BodyCard
           title="Meeskond"
-          subtitle="Hallake oma Medusa poe kasutajaid"
+          subtitle="Hallake oma Böns poe kasutajaid"
           actionables={actionables}
         >
           <div className="flex grow flex-col justify-between">
@@ -63,7 +63,7 @@ const Users: React.FC = () => {
               triggerRefetch={triggerRefetch}
             />
             <p className="inter-small-regular text-grey-50">
-              {users.length} liige
+              {users.length} liiget
               {users.length === 1 ? "" : "s"}
             </p>
           </div>

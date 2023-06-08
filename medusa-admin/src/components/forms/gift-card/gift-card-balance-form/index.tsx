@@ -29,15 +29,15 @@ const GiftCardBalanceForm = ({
     <Controller
       name={path("amount")}
       rules={{
-        required: FormValidator.required("Balance"),
+        required: FormValidator.required("Saldo"),
         min: {
           value: 0,
-          message: "Balance must be greater than 0",
+          message: "Saldo peab olema suurem kui 0",
         },
         max: originalAmount
           ? {
               value: originalAmount,
-              message: `The updated balance cannot exceed the original value of ${formatAmountWithSymbol(
+              message: `Värskendatud saldo ei tohi ületada algset väärtust ${formatAmountWithSymbol(
                 {
                   amount: originalAmount,
                   currency: currencyCode,
@@ -50,7 +50,7 @@ const GiftCardBalanceForm = ({
       render={({ field: { value, onChange, name } }) => {
         return (
           <PriceFormInput
-            label="Amount"
+            label="Summa"
             currencyCode={currencyCode}
             onChange={onChange}
             amount={value}

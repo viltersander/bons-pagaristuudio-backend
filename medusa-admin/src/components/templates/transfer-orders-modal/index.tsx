@@ -18,6 +18,8 @@ import Badge from "../../fundamentals/badge"
 import Button from "../../fundamentals/button"
 import Modal from "../../molecules/modal"
 import Select from "../../molecules/select/next-select/select"
+import { format } from "date-fns";
+import et from "date-fns/locale/et";
 
 type TransferOrdersModalProps = {
   order: Order
@@ -135,7 +137,9 @@ const TransferOrdersModal: React.FC<TransferOrdersModalProps> = ({
                   <span className="text-grey-60">{`#${order.display_id}`}</span>
                 </Badge>
                 <span className="text-grey-50">
-                  {moment(new Date(order.created_at)).format("MMM D, H:mm A")}
+                {format(new Date(order.created_at), "d MMM yyyy HH:mm", {
+                    locale: et,
+                  })}
                 </span>
                 <PaymentStatusComponent status={order.payment_status} />
                 <FulfillmentStatusComponent status={order.fulfillment_status} />

@@ -57,13 +57,13 @@ const GiftCardRegionForm = ({ form }: GiftCardRegionFormProps) => {
     <Controller
       name={path("region_id")}
       rules={{
-        required: FormValidator.required("Region"),
+        required: FormValidator.required("Piirkond"),
       }}
       control={control}
       render={({ field }) => {
         return (
           <NextSelect
-            label="Region"
+            label="Piirkond"
             required
             {...field}
             errors={errors}

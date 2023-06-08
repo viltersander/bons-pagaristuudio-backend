@@ -43,10 +43,10 @@ const Configuration: React.FC<ConfigurationProps> = () => {
   return (
     <Accordion.Item
       forceMountContent
-      title="Configuration"
-      tooltip="Optional configuration for the price list"
+      title="Konfiguratisoon"
+      tooltip="Hinnakirja valikuline konfiguratsioon"
       value="configuration"
-      description="The price overrides apply from the time you hit the publish button and forever if left untouched."
+      description="Hinna soodustus rakendub alates avaldamisnupu vajutamisest ja igavesti, kui seda ei puudutata."
     >
       <Accordion
         type="multiple"
@@ -61,8 +61,8 @@ const Configuration: React.FC<ConfigurationProps> = () => {
             headingSize="medium"
             forceMountContent
             className="border-b-0"
-            title="Price overrides has a start date?"
-            subtitle="Schedule the price overrides to activate in the future."
+            title="Hinna soodustusel on alguskuupäev?"
+            subtitle="Ajastage hinnasoodustused tulevikus aktiveerimiseks."
             value="starts_at"
             customTrigger={
               <Switch checked={openItems.indexOf("starts_at") > -1} />
@@ -85,12 +85,12 @@ const Configuration: React.FC<ConfigurationProps> = () => {
                     <>
                       <DatePicker
                         date={ensuredDate}
-                        label="Start date"
+                        label="Algus kuupäev"
                         onSubmitDate={onChange}
                       />
                       <TimePicker
                         date={ensuredDate}
-                        label="Start date"
+                        label="Algus kuupäev"
                         onSubmitDate={onChange}
                       />
                     </>
@@ -103,8 +103,8 @@ const Configuration: React.FC<ConfigurationProps> = () => {
             headingSize="medium"
             forceMountContent
             className="border-b-0"
-            title="Price overrides has an expiry date?"
-            subtitle="Schedule the price overrides to deactivate in the future."
+            title="Hinna soodustusel on aegumiskuupäev?"
+            subtitle="Ajastage hinnasoodustus tulevikus desaktiveerimiseks."
             value="ends_at"
             customTrigger={
               <Switch checked={openItems.indexOf("ends_at") > -1} />
@@ -127,12 +127,12 @@ const Configuration: React.FC<ConfigurationProps> = () => {
                     <>
                       <DatePicker
                         date={ensuredDate}
-                        label="End date"
+                        label="Lõppkuupäev"
                         onSubmitDate={onChange}
                       />
                       <TimePicker
                         date={ensuredDate}
-                        label="End date"
+                        label="Lõppkuupäev"
                         onSubmitDate={onChange}
                       />
                     </>
@@ -145,8 +145,8 @@ const Configuration: React.FC<ConfigurationProps> = () => {
             headingSize="medium"
             forceMountContent
             className="border-b-0"
-            title="Customer availabilty"
-            subtitle="Specifiy which customer groups the price overrides should apply for."
+            title="Kliendi kättesaadavus"
+            subtitle="Määrake, millistele kliendirühmadele peaksid hindade soodustused kehtima."
             value="customer_groups"
             customTrigger={
               <Switch checked={openItems.indexOf("customer_groups") > -1} />
@@ -167,7 +167,7 @@ const Configuration: React.FC<ConfigurationProps> = () => {
                   >
                     <Select
                       value={value}
-                      label="Customer Groups"
+                      label="Kliendirühmad"
                       onChange={onChange}
                       isMultiSelect
                       fullWidth

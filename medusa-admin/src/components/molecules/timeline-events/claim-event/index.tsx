@@ -66,10 +66,10 @@ const Claim = ({ event }: Props) => {
   const onCancelClaim = () => {
     cancelClaim(event.claim.id, {
       onSuccess: () => {
-        notification("Claim canceled", "The claim has been canceled", "success")
+        notification("Nõue tühistati", "Nõue on tühistatud", "success")
       },
       onError: (err) => {
-        notification("Failed to cancel claim", getErrorMessage(err), "error")
+        notification("Nõude tühistamine ebaõnnestus", getErrorMessage(err), "error")
       },
     })
   }
@@ -78,14 +78,14 @@ const Claim = ({ event }: Props) => {
     cancelReturn(undefined, {
       onSuccess: () => {
         notification(
-          "Return canceled",
-          "The return has been canceled",
+          "Tagastamine tühistatud",
+          "Tagastamine on tühistatud",
           "success"
         )
         refetch()
       },
       onError: (err) => {
-        notification("Failed to cancel return", getErrorMessage(err), "error")
+        notification("Tagastamise tühistamine ebaõnnestus", getErrorMessage(err), "error")
       },
     })
   }
@@ -97,7 +97,7 @@ const Claim = ({ event }: Props) => {
     iconColor: event.canceledAt
       ? EventIconColor.DEFAULT
       : EventIconColor.ORANGE,
-    title: event.canceledAt ? "Claim Canceled" : "Claim Created",
+    title: event.canceledAt ? "Nõue tühistatud" : "Nõue loodud",
     time: event.canceledAt ? event.canceledAt : event.time,
     topNode: Actions,
     children: [
@@ -115,7 +115,7 @@ const Claim = ({ event }: Props) => {
                   size="small"
                   onClick={openReceiveMenu}
                 >
-                  Receive Return
+                  Võta vastu tagastus
                 </Button>
               )}
               {event.claim?.additional_items?.length > 0 &&
@@ -125,7 +125,7 @@ const Claim = ({ event }: Props) => {
                     size="small"
                     onClick={openFulfillMenu}
                   >
-                    Fulfill Replacement
+                    Täitke asendamine
                   </Button>
                 )}
             </div>
@@ -178,14 +178,14 @@ const ClaimStatus = ({ event }: Props) => {
   return (
     <div className="inter-small-regular gap-x-base flex items-center">
       <div className="gap-y-2xsmall flex flex-col">
-        <span className="text-grey-50">Refund:</span>
+        <span className="text-grey-50">Tagasimakse:</span>
         <RefundStatus refundStatus={refundStatus} />
       </div>
       {shouldHaveReturnStatus && (
         <>
           {divider}
           <div className="gap-y-2xsmall flex flex-col">
-            <span className="text-grey-50">Return:</span>
+            <span className="text-grey-50">Tagastamine:</span>
             <ReturnStatus returnStatus={event.returnStatus} />
           </div>
         </>
@@ -194,7 +194,7 @@ const ClaimStatus = ({ event }: Props) => {
         <>
           {divider}
           <div className="gap-y-2xsmall flex flex-col">
-            <span className="text-grey-50">Fulfillment:</span>
+            <span className="text-grey-50">Täitmine:</span>
             <FulfillmentStatus
               fulfillmentStatus={event.claim?.fulfillment_status}
             />
@@ -208,7 +208,7 @@ const ClaimStatus = ({ event }: Props) => {
 const renderClaimItems = (event: ClaimEvent) => {
   return (
     <div className="gap-y-small flex flex-col">
-      <span className="inter-small-regular text-grey-50">Claim Items</span>
+      <span className="inter-small-regular text-grey-50">Kinnita esemed</span>
       <div>
         {event.claimItems.map((i, index) => (
           <EventItemContainer key={index} item={i} />
@@ -222,7 +222,7 @@ const renderReplacementItems = (event: ClaimEvent) => {
   return (
     <div className="gap-y-small flex flex-col">
       <span className="inter-small-regular text-grey-50">
-        Replacement Items
+        Asendus esemed
       </span>
       <div>
         {event.newItems.map((i, index) => (
@@ -247,7 +247,7 @@ const renderClaimActions = (
     ) {
       actions.push({
         icon: <TrashIcon size={20} />,
-        label: "Cancel return",
+        label: "Tühista tagastus",
         variant: "danger",
         onClick: onCancelReturn,
       })
@@ -256,7 +256,7 @@ const renderClaimActions = (
     if (event.refundStatus !== "refunded" && !event.isCanceled) {
       actions.push({
         icon: <TrashIcon size={20} />,
-        label: "Cancel claim",
+        label: "Tühista nõue",
         variant: "danger",
         onClick: onCancelClaim,
       })

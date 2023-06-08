@@ -35,13 +35,13 @@ const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379";
 const plugins = [
   `medusa-fulfillment-manual`,
   `medusa-payment-manual`,
-  {
-    resolve: "@medusajs/admin",
-    /** @type {import('@medusajs/admin').PluginOptions} */
-    options: {
-      autoRebuild: false,
-    },
-  },
+  // {
+  //   resolve: "@medusajs/admin",
+  //   /** @type {import('@medusajs/admin').PluginOptions} */
+  //   options: {
+  //     autoRebuild: true,
+  //   },
+  // },
   {
     resolve: `medusa-plugin-algolia`,
     options: {
@@ -115,6 +115,15 @@ const plugins = [
   //       secret_access_key: process.env.MINIO_SECRET_KEY,
   //   },
   // },
+  {
+    resolve: `medusa-file-cloudinary`,
+    options: {
+        cloud_name: process.env.CLOUDINARY_NAME,
+        api_key: process.env.CLOUDINARY_API_KEY,
+        api_secret: process.env.CLOUDINARY_API_SECRET,
+        secure: true,
+    },
+},
 ];
 
 const modules = {

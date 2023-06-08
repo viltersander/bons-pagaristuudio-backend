@@ -32,7 +32,7 @@ export const FilterTab: React.FC<FilterTabProps> = ({
 
   const handleKeyPress = (e) => {
     if (removable && onRemove) {
-      if (e.key === "Backspace") {
+      if (e.key === "Tagasilükkeklahv") {
         onRemove()
       }
     }

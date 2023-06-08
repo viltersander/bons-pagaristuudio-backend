@@ -33,7 +33,7 @@ const DelimitedList: React.FC<DelimitedListProps> = ({ list, delimit = 1 }) => {
         <Tooltip content={<ToolTipContent />}>
           <span className="text-grey-40">
             {" "}
-            + {extraItemsInToolTipCount} more
+            + {extraItemsInToolTipCount} veel
           </span>
         </Tooltip>
       )}

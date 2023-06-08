@@ -62,7 +62,7 @@ const GeneratingInput = React.forwardRef(
               onClick={generateCode}
               className="inter-small-semibold text-violet-50"
             >
-              Generate
+              Genereeri
             </button>
           )}
         </div>

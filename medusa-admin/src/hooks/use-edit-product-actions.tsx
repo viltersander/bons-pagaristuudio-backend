@@ -32,17 +32,17 @@ const useEditProductActions = (productId: string) => {
 
   const onDelete = async () => {
     const shouldDelete = await dialog({
-      heading: "Delete Product",
-      text: "Are you sure you want to delete this product",
+      heading: "Kustuta toode",
+      text: "Kas olete kindel, et soovite selle toote kustutada?",
     })
     if (shouldDelete) {
       deleteProduct.mutate(undefined, {
         onSuccess: () => {
-          notification("Success", "Product deleted successfully", "success")
+          notification("Õnnestus", "Toote kustutamine õnnestus", "success")
           navigate("/a/products/")
         },
         onError: (err) => {
-          notification("Error", getErrorMessage(err), "error")
+          notification("Viga", getErrorMessage(err), "error")
         },
       })
     }
@@ -51,16 +51,16 @@ const useEditProductActions = (productId: string) => {
   const onAddVariant = (
     payload: AdminPostProductsProductVariantsReq,
     onSuccess: (variantRes: Product) => void,
-    successMessage = "Variant was created successfully"
+    successMessage = "Variant loodi edukalt"
   ) => {
     addVariant.mutate(payload, {
       onSuccess: (data) => {
-        notification("Success", successMessage, "success")
+        notification("Õnnestus", successMessage, "success")
         getProduct.refetch()
         onSuccess(data.product)
       },
       onError: (err) => {
-        notification("Error", getErrorMessage(err), "error")
+        notification("Viga", getErrorMessage(err), "error")
       },
     })
   }
@@ -69,7 +69,7 @@ const useEditProductActions = (productId: string) => {
     id: string,
     payload: Partial<AdminPostProductsProductVariantsVariantReq>,
     onSuccess: () => void,
-    successMessage = "Variant was updated successfully"
+    successMessage = "Variandi värskendamine õnnestus"
   ) => {
     updateVariant.mutate(
       {
@@ -79,12 +79,12 @@ const useEditProductActions = (productId: string) => {
       },
       {
         onSuccess: () => {
-          notification("Success", successMessage, "success")
+          notification("Õnnestus", successMessage, "success")
           getProduct.refetch()
           onSuccess()
         },
         onError: (err) => {
-          notification("Error", getErrorMessage(err), "error")
+          notification("Viga", getErrorMessage(err), "error")
         },
       }
     )
@@ -93,18 +93,18 @@ const useEditProductActions = (productId: string) => {
   const onDeleteVariant = (
     variantId: string,
     onSuccess?: () => void,
-    successMessage = "Variant was succesfully deleted"
+    successMessage = "Variant on edukalt kustutatud"
   ) => {
     deleteVariant.mutate(variantId, {
       onSuccess: () => {
-        notification("Success", successMessage, "success")
+        notification("Õnnestus", successMessage, "success")
         getProduct.refetch()
         if (onSuccess) {
           onSuccess()
         }
       },
       onError: (err) => {
-        notification("Error", getErrorMessage(err), "error")
+        notification("Viga", getErrorMessage(err), "error")
       },
     })
   }
@@ -112,18 +112,18 @@ const useEditProductActions = (productId: string) => {
   const onUpdate = (
     payload: Partial<AdminPostProductsProductReq>,
     onSuccess: () => void,
-    successMessage = "Product was successfully updated"
+    successMessage = "Toote värskendamine õnnestus"
   ) => {
     updateProduct.mutate(
       // @ts-ignore TODO fix images being required
       payload,
       {
         onSuccess: () => {
-          notification("Success", successMessage, "success")
+          notification("Õnnestus", successMessage, "success")
           onSuccess()
         },
         onError: (err) => {
-          notification("Error", getErrorMessage(err), "error")
+          notification("Viga", getErrorMessage(err), "error")
         },
       }
     )
@@ -140,13 +140,13 @@ const useEditProductActions = (productId: string) => {
         onSuccess: () => {
           const pastTense = newStatus === "published" ? "published" : "drafted"
           notification(
-            "Success",
-            `Product ${pastTense} successfully`,
+            "Õnnestus",
+            `Toode ${pastTense} õnnestus`,
             "success"
           )
         },
         onError: (err) => {
-          notification("Ooops", getErrorMessage(err), "error")
+          notification("Viga", getErrorMessage(err), "error")
         },
       }
     )

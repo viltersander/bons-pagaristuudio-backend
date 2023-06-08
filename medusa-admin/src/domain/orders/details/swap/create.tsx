@@ -238,11 +238,11 @@ const SwapMenu: React.FC<SwapMenuProps> = ({ order, onDismiss }) => {
     return mutate(data, {
       onSuccess: () => {
         refetch()
-        notification("Success", "Successfully created exchange", "success")
+        notification("Õnnestus", "Vahetuse loomine õnnestus", "success")
         onDismiss()
       },
       onError: (err) => {
-        notification("Error", getErrorMessage(err), "error")
+        notification("Viga", getErrorMessage(err), "error")
       },
     })
   }
@@ -251,11 +251,11 @@ const SwapMenu: React.FC<SwapMenuProps> = ({ order, onDismiss }) => {
     <LayeredModal context={layeredModalContext} handleClose={onDismiss}>
       <Modal.Body>
         <Modal.Header handleClose={onDismiss}>
-          <h2 className="inter-xlarge-semibold">Register Exchange</h2>
+          <h2 className="inter-xlarge-semibold">Registeeri vahetus</h2>
         </Modal.Header>
         <Modal.Content>
           <div className="mb-7">
-            <h3 className="inter-base-semibold">Items to return</h3>
+            <h3 className="inter-base-semibold">Tagastatavad esemed</h3>
             <RMASelectProductTable
               order={order}
               allItems={allItems}
@@ -265,16 +265,16 @@ const SwapMenu: React.FC<SwapMenuProps> = ({ order, onDismiss }) => {
           </div>
 
           <div>
-            <h3 className="inter-base-semibold ">Shipping</h3>
+            <h3 className="inter-base-semibold ">Saatmine</h3>
             {shippingLoading ? (
               <div className="flex justify-center">
                 <Spinner size="medium" variant="secondary" />
               </div>
             ) : (
               <Select
-                label="Shipping Method"
+                label="Saatmisviis"
                 className="mt-2"
-                placeholder="Add a shipping method"
+                placeholder="Lisage saatmisviis"
                 value={shippingMethod}
                 onChange={handleShippingSelected}
                 options={
@@ -298,16 +298,16 @@ const SwapMenu: React.FC<SwapMenuProps> = ({ order, onDismiss }) => {
           </div>
           {isLocationFulfillmentEnabled && (
             <div className="my-8">
-              <h3 className="inter-base-semibold ">Location</h3>
+              <h3 className="inter-base-semibold ">Asukoht</h3>
               <p className="inter-base-regular text-grey-50">
-                Choose which location you want to return the items to.
+                Valige asukoht, kuhu soovite kaubad tagastada.
               </p>
               {isLoadingLocations ? (
                 <Spinner />
               ) : (
                 <Select
                   className="mt-2"
-                  placeholder="Select Location to Return to"
+                  placeholder="Valige asukoht, kuhu tagastada"
                   value={selectedLocation}
                   isMulti={false}
                   onChange={setSelectedLocation}
@@ -323,7 +323,7 @@ const SwapMenu: React.FC<SwapMenuProps> = ({ order, onDismiss }) => {
           )}
 
           <div className="mt-8 flex items-center justify-between">
-            <h3 className="inter-base-semibold ">Items to send</h3>
+            <h3 className="inter-base-semibold ">Saadetavad esemed</h3>
             {itemsToAdd.length === 0 ? (
               <Button
                 variant="ghost"
@@ -339,7 +339,7 @@ const SwapMenu: React.FC<SwapMenuProps> = ({ order, onDismiss }) => {
                   )
                 }}
               >
-                Add Product
+                Lisa toode
               </Button>
             ) : (
               <></>
@@ -370,13 +370,13 @@ const SwapMenu: React.FC<SwapMenuProps> = ({ order, onDismiss }) => {
                     )
                   }}
                 >
-                  Add Product
+                  Lisa toode
                 </Button>
               </div>
             </>
           )}
           <div className="text-grey-90 inter-small-regular mt-8 flex items-center justify-between">
-            <span>Return Total</span>
+            <span>Tagastus kokku</span>
             <span>
               {formatAmountWithSymbol({
                 currency: order.currency_code,
@@ -385,7 +385,7 @@ const SwapMenu: React.FC<SwapMenuProps> = ({ order, onDismiss }) => {
             </span>
           </div>
           <div className="text-grey-90 inter-small-regular mt-2 flex items-center justify-between">
-            <span>Additional Total</span>
+            <span>Täiendav kogusumma</span>
             <span>
               {formatAmountWithSymbol({
                 currency: order.currency_code,
@@ -396,11 +396,11 @@ const SwapMenu: React.FC<SwapMenuProps> = ({ order, onDismiss }) => {
             </span>
           </div>
           <div className="text-grey-90 inter-small-regular mt-2 flex items-center justify-between">
-            <span>Outbond Shipping</span>
-            <span>Calculated at checkout</span>
+            <span>Tagatise saatmine</span>
+            <span>Arvestatud kassas</span>
           </div>
           <div className="inter-base-semibold mt-4 flex items-center justify-between">
-            <span>Estimated difference</span>
+            <span>Hinnanguline erinevus</span>
             <span className="inter-large-semibold">
               {formatAmountWithSymbol({
                 currency: order.currency_code,
@@ -434,8 +434,8 @@ const SwapMenu: React.FC<SwapMenuProps> = ({ order, onDismiss }) => {
                 type="checkbox"
               />
               <span className="text-grey-90 gap-x-xsmall ml-3 flex items-center">
-                Send notifications
-                <IconTooltip content="If unchecked the customer will not receive communication about this exchange" />
+                Saatke teade
+                <IconTooltip content="Kui see on märkimata, ei saa klient selle vahetuse kohta teadet" />
               </span>
             </div>
 
@@ -448,7 +448,7 @@ const SwapMenu: React.FC<SwapMenuProps> = ({ order, onDismiss }) => {
               type="submit"
               variant="primary"
             >
-              Complete
+              Täida
             </Button>
           </div>
         </Modal.Footer>
@@ -459,7 +459,7 @@ const SwapMenu: React.FC<SwapMenuProps> = ({ order, onDismiss }) => {
 
 const SelectProductsScreen = (pop, itemsToAdd, setSelectedItems) => {
   return {
-    title: "Add Products",
+    title: "Lisa tooteid",
     onBack: () => pop(),
     view: (
       <RMASelectProductSubModal

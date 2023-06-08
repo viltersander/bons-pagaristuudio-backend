@@ -39,7 +39,7 @@ const DashboardRoutes = () => {
     <AnalyticsProvider writeKey={WRITE_KEY}>
       <DndProvider backend={HTML5Backend}>
         <Layout>
-          <SEO title="Medusa" />
+          <SEO title="Böns" />
           <Routes>
             <Route path="oauth/:app_name" element={<Oauth />} />
             <Route path="products/*" element={<ProductsRoute />} />

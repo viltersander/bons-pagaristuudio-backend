@@ -17,7 +17,6 @@ export const ByLine: React.FC<ByLineProps> = ({ user }) => {
 
   return (
     <div className="inter-small-regular text-grey-50 flex items-center">
-      By
       <span className="w-base h-base mx-xsmall">
         <Avatar user={user} font="inter-xsmall-semibold" />
       </span>

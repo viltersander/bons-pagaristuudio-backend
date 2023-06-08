@@ -1,28 +1,41 @@
-import { useNavigate } from "react-router-dom"
-import TableViewHeader from "../../components/organisms/custom-table-header"
+import { useNavigate } from "react-router-dom";
+import TableViewHeader from "../../components/organisms/custom-table-header";
 
-type P = {
-  activeView: "customers" | "groups"
-}
+type CustomersPageTableHeaderProps = {
+  activeView: "customers" | "groups";
+};
 
-/*
- * Shared header component for "customers" and "customer groups" page
- */
-function CustomersPageTableHeader(props: P) {
-  const navigate = useNavigate()
+const CustomersPageTableHeader: React.FC<CustomersPageTableHeaderProps> = ({
+  activeView,
+}) => {
+  const navigate = useNavigate();
+
+  const handleSetActiveView = (view: "kliendid" | "rühmad") => {
+    if (view === "kliendid") {
+      navigate("/a/customers");
+    } else if (view === "rühmad") {
+      navigate("/a/customers/groups");
+    }
+  };
+
+  const translateViewName = (view: "customers" | "groups") => {
+    if (view === "customers") {
+      return "kliendid";
+    } else if (view === "groups") {
+      return "rühmad";
+    }
+    return view;
+  };
+
+  const translatedViews = ["kliendid", "rühmad"].map(translateViewName);
+
   return (
     <TableViewHeader
-      setActiveView={(v) => {
-        if (v === "customers") {
-          navigate(`/a/customers`)
-        } else {
-          navigate(`/a/customers/groups`)
-        }
-      }}
-      views={["customers", "groups"]}
-      activeView={props.activeView}
+      setActiveView={handleSetActiveView}
+      views={translatedViews}
+      activeView={translateViewName(activeView)}
     />
-  )
-}
+  );
+};
 
-export default CustomersPageTableHeader
+export default CustomersPageTableHeader;

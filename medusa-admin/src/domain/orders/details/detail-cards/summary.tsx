@@ -151,13 +151,13 @@ const SummaryCard: React.FC<SummaryCardProps> = ({ order, reservations }) => {
     const actionables: ActionType[] = []
     if (isFeatureEnabled("order_editing")) {
       actionables.push({
-        label: "Edit Order",
+        label: "Muuda tellimust",
         onClick: showModal,
       })
     }
     if (isFeatureEnabled("inventoryService") && !allItemsReserved) {
       actionables.push({
-        label: "Allocate",
+        label: "Eralda",
         onClick: showAllocationModal,
       })
     }
@@ -167,14 +167,14 @@ const SummaryCard: React.FC<SummaryCardProps> = ({ order, reservations }) => {
   return (
     <BodyCard
       className={"mb-4 h-auto min-h-0 w-full"}
-      title="Summary"
+      title="Kokkuvõte"
       status={
         isFeatureEnabled("inventoryService") &&
         Array.isArray(reservations) && (
           <StatusIndicator
             onClick={allItemsReserved ? undefined : showAllocationModal}
             variant={allItemsReserved ? "success" : "danger"}
-            title={allItemsReserved ? "Allocated" : "Awaits allocation"}
+            title={allItemsReserved ? "Eraldatud" : "Ootab eraldamist"}
             className="rounded-rounded border px-3 py-1.5"
           />
         )
@@ -193,7 +193,7 @@ const SummaryCard: React.FC<SummaryCardProps> = ({ order, reservations }) => {
         <DisplayTotal
           currency={order.currency_code}
           totalAmount={order.subtotal}
-          totalTitle={"Subtotal"}
+          totalTitle={"Vahesumma"}
         />
         {order?.discounts?.map((discount, index) => (
           <DisplayTotal
@@ -202,7 +202,7 @@ const SummaryCard: React.FC<SummaryCardProps> = ({ order, reservations }) => {
             totalAmount={-1 * order.discount_total}
             totalTitle={
               <div className="inter-small-regular text-grey-90 flex items-center">
-                Discount:{" "}
+                Allahindlus:{" "}
                 <Badge className="ml-3" variant="default">
                   {discount.code}
                 </Badge>
@@ -217,7 +217,7 @@ const SummaryCard: React.FC<SummaryCardProps> = ({ order, reservations }) => {
             totalAmount={-1 * order.gift_card_total}
             totalTitle={
               <div className="inter-small-regular text-grey-90 flex items-center">
-                Gift card:
+                Kinkekaart:
                 <Badge className="ml-3" variant="default">
                   {giftCard.code}
                 </Badge>
@@ -235,18 +235,18 @@ const SummaryCard: React.FC<SummaryCardProps> = ({ order, reservations }) => {
         <DisplayTotal
           currency={order.currency_code}
           totalAmount={order.shipping_total}
-          totalTitle={"Shipping"}
+          totalTitle={"Transport"}
         />
         <DisplayTotal
           currency={order.currency_code}
           totalAmount={order.tax_total}
-          totalTitle={`Tax`}
+          totalTitle={`Maksud`}
         />
         <DisplayTotal
           variant={"large"}
           currency={order.currency_code}
           totalAmount={order.total}
-          totalTitle={hasMovements ? "Original Total" : "Total"}
+          totalTitle={hasMovements ? "Algselt kokku" : "Kokku"}
         />
         <PaymentDetails
           manualRefund={manualRefund}

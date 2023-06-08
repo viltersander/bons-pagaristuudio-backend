@@ -10,12 +10,12 @@ import NewOrderFormProvider from "../new/form"
 import NewOrder from "../new/new-order"
 import DraftOrderDetails from "./details"
 
-const VIEWS = ["orders", "drafts"]
+const VIEWS = ["tellimused", "mustandid"]
 
 const DraftOrderIndex = () => {
   const navigate = useNavigate()
 
-  const view = "drafts"
+  const view = "mustandid"
   const [showNewOrder, setShowNewOrder] = useState(false)
 
   const actions = useMemo(() => {
@@ -36,7 +36,7 @@ const DraftOrderIndex = () => {
             <TableViewHeader
               views={VIEWS}
               setActiveView={(v) => {
-                if (v === "orders") {
+                if (v === "tellimused") {
                   navigate(`/a/orders`)
                 }
               }}

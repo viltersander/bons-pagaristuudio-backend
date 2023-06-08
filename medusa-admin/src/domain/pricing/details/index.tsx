@@ -15,7 +15,7 @@ const PricingDetails = () => {
   return (
     <div className="pb-large">
       <BackButton
-        label="Back to Pricing"
+        label="Tagasi hinnakujunduse juurde"
         path="/a/pricing"
         className="mb-xsmall"
       />
@@ -27,7 +27,7 @@ const PricingDetails = () => {
 
             <PricesDetails id={price_list?.id} />
 
-            <RawJSON data={price_list} title="Raw price list" />
+            <RawJSON data={price_list} title="Töötlemata hinnakiri" />
           </div>
         </PriceListFormProvider>
       ) : null}

@@ -15,12 +15,12 @@ export const PaymentActionables = ({
   const { payment_status } = order!
 
   // Default label and action
-  let label = "Capture payment"
+  let label = "Kinnita makse"
   let action = () => {
     capturePayment.mutate(void {}, {
       onSuccess: () =>
-        notification("Success", "Successfully captured payment", "success"),
-      onError: (err) => notification("Error", getErrorMessage(err), "error"),
+        notification("Õnnestus", "Makse on edukalt kinni võetud", "success"),
+      onError: (err) => notification("Viga", getErrorMessage(err), "error"),
     })
   }
   const loading = capturePayment.isLoading
@@ -38,7 +38,7 @@ export const PaymentActionables = ({
   switch (true) {
     case payment_status === "captured" ||
       payment_status === "partially_refunded": {
-      label = "Refund"
+      label = "Tagasimakse"
       action = () => showRefundMenu()
       break
     }
@@ -46,7 +46,7 @@ export const PaymentActionables = ({
     case shouldShowNotice: {
       action = () =>
         console.log(
-          "TODO: Show alert indicating, that you are capturing a system payment"
+          "TODO: Kuva hoiatus, mis näitab, et võtate süsteemimakse"
         )
       break
     }

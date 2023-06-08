@@ -192,9 +192,9 @@ function OrderEditModal(props: OrderEditModalProps) {
         await updateOrderEdit({ internal_note: note })
       }
 
-      notification("Success", "Order edit set as requested", "success")
+      notification("Õnnestus", "Tellimuse muutmine on määratud vastavalt soovile", "success")
     } catch (e) {
-      notification("Error", "Failed to request confirmation", "error")
+      notification("Viga", "Kinnituse taotlemine ebaõnnestus", "error")
     }
     close()
   }
@@ -219,9 +219,9 @@ function OrderEditModal(props: OrderEditModalProps) {
 
       await Promise.all(promises)
 
-      notification("Success", "Added successfully", "success")
+      notification("Õnnestus", "Lisatud edukalt", "success")
     } catch (e) {
-      notification("Error", "Error occurred", "error")
+      notification("Viga", "Esines viga", "error")
     }
   }
 
@@ -246,7 +246,7 @@ function OrderEditModal(props: OrderEditModalProps) {
   }
 
   const addProductVariantScreen = {
-    title: "Add Product Variants",
+    title: "Lisa tootevariante",
     onBack: layeredModalContext.pop,
     view: (
       <AddProductVariant
@@ -267,12 +267,12 @@ function OrderEditModal(props: OrderEditModalProps) {
     >
       <Modal.Body>
         <Modal.Header handleClose={onCancel}>
-          <h1 className="inter-xlarge-semibold">Edit Order</h1>
+          <h1 className="inter-xlarge-semibold">Muuda tellimust</h1>
         </Modal.Header>
         <Modal.Content>
           <div className="mb-4 flex items-center justify-between">
             <span className="text-large font-semibold text-gray-900">
-              Items
+              Esemed
             </span>
             <div className="flex items-center justify-between">
               <Button
@@ -283,7 +283,7 @@ function OrderEditModal(props: OrderEditModalProps) {
                   layeredModalContext.push(addProductVariantScreen)
                 }
               >
-                Add items
+                Lisa esemeid
               </Button>
               {!showFilter && (
                 <Button
@@ -304,7 +304,7 @@ function OrderEditModal(props: OrderEditModalProps) {
                   ref={filterRef}
                   value={filterTerm}
                   onDelete={hideFilter}
-                  placeholder="Filter items..."
+                  placeholder="Filteeri tooteid..."
                   onChange={(e) => setFilterTerm(e.target.value)}
                   prefix={<SearchIcon size={14} className="text-gray-400" />}
                 />
@@ -346,10 +346,10 @@ function OrderEditModal(props: OrderEditModalProps) {
           {/* NOTE */}
           {hasChanges && (
             <div className="flex items-center justify-between">
-              <span className="text-gray-500">Note</span>
+              <span className="text-gray-500">Märge</span>
               <InputField
                 className="max-w-[455px]"
-                placeholder="Add a note..."
+                placeholder="Lisa märge..."
                 onChange={(e) => setNote(e.target.value)}
                 value={note}
               />
@@ -364,7 +364,7 @@ function OrderEditModal(props: OrderEditModalProps) {
               type="button"
               onClick={onCancel}
             >
-              Cancel
+              Tühista
             </Button>
             <Button
               variant="primary"
@@ -374,7 +374,7 @@ function OrderEditModal(props: OrderEditModalProps) {
               loading={isUpdating || isRequestingConfirmation}
               onClick={onSave}
             >
-              Save and close
+              Salvesta ja sulge
             </Button>
           </div>
         </Modal.Footer>

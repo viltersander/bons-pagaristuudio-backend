@@ -14,7 +14,7 @@ const EditCanceled: React.FC<EditCanceledProps> = ({ event }) => {
 
   return (
     <EventContainer
-      title={"Order Edit canceled"}
+      title={"Tellimuse redigeerimine tühistati"}
       icon={<XCircleIcon size={20} />}
       time={event.time}
       isFirst={event.first}

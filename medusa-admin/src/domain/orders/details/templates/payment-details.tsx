@@ -19,35 +19,35 @@ export const PaymentDetails = ({
         <DisplayTotal
           currency={currency}
           totalAmount={swapAmount}
-          totalTitle={"Total for Swaps"}
+          totalTitle={"Vahetustegusid kokku"}
         />
       )}
       {!!swapRefund && (
         <DisplayTotal
           currency={currency}
           totalAmount={returnRefund}
-          totalTitle={"Refunded for Swaps"}
+          totalTitle={"Vahetuste eest raha tagasi"}
         />
       )}
       {!!returnRefund && (
         <DisplayTotal
           currency={currency}
           totalAmount={returnRefund}
-          totalTitle={"Refunded for Returns"}
+          totalTitle={"Tagastamise eest raha tagasi"}
         />
       )}
       {!!manualRefund && (
         <DisplayTotal
           currency={currency}
           totalAmount={manualRefund}
-          totalTitle={"Manually refunded"}
+          totalTitle={"Tagastatud käsitsi"}
         />
       )}
       <DisplayTotal
         variant={"bold"}
         currency={currency}
         totalAmount={paidTotal - refundedTotal}
-        totalTitle={"Net Total"}
+        totalTitle={"Netosumma"}
       />
     </>
   )

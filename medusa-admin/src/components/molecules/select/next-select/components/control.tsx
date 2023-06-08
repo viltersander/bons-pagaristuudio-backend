@@ -134,7 +134,7 @@ export const ClearIndicator = <
     <div
       {...innerProps}
       role="button"
-      aria-label="Clear selected options"
+      aria-label="Tühjendage valitud valikud"
       className={cx(
         {
           indicator: true,

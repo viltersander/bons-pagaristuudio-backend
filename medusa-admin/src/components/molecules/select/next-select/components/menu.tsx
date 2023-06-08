@@ -149,7 +149,7 @@ const SelectAllOption = <
     >
       <ListArrowIcon size={16} />
       <span className="inter-small-semibold">
-        {!isAllSelected ? "Select All" : "Deselect All"}
+        {!isAllSelected ? "Vali kõik" : "Tühista kõik valikud"}
       </span>
     </Button>
   )

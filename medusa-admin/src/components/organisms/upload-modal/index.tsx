@@ -86,12 +86,12 @@ function UploadSummary(props: UploadSummaryProps) {
     <div className="flex gap-6">
       <div className="text-small text-grey-90 flex items-center">
         <CheckCircleIcon color="#9CA3AF" className="mr-2" />
-        <span className="font-semibold"> {creations || 0}&nbsp;</span> new{" "}
+        <span className="font-semibold"> {creations || 0}&nbsp;</span> uus{" "}
         {type}
       </div>
       <div className="text-small text-grey-90 flex items-center">
         <WarningCircleIcon fill="#9CA3AF" className="mr-2" />
-        <span className="font-semibold">{updates || 0}&nbsp;</span> updates
+        <span className="font-semibold">{updates || 0}&nbsp;</span> uuendused
       </div>
     </div>
   )
@@ -138,11 +138,11 @@ function DropArea(props: DropAreaProps) {
       )}
     >
       <span className="text-grey-50 text-small">
-        Drop your file here, or
+        Kukutage fail siia või
         <a className="text-violet-60">
           <label className="cursor-pointer" htmlFor="upload-form-file">
             {" "}
-            click to browse.
+            klõpsake sirvimiseks.
           </label>
           <input
             type="file"
@@ -155,7 +155,7 @@ function DropArea(props: DropAreaProps) {
         </a>
       </span>
       <span className="text-grey-40 text-small">
-        Only .csv files are supported.
+        Toetatakse ainult .csv-faile.
       </span>
     </div>
   )
@@ -221,7 +221,7 @@ function UploadModal(props: UploadModalProps) {
         <Modal.Content>
           <div className="flex justify-between">
             <span className="text-grey-90 inter-large-semibold py-4 text-2xl">
-              Import {fileTitle}
+              Impordi {fileTitle}
             </span>
             <button onClick={onClose} className="text-grey-50 cursor-pointer">
               <CrossIcon size={20} />
@@ -229,7 +229,7 @@ function UploadModal(props: UploadModalProps) {
           </div>
 
           <div className="text-grey-90 inter-large-semibold mb-1 text-base">
-            Import {fileTitle}
+            Impordi {fileTitle}
           </div>
 
           <p className="text-grey-50 mb-4 text-base">{description1Text}</p>
@@ -293,7 +293,7 @@ function UploadModal(props: UploadModalProps) {
                 size="small"
                 onClick={onClose}
               >
-                Cancel
+                Tühista
               </Button>
 
               <Button
@@ -303,7 +303,7 @@ function UploadModal(props: UploadModalProps) {
                 className="text-small"
                 onClick={onSubmit}
               >
-                Import List
+                Impordi loend
               </Button>
             </div>
           </div>

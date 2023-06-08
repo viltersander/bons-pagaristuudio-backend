@@ -10,8 +10,8 @@ const DeleteDialog = ({
   text,
   onConfirm,
   onCancel,
-  confirmText = "Yes, confirm",
-  cancelText = "Cancel",
+  confirmText = "Jah, kinnita",
+  cancelText = "Tühista",
   extraConfirmation = false,
   entityName,
 }) => {
@@ -28,9 +28,9 @@ const DeleteDialog = ({
           {extraConfirmation && (
             <div className="my-base flex flex-col">
               <span className="inter-base-regular text-grey-50 mt-1">
-                Type the name{" "}
-                <span className="font-semibold">"{entityName}"</span> to
-                confirm.
+                Sisestage nimi{" "}
+                <span className="font-semibold">"{entityName}"</span> ,et  
+                kinnitada.
               </span>
               <InputField
                 autoFocus={true}

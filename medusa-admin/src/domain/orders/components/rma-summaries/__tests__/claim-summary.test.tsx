@@ -62,11 +62,11 @@ describe("ClaimSummary", () => {
     renderWithProviders(<ClaimSummary order={order} form={result.current} />)
   })
 
-  it("should render both a return and replacement shipping option", async () => {
+  it("peaks pakkuma nii tagastamise kui ka asendussaadetise võimalust", async () => {
     expect(screen.getAllByText(so.name)).toHaveLength(2)
 
-    expect(screen.getByText("Return shipping")).toBeInTheDocument()
-    expect(screen.getByText("Replacement shipping")).toBeInTheDocument()
-    expect(screen.getAllByText("Free")).toHaveLength(2)
+    expect(screen.getByText("Tagastav saatmine")).toBeInTheDocument()
+    expect(screen.getByText("Asenduse saatmine")).toBeInTheDocument()
+    expect(screen.getAllByText("Tasuta")).toHaveLength(2)
   })
 })

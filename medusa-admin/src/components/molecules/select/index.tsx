@@ -151,7 +151,7 @@ const SSelect = React.forwardRef(
               searchBackend={filterOptions}
               options={
                 hasSelectAll && isMultiSelect
-                  ? [{ value: "all", label: "Select All" }, ...options]
+                  ? [{ value: "all", label: "Vali kõik" }, ...options]
                   : options
               }
               ref={selectRef}

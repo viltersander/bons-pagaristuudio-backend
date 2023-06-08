@@ -55,7 +55,7 @@ const SelectShippingMethod = () => {
       <span className="inter-base-semibold">
         Saatmisviis{" "}
         <span className="inter-base-regular text-grey-50">
-          (To {region!.name})
+          ({region!.name})
         </span>
       </span>
 

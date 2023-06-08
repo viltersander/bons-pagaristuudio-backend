@@ -32,17 +32,17 @@ const GiftCardEndsAtForm = ({ form }: GiftCardEndsAtFormProps) => {
                 )
               }
             }}
-            title="Gift Card has an expiry date?"
-            description="Schedule the Gift Card to deactivate in the future."
+            title="Kas kinkekaardil on aegumiskuupäev?"
+            description="Planeerige kinkekaart tulevikus deaktiveerimiseks."
           >
             <div className="gap-x-xsmall flex items-center">
               <DatePicker
                 date={value!}
-                label="Expiry date"
+                label="Aegumiskuupäev"
                 onSubmitDate={onChange}
               />
               <TimePicker
-                label="Expiry time"
+                label="Aegumisaeg"
                 date={value!}
                 onSubmitDate={onChange}
               />

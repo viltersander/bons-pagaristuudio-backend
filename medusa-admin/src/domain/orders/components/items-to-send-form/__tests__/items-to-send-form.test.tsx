@@ -44,21 +44,21 @@ describe("ItemsToSendForm with RegisterClaimMenu", () => {
   })
 
   it("should render correctly", async () => {
-    expect(screen.getByText("Items to send")).toBeInTheDocument()
-    expect(screen.getByText("Add products")).toBeInTheDocument()
+    expect(screen.getByText("Saadetavad esemed")).toBeInTheDocument()
+    expect(screen.getByText("Lisa tooteid")).toBeInTheDocument()
   })
 
-  it("should display products to send correctly", async () => {
+  it("peaks kuvama tooteid, mida õigesti saata", async () => {
     expect(screen.getByText("Test")).toBeInTheDocument()
     expect(screen.getByText("€100.00")).toBeInTheDocument()
     expect(screen.getByText("1")).toBeInTheDocument()
   })
 
-  it("should update quantity correctly", async () => {
+  it("peaks kogust õigesti värskendama", async () => {
     const { additional_items } = form.getValues()
 
     const user = userEvent.setup()
-    const increment = screen.getByLabelText("Increase quantity")
+    const increment = screen.getByLabelText("Suurenda kogust")
 
     await user.click(increment)
 
@@ -70,7 +70,7 @@ describe("ItemsToSendForm with RegisterClaimMenu", () => {
     expect(screen.getByText("3")).toBeInTheDocument()
     expect(additional_items.items[0].quantity).toEqual(3)
 
-    const decrement = screen.getByLabelText("Decrease quantity")
+    const decrement = screen.getByLabelText("Vähenda kogust")
 
     await user.click(decrement)
 

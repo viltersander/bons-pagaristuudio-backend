@@ -29,7 +29,7 @@ const AmountAndCurrencyInput = ({
   onBlur,
 }: Props) => {
   const { symbol_native, decimal_digits } = useMemo(() => {
-    let symbol_native = "$"
+    let symbol_native = "€"
     let decimal_digits = 2
 
     if (value.currency) {
@@ -97,7 +97,7 @@ const AmountAndCurrencyInput = ({
                 "border-none absolute inset-0 bg-transparent focus-within:shadow-none !shadow-none focus-within:border-none pl-0",
               inner_control: "!max-w-[92px] border-r border-grey-20 pl-base",
             }}
-            placeholder="USD"
+            placeholder="EUR"
             options={Object.values(currencies).map((c) => ({
               value: c.code,
               label: c.code,

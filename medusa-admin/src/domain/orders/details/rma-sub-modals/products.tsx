@@ -61,7 +61,7 @@ const RMASelectProductSubModal: React.FC<RMASelectProductSubModalProps> = ({
   const columns = useMemo(() => {
     return [
       {
-        Header: "Name",
+        Header: "Nimi",
         accessor: "title",
         Cell: ({ row: { original } }) => {
           return (
@@ -85,7 +85,7 @@ const RMASelectProductSubModal: React.FC<RMASelectProductSubModalProps> = ({
         },
       },
       {
-        Header: "Status",
+        Header: "Olek",
         accessor: "status",
         Cell: ({ row: { original } }) => (
           <StatusIndicator
@@ -97,7 +97,7 @@ const RMASelectProductSubModal: React.FC<RMASelectProductSubModalProps> = ({
         ),
       },
       {
-        Header: <div className="text-right">In Stock</div>,
+        Header: <div className="text-right">Saadaval</div>,
         accessor: "inventory_quantity",
         Cell: ({ row: { original } }) => (
           <div className="text-right">{original.inventory_quantity}</div>
@@ -218,7 +218,7 @@ const RMASelectProductSubModal: React.FC<RMASelectProductSubModalProps> = ({
             count: count!,
             offset: offset,
             pageSize: offset + rows.length,
-            title: "Products",
+            title: "Tooted",
             currentPage: pageIndex + 1,
             pageCount: pageCount,
             nextPage: handleNext,
@@ -230,7 +230,7 @@ const RMASelectProductSubModal: React.FC<RMASelectProductSubModalProps> = ({
           <Table
             immediateSearchFocus
             enableSearch
-            searchPlaceholder="Search Products.."
+            searchPlaceholder="Otsi tooteid.."
             searchValue={query}
             handleSearch={handleSearch}
             {...getTableProps()}
@@ -273,7 +273,7 @@ const RMASelectProductSubModal: React.FC<RMASelectProductSubModalProps> = ({
             className="w-[112px]"
             onClick={() => pop()}
           >
-            Back
+            Tagasi
           </Button>
           <Button
             variant="primary"
@@ -281,7 +281,7 @@ const RMASelectProductSubModal: React.FC<RMASelectProductSubModalProps> = ({
             size="small"
             onClick={handleSubmit}
           >
-            Add
+            Lisa
           </Button>
         </div>
       </Modal.Footer>

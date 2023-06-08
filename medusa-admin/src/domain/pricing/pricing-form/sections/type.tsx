@@ -12,9 +12,9 @@ const Type = () => {
       forceMountContent
       required
       value="type"
-      title="Price list type"
-      description="Select the type of the price list"
-      tooltip="Unlike with sale prices a price override will not communicate to the customer that the price is part of a sale."
+      title="Hinnakirja tüüp"
+      description="Valige hinnakirja tüüp"
+      tooltip="Erinevalt müügihindadest ei anna hinna soodustused kliendile teada, et hind on osa müügist."
     >
       <Controller
         name="type"
@@ -30,14 +30,14 @@ const Type = () => {
               <RadioGroup.Item
                 value={PriceListType.SALE}
                 className="flex-1"
-                label="Sale"
-                description="Use this if you are creating prices for a sale."
+                label="Soodustused"
+                description="Kasutage seda, kui loote müügihindadele soodustusi."
               />
               <RadioGroup.Item
                 value={PriceListType.OVERRIDE}
                 className="flex-1"
-                label="Override"
-                description="Use this to override prices."
+                label="Ülekirjutamine"
+                description="Kasutage seda hindade ülekirjutamiseks."
               />
             </RadioGroup.Root>
           )

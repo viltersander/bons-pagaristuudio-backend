@@ -133,7 +133,7 @@ export const ValueContainer = <
           {children}
           {value?.length > 0 && inputValue === "" && (
             <span className="inter-base-regular text-grey-50 absolute top-1/2 -translate-y-1/2">
-              {selectedPlaceholder || label || "Selected"}
+              {selectedPlaceholder || label || "Valitud"}
             </span>
           )}
         </div>

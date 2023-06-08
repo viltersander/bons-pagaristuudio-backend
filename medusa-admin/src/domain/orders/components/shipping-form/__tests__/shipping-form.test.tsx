@@ -51,12 +51,12 @@ describe("ShippingForm return shipping", () => {
     )
   })
 
-  it("should render correctly when type is refund", async () => {
-    expect(screen.getByText("Shipping for return items"))
-    expect(screen.queryByText("Shipping for replacement items")).toBeNull()
+  it("peaks raha tagastamisel õigesti renderdama", async () => {
+    expect(screen.getByText("Kauba tagastamise korral saatmine"))
+    expect(screen.queryByText("Asenduskaupade saatmine")).toBeNull()
   })
 
-  it("should render options when dropdown is opened", async () => {
+  it("peaks rippmenüü avamisel kuvama valikud", async () => {
     const user = userEvent.setup()
     const combobox = screen.getByRole("combobox")
 
@@ -67,21 +67,21 @@ describe("ShippingForm return shipping", () => {
     await user.keyboard("{arrowdown}")
 
     await waitFor(() => {
-      expect(screen.getAllByText("Free Shipping")).toHaveLength(5)
+      expect(screen.getAllByText("Tasuta saatmine")).toHaveLength(5)
     })
   })
 
-  it("should select an option when clicked", async () => {
+  it("peaks klõpsamisel valima suvandi", async () => {
     const user = userEvent.setup()
     await selectFirstOption(user)
 
     await waitFor(() => {
-      expect(screen.getAllByText("Free Shipping")).toHaveLength(1)
+      expect(screen.getAllByText("Tasuta saatmine")).toHaveLength(1)
     })
 
     const { return_shipping } = form.getValues()
 
-    expect(return_shipping.option?.label).toEqual("Free Shipping")
+    expect(return_shipping.option?.label).toEqual("Tasuta saatmine")
     expect(return_shipping.option?.value).toEqual(
       expect.objectContaining({
         id: expect.any(String),
@@ -90,7 +90,7 @@ describe("ShippingForm return shipping", () => {
     )
   })
 
-  it("should render correctly when option is selected", async () => {
+  it("peaks suvandi valimisel õigesti renderdama", async () => {
     const shippingOption = fixtures.get(
       "shipping_option"
     ) as unknown as ShippingOption
@@ -111,7 +111,7 @@ describe("ShippingForm return shipping", () => {
   })
 })
 
-describe("ShippingForm return shipping", () => {
+describe("Saatmisvorm tagastamise saatmine", () => {
   let form: UseFormReturn<CreateClaimFormType, any>
 
   beforeEach(() => {
@@ -141,8 +141,8 @@ describe("ShippingForm return shipping", () => {
     )
   })
 
-  it("should render correctly when type is replace", async () => {
-    expect(screen.getByText("Shipping for replacement items"))
-    expect(screen.queryByText("Shipping for return items")).toBeNull()
+  it("peaks tüübi asendamisel õigesti renderdama", async () => {
+    expect(screen.getByText("Asenduskaupade saatmine"))
+    expect(screen.queryByText("Kauba tagastamise korral saatmine")).toBeNull()
   })
 })

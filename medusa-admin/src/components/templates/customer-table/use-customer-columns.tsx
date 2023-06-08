@@ -1,4 +1,6 @@
-import moment from "moment"
+import { format } from 'date-fns'
+import { et } from 'date-fns/locale'
+import "moment/locale/et"
 import { useMemo } from "react"
 import { getColor } from "../../../utils/color"
 import CustomerAvatarItem from "../../molecules/customer-avatar-item"
@@ -9,7 +11,9 @@ export const useCustomerColumns = () => {
       {
         Header: "Kuupäev lisatud",
         accessor: "created_at", // accessor is the "key" in the data
-        Cell: ({ cell: { value } }) => moment(value).format("DD MMM YYYY"),
+        Cell: ({ cell: { value } }) =>(
+          <div>{format(new Date(value), 'dd MMMM yyyy', { locale: et })}</div>
+        ),
       },
       {
         Header: "Nimi",

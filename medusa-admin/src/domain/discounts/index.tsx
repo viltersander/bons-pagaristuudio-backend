@@ -27,7 +27,7 @@ const DiscountIndex = () => {
       <div className="flex w-full grow flex-col">
         <BodyCard
           actionables={actionables}
-          customHeader={<TableViewHeader views={["discounts"]} />}
+          customHeader={<TableViewHeader views={["allahindlus"]} />}
           className="h-fit"
         >
           <DiscountTable />

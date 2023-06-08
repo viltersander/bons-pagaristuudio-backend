@@ -44,11 +44,11 @@ const SidebarMenuItem: React.FC<SidebarMenuItemProps> & {
         <NavLink className={classNameFn} to={pageLink}>
           <span className="items-start">{icon}</span>
           <span className="group-[.is-active]:text-grey-90 ml-3">{text}</span>
-          {isNew && (
+          {/* {isNew && (
             <Badge variant={"new-feature"} className="ml-auto">
               New
             </Badge>
-          )}
+          )} */}
         </NavLink>
       }
     >

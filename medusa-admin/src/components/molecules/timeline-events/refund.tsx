@@ -11,7 +11,7 @@ type RefundEventProps = {
 const Refund: React.FC<RefundEventProps> = ({ event }) => {
   const args = {
     icon: <RefundIcon size={20} />,
-    title: "Refund",
+    title: "Tagasimakse",
     time: event.time,
     midNode: (
       <span className="inter-small-regular text-grey-50">
@@ -20,20 +20,6 @@ const Refund: React.FC<RefundEventProps> = ({ event }) => {
           currency: event.currencyCode,
         })}
       </span>
-    ),
-    children: (
-      <div className="gap-y-xsmall flex w-full flex-col">
-        {event.reason && (
-          <span className="text-grey-50">{`${event.reason
-            .slice(0, 1)
-            .toUpperCase()}${event.reason.slice(1)}`}</span>
-        )}
-        {event.note && (
-          <div className="bg-grey-5 px-base py-base rounded-2xl">
-            Note: {event.note}
-          </div>
-        )}
-      </div>
     ),
   }
 

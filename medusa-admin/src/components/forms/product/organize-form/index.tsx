@@ -57,11 +57,11 @@ const OrganizeForm = ({ form }: Props) => {
           render={({ field: { value, onChange } }) => {
             return (
               <NextCreateableSelect
-                label="Type"
+                label="Tüüp"
                 onChange={onChange}
                 options={productTypeOptions}
                 value={value || null}
-                placeholder="Choose a type"
+                placeholder="Vali tüüp"
                 onCreateOption={onCreateOption}
                 isClearable
               />
@@ -74,11 +74,11 @@ const OrganizeForm = ({ form }: Props) => {
           render={({ field: { value, onChange } }) => {
             return (
               <NextSelect
-                label="Collection"
+                label="Kollektsioon"
                 onChange={onChange}
                 options={collectionOptions}
                 value={value}
-                placeholder="Choose a collection"
+                placeholder="Vali kollektsioon"
                 isClearable
               />
             )
@@ -88,7 +88,7 @@ const OrganizeForm = ({ form }: Props) => {
 
       {isFeatureEnabled(FeatureFlag.PRODUCT_CATEGORIES) ? (
         <>
-          <InputHeader label="Categories" className="mb-2" />
+          <InputHeader label="Kategooriad" className="mb-2" />
           <Controller
             name={path("categories")}
             control={control}
@@ -102,8 +102,8 @@ const OrganizeForm = ({ form }: Props) => {
                 <NestedMultiselect
                   placeholder={
                     !!categoriesOptions?.length
-                      ? "Choose categories"
-                      : "No categories available"
+                      ? "Vali kategooriad"
+                      : "Kategooriaid pole saadaval"
                   }
                   onSelect={onChange}
                   options={categoriesOptions}

@@ -52,8 +52,8 @@ export const FormattedFulfillment = ({
     const { resourceId, resourceType } = getData()
 
     const shouldCancel = await dialog({
-      heading: "Cancel fulfillment?",
-      text: "Are you sure you want to cancel the fulfillment?",
+      heading: "Tühista täitmine?",
+      text: "Kas soovite kindlasti täitmise tühistada?",
     })
 
     if (!shouldCancel) {
@@ -66,9 +66,9 @@ export const FormattedFulfillment = ({
           { swap_id: resourceId, fulfillment_id: fulfillment.id },
           {
             onSuccess: () =>
-              notification("Success", "Successfully canceled swap", "success"),
+              notification("Õnnestus", "Vahetus edukalt tühistatud", "success"),
             onError: (err) =>
-              notification("Error", getErrorMessage(err), "error"),
+              notification("Viga", getErrorMessage(err), "error"),
           }
         )
       case "claim":
@@ -76,21 +76,21 @@ export const FormattedFulfillment = ({
           { claim_id: resourceId, fulfillment_id: fulfillment.id },
           {
             onSuccess: () =>
-              notification("Success", "Successfully canceled claim", "success"),
+              notification("Õnnestus", "Nõude tühistamine õnnestus", "success"),
             onError: (err) =>
-              notification("Error", getErrorMessage(err), "error"),
+              notification("Viga", getErrorMessage(err), "error"),
           }
         )
       default:
         return cancelFulfillment.mutate(fulfillment.id, {
           onSuccess: () =>
             notification(
-              "Success",
-              "Successfully canceled fulfillment",
+              "Õnnestus",
+              "Täitmise tühistamine õnnestus",
               "success"
             ),
           onError: (err) =>
-            notification("Error", getErrorMessage(err), "error"),
+            notification("Viga", getErrorMessage(err), "error"),
         })
     }
   }
@@ -100,13 +100,13 @@ export const FormattedFulfillment = ({
       <div className="flex flex-col space-y-1 py-4">
         <div className="text-grey-90">
           {fulfillment.canceled_at
-            ? "Fulfillment has been canceled"
-            : `${fulfillmentObj.title} Fulfilled by ${capitalize(
+            ? "Täitmine on tühistatud"
+            : `${fulfillmentObj.title} Täidetud ${capitalize(
                 fulfillment.provider_id
               )}`}
         </div>
         <div className="text-grey-50 flex">
-          {!fulfillment.shipped_at ? "Not shipped" : "Tracking"}
+          {!fulfillment.shipped_at ? "Pole saadetud" : "Jälgimine"}
           {hasLinks &&
             fulfillment.tracking_links.map((tl, j) => (
               <TrackingLink key={j} trackingLink={tl} />
@@ -115,7 +115,7 @@ export const FormattedFulfillment = ({
         {!fulfillment.canceled_at && fulfillment.location_id && (
           <div className="flex flex-col">
             <div className="text-grey-50 font-semibold">
-              {fulfillment.shipped_at ? "Shipped" : "Shipping"} from{" "}
+              {fulfillment.shipped_at ? "Saadetud" : "Saadetakse"} {" "}
             </div>
             <div className="flex items-center pt-2">
               <IconBadge className="mr-2">
@@ -131,12 +131,12 @@ export const FormattedFulfillment = ({
           <Actionables
             actions={[
               {
-                label: "Mark Shipped",
+                label: "Märgi saadetud",
                 icon: <PackageIcon size={"20"} />,
                 onClick: () => setFullfilmentToShip(fulfillment),
               },
               {
-                label: "Cancel Fulfillment",
+                label: "Tühista täitmine",
                 icon: <CancelIcon size={"20"} />,
                 onClick: () => handleCancelFulfillment(),
               },

@@ -178,14 +178,14 @@ const BatchJobActivityCard = (props: { batchJob: BatchJob }) => {
     const fileSize = batchJob.result?.file_key
       ? bytesConverter(batchJob.result?.file_size ?? 0)
       : {
-          confirmed: `Preparing ${operation.toLowerCase()}...`,
-          preprocessing: `Preparing ${operation.toLowerCase()}...`,
-          processing: `Processing ${operation.toLowerCase()}...`,
-          completed: `Successful ${operation.toLowerCase()}`,
-          failed: `Job failed`,
-          canceled: `Canceled batch ${operation.toLowerCase()} job`,
-          created: "Created", // Updated value
-          pre_processed: "Pre-processed", // Updated value
+          confirmed: `Ettevalmistus ${operation.toLowerCase()}...`,
+          preprocessing: `Ettevalmistus ${operation.toLowerCase()}...`,
+          processing: `Töötlemine ${operation.toLowerCase()}...`,
+          completed: `Õnnestus ${operation.toLowerCase()}`,
+          failed: `Töö ebaõnnestus`,
+          canceled: `Tühistatud partii ${operation.toLowerCase()} töö`,
+          created: "Loodud", // Updated value
+          pre_processed: "Eeltöödeldud", // Updated value
         }[batchJob.status]
 
     return (

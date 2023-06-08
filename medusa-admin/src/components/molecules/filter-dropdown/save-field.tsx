@@ -26,7 +26,7 @@ const SaveFilterItem: React.FC<SaveFilterItemProps> = ({
     <div className="mt-2 flex w-full">
       <InputField
         className="max-w-[172px] pt-0 pb-1"
-        placeholder="Name your filter..."
+        placeholder="Nimeta oma filter..."
         onChange={(e) => setName(e.target.value)}
         value={name}
       />
@@ -36,7 +36,7 @@ const SaveFilterItem: React.FC<SaveFilterItemProps> = ({
         size="small"
         onClick={onSave}
       >
-        Save
+        Salvesta
       </Button>
     </div>
   )

@@ -39,7 +39,7 @@ const AvailabilityDuration: React.FC<AvailabilityDurationProps> = ({
     <div>
       <div className="gap-x-xsmall gap-y-base mt-xlarge grid grid-cols-3 grid-rows-2">
         <InputField
-          label="Years"
+          label="Aastad"
           type="number"
           placeholder="0"
           value={durationYears}
@@ -47,7 +47,7 @@ const AvailabilityDuration: React.FC<AvailabilityDurationProps> = ({
           min={0}
         />
         <InputField
-          label="Months"
+          label="Kuud"
           type="number"
           placeholder="0"
           value={durationMonths}
@@ -55,7 +55,7 @@ const AvailabilityDuration: React.FC<AvailabilityDurationProps> = ({
           min={0}
         />
         <InputField
-          label="Days"
+          label="Päevad"
           type="number"
           placeholder="0"
           value={durationDays}
@@ -63,7 +63,7 @@ const AvailabilityDuration: React.FC<AvailabilityDurationProps> = ({
           min={0}
         />
         <InputField
-          label="Hours"
+          label="Tunnid"
           type="number"
           placeholder="0"
           value={durationHours}
@@ -71,7 +71,7 @@ const AvailabilityDuration: React.FC<AvailabilityDurationProps> = ({
           min={0}
         />
         <InputField
-          label="Minutes"
+          label="Minutid"
           type="number"
           placeholder="0"
           value={durationMinutes}

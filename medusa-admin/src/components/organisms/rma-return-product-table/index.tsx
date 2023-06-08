@@ -45,7 +45,7 @@ const RMAReturnProductsTable: React.FC<RMAReturnProductsTableProps> = ({
         <Table.HeadCell>Toote üksikasjad</Table.HeadCell>
         <Table.HeadCell className="pr-8 text-right">Kogus</Table.HeadCell>
         <Table.HeadCell className="text-right">
-          {isAdditionalItems ? "Unit Price" : "Refundable"}
+          {isAdditionalItems ? "Ühiku hind" : "Tagastatav"}
         </Table.HeadCell>
         <Table.HeadCell></Table.HeadCell>
         <Table.HeadCell></Table.HeadCell>

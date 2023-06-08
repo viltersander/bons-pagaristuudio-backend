@@ -20,12 +20,12 @@ import { getErrorMessage } from "../../../utils/error-messages"
 import ImportProducts from "../batch-job/import"
 import NewProduct from "../new"
 
-const VIEWS = ["products", "collections"]
+const VIEWS = ["tooted", "kollektsioon"]
 
 const Overview = () => {
   const navigate = useNavigate()
   const location = useLocation()
-  const [view, setView] = useState("products")
+  const [view, setView] = useState("tooted")
   const {
     state: createProductState,
     close: closeProductCreate,
@@ -40,8 +40,8 @@ const Overview = () => {
   const createCollection = useAdminCreateCollection()
 
   useEffect(() => {
-    if (location.search.includes("?view=collections")) {
-      setView("collections")
+    if (location.search.includes("?view=kollektsioon")) {
+      setView("kollektsioon")
     }
   }, [location])
 
@@ -51,7 +51,7 @@ const Overview = () => {
 
   const CurrentView = () => {
     switch (view) {
-      case "products":
+      case "tooted":
         return <ProductTable />
       default:
         return <CollectionsTable />
@@ -60,7 +60,7 @@ const Overview = () => {
 
   const CurrentAction = () => {
     switch (view) {
-      case "products":
+      case "tooted":
         return (
           <div className="flex space-x-2">
             <Button

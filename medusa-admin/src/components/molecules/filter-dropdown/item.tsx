@@ -135,7 +135,7 @@ const FilterDropdownItem = ({
                 onClick={handlePrev}
                 className="hover:text-violet-60 text-grey-90 font-semibold"
               >
-                Back
+                Tagasi
               </button>
             </div>
           )}
@@ -143,7 +143,7 @@ const FilterDropdownItem = ({
             <div className="flex items-center justify-center py-1">
               <Spinner size={"large"} variant={"secondary"} />
             </div>
-          ) : filterTitle === "Date" ? (
+          ) : filterTitle === "Kuupäev" ? (
             <DateFilter
               options={options}
               open={open}
@@ -206,7 +206,7 @@ const FilterDropdownItem = ({
                 onClick={handleNext}
                 className="hover:text-violet-60 text-grey-90 font-semibold"
               >
-                Show more
+                Näita rohkem
               </button>
             </div>
           )}

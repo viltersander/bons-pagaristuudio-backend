@@ -28,7 +28,7 @@ const Taxes = () => {
       <div>
         <BackButton
           path="/a/settings"
-          label="Back to settings"
+          label="Tagasi seadete juurde"
           className="mb-xsmall"
         />
         <TwoSplitPane threeCols>

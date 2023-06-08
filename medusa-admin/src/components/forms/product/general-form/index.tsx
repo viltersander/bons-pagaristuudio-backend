@@ -28,68 +28,67 @@ const GeneralForm = ({ form, requireHandle = true, isGiftCard }: Props) => {
     <div>
       <div className="gap-x-large mb-small grid grid-cols-2">
         <InputField
-          label="Title"
-          placeholder={isGiftCard ? "Gift Card" : "Winter Jacket"}
+          label="Pealkiri"
+          placeholder={isGiftCard ? "Kinkekaart" : "Küpsised"}
           required
           {...register(path("title"), {
-            required: "Title is required",
+            required: "Pealkiri on nõutud",
             minLength: {
               value: 1,
-              message: "Title must be at least 1 character",
+              message: "Pealkiri peab olema vähemalt 1 tähemärk",
             },
-            pattern: FormValidator.whiteSpaceRule("Title"),
+            pattern: FormValidator.whiteSpaceRule("Pealkiri"),
           })}
           errors={errors}
         />
         <InputField
-          label="Subtitle"
-          placeholder="Warm and cozy..."
+          label="Alapealkiri"
+          placeholder="Maitsvad ja värsked..."
           {...register(path("subtitle"), {
-            pattern: FormValidator.whiteSpaceRule("Subtitle"),
+            pattern: FormValidator.whiteSpaceRule("Alapealkiri"),
           })}
           errors={errors}
         />
       </div>
       <p className="inter-base-regular text-grey-50 mb-large">
-        Give your {isGiftCard ? "gift card" : "product"} a short and clear
-        title.
+        Andke oma {isGiftCard ? "gift card" : "product"} lühike ja selge pealkiri.
         <br />
-        50-60 characters is the recommended length for search engines.
+        Otsingumootorite jaoks on soovitatav pikkus 50–60 tähemärki.
       </p>
       <div className="gap-x-large mb-large grid grid-cols-2">
         <InputField
-          label="Handle"
+          label="Käepide"
           tooltipContent={
             !requireHandle
-              ? `The handle is the part of the URL that identifies the ${
+              ? `Käepide on URL-i osa, mis tuvastab ${
                   isGiftCard ? "gift card" : "product"
-                }. If not specified, it will be generated from the title.`
+                }. Kui pole määratud, genereeritakse see pealkirjast.`
               : undefined
           }
           placeholder={isGiftCard ? "gift-card" : "winter-jacket"}
           required={requireHandle}
           {...register(path("handle"), {
-            required: requireHandle ? "Handle is required" : undefined,
-            minLength: FormValidator.minOneCharRule("Handle"),
-            pattern: FormValidator.whiteSpaceRule("Handle"),
+            required: requireHandle ? "Käepide on nõutud" : undefined,
+            minLength: FormValidator.minOneCharRule("Käepide"),
+            pattern: FormValidator.whiteSpaceRule("Käepide"),
           })}
           prefix="/"
           errors={errors}
         />
-        <InputField
-          label="Material"
-          placeholder={isGiftCard ? "Paper" : "100% Cotton"}
+        {/* <InputField
+          label="Materjal"
+          placeholder={isGiftCard ? "Paber" : "100% puuvill"}
           {...register(path("material"), {
-            minLength: FormValidator.minOneCharRule("Material"),
-            pattern: FormValidator.whiteSpaceRule("Material"),
+            minLength: FormValidator.minOneCharRule("Materjal"),
+            pattern: FormValidator.whiteSpaceRule("Materjal"),
           })}
           errors={errors}
-        />
+        /> */}
       </div>
       <TextArea
-        label="Description"
+        label="Kirjeldus"
         placeholder={
-          isGiftCard ? "The gift card is..." : "A warm and cozy jacket..."
+          isGiftCard ? "Kinkekaart on..." : "Maitsavad küpsised..."
         }
         rows={3}
         className="mb-small"
@@ -97,10 +96,10 @@ const GeneralForm = ({ form, requireHandle = true, isGiftCard }: Props) => {
         errors={errors}
       />
       <p className="inter-base-regular text-grey-50">
-        Give your {isGiftCard ? "gift card" : "product"} a short and clear
-        description.
+        Anna oma {isGiftCard ? "gift card" : "product"} väike ja selge
+        kirjeldus.
         <br />
-        120-160 characters is the recommended length for search engines.
+        Otsingumootorite jaoks on soovitatav pikkus 120–160 tähemärki.
       </p>
     </div>
   )

@@ -48,7 +48,7 @@ const FormHeader = (props: PriceListFormProps & { onClose?: () => void }) => {
         navigate(`/a/pricing/${price_list.id}`)
       },
       onError: (error) => {
-        notification("Error", getErrorMessage(error), "error")
+        notification("Viga", getErrorMessage(error), "error")
       },
     })
   }
@@ -63,7 +63,7 @@ const FormHeader = (props: PriceListFormProps & { onClose?: () => void }) => {
         navigate(`/a/pricing/${price_list.id}`)
       },
       onError: (error) => {
-        notification("Error", getErrorMessage(error), "error")
+        notification("Viga", getErrorMessage(error), "error")
       },
     })
   }
@@ -75,11 +75,11 @@ const FormHeader = (props: PriceListFormProps & { onClose?: () => void }) => {
     }
     updatePriceList.mutate(data, {
       onSuccess: ({ price_list }) => {
-        notification("Success", "Successfully updated price list", "success")
+        notification("Õnnestus", "Hinnakirja uuendamine õnnestus", "success")
         closeForm()
       },
       onError: (error) => {
-        notification("Error", getErrorMessage(error), "error")
+        notification("Viga", getErrorMessage(error), "error")
       },
     })
   }
@@ -90,7 +90,7 @@ const FormHeader = (props: PriceListFormProps & { onClose?: () => void }) => {
         props.onClose && props.onClose()
       },
       onError: (error) => {
-        notification("Error", getErrorMessage(error), "error")
+        notification("Viga", getErrorMessage(error), "error")
       },
     })
   }
@@ -101,31 +101,31 @@ const FormHeader = (props: PriceListFormProps & { onClose?: () => void }) => {
   switch (props.viewType) {
     case ViewType.CREATE:
       mainAction = {
-        label: "Publish price list",
+        label: "Avalda hinnakiri",
         onClick: handleSubmit(onPublish),
       }
       secondaryAction = {
-        label: "Save as draft",
+        label: "Salvesta mustandina",
         onClick: handleSubmit(onSaveAsDraft),
       }
       break
     case ViewType.EDIT_DETAILS:
       mainAction = {
-        label: "Save changes",
+        label: "Salvesta muudatused",
         onClick: handleSubmit(onUpdateDetails),
       }
       secondaryAction = {
-        label: "Cancel",
+        label: "Tühista",
         onClick: closeForm,
       }
       break
     case ViewType.EDIT_PRICES:
       mainAction = {
-        label: "Save changes",
+        label: "Salvesta muudatused",
         onClick: handleSubmit(onUpdatePrices),
       }
       secondaryAction = {
-        label: "Cancel",
+        label: "Tühista",
         onClick: closeForm,
       }
       break

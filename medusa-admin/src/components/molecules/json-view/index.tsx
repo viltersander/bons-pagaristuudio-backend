@@ -70,7 +70,7 @@ const JSONView = ({ data }: JSONViewProps) => {
             {expanded && <p className="inter-base-semibold">{`}`}</p>}
             <div className="gap-x-xsmall text-grey-50 inter-small-regular flex items-center">
               {isCopied && (
-                <span className="animate-fade-in-right">Copied!</span>
+                <span className="animate-fade-in-right">Kopeeritud!</span>
               )}
               <Button
                 variant="ghost"

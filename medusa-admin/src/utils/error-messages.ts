@@ -4,7 +4,7 @@ export const getErrorMessage = (error: any) => {
     msg = msg[0].message
   }
   if (!msg) {
-    msg = "Something went wrong, Please try again."
+    msg = "Midagi läks valesti, proovige uuesti."
   }
   return msg
 }

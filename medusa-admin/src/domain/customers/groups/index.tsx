@@ -15,7 +15,7 @@ function Index() {
 
   const actions = [
     {
-      label: "New group",
+      label: "Uus rühm",
       onClick: open,
       icon: (
         <span className="text-grey-90">

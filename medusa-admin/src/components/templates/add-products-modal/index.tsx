@@ -78,7 +78,7 @@ const AddProductsModal = ({
               totalCount={count}
               options={{
                 enableSearch: true,
-                searchPlaceholder: "Search by name or description...",
+                searchPlaceholder: "Otsige nime või kirjelduse järgi...",
               }}
               {...params}
             />

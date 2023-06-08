@@ -22,10 +22,10 @@ export const CustomerGroupGeneralForm = ({
   return (
     <div>
       <InputField
-        label="Name"
+        label="Nimi"
         required
         {...register(path("name"), {
-          required: FormValidator.required("Name"),
+          required: FormValidator.required("Nimi"),
         })}
         errors={errors}
       />

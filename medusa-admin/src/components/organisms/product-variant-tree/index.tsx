@@ -68,8 +68,8 @@ const ProductVariantLeaf = ({ sku, title, prices = [] }: LeafProps) => {
       <div className="text-grey-50 flex flex-1 items-center justify-end">
         <div className="text-grey-50 mr-xsmall">
           {filteredPrices.length ? (
-            <span>{`${filteredPrices.length} price${
-              filteredPrices.length > 1 ? "s" : ""
+            <span>{`${filteredPrices.length} hind${
+              filteredPrices.length > 1 ? "hinnad" : ""
             }`}</span>
           ) : (
             <span className="inter-small-semibold text-orange-40">

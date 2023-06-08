@@ -31,6 +31,8 @@ import { formatAmountWithSymbol } from "../../../utils/prices"
 import AddressModal from "../details/address-modal"
 import DraftSummaryCard from "../details/detail-cards/draft-summary"
 import { DisplayTotal, FormattedAddress } from "../details/templates"
+import { format } from 'date-fns';
+import et from 'date-fns/locale/et'; 
 
 type DeletePromptData = {
   resource: string
@@ -126,7 +128,7 @@ const DraftOrderDetails = () => {
     <div>
       <BackButton
         path="/a/draft-orders"
-        label="Back to Draft Orders"
+        label="Tagasi tellimuste mustandite juurde"
         className="mb-xsmall"
       />
       {isLoading || !draft_order ? (
@@ -138,10 +140,8 @@ const DraftOrderDetails = () => {
           <div className="flex h-full w-full flex-col">
             <BodyCard
               className={"mb-4 min-h-[200px] w-full"}
-              title={`Order #${draft_order.display_id}`}
-              subtitle={moment(draft_order.created_at).format(
-                "D MMMM YYYY hh:mm a"
-              )}
+              title={`Tellimus #${draft_order.display_id}`}
+              subtitle={format(new Date(draft_order.created_at), "d MMMM yyyy hh:mm a", { locale: et })}
               status={<OrderStatusComponent />}
               customActionable={
                 draft_order?.status === "completed" && (
@@ -256,7 +256,7 @@ const DraftOrderDetails = () => {
                 )}
               </div>
             </BodyCard>
-            <BodyCard className={"mb-4 h-auto min-h-0 w-full"} title="Shipping">
+            <BodyCard className={"mb-4 h-auto min-h-0 w-full"} title="Saatmine">
               <div className="mt-6">
                 {cart?.shipping_methods.map((method) => (
                   <div className="flex flex-col" key={method.id}>
@@ -283,7 +283,7 @@ const DraftOrderDetails = () => {
             </BodyCard>
             <BodyCard
               className={"mb-4 h-auto min-h-0 w-full"}
-              title="Customer"
+              title="Klient"
               actionables={[
                 {
                   label: "Redigeeri tarneaadressi",

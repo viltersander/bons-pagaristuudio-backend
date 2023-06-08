@@ -24,8 +24,8 @@ type RefundMenuFormData = {
 }
 
 const reasonOptions = [
-  { label: "Discount", value: "discount" },
-  { label: "Other", value: "other" },
+  { label: "Allahindlus", value: "discount" },
+  { label: "Muu", value: "other" },
 ]
 
 type RefundMenuProps = {
@@ -71,11 +71,11 @@ const RefundMenu = ({
       },
       {
         onSuccess: () => {
-          notification("Success", "Successfully refunded order", "success")
+          notification("Õnnestus", "Tellimuse tagasimaksmine õnnestus", "success")
           onDismiss()
         },
         onError: (error) => {
-          notification("Error", getErrorMessage(error), "error")
+          notification("Viga", getErrorMessage(error), "error")
         },
       }
     )
@@ -88,7 +88,7 @@ const RefundMenu = ({
       <form onSubmit={handleSubmit(onSubmit)}>
         <Modal.Body>
           <Modal.Header handleClose={onDismiss}>
-            <h2 className="inter-xlarge-semibold">Create a refund</h2>
+            <h2 className="inter-xlarge-semibold">Looge tagasimakse</h2>
           </Modal.Header>
           <Modal.Content>
             {isSystemPayment && (
@@ -97,14 +97,12 @@ const RefundMenu = ({
                   <AlertIcon size={20} />
                 </div>
                 <div className="flex flex-col">
-                  <span className="inter-small-semibold">Attention!</span>
-                  One or more of your payments is a system payment. Be aware,
-                  that captures and refunds are not handled by Medusa for such
-                  payments.
+                  <span className="inter-small-semibold">Tähelepanu!</span>
+                  Üks või mitu teie makset on süsteemimakse. Pidage meeles, et Medusa ei tegele selliste maksete kinnivõtmise ja tagasimaksmisega.
                 </div>
               </div>
             )}
-            <span className="inter-base-semibold">Details</span>
+            <span className="inter-base-semibold">Üksikasjad</span>
             <div className="gap-y-base mt-4 grid">
               <CurrencyInput.Root
                 size="small"
@@ -115,19 +113,19 @@ const RefundMenu = ({
                   name="amount"
                   control={control}
                   rules={{
-                    required: FormValidator.required("Amount"),
-                    min: FormValidator.min("Amount", 1),
+                    required: FormValidator.required("Summa"),
+                    min: FormValidator.min("Summa", 1),
                     max: FormValidator.maxInteger(
-                      "Amount",
+                      "Summa",
                       order.currency_code
                     ),
                   }}
                   render={({ field: { value, onChange, onBlur } }) => (
                     <CurrencyInput.Amount
-                      label={"Refund Amount"}
+                      label={"Tagasimakse"}
                       amount={value}
                       onBlur={onBlur}
-                      invalidMessage={`Cannot refund more than the order's net total.`}
+                      invalidMessage={`Tagastada ei saa rohkem kui tellimuse netosumma.`}
                       onValidate={handleValidateRefundAmount}
                       onChange={onChange}
                     />
@@ -137,11 +135,11 @@ const RefundMenu = ({
               <Controller
                 name="reason"
                 control={control}
-                defaultValue={{ label: "Discount", value: "discount" }}
+                defaultValue={{ label: "Allahindlus", value: "discount" }}
                 rules={{ required: true }}
                 render={({ field: { value, onChange } }) => (
                   <Select
-                    label="Reason"
+                    label="Põhjus"
                     options={reasonOptions}
                     value={value}
                     onChange={onChange}
@@ -150,8 +148,8 @@ const RefundMenu = ({
               />
               <TextArea
                 {...register("note")}
-                label="Note"
-                placeholder="Discount for loyal customer"
+                label="Märge"
+                placeholder="Püsikliendile allahindlus"
               />
             </div>
           </Modal.Content>
@@ -179,8 +177,8 @@ const RefundMenu = ({
                   type="checkbox"
                 />
                 <span className="text-grey-90 gap-x-xsmall ml-3 flex items-center">
-                  Send notifications
-                  <IconTooltip content="Notify customer of created return" />
+                  Saatke teade
+                  <IconTooltip content="Teavita klienti loodud tagastusest" />
                 </span>
               </div>
               <div className="gap-x-xsmall flex">
@@ -190,7 +188,7 @@ const RefundMenu = ({
                   className="w-[112px]"
                   variant="ghost"
                 >
-                  Cancel
+                  Tühista
                 </Button>
                 <Button
                   type="submit"
@@ -200,7 +198,7 @@ const RefundMenu = ({
                   loading={isLoading}
                   disabled={isLoading}
                 >
-                  Complete
+                  Täida
                 </Button>
               </div>
             </div>

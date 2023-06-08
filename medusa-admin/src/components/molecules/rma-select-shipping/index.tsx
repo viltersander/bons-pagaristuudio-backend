@@ -23,7 +23,7 @@ const RMAShippingPrice: React.FC<RMAShippingPriceProps> = ({
   return useCustomShippingPrice ? (
     <div className="gap-x-base mt-4 flex w-full items-end">
       <AmountInput
-        label={`Shipping price (${inclTax ? "incl. tax" : "excl. tax"})`}
+        label={`Saatmishind (${inclTax ? "sisaldab maksu" : "välistatud maks"})`}
         currencyCode={currencyCode}
         onChange={(amount) => updateShippingPrice(amount ?? 0)}
         value={shippingPrice}
@@ -45,7 +45,7 @@ const RMAShippingPrice: React.FC<RMAShippingPriceProps> = ({
         className="border-grey-20 border"
         size="small"
       >
-        Add custom price
+        Lisa kohandatud hind
       </Button>
     </div>
   )

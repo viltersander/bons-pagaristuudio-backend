@@ -42,13 +42,13 @@ const SettingsIndex = () => {
         icon={<CrosshairIcon />}
         to={`/a/settings/details`}
       />
-      <SettingsCard
+      {/* <SettingsCard
         heading={"Tarne"}
-        description={"Manage shipping profiles"}
+        description={"Tarneprofiilide haldamine"}
         icon={<TruckIcon />}
         to={`/a/settings/shipping-profiles`}
         disabled={true}
-      />
+      /> */}
       <SettingsCard
         heading={"Tagastamise põhjused"}
         description={"Tellimuse seadete haldamine"}

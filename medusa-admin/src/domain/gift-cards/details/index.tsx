@@ -1,5 +1,6 @@
 import { useAdminGiftCard, useAdminUpdateGiftCard } from "medusa-react"
-import moment from "moment"
+import { format } from 'date-fns'
+import { et } from 'date-fns/locale'
 import { useParams } from "react-router-dom"
 import BackButton from "../../../components/atoms/back-button"
 import Spinner from "../../../components/atoms/spinner"
@@ -132,7 +133,7 @@ const GiftCardDetails = () => {
                       Aegub
                       </div>
                       <div>
-                        {moment(giftCard.ends_at).format("DD MMM YYYY")}
+                        {format(new Date(giftCard.ends_at), 'dd MMM yyyy', { locale: et })}
                       </div>
                     </div>
                   )}
@@ -141,13 +142,13 @@ const GiftCardDetails = () => {
                     Loodud
                     </div>
                     <div>
-                      {moment(giftCard.created_at).format("DD MMM YYYY")}
+                      {format(new Date(giftCard.ends_at), 'dd MMM yyyy', { locale: et })}
                     </div>
                   </div>
                 </div>
               </div>
             </BodyCard>
-            <RawJSON data={giftCard} title="Raw gift card" />
+            <RawJSON data={giftCard} title="Töötlemata kinkekaart" />
           </div>
 
           <UpdateBalanceModal

@@ -90,13 +90,13 @@ const SearchModal = ({ handleClose }) => {
                   className="flex-1"
                   onChange={onChange}
                   value={q}
-                  placeholder="Start typing to search..."
+                  placeholder="Alustage otsimiseks tippimist..."
                   {...getInputProps()}
                 />
                 <Tooltip
                   className="bg-grey-0"
                   onClick={handleClear}
-                  content="Clear search"
+                  content="Tühjenda otsing"
                 >
                   <CrossIcon className="text-grey-50 flex" />
                 </Tooltip>

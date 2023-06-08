@@ -135,7 +135,7 @@ function FieldsMenu(props: FieldsMenuProps) {
           className="text-small text-grey-90 inline-flex h-[32px] rounded-lg px-3 font-semibold"
         >
           <span className="flex items-center gap-1 whitespace-nowrap">
-            Add fields <PlusIcon size={14} />
+            Lisa väljad <PlusIcon size={14} />
           </span>
         </Button>
       </DropdownMenu.Trigger>
@@ -181,7 +181,7 @@ function TableFieldsFilters(props: TableFieldsFilterProps) {
   return (
     <div className="flex flex-wrap items-center gap-y-2">
       <span className="text-small mr-2 whitespace-nowrap font-semibold text-gray-500">
-        Currently editing these fields:
+        Praegu redigeeritakse neid välju:
       </span>
 
       {visibleFields.map((f) => (

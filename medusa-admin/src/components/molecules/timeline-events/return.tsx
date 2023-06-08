@@ -55,10 +55,10 @@ const Return: React.FC<ReturnRequestedProps> = ({ event, refetch }) => {
         <DeletePrompt
           handleClose={() => setShowCancel(false)}
           onDelete={async () => handleCancel()}
-          heading="Cancel return"
-          confirmText="Yes, cancel"
-          successText="Canceled return"
-          text="Are you sure you want to cancel this return?"
+          heading="Tühista tagastus"
+          confirmText="Jah, tühista"
+          successText="Tühistatud tagastus"
+          text="Kas olete kindel, et soovite selle tagastuse tühistada?"
         />
       )}
       {showReceiveReturnMenu && (
@@ -77,14 +77,14 @@ function buildReturn(
   onCancel: () => void,
   onReceive: () => void
 ) {
-  let title: string = "Return"
+  let title: string = "Tagasta"
   let icon: React.ReactNode
   let button: React.ReactNode
   const actions: ActionType[] = []
 
   switch (event.status) {
     case "requested":
-      title = "Return Requested"
+      title = "Tagastus taotletud"
       icon = <AlertIcon size={20} className="text-orange-40" />
       if (event.currentStatus === "requested") {
         button = event.currentStatus && event.currentStatus === "requested" && (
@@ -94,27 +94,27 @@ function buildReturn(
             className={clsx("mt-large")}
             onClick={onReceive}
           >
-            Receive Return
+            Kinnita tagastus
           </Button>
         )
         actions.push({
           icon: <TrashIcon size={20} />,
-          label: "Cancel return",
+          label: "Tühista tagastus",
           variant: "danger",
           onClick: onCancel,
         })
       }
       break
     case "received":
-      title = "Return Received"
+      title = "Tagastus vastu võetud"
       icon = <CheckCircleIcon size={20} className="text-emerald-40" />
       break
     case "canceled":
-      title = "Return Canceled"
+      title = "Tagastus tühistatud"
       icon = <CancelIcon size={20} className="text-grey-50" />
       break
     case "requires_action":
-      title = "Return Requires Action"
+      title = "Tagastamine nõuab tegutsemist"
       icon = <AlertIcon size={20} className="text-rose-50" />
       break
     default:

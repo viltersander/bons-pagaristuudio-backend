@@ -53,7 +53,7 @@ const DenominationForm = ({ form }: Props) => {
     <div className="gap-y-xlarge flex flex-col">
       <div>
         <div className="gap-x-2xsmall flex items-center">
-          <h2 className="inter-base-semibold">Default currency</h2>
+          <h2 className="inter-base-semibold">Vaikevaluuta</h2>
           <IconTooltip
             type="info"
             content="The denomination in your store's default currency"
@@ -79,7 +79,7 @@ const DenominationForm = ({ form }: Props) => {
             control={control}
             rules={{
               required:
-                "An amount for your store's default currency is required",
+                "Nõutav on teie poe vaikevaluuta summa",
             }}
             render={({ field: { value, onChange, name } }) => {
               return (
@@ -101,11 +101,10 @@ const DenominationForm = ({ form }: Props) => {
         <div className="flex items-start justify-between">
           <div className="gap-y-2xsmall flex flex-col">
             <h2 className="inter-base-semibold">
-              Use value for all currencies?
+              Kas kasutada väärtust kõigi valuutade jaoks?
             </h2>
             <p className="inter-small-regular text-grey-50 max-w-[60%]">
-              If enabled the value used for the store&apos;s default currency
-              code will also be applied to all other currencies in your store.
+              Kui see on lubatud, rakendatakse poe vaikevaluutakoodi väärtust ka kõigile teistele teie poe valuutadele.
             </p>
           </div>
           <Controller
@@ -122,10 +121,10 @@ const DenominationForm = ({ form }: Props) => {
       {!useSameValue && (
         <div>
           <div className="gap-x-2xsmall flex items-center">
-            <h2 className="inter-base-semibold">Other currencies</h2>
+            <h2 className="inter-base-semibold">Muud valuutad</h2>
             <IconTooltip
               type="info"
-              content="The denomination in your store's other currencies"
+              content="Nimiväärtus teie poe muudes valuutades"
             />
           </div>
           <div className="gap-y-xsmall pt-small flex flex-col">
@@ -173,7 +172,7 @@ const DenominationForm = ({ form }: Props) => {
         </div>
       )}
       <div>
-        <h2 className="inter-base-semibold mb-base">Metadata</h2>
+        <h2 className="inter-base-semibold mb-base">Metaandmed</h2>
         <MetadataForm form={nestedForm(form, "metadata")} />
       </div>
     </div>

@@ -6,7 +6,7 @@ import SaveFilterItem from "../../../components/molecules/filter-dropdown/save-f
 import TabFilter from "../../../components/molecules/filter-tab"
 import PlusIcon from "../../fundamentals/icons/plus-icon"
 
-const dynamicFilters = ["normaalne", "dünaamiline"]
+const dynamicFilters = ["tavaline", "dünaamiline"]
 
 const dateFilters = [
   "is in the last",

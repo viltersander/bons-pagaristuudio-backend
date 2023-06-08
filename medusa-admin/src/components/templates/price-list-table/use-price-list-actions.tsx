@@ -44,7 +44,7 @@ const usePriceListActions = (priceList) => {
             "Õnnestus",
             `Edukalt ${
               isActive(priceList) ? "ei avaldanud" : "avaldasite"
-            } price list`,
+            } hinnakirja`,
             "success"
           )
         },

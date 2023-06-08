@@ -69,7 +69,7 @@ const Table = React.forwardRef<HTMLTableElement, TableProps>(
     ref
   ) => {
     if (enableSearch && !handleSearch) {
-      throw new Error("Table cannot enable search without a search handler")
+      throw new Error("Tabel ei saa otsingut lubada ilma otsingutöötlejata")
     }
 
     return (

@@ -62,7 +62,7 @@ const FilterDropdownContainer = ({
             variant="ghost"
             onClick={() => onClear()}
           >
-            Clear
+            Tühjenda
           </Button>
           <Button
             tabIndex={-1}
@@ -71,7 +71,7 @@ const FilterDropdownContainer = ({
             size="small"
             onClick={() => onSubmit()}
           >
-            Apply
+            Rakenda
           </Button>
         </div>
         {React.Children.toArray(children).filter(Boolean).map((child) => {

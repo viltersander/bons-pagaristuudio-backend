@@ -25,7 +25,7 @@ const Notification: React.FC<NotificationProps> = ({ event }) => {
     <EventActionables
       actions={[
         {
-          label: "Re-Send Mail",
+          label: "Saada kiri uuesti",
           icon: <SendIcon size={20} />,
           onClick: () => setShowResend(true),
         },

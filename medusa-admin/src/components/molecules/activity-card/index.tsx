@@ -21,7 +21,7 @@ export const ActivityCard: React.FC<ActivityCardProps> = (
 
   const date =
     !!props.date &&
-    new Date(props.date).toLocaleDateString("en-us", {
+    new Date(props.date).toLocaleDateString("et-EE", {
       hour12: true,
       day: "2-digit",
       month: "short",
@@ -29,7 +29,7 @@ export const ActivityCard: React.FC<ActivityCardProps> = (
       minute: "numeric",
       second: "numeric",
     })
-  const formattedDate = !!date && date.replace(",", " at")
+  const formattedDate = !!date && date.replace(",", " kell")
 
   const getTimeElement = () => {
     return (

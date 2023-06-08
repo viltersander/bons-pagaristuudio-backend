@@ -97,7 +97,7 @@ const CollectionsTable: React.FC = () => {
           {
             title: "Kõik",
             count: collections?.length || 0,
-            onClick: () => console.log("Not implemented yet"),
+            onClick: () => console.log("Pole veel rakendatud"),
           },
         ],
       },

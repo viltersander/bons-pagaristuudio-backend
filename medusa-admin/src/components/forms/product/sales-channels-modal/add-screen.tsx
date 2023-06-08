@@ -95,7 +95,7 @@ const AddScreen = () => {
       <Modal.Footer>
         <div className="space-x-xsmall flex w-full justify-end">
           <Button variant="secondary" size="small" onClick={pop}>
-            Cancel
+            Tühista
           </Button>
           <Button
             variant="primary"
@@ -103,7 +103,7 @@ const AddScreen = () => {
             onClick={saveAndGoBack}
             disabled={disableSave}
           >
-            Save and go back
+            Salvesta ja mine tagasi
           </Button>
           <Button
             variant="primary"
@@ -111,7 +111,7 @@ const AddScreen = () => {
             onClick={saveAndClose}
             disabled={disableSave}
           >
-            Save and close
+            Salvesta ja sulge
           </Button>
         </div>
       </Modal.Footer>
@@ -123,7 +123,7 @@ export const useAddChannelsModalScreen = () => {
   const { pop } = useLayeredModal()
 
   return {
-    title: "Add Sales Channels",
+    title: "Lisage müügikanalid",
     onBack: pop,
     view: <AddScreen />,
   }

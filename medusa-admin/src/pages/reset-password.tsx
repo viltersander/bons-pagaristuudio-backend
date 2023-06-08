@@ -53,7 +53,7 @@ const ResetPasswordPage = () => {
         "repeat_password",
         {
           type: "manual",
-          message: "Passwords do not match",
+          message: "Paroolid ei kattu",
         },
         {
           shouldFocus: true,
@@ -73,7 +73,7 @@ const ResetPasswordPage = () => {
           navigate("/login")
         },
         onError: (err) => {
-          notification("Error", getErrorMessage(err), "error")
+          notification("Viga", getErrorMessage(err), "error")
         },
       }
     )
@@ -81,7 +81,7 @@ const ResetPasswordPage = () => {
 
   return (
     <PublicLayout>
-      <SEO title="Reset Password" />
+      <SEO title="Muuda parooli" />
       <div className="flex flex-col items-center justify-center">
         {token ? (
           <form onSubmit={onSubmit}>
@@ -89,27 +89,27 @@ const ResetPasswordPage = () => {
               <h1 className="inter-xlarge-semibold">Muuda parooli</h1>
               <div className="gap-y-small flex flex-col items-center">
                 <SigninInput
-                  placeholder="Email"
+                  placeholder="Mail"
                   disabled
                   readOnly
                   value={email}
                 />
                 <div>
                   <SigninInput
-                    placeholder="Password (8+ characters)"
+                    placeholder="Parool (8+ tähemärki)"
                     type="password"
                     {...register("password", {
-                      required: FormValidator.required("Password"),
+                      required: FormValidator.required("Parool"),
                     })}
                   />
                   <InputError errors={errors} name="password" />
                 </div>
                 <div>
                   <SigninInput
-                    placeholder="Confirm password"
+                    placeholder="Kinnita parool"
                     type="password"
                     {...register("repeat_password", {
-                      required: "You must confirm your password",
+                      required: "Peate oma parooli kinnitama",
                     })}
                   />
                   <InputError errors={errors} name="repeat_password" />
@@ -130,7 +130,7 @@ const ResetPasswordPage = () => {
           <div className="gap-y-large flex flex-col items-center">
             <div className="gap-y-xsmall flex flex-col text-center">
               <h1 className="inter-xlarge-semibold text-[20px]">
-                Taastamis link on vale
+                Taastamise link on vale
               </h1>
               <p className="text-grey-50 inter-base-regular">
                 Proovi enda parool uuesti taastada.

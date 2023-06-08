@@ -136,7 +136,7 @@ const VariantsTable: React.FC<Props> = (props) => {
     return [
       {
         Header: (
-          <div className="text-small font-semibold text-gray-500">Product</div>
+          <div className="text-small font-semibold text-gray-500">Toode</div>
         ),
         accessor: "sku",
         Cell: ProductCell,

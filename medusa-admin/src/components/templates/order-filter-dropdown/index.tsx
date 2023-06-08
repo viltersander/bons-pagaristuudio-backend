@@ -1,16 +1,16 @@
-import clsx from "clsx"
-import { useAdminRegions, useAdminSalesChannels } from "medusa-react"
-import { useEffect, useState } from "react"
-import FilterDropdownContainer from "../../../components/molecules/filter-dropdown/container"
-import FilterDropdownItem from "../../../components/molecules/filter-dropdown/item"
-import SaveFilterItem from "../../../components/molecules/filter-dropdown/save-field"
-import TabFilter from "../../../components/molecules/filter-tab"
-import PlusIcon from "../../fundamentals/icons/plus-icon"
-import FeatureToggle from "../../fundamentals/feature-toggle"
-import { useFeatureFlag } from "../../../providers/feature-flag-provider"
+import clsx from "clsx";
+import { useAdminRegions, useAdminSalesChannels } from "medusa-react";
+import { useEffect, useState } from "react";
+import FilterDropdownContainer from "../../../components/molecules/filter-dropdown/container";
+import FilterDropdownItem from "../../../components/molecules/filter-dropdown/item";
+import SaveFilterItem from "../../../components/molecules/filter-dropdown/save-field";
+import TabFilter from "../../../components/molecules/filter-tab";
+import PlusIcon from "../../fundamentals/icons/plus-icon";
+import FeatureToggle from "../../fundamentals/feature-toggle";
+import { useFeatureFlag } from "../../../providers/feature-flag-provider";
 
-const REGION_PAGE_SIZE = 10
-const CHANNEL_PAGE_SIZE = 10
+const REGION_PAGE_SIZE = 10;
+const CHANNEL_PAGE_SIZE = 10;
 
 const statusFilters = [
   "completed",
@@ -18,7 +18,7 @@ const statusFilters = [
   "canceled",
   "archived",
   "requires_action",
-]
+];
 const paymentFilters = [
   "awaiting",
   "captured",
@@ -27,7 +27,7 @@ const paymentFilters = [
   "partially_refunded",
   "requires_action",
   "not_paid",
-]
+];
 const fulfillmentFilters = [
   "fulfilled",
   "not_fulfilled",
@@ -38,15 +38,15 @@ const fulfillmentFilters = [
   "partially_shipped",
   "requires_action",
   "canceled",
-]
+];
 
 const dateFilters = [
-  "is in the last",
-  "is older than",
-  "is after",
-  "is before",
-  "is equal to",
-]
+  "on viimases",
+  "on vanem kui",
+  "on pärast",
+  "on enne",
+  "on võrdne",
+];
 
 const OrderFilters = ({
   tabs,
@@ -58,89 +58,140 @@ const OrderFilters = ({
   submitFilters,
   clearFilters,
 }) => {
-  const [tempState, setTempState] = useState(filters)
-  const [name, setName] = useState("")
+  const [tempState, setTempState] = useState(filters);
+  const [name, setName] = useState("");
 
-  const { isFeatureEnabled } = useFeatureFlag()
-  const isSalesChannelsEnabled = isFeatureEnabled("sales_channels")
+  const { isFeatureEnabled } = useFeatureFlag();
+  const isSalesChannelsEnabled = isFeatureEnabled("sales_channels");
 
   const handleRemoveTab = (val) => {
     if (onRemoveTab) {
-      onRemoveTab(val)
+      onRemoveTab(val);
     }
-  }
+  };
 
   const handleSaveTab = () => {
     if (onSaveTab) {
-      onSaveTab(name, tempState)
+      onSaveTab(name, tempState);
     }
-  }
+  };
 
-  const handleTabClick = (tabName: string) => {
+  const handleTabClick = (tabName) => {
     if (onTabClick) {
-      onTabClick(tabName)
+      onTabClick(tabName);
     }
-  }
+  };
 
   useEffect(() => {
-    setTempState(filters)
-  }, [filters])
+    setTempState(filters);
+  }, [filters]);
 
   const onSubmit = () => {
-    submitFilters(tempState)
-  }
+    submitFilters(tempState);
+  };
 
   const onClear = () => {
-    clearFilters()
-  }
+    clearFilters();
+  };
 
   const setSingleFilter = (filterKey, filterVal) => {
     setTempState((prevState) => ({
       ...prevState,
       [filterKey]: filterVal,
-    }))
-  }
+    }));
+  };
 
   const numberOfFilters = Object.entries(filters).reduce(
     (acc, [key, value]) => {
       if (value?.open) {
-        acc = acc + 1
+        acc = acc + 1;
       }
-      return acc
+      return acc;
     },
     0
-  )
+  );
 
   const [regionsPagination, setRegionsPagination] = useState({
     offset: 0,
     limit: REGION_PAGE_SIZE,
-  })
+  });
 
   const {
     regions,
     count,
     isLoading: isLoadingRegions,
-  } = useAdminRegions(regionsPagination)
+  } = useAdminRegions(regionsPagination);
 
   const { sales_channels, isLoading: isLoadingSalesChannels } =
     useAdminSalesChannels(
       { limit: CHANNEL_PAGE_SIZE },
       { enabled: isSalesChannelsEnabled }
-    )
+    );
 
   const handlePaginateRegions = (direction) => {
     if (direction > 0) {
       setRegionsPagination((prev) => ({
         ...prev,
         offset: prev.offset + prev.limit,
-      }))
+      }));
     } else if (direction < 0) {
       setRegionsPagination((prev) => ({
         ...prev,
         offset: Math.max(prev.offset - prev.limit, 0),
-      }))
+      }));
     }
-  }
+  };
+
+  const translateFilter = (filter) => {
+    switch (filter) {
+      case "completed":
+        return "täidetud";
+      case "pending":
+        return "ootel";
+      case "canceled":
+        return "tühistatud";
+      case "archived":
+        return "arhiveeritud";
+      case "awaiting":
+        return "ootel";
+      case "captured":
+        return "makstud";
+      case "refunded":
+        return "tagastatud";
+      case "partially_refunded":
+        return "osaliselt tagastatud";
+      case "not_paid":
+        return "maksmata";
+      case "not_fulfilled":
+        return "täitmata";
+      case "fulfilled":
+        return "täidetud";
+      case "partially_fulfilled":
+        return "osaliselt täidetud";
+      case "returned":
+        return "tagastatud";
+      case "partially_returned":
+        return "osaliselt tagastatud";
+      case "shipped":
+        return "saadetud";
+      case "partially_shipped":
+        return "osaliselt saadetud";
+      case "requires_action":
+        return "nõuab tegevust";
+      case "on viimases":
+        return "on viimases";
+      case "on vanem kui":
+        return "on vanem kui";
+      case "on pärast":
+        return "on pärast";
+      case "on enne":
+        return "on enne";
+      case "on võrdne":
+        return "on võrdne";
+      default:
+        return filter;
+    }
+  };
 
   return (
     <div className="flex space-x-1">
@@ -169,21 +220,30 @@ const OrderFilters = ({
       >
         <FilterDropdownItem
           filterTitle="Olek"
-          options={statusFilters}
+          options={statusFilters.map((filter) => ({
+            value: filter,
+            label: translateFilter(filter),
+          }))}
           filters={tempState.status.filter}
           open={tempState.status.open}
           setFilter={(val) => setSingleFilter("status", val)}
         />
         <FilterDropdownItem
           filterTitle="Makse olek"
-          options={paymentFilters}
+          options={paymentFilters.map((filter) => ({
+            value: filter,
+            label: translateFilter(filter),
+          }))}
           filters={tempState.payment.filter}
           open={tempState.payment.open}
           setFilter={(val) => setSingleFilter("payment", val)}
         />
         <FilterDropdownItem
           filterTitle="Täitmise olek"
-          options={fulfillmentFilters}
+          options={fulfillmentFilters.map((filter) => ({
+            value: filter,
+            label: translateFilter(filter),
+          }))}
           filters={tempState.fulfillment.filter}
           open={tempState.fulfillment.open}
           setFilter={(val) => setSingleFilter("fulfillment", val)}
@@ -247,7 +307,7 @@ const OrderFilters = ({
           />
         ))}
     </div>
-  )
-}
+  );
+};
 
-export default OrderFilters
+export default OrderFilters;

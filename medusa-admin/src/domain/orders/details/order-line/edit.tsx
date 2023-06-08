@@ -81,8 +81,8 @@ const OrderEditLine = ({
   const onDuplicate = async () => {
     if (!item.variant) {
       notification(
-        "Warning",
-        "Cannot duplicate an item without a variant",
+        "Hoiatus",
+        "Üksust ei saa ilma variandita dubleerida",
         "warning"
       )
       return
@@ -94,7 +94,7 @@ const OrderEditLine = ({
         quantity: item.quantity,
       })
     } catch (e) {
-      notification("Error", "Failed to duplicate item", "error")
+      notification("Viga", "Üksuse dubleerimine ebaõnnestus", "error")
     }
   }
 
@@ -111,9 +111,9 @@ const OrderEditLine = ({
       } else {
         await removeItem()
       }
-      notification("Success", "Item removed", "success")
+      notification("Õnnestus", "Üksus eemaldatud", "success")
     } catch (e) {
-      notification("Error", "Failed to remove item", "error")
+      notification("Viga", "Üksuse eemaldamine ebaõnnestus", "error")
     }
   }
 
@@ -122,14 +122,14 @@ const OrderEditLine = ({
     try {
       await onRemove()
       await addLineItem({ variant_id: newVariantId, quantity: item.quantity })
-      notification("Success", "Item added", "success")
+      notification("Õnnestus", "Üksus lisatud", "success")
     } catch (e) {
-      notification("Error", "Failed to replace the item", "error")
+      notification("Viga", "Üksust ei õnnestunud asendada", "error")
     }
   }
 
   const replaceProductVariantScreen = {
-    title: "Replace Product Variants",
+    title: "Asendage tootevariandid",
     onBack: pop,
     view: (
       <AddProductVariant
@@ -144,17 +144,17 @@ const OrderEditLine = ({
 
   const actions = [
     !isLocked && {
-      label: "Replace with other item",
+      label: "Asendage muu tootega",
       onClick: () => push(replaceProductVariantScreen),
       icon: <RefreshIcon size="20" />,
     },
     {
-      label: "Duplicate item",
+      label: "Toote duplikaat",
       onClick: onDuplicate,
       icon: <DuplicateIcon size="20" />,
     },
     !isLocked && {
-      label: "Remove item",
+      label: "Eemalda toode",
       onClick: onRemove,
       variant: "danger",
       icon: <TrashIcon size="20" />,
@@ -165,7 +165,7 @@ const OrderEditLine = ({
     <Tooltip
       side="top"
       open={isLocked ? undefined : false}
-      content="This line item is part of a fulfillment and cannot be edited. Cancel the fulfillment to edit the line item."
+      content="See reaartikkel on osa täitmisest ja seda ei saa muuta. Reaüksuse muutmiseks tühistage täitmine."
     >
       <div className="hover:bg-grey-5 rounded-rounded mx-[-5px] mb-1 flex h-[64px] justify-between py-2 px-[5px]">
         <div className="flex-grow-1 flex justify-center space-x-4">
@@ -204,13 +204,13 @@ const OrderEditLine = ({
             <div className="flex items-center">
               {isNew && (
                 <div className="text-small bg-blue-10 rounded-rounded mr-2 flex h-[24px] w-[42px] flex-shrink-0 items-center justify-center text-blue-500">
-                  New
+                  Uus
                 </div>
               )}
 
               {isModified && (
                 <div className="text-small bg-orange-10 rounded-rounded mr-2 flex h-[24px] w-[68px] flex-shrink-0 items-center justify-center text-orange-500">
-                  Modified
+                  Muudetud
                 </div>
               )}
 

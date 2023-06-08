@@ -110,7 +110,7 @@ function AddScreen(props: {
             type="string"
             value={search}
             className="h-[32px]"
-            placeholder="Find channels"
+            placeholder="Otsige kanaleid"
             prefix={<SearchIcon size={16} />}
             onChange={(ev) => setSearch(ev.target.value)}
           />
@@ -269,7 +269,7 @@ function EditScreen(props: {
             type="string"
             value={search}
             className="h-[32px]"
-            placeholder="Find channels"
+            placeholder="Otsige kanaleid"
             prefix={<SearchIcon size={14} />}
             onChange={(ev) => setSearch(ev.target.value)}
           />

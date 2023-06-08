@@ -16,10 +16,10 @@ import { getErrorMessage } from "../../utils/error-messages"
 import Details from "./details"
 import { transformFiltersAsExportContext } from "./utils"
 
-const VIEWS = ["orders", "drafts"]
+const VIEWS = ["tellimused", "mustandid"]
 
 const OrderIndex = () => {
-  const view = "orders"
+  const view = "tellimused"
 
   const { resetInterval } = usePolling()
   const navigate = useNavigate()
@@ -80,7 +80,7 @@ const OrderIndex = () => {
               <TableViewHeader
                 views={VIEWS}
                 setActiveView={(v) => {
-                  if (v === "drafts") {
+                  if (v === "mustandid") {
                     navigate(`/a/draft-orders`)
                   }
                 }}

@@ -215,7 +215,7 @@ const CreateFulfillmentModal: React.FC<CreateFulfillmentModalProps> = ({
               type="button"
               onClick={handleCancel}
             >
-              Cancel
+              Tühista
             </Button>
             <Button
               size="small"
@@ -227,7 +227,7 @@ const CreateFulfillmentModal: React.FC<CreateFulfillmentModalProps> = ({
                 !Object.values(quantities).some((quantity) => quantity > 0)
               }
             >
-              Create fulfillment
+              Loo täitmine
             </Button>
           </div>
         </div>

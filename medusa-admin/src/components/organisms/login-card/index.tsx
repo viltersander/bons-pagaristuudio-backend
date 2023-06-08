@@ -47,7 +47,7 @@ const LoginCard = ({ toResetPassword }: LoginCardProps) => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col items-center">
         <h1 className="inter-xlarge-semibold text-grey-90 mb-large text-[20px]">
-          Logi sisse Medusa adminisse
+          Logi sisse Böns adminisse
         </h1>
         <div>
           <SigninInput

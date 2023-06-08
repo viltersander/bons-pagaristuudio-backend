@@ -57,9 +57,9 @@ const RMAReturnReasonSubModal: React.FC<RMAReturnReasonSubModalProps> = ({
     <>
       <Modal.Content>
         <div className="h-full">
-          <h2 className="inter-base-semibold mb-4">Reason for Return</h2>
+          <h2 className="inter-base-semibold mb-4">Tagastamise põhjus</h2>
           <Select
-            label="Reason"
+            label="Põhjus"
             value={selectedReason}
             onChange={setSelectedReason}
             options={
@@ -69,7 +69,7 @@ const RMAReturnReasonSubModal: React.FC<RMAReturnReasonSubModalProps> = ({
             }
           />
           <InputField
-            label={"Note"}
+            label={"Märge"}
             value={note}
             className="my-4"
             onChange={(val) => onChange(val)}
@@ -135,7 +135,7 @@ const RMAReturnReasonSubModal: React.FC<RMAReturnReasonSubModalProps> = ({
             className="w-[112px]"
             onClick={() => pop()}
           >
-            Back
+            Tagasi
           </Button>
           <Button
             variant="primary"
@@ -147,7 +147,7 @@ const RMAReturnReasonSubModal: React.FC<RMAReturnReasonSubModalProps> = ({
               pop()
             }}
           >
-            Add
+            Lisa
           </Button>
         </div>
       </Modal.Footer>

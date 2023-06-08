@@ -87,7 +87,7 @@ const AccountDetails = () => {
               <Input
                 label="Poe nimi"
                 {...register("name")}
-                placeholder="Medusa Store"
+                placeholder="Medusa pood"
               />
             </div>
             <div>
@@ -95,19 +95,19 @@ const AccountDetails = () => {
               <Input
                 label="Vahetage lingi mall"
                 {...register("swap_link_template")}
-                placeholder="https://acme.inc/swap={swap_id}"
+                placeholder="https://medusa.inc/swap={swap_id}"
               />
               <Input
                 className="mt-base"
                 label="Tellimuse mustandi lingi mall"
                 {...register("payment_link_template")}
-                placeholder="https://acme.inc/payment={payment_id}"
+                placeholder="https://medusa.inc/payment={payment_id}"
               />
               <Input
                 className="mt-base"
                 label="Kutse lingi mall"
                 {...register("invite_link_template")}
-                placeholder="https://acme-admin.inc/invite?token={invite_token}"
+                placeholder="https://medusa-admin.inc/invite?token={invite_token}"
               />
             </div>
           </div>

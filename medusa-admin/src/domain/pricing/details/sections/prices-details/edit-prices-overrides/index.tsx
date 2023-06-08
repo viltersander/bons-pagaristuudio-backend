@@ -36,7 +36,7 @@ const EditPricesOverridesModal = ({
 
   const getOnClick = (variant) => () =>
     context.push({
-      title: `Edit price overrides`,
+      title: `Muuda hinnasoodustusi`,
       onBack: () => context.pop(),
       view: (
         <PriceOverrides
@@ -59,7 +59,7 @@ const EditPricesOverridesModal = ({
                 onSuccess: () => {
                   context.pop()
                   close()
-                  notification("Success", "Price overrides updated", "success")
+                  notification("Õnnestus", "Hinna soodustused on värskendatud", "success")
                 },
               }
             )
@@ -73,7 +73,7 @@ const EditPricesOverridesModal = ({
       <Modal.Body className="flex h-[calc(100vh-134px)] flex-col">
         <Modal.Header handleClose={close}>
           <h1 className="inter-xlarge-semibold">
-            Price overrides{" "}
+            Hinna soodustus{" "}
             <span className="text-grey-50 inter-xlarge-regular truncate">
               ({product.title})
             </span>
@@ -114,7 +114,7 @@ const EditPricesOverridesModal = ({
               size="large"
               onClick={close}
             >
-              Cancel
+              Tühista
             </Button>
             <Button
               disabled
@@ -122,7 +122,7 @@ const EditPricesOverridesModal = ({
               className="text-small rounded-rounded w-32 justify-center"
               variant="primary"
             >
-              Save
+              Salvesta
             </Button>
           </div>
         </Modal.Footer>

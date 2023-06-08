@@ -24,15 +24,15 @@ type RefundStatusProps = {
 const PaymentStatus: React.FC<PaymentStatusProps> = ({ paymentStatus }) => {
   switch (paymentStatus) {
     case "captured":
-      return <StatusIndicator title="Paid" variant="success" />
+      return <StatusIndicator title="Makstud" variant="success" />
     case "awaiting":
-      return <StatusIndicator title="Awaiting" variant="default" />
+      return <StatusIndicator title="Ootel" variant="default" />
     case "not_paid":
-      return <StatusIndicator title="Not paid" variant="default" />
+      return <StatusIndicator title="Pole makstud" variant="default" />
     case "canceled":
-      return <StatusIndicator title="Canceled" variant="danger" />
+      return <StatusIndicator title="Tühistatud" variant="danger" />
     case "requires_action":
-      return <StatusIndicator title="Requires Action" variant="danger" />
+      return <StatusIndicator title="Nõuab tegevust" variant="danger" />
     default:
       return null
   }
@@ -41,13 +41,13 @@ const PaymentStatus: React.FC<PaymentStatusProps> = ({ paymentStatus }) => {
 const OrderStatus: React.FC<OrderStatusProps> = ({ orderStatus }) => {
   switch (orderStatus) {
     case "completed":
-      return <StatusIndicator title="Completed" variant="success" />
+      return <StatusIndicator title="Lõpetatud" variant="success" />
     case "pending":
-      return <StatusIndicator title="Processing" variant="default" />
+      return <StatusIndicator title="Töötlemisel" variant="default" />
     case "canceled":
-      return <StatusIndicator title="Canceled" variant="danger" />
+      return <StatusIndicator title="Tühistatud" variant="danger" />
     case "requires_action":
-      return <StatusIndicator title="Rejected" variant="danger" />
+      return <StatusIndicator title="Tagasi lükatud" variant="danger" />
     default:
       return null
   }
@@ -58,17 +58,17 @@ const FulfillmentStatus: React.FC<FulfillmentStatusProps> = ({
 }) => {
   switch (fulfillmentStatus) {
     case "shipped":
-      return <StatusIndicator title="Shipped" variant="success" />
+      return <StatusIndicator title="Saadetud" variant="success" />
     case "fulfilled":
-      return <StatusIndicator title="Fulfilled" variant="warning" />
+      return <StatusIndicator title="Täidetud" variant="warning" />
     case "canceled":
-      return <StatusIndicator title="Canceled" variant="danger" />
+      return <StatusIndicator title="Tühistatud" variant="danger" />
     case "partially_fulfilled":
-      return <StatusIndicator title="Partially fulfilled" variant="warning" />
+      return <StatusIndicator title="Osaliselt täidetud" variant="warning" />
     case "not_fulfilled":
-      return <StatusIndicator title="Not fulfilled" variant="default" />
+      return <StatusIndicator title="Pole täidetud" variant="default" />
     case "requires_action":
-      return <StatusIndicator title="Requires Action" variant="danger" />
+      return <StatusIndicator title="Nõuab Tegevust" variant="danger" />
     default:
       return null
   }
@@ -77,13 +77,13 @@ const FulfillmentStatus: React.FC<FulfillmentStatusProps> = ({
 const ReturnStatus: React.FC<ReturnStatusProps> = ({ returnStatus }) => {
   switch (returnStatus) {
     case "received":
-      return <StatusIndicator title="Received" variant="success" />
+      return <StatusIndicator title="Vastu võetud" variant="success" />
     case "requested":
-      return <StatusIndicator title="Requested" variant="default" />
+      return <StatusIndicator title="Taotletud" variant="default" />
     case "canceled":
-      return <StatusIndicator title="Canceled" variant="danger" />
+      return <StatusIndicator title="Tühistatud" variant="danger" />
     case "requires_action":
-      return <StatusIndicator title="Requires Action" variant="danger" />
+      return <StatusIndicator title="Nõuab tegevust" variant="danger" />
     default:
       return null
   }
@@ -94,11 +94,11 @@ const RefundStatus: React.FC<RefundStatusProps> = ({ refundStatus }) => {
     case "na":
       return <StatusIndicator title="N/A" variant="default" />
     case "not_refunded":
-      return <StatusIndicator title="Refunded" variant="default" />
+      return <StatusIndicator title="Tagastatud" variant="default" />
     case "refunded":
-      return <StatusIndicator title="Refunded" variant="success" />
+      return <StatusIndicator title="Tagastatud" variant="success" />
     case "canceled":
-      return <StatusIndicator title="Canceled" variant="danger" />
+      return <StatusIndicator title="Tühistatud" variant="danger" />
     default:
       return null
   }

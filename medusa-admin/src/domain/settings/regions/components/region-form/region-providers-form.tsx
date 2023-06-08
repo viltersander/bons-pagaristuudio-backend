@@ -37,7 +37,7 @@ const RegionProvidersForm = ({ form }: Props) => {
           return (
             <NextSelect
               label="Makseteenuse pakkujad"
-              placeholder="Choose payment providers..."
+              placeholder="Valige makseteenuse pakkujad..."
               options={paymentProviderOptions}
               isMulti
               isClearable

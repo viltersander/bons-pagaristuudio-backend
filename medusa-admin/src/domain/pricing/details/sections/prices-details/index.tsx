@@ -18,18 +18,18 @@ const Prices = ({ id }) => {
   )
   const actionables = [
     {
-      label: "Edit manually",
+      label: "Muuda käsitsi",
       onClick: openEdit,
       icon: <EditIcon size={20} />,
     },
     {
-      label: "Import price list",
+      label: "Impordi hinnakiri",
       onClick: openUpload,
       icon: <UploadIcon size={20} />,
     },
   ]
   return (
-    <BodyCard title="Prices" actionables={actionables} forceDropdown>
+    <BodyCard title="Hinnad" actionables={actionables} forceDropdown>
       <PricesTable id={id} selectProduct={setSelectedProduct} />
       <Fade isVisible={showEdit} isFullScreen={true}>
         <EditPrices close={closeEdit} id={id} />{" "}

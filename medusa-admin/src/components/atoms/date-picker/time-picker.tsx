@@ -1,14 +1,14 @@
-import * as PopoverPrimitive from "@radix-ui/react-popover"
-import clsx from "clsx"
-import { isNil } from "lodash"
-import moment from "moment"
-import React, { useEffect, useState } from "react"
-import ArrowDownIcon from "../../fundamentals/icons/arrow-down-icon"
-import ClockIcon from "../../fundamentals/icons/clock-icon"
-import InputContainer from "../../fundamentals/input-container"
-import InputHeader from "../../fundamentals/input-header"
-import NumberScroller from "../number-scroller"
-import { DateTimePickerProps } from "./types"
+import * as PopoverPrimitive from "@radix-ui/react-popover";
+import clsx from "clsx";
+import { isNil } from "lodash";
+import moment from "moment-timezone";
+import React, { useEffect, useState } from "react";
+import ArrowDownIcon from "../../fundamentals/icons/arrow-down-icon";
+import ClockIcon from "../../fundamentals/icons/clock-icon";
+import InputContainer from "../../fundamentals/input-container";
+import InputHeader from "../../fundamentals/input-header";
+import NumberScroller from "../number-scroller";
+import { DateTimePickerProps } from "./types";
 
 const TimePicker: React.FC<DateTimePickerProps> = ({
   date,
@@ -18,31 +18,39 @@ const TimePicker: React.FC<DateTimePickerProps> = ({
   tooltipContent,
   tooltip,
 }) => {
-  const [selectedMinute, setSelectedMinute] = useState(
-    new Date(date)?.getUTCMinutes()
-  )
-  const [selectedHour, setSelectedHour] = useState(
-    new Date(date)?.getUTCHours()
-  )
+  const [selectedMinute, setSelectedMinute] = useState<number | null>(
+    moment(date).tz("Europe/Tallinn").get("minutes")
+  );
+  const [selectedHour, setSelectedHour] = useState<number | null>(
+    moment(date).tz("Europe/Tallinn").get("hours")
+  );
 
   useEffect(() => {
-    setSelectedMinute(new Date(date)?.getUTCMinutes())
-    setSelectedHour(new Date(date)?.getUTCHours())
-  }, [date])
+    setSelectedMinute(moment(date).tz("Europe/Tallinn").get("minutes"));
+    setSelectedHour(moment(date).tz("Europe/Tallinn").get("hours"));
+  }, [date]);
 
   useEffect(() => {
     if (date && !isNil(selectedHour) && !isNil(selectedMinute)) {
-      const newDate = new Date(new Date(date).getTime())
-      newDate.setUTCHours(selectedHour)
-      newDate.setUTCMinutes(selectedMinute)
-      onSubmitDate(newDate)
+      const newDate = moment(date).tz("Europe/Tallinn").startOf("day").toDate();
+      newDate.setHours(selectedHour);
+      newDate.setMinutes(selectedMinute);
+      onSubmitDate(newDate);
     }
-  }, [selectedMinute, selectedHour])
+  }, [selectedMinute, selectedHour]);
 
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
-  const minuteNumbers = [...Array(60).keys()]
-  const hourNumbers = [...Array(24).keys()]
+  const minuteNumbers = [...Array(60).keys()];
+  const hourNumbers = [...Array(24).keys()];
+
+  const formatTime = (date: Date | null) => {
+    if (!date) {
+      return "--:--";
+    }
+
+    return moment(date).tz("Europe/Tallinn").format("HH:mm");
+  };
 
   return (
     <div className="w-full">
@@ -71,7 +79,7 @@ const TimePicker: React.FC<DateTimePickerProps> = ({
                 <ClockIcon size={16} />
                 <span className="mx-1">UTC</span>
                 <span className="text-grey-90">
-                  {date ? moment.utc(date).format("HH:mm") : "--:--"}
+                  {date ? formatTime(date) : "--:--"}
                 </span>
               </div>
             </InputContainer>
@@ -97,7 +105,7 @@ const TimePicker: React.FC<DateTimePickerProps> = ({
         </PopoverPrimitive.Content>
       </PopoverPrimitive.Root>
     </div>
-  )
-}
+  );
+};
 
-export default TimePicker
+export default TimePicker;

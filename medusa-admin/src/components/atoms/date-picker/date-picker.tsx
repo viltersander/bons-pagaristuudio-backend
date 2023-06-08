@@ -1,55 +1,60 @@
-import * as PopoverPrimitive from "@radix-ui/react-popover"
-import clsx from "clsx"
-import moment from "moment"
-import React, { useEffect, useState } from "react"
-import ReactDatePicker from "react-datepicker"
-import "react-datepicker/dist/react-datepicker.css"
-import Button from "../../fundamentals/button"
-import ArrowDownIcon from "../../fundamentals/icons/arrow-down-icon"
-import InputContainer from "../../fundamentals/input-container"
-import InputHeader from "../../fundamentals/input-header"
-import CustomHeader from "./custom-header"
-import { DateTimePickerProps } from "./types"
+import * as PopoverPrimitive from "@radix-ui/react-popover";
+import clsx from "clsx";
+import moment from "moment-timezone";
+import "moment/locale/et";
+import React, { useEffect, useState } from "react";
+import ReactDatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import Button from "../../fundamentals/button";
+import ArrowDownIcon from "../../fundamentals/icons/arrow-down-icon";
+import InputContainer from "../../fundamentals/input-container";
+import InputHeader from "../../fundamentals/input-header";
+import CustomHeader from "./custom-header";
+import { DateTimePickerProps } from "./types";
+import et from "date-fns/locale/et";
 
-const getDateClassname = (d: Date, tempDate: Date) => {
+import "moment-timezone/data/packed/latest.json";
+moment.tz.load({ "zones": [], "links": [], "version": "2022d" });
+
+const getDateClassname = (d, tempDate) => {
   return moment(d).format("YY,MM,DD") === moment(tempDate).format("YY,MM,DD")
-    ? "date chosen"
-    : `date ${
+    ? "kuupäev valitud"
+    : `kuupäev ${
         moment(d).format("YY,MM,DD") < moment(new Date()).format("YY,MM,DD")
-          ? "past"
+          ? "möödas"
           : ""
-      }`
-}
+      }`;
+};
 
 const DatePicker: React.FC<DateTimePickerProps> = ({
   date,
   onSubmitDate,
-  label = "start date",
+  label = "algus aeg",
   required = false,
   tooltipContent,
   tooltip,
 }) => {
-  const [tempDate, setTempDate] = useState<Date | null>(date || null)
-  const [isOpen, setIsOpen] = useState(false)
+  const [tempDate, setTempDate] = useState(date || null);
+  const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => setTempDate(date), [isOpen])
+  useEffect(() => setTempDate(date), [isOpen]);
 
   const submitDate = () => {
     if (!tempDate || !date) {
-      onSubmitDate(null)
-      setIsOpen(false)
-      return
+      onSubmitDate(null);
+      setIsOpen(false);
+      return;
     }
 
-    // update only date, month and year
-    const newDate = new Date(date.getTime())
-    newDate.setUTCDate(tempDate.getUTCDate())
-    newDate.setUTCMonth(tempDate.getUTCMonth())
-    newDate.setUTCFullYear(tempDate.getUTCFullYear())
+    // update only date, month, and year
+    const newDate = new Date(date.getTime());
+    newDate.setUTCDate(tempDate.getUTCDate());
+    newDate.setUTCMonth(tempDate.getUTCMonth());
+    newDate.setUTCFullYear(tempDate.getUTCFullYear());
 
-    onSubmitDate(newDate)
-    setIsOpen(false)
-  }
+    onSubmitDate(newDate);
+    setIsOpen(false);
+  };
 
   return (
     <div className="w-full">
@@ -76,7 +81,9 @@ const DatePicker: React.FC<DateTimePickerProps> = ({
               </div>
               <label className="w-full text-left">
                 {date
-                  ? moment(date).format("ddd, DD MMM YYYY")
+                  ? moment(date)
+                      .tz("Europe/Tallinn") // Set the time zone to Estonia (Europe/Tallinn)
+                      .format("ddd, DD MMM YYYY HH:mm") // Include time HH:mm
                   : "---, -- -- ----"}
               </label>
             </InputContainer>
@@ -98,28 +105,30 @@ const DatePicker: React.FC<DateTimePickerProps> = ({
               onClick={() => setIsOpen(false)}
               className="border-grey-20 mr-2 flex w-1/3 justify-center border"
             >
-              Cancel
+              Tühista
             </Button>
             <Button
               size="medium"
               variant="primary"
               onClick={() => submitDate()}
               className="flex w-2/3 justify-center"
-            >{`Set ${label}`}</Button>
+            >
+              {`Lisa ${label}`}
+            </Button>
           </div>
         </PopoverPrimitive.Content>
       </PopoverPrimitive.Root>
     </div>
-  )
-}
+  );
+};
 
 type CalendarComponentProps = {
-  date: Date | null
+  date: Date | null;
   onChange: (
     date: Date | null,
     event: React.SyntheticEvent<any, Event> | undefined
-  ) => void
-}
+  ) => void;
+};
 
 export const CalendarComponent = ({
   date,
@@ -128,11 +137,12 @@ export const CalendarComponent = ({
   <ReactDatePicker
     selected={date}
     inline
+    locale={et}
     onChange={onChange}
     calendarClassName="date-picker"
     dayClassName={(d) => getDateClassname(d, date)}
     renderCustomHeader={({ ...props }) => <CustomHeader {...props} />}
-  />
-)
+/>
+);
 
-export default DatePicker
+export default DatePicker;

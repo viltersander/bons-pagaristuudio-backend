@@ -188,7 +188,7 @@ const ShippingDetails = () => {
         <InputField
           {...form.register("email")}
           label="Mail"
-          placeholder="lebron@james.com"
+          placeholder="mail@gamil.com"
           disabled={!!customerId}
           required
           // @ts-ignore

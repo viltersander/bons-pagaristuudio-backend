@@ -183,7 +183,7 @@ const SteppedModal: React.FC<SteppedProps> = ({
             onClick={() => context.goToPreviousPage()}
             className="w-[112px]"
           >
-            Back
+            Tagasi
           </Button>
           <Button
             variant="primary"
@@ -196,7 +196,7 @@ const SteppedModal: React.FC<SteppedProps> = ({
             }
             className="w-[112px]"
           >
-            {context.currentStep === steps.length - 1 ? "Submit" : "Next"}
+            {context.currentStep === steps.length - 1 ? "Nõustu" : "Järgmine"}
           </Button>
         </div>
       </Modal.Footer>

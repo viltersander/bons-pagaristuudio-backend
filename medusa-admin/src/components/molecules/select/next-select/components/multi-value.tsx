@@ -67,7 +67,7 @@ const MultiValue = <
             },
             className
           ),
-          "aria-label": `Remove ${children || "option"}`,
+          "aria-label": `Eemalda ${children || "valik"}`,
           ...removeProps,
         }}
       />

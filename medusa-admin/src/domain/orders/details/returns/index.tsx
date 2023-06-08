@@ -215,9 +215,9 @@ const ReturnMenu: React.FC<ReturnMenuProps> = ({ order, onDismiss }) => {
       .mutateAsync(data)
       .then(() => onDismiss())
       .then(() =>
-        notification("Success", "Successfully returned order", "success")
+        notification("Õnnestus", "Tellimuse tagastamine õnnestus", "success")
       )
-      .catch((error) => notification("Error", getErrorMessage(error), "error"))
+      .catch((error) => notification("Viga", getErrorMessage(error), "error"))
       .finally(() => setSubmitting(false))
   }
 
@@ -256,11 +256,11 @@ const ReturnMenu: React.FC<ReturnMenuProps> = ({ order, onDismiss }) => {
     <LayeredModal context={layeredModalContext} handleClose={onDismiss}>
       <Modal.Body>
         <Modal.Header handleClose={onDismiss}>
-          <h2 className="inter-xlarge-semibold">Request Return</h2>
+          <h2 className="inter-xlarge-semibold">Taotle tagastamist</h2>
         </Modal.Header>
         <Modal.Content>
           <div className="mb-7">
-            <h3 className="inter-base-semibold">Items to return</h3>
+            <h3 className="inter-base-semibold">Tagastatavad esemed</h3>
             <RMASelectProductTable
               order={order}
               allItems={allItems}
@@ -271,13 +271,13 @@ const ReturnMenu: React.FC<ReturnMenuProps> = ({ order, onDismiss }) => {
 
           {isLocationFulfillmentEnabled && (
             <div className="mb-8">
-              <h3 className="inter-base-semibold ">Location</h3>
+              <h3 className="inter-base-semibold ">Asukoht</h3>
               <p className="inter-base-regular text-grey-50">
-                Choose which location you want to return the items to.
+                Valige asukoht, kuhu soovite kaubad tagastada.
               </p>
               <Select
                 className="mt-2"
-                placeholder="Select Location to Return to"
+                placeholder="Valige asukoht, kuhu tagastada"
                 value={selectedLocation}
                 isMulti={false}
                 onChange={setSelectedLocation}
@@ -294,7 +294,7 @@ const ReturnMenu: React.FC<ReturnMenuProps> = ({ order, onDismiss }) => {
                     <WarningCircleIcon size={20} fillType="solid" />
                   </div>
                   <div>
-                    {`The selected location does not have inventory levels for the selected items. The return can be requested but can't be received until an inventory level is created for the selected location.`}
+                    {`Valitud asukohas ei ole valitud kaupade jaoks laoseisu. Tagastust saab taotleda, kuid seda ei saa vastu võtta enne, kui valitud asukoha jaoks on loodud varude tase.`}
                   </div>
                 </div>
               )}
@@ -302,9 +302,9 @@ const ReturnMenu: React.FC<ReturnMenuProps> = ({ order, onDismiss }) => {
           )}
 
           <div>
-            <h3 className="inter-base-semibold ">Shipping</h3>
+            <h3 className="inter-base-semibold ">Saatmine</h3>
             <p className="inter-base-regular text-grey-50">
-              Choose which shipping method you want to use for this return.
+              Valige, millist saatmisviisi soovite selle tagastamise jaoks kasutada.
             </p>
             {shippingLoading ? (
               <div className="flex justify-center">
@@ -313,7 +313,7 @@ const ReturnMenu: React.FC<ReturnMenuProps> = ({ order, onDismiss }) => {
             ) : (
               <Select
                 className="mt-2"
-                placeholder="Add a shipping method"
+                placeholder="Lisage saatmisviis"
                 value={shippingMethod}
                 onChange={handleShippingSelected}
                 options={
@@ -341,7 +341,7 @@ const ReturnMenu: React.FC<ReturnMenuProps> = ({ order, onDismiss }) => {
             <div className="mt-10">
               {!useCustomShippingPrice && shippingMethod && (
                 <div className="inter-small-regular mb-4 flex justify-between">
-                  <span>Shipping</span>
+                  <span>Saatmine</span>
                   <div>
                     {displayAmount(order.currency_code, shippingPrice || 0)}{" "}
                     <span className="text-grey-40 ml-3">
@@ -351,7 +351,7 @@ const ReturnMenu: React.FC<ReturnMenuProps> = ({ order, onDismiss }) => {
                 </div>
               )}
               <div className="inter-base-semibold flex w-full justify-between">
-                <span>Total Refund</span>
+                <span>Kogu tagasimakse</span>
                 <div className="flex items-center">
                   {!refundEdited && (
                     <>
@@ -377,7 +377,7 @@ const ReturnMenu: React.FC<ReturnMenuProps> = ({ order, onDismiss }) => {
                   readOnly
                 >
                   <CurrencyInput.Amount
-                    label={"Amount"}
+                    label={"Summa"}
                     amount={refundAmount}
                     onChange={handleRefundUpdated}
                   />
@@ -410,7 +410,7 @@ const ReturnMenu: React.FC<ReturnMenuProps> = ({ order, onDismiss }) => {
                 type="checkbox"
               />
               <span className="gap-x-xsmall text-grey-90 ml-3 flex items-center">
-                Send notifications
+                Saatke teade
                 <IconTooltip content="Notify customer of created return" />
               </span>
             </div>
@@ -422,7 +422,7 @@ const ReturnMenu: React.FC<ReturnMenuProps> = ({ order, onDismiss }) => {
                 size="small"
                 variant="ghost"
               >
-                Back
+                Tagasi
               </Button>
               <Button
                 onClick={onSubmit}
@@ -433,7 +433,7 @@ const ReturnMenu: React.FC<ReturnMenuProps> = ({ order, onDismiss }) => {
                 variant="primary"
                 disabled={Object.keys(toReturn).length === 0}
               >
-                Submit
+                Esita
               </Button>
             </div>
           </div>

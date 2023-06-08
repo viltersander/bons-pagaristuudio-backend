@@ -126,7 +126,7 @@ const Summary = () => {
 
   return (
     <div className="min-h-[705px]">
-      <SummarySection title={"Items"} editIndex={1}>
+      <SummarySection title={"Üksused"} editIndex={1}>
         <Table>
           <Table.Head>
             <Table.HeadRow className="inter-small-semibold text-grey-50 border-t">
@@ -261,7 +261,7 @@ const Summary = () => {
                     ? `${discount.rule.type
                         .charAt(0)
                         .toUpperCase()}${discount.rule.type.slice(1)}`
-                    : "Free Shipping"}
+                    : "Tasuta saatmine"}
                 </span>
               </div>
               {discount.rule.type !== "free_shipping" && (
@@ -281,7 +281,7 @@ const Summary = () => {
           </div>
         )}
       </SummarySection>
-      <SummarySection title={"Customer"} editIndex={3}>
+      <SummarySection title={"Klient"} editIndex={3}>
         <div className="flex items-center">
           <div className="mr-3 h-5 w-5">
             <Avatar
@@ -299,7 +299,7 @@ const Summary = () => {
       </SummarySection>
 
       {selectedShippingOption && (
-        <SummarySection title={"Shipping details"} editIndex={2}>
+        <SummarySection title={"Saatmise detailid"} editIndex={2}>
           <div className="grid w-full grid-cols-2 gap-x-6">
             {!isNullishObject(shipping) && shipping && (
               <div className="border-grey-20 flex flex-col border-r pr-6">

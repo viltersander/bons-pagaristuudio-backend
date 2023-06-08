@@ -123,10 +123,10 @@ const MetadataForm = ({ form }: MetadataProps) => {
           )}
         >
           <div>
-            <p>Key</p>
+            <p>Võti</p>
           </div>
           <div className="">
-            <p>Value</p>
+            <p>Väärtus</p>
           </div>
         </div>
         <div className="divide-grey-20 divide-y">
@@ -142,13 +142,13 @@ const MetadataForm = ({ form }: MetadataProps) => {
               <div>
                 <MetadataInput
                   {...register(path(`entries.${0}.key`))}
-                  placeholder="Key"
+                  placeholder="Võti"
                 />
               </div>
               <div>
                 <MetadataInput
                   {...register(path(`entries.${0}.value`))}
-                  placeholder="Value"
+                  placeholder="Väärtus"
                 />
               </div>
             </MetadataRow>
@@ -167,13 +167,13 @@ const MetadataForm = ({ form }: MetadataProps) => {
                   <div>
                     <MetadataInput
                       {...register(path(`entries.${index}.key`))}
-                      placeholder="Key"
+                      placeholder="Võti"
                     />
                   </div>
                   <div>
                     <MetadataInput
                       {...register(path(`entries.${index}.value`))}
-                      placeholder="Value"
+                      placeholder="Väärtus"
                     />
                   </div>
                 </MetadataRow>
@@ -193,10 +193,7 @@ const MetadataForm = ({ form }: MetadataProps) => {
           </div>
           <div>
             <p className="inter-small-regular text-[#AD5700]">
-              This entities metadata contains complex values that we currently
-              don&apos;t support editing through the admin UI. Due to this{" "}
-              {Object.keys(ignoredLength)} keys are currently not being
-              displayed. You can still edit these values using the API.
+              Need olemite metaandmed sisaldavad keerulisi väärtusi, mille muutmist me praegu administraatoriliidese kaudu ei toeta. Selle tõttu{" "}{Object.keys(ignoredLength)} võtmeid praegu ei kuvata. Saate neid väärtusi API abil endiselt muuta.
             </p>
           </div>
         </div>
@@ -223,7 +220,7 @@ const MetadataInput = React.forwardRef<
   )
 })
 
-MetadataInput.displayName = "MetadataInput"
+MetadataInput.displayName = "Metaandmete sisend"
 
 type MetadataRowProps = React.PropsWithChildren<{
   onDuplicate: () => void
@@ -267,22 +264,22 @@ const MetadataRow = ({
           <div className="bg-grey-0 shadow-dropdown border-grey-20 rounded-rounded z-50 overflow-hidden border">
             <DropdownMenu.Item onClick={onInsertAbove} className={itemClasses}>
               <ArrowUpIcon size={20} />
-              <span>Insert above</span>
+              <span>Sisestage üleval</span>
             </DropdownMenu.Item>
             <DropdownMenu.Item onClick={onInsertBelow} className={itemClasses}>
               <ArrowDownIcon size={20} />
-              <span>Insert below</span>
+              <span>Sisestage alla</span>
             </DropdownMenu.Item>
             <DropdownMenu.Item onClick={onDuplicate} className={itemClasses}>
               <DuplicateIcon size={20} />
-              <span>Duplicate</span>
+              <span>Dubleeri</span>
             </DropdownMenu.Item>
             <DropdownMenu.Item
               onClick={onClearContents}
               className={itemClasses}
             >
               <XCircleIcon size={20} />
-              <span>Clear contents</span>
+              <span>Selge sisu</span>
             </DropdownMenu.Item>
             <DropdownMenu.DropdownMenuSeparator className="bg-grey-20 h-px w-full" />
             <DropdownMenu.Item
@@ -298,7 +295,7 @@ const MetadataRow = ({
               )}
             >
               <TrashIcon size={20} />
-              <span>Delete</span>
+              <span>Kustuta</span>
             </DropdownMenu.Item>
           </div>
         </DropdownMenu.Content>

@@ -73,12 +73,12 @@ function ImportPrices(props: ImportPricesProps) {
     : undefined
 
   const status = hasError
-    ? "Error occurred while processing"
+    ? "Töötlemisel ilmnes viga"
     : isPreprocessed
     ? undefined
     : isUploaded
-    ? "Preprocessing..."
-    : "Uploading..."
+    ? "Eeltöötlus..."
+    : "Üleslaadimine..."
 
   /**
    * Confirm job on submit.
@@ -86,8 +86,8 @@ function ImportPrices(props: ImportPricesProps) {
   const onSubmit = async () => {
     await confirmBatchJob()
     notification(
-      "Success",
-      "Import confirmed for processing. Progress info is available in the activity drawer.",
+      "Õnnestus",
+      "Import kinnitati töötlemiseks. Edenemisteave on saadaval tegevuste sahtlis.",
       "success"
     )
     props.handleClose()
@@ -112,7 +112,7 @@ function ImportPrices(props: ImportPricesProps) {
 
       setBatchJobId(batchJob.batch_job.id)
     } catch (e) {
-      notification("Error", "Import failed.", "error")
+      notification("Viga", "Import ebaõnnestus.", "error")
       if (fileKey) {
         await deleteFile({ file_key: fileKey })
       }
@@ -174,10 +174,10 @@ function ImportPrices(props: ImportPricesProps) {
   return (
     <UploadModal
       type="prices"
-      fileTitle="Price List prices"
-      description1Text="Upload a CSV file with variants and prices to update your price list. Note that any existing prices will be deleted."
-      description2Title="Unsure about how to arrange your list?"
-      description2Text="Download the template file below and update your prices"
+      fileTitle="Hinnakirja hinnad"
+      description1Text="Hinnakirja värskendamiseks laadige üles CSV-fail variantide ja hindadega. Pange tähele, et kõik olemasolevad hinnad kustutatakse."
+      description2Title="Kas pole kindel, kuidas oma loendit korraldada?"
+      description2Text="Laadige alla allpool olev mallifail ja värskendage hindu"
       status={status}
       progress={progress}
       canImport={isPreprocessed}

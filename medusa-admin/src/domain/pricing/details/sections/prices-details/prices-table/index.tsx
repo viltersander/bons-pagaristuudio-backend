@@ -66,7 +66,7 @@ const PricesTable = ({ id, selectProduct }: PricesTableProps) => {
         totalCount={count}
         options={{
           enableSearch: false,
-          searchPlaceholder: "Search by name or SKU...",
+          searchPlaceholder: "Otsige nime või SKU järgi...",
         }}
         {...params}
       />
@@ -105,25 +105,25 @@ const PricesTableRow = ({
 
   const actions = [
     {
-      label: "Edit prices",
+      label: "Muuda hindu",
       icon: <EditIcon size={20} />,
       onClick: onClick,
     },
     {
-      label: "Remove product",
+      label: "Eemaldage toode",
       icon: <CancelIcon size={20} />,
       variant: "danger" as const,
       onClick: () => {
         deleteProductPrices.mutate(undefined, {
           onSuccess: () => {
             notification(
-              "Success",
-              `Deleted prices of product: ${product.title}`,
+              "Õnnestus",
+              `Toote hinnad kustutatud: ${product.title}`,
               "success"
             )
           },
           onError: (err) =>
-            notification("Error", getErrorMessage(err), "error"),
+            notification("Viga", getErrorMessage(err), "error"),
         })
       },
     },

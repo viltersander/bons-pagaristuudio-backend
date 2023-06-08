@@ -68,15 +68,15 @@ const EditFlowVariantForm = ({ form, isEdit }: Props) => {
 
   return (
     <Accordion type="multiple" defaultValue={["general"]}>
-      <Accordion.Item title="General" value="general" required>
+      <Accordion.Item title="Ülevaade" value="general" required>
         <div>
           <VariantGeneralForm form={nestedForm(form, "general")} />
           <div className="mt-xlarge">
             <div className="mb-base gap-x-2xsmall flex items-center">
-              <h3 className="inter-base-semibold">Options</h3>
+              <h3 className="inter-base-semibold">Valikud</h3>
               <IconTooltip
                 type="info"
-                content="Options are used to define the color, size, etc. of the variant."
+                content="Suvandeid kasutatakse variandi värvi, suuruse jms määratlemiseks."
               />
             </div>
             <div className="gap-large pb-2xsmall grid grid-cols-2">
@@ -87,7 +87,7 @@ const EditFlowVariantForm = ({ form, isEdit }: Props) => {
                     key={field.id}
                     label={field.title}
                     {...form.register(`options.${index}.value`, {
-                      required: `Option value for ${field.title} is required`,
+                      required: `Suvandi väärtus ${field.title} on nõutud`,
                     })}
                     errors={form.formState.errors}
                   />
@@ -97,39 +97,38 @@ const EditFlowVariantForm = ({ form, isEdit }: Props) => {
           </div>
         </div>
       </Accordion.Item>
-      <Accordion.Item title="Pricing" value="pricing">
+      <Accordion.Item title="Hinnakujundus" value="pricing">
         <VariantPricesForm form={nestedForm(form, "prices")} />
       </Accordion.Item>
       {showStockAndInventory && (
-        <Accordion.Item title="Stock & Inventory" value="stock">
+        <Accordion.Item title="Varud ja laoseisud" value="stock">
           <VariantStockForm form={nestedForm(form, "stock")} />
         </Accordion.Item>
       )}
-      <Accordion.Item title="Shipping" value="shipping">
+      <Accordion.Item title="Tarne" value="shipping">
         <p className="inter-base-regular text-grey-50">
-          Shipping information can be required depending on your shipping
-          provider, and whether or not you are shipping internationally.
+          Tarneteavet võidakse nõuda sõltuvalt teie saatmisteenuse pakkujast ja sellest, kas tarnite rahvusvaheliselt või mitte.
         </p>
         <div className="mt-large">
-          <h3 className="inter-base-semibold mb-2xsmall">Dimensions</h3>
+          <h3 className="inter-base-semibold mb-2xsmall">Mõõtmed</h3>
           <p className="inter-base-regular text-grey-50 mb-large">
-            Configure to calculate the most accurate shipping rates.
+            Seadistage kõige täpsemate saatmishindade arvutamiseks.
           </p>
           <DimensionsForm form={nestedForm(form, "dimensions")} />
         </div>
         {showStockAndInventory && (
           <div className="mt-xlarge">
-            <h3 className="inter-base-semibold mb-2xsmall">Customs</h3>
+            <h3 className="inter-base-semibold mb-2xsmall">Toll</h3>
             <p className="inter-base-regular text-grey-50 mb-large">
-              Configure if you are shipping internationally.
+              Seadistage, kui tarnite rahvusvaheliselt.
             </p>
             <CustomsForm form={nestedForm(form, "customs")} />
           </div>
         )}
       </Accordion.Item>
-      <Accordion.Item title="Metadata" value="metadata">
+      <Accordion.Item title="Metaandmed" value="metadata">
         <p className="inter-base-regular text-grey-50 mb-base">
-          Metadata can be used to store additional information about the
+          Metaandmeid saab kasutada täiendava teabe salvestamiseks
           variant.
         </p>
         <MetadataForm form={nestedForm(form, "metadata")} />

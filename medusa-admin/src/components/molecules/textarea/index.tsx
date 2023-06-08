@@ -97,7 +97,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
             autoComplete="off"
             name={name}
             key={key || name}
-            placeholder={placeholder || "Placeholder"}
+            placeholder={placeholder || "Kohatäide"}
             onBlur={scrollToTop}
             onSelect={(e) => {}}
             rows={rows}

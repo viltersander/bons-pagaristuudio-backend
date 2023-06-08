@@ -45,7 +45,7 @@ const ThumbnailForm = ({ form }: Props) => {
         <div className="mt-large">
           <FileUploadField
             onFileChosen={handleFilesChosen}
-            placeholder="1200 x 1600 (3:4) recommended, up to 10MB each"
+            placeholder="1200 x 1600 (3:4) soovitatav, igaüks kuni 10 MB"
             filetypes={["image/gif", "image/jpeg", "image/png", "image/webp"]}
             className="py-large"
           />
@@ -53,7 +53,7 @@ const ThumbnailForm = ({ form }: Props) => {
       </div>
       {fields.length > 0 && (
         <div className="mt-large">
-          <h2 className="inter-large-semibold mb-small">Upload</h2>
+          <h2 className="inter-large-semibold mb-small">Laadi üles</h2>
 
           <div className="gap-y-2xsmall flex flex-col">
             {fields.map((field, index) => {
@@ -82,7 +82,7 @@ type ThumbnailProps = {
 const Image = ({ image, index, remove }: ThumbnailProps) => {
   const actions: ActionType[] = [
     {
-      label: "Delete",
+      label: "Kustuta",
       onClick: () => remove(index),
       icon: <TrashIcon size={20} />,
       variant: "danger",
@@ -95,7 +95,7 @@ const Image = ({ image, index, remove }: ThumbnailProps) => {
         <div className="flex h-16 w-16 items-center justify-center">
           <img
             src={image.url}
-            alt={image.name || "Uploaded image"}
+            alt={image.name || "Üles laaditud pilt"}
             className="rounded-rounded max-h-[64px] max-w-[64px]"
           />
         </div>

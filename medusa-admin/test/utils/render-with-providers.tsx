@@ -21,7 +21,7 @@ export const renderWithProviders = (
   { route = "/" } = {},
   options?: Omit<RenderOptions, "wrapper">
 ) => {
-  window.history.pushState({}, "Test page", route)
+  window.history.pushState({}, "Testi leht", route)
 
   return customRender(ui, options)
 }

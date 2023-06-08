@@ -21,26 +21,26 @@ const VariantGeneralForm = ({ form }: Props) => {
   return (
     <div>
       <p className="inter-base-regular text-grey-50">
-        Configure the general information for this variant.
+        Seadistage selle variandi üldteave.
       </p>
       <div className="pt-large">
         <div className="gap-x-large grid grid-cols-2">
           <InputField
-            label="Custom title"
-            placeholder="Green / XL..."
+            label="Kohandatud pealkiri"
+            placeholder="Kaal..."
             {...register(path("title"), {
               pattern: FormValidator.whiteSpaceRule("Title"),
             })}
             errors={errors}
           />
-          <InputField
+          {/* <InputField
             label="Material"
             placeholder="80% wool, 20% cotton..."
             {...form.register(path("material"), {
               pattern: FormValidator.whiteSpaceRule("Material"),
             })}
             errors={errors}
-          />
+          /> */}
         </div>
       </div>
     </div>

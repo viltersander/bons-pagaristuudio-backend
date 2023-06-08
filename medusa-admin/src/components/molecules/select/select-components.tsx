@@ -250,7 +250,7 @@ const NoOptionsMessage = <
       className="text-grey-50 inter-small-semibold p-xsmall text-center"
       {...innerProps}
     >
-      <p>{isLoading ? "Loading..." : "No options"}</p>
+      <p>{isLoading ? "Laeb..." : "Pole valikuid"}</p>
     </div>
   )
 }
@@ -272,7 +272,7 @@ const Option = <
         className={`item-renderer hover:bg-grey-10 h-full cursor-pointer rounded py-2 px-2`}
       >
         <div className="flex h-full items-center">
-          {props.data?.value !== "all" && props.data?.label !== "Select All" ? (
+          {props.data?.value !== "all" && props.data?.label !== "Vali kõik" ? (
             <>
               {props.isMulti ? (
                 <CheckboxAdornment isSelected={props.isSelected} />

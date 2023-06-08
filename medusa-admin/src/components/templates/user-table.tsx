@@ -160,9 +160,9 @@ const UserTable: React.FC<UserTableProps> = ({
         <Table.Cell></Table.Cell>
         <Table.Cell>
           {new Date(invite?.expires_at) < new Date() ? (
-            <StatusIndicator title={"Expired"} variant={"danger"} />
+            <StatusIndicator title={"Aegunud"} variant={"danger"} />
           ) : (
-            <StatusIndicator title={"Pending"} variant={"success"} />
+            <StatusIndicator title={"Ootel"} variant={"success"} />
           )}
         </Table.Cell>
       </Table.Row>
@@ -284,7 +284,7 @@ const UserTable: React.FC<UserTableProps> = ({
             <Table.HeadCell className="w-72">Nimi</Table.HeadCell>
             <Table.HeadCell className="w-80">Mail</Table.HeadCell>
             <Table.HeadCell className="w-72">Meeskonna load</Table.HeadCell>
-            <Table.HeadCell>Status</Table.HeadCell>
+            <Table.HeadCell>Olek</Table.HeadCell>
           </Table.HeadRow>
         </Table.Head>
         <Table.Body>{shownElements.map((e) => e.tableElement)}</Table.Body>

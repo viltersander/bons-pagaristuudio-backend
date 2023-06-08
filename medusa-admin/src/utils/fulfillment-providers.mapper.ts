@@ -4,17 +4,17 @@ export default function (provider: string): Option {
   switch (provider) {
     case "primecargo":
       return {
-        label: "Prime Cargo",
+        label: "Peamine last",
         value: "primecargo",
       }
     case "manual":
       return {
-        label: "Manual",
+        label: "Manuaalne",
         value: "manual",
       }
     case "webshipper":
       return {
-        label: "Webshipper",
+        label: "Veebisaatja",
         value: "webshipper",
       }
     default:

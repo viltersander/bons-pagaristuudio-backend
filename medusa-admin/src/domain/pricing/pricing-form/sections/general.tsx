@@ -12,27 +12,27 @@ const General = () => {
     <Accordion.Item
       forceMountContent
       required
-      title="General"
-      tooltip="General information for the price list."
+      title="Üldinfo"
+      tooltip="Üldinfo hinnakirja jaoks."
       value="general"
     >
       <div className="gap-y-small group-radix-state-open:mt-5 accordion-margin-transition flex flex-col">
         <InputField
-          label="Name"
+          label="Nimi"
           required
-          placeholder="B2B, Black Friday..."
-          {...register("name", { required: "Name is required" })}
+          placeholder="Must reede..."
+          {...register("name", { required: "Nimi on nõutud" })}
         />
         <InputField
-          label="Description"
+          label="Kirjeldus"
           required
-          placeholder="For our business partners..."
-          {...register("description", { required: "Description is required" })}
+          placeholder="Meie äripartneritele..."
+          {...register("description", { required: "Kirjeldus on nõutav" })}
         />
         <FeatureToggle featureFlag="tax_inclusive_pricing">
           <div className="mt-3">
             <div className="flex justify-between">
-              <h2 className="inter-base-semibold">Tax inclusive prices</h2>
+              <h2 className="inter-base-semibold">Hinnad koos käibemaksuga</h2>
               <Controller
                 control={control}
                 name="includes_tax"
@@ -42,7 +42,7 @@ const General = () => {
               />
             </div>
             <p className="inter-base-regular text-grey-50">
-              Choose to make all prices in this list inclusive of tax.
+              Valige, kas kõik selles loendis olevad hinnad sisaldavad käibemaksu.
             </p>
           </div>
         </FeatureToggle>
